@@ -1,0 +1,36 @@
+---
+permalink: api/concept_element_api_replication_api_methods.html 
+sidebar: sidebar 
+keywords: replication,api,methods 
+summary: 'レプリケーション API メソッドを使用すると、継続的なデータ保護 (CDP) のために 2 つのクラスターを接続できます。 2 つのクラスターを接続すると、クラスター内のアクティブなボリュームを 2 番目のクラスターに継続的に複製して、データの回復を実現できます。レプリケーション用にボリュームをペアリングすることで、データにアクセスできなくなる可能性のあるイベントからデータを保護できます。' 
+---
+= レプリケーションAPIメソッド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+レプリケーション API メソッドを使用すると、継続的なデータ保護 (CDP) のために 2 つのクラスターを接続できます。 2 つのクラスターを接続すると、クラスター内のアクティブなボリュームを 2 番目のクラスターに継続的に複製して、データの回復を実現できます。レプリケーション用にボリュームをペアリングすることで、データにアクセスできなくなる可能性のあるイベントからデータを保護できます。
+
+* xref:reference_element_api_cluster_pairing_order_of_operations.adoc[クラスターペアリング操作の順序]
+* xref:reference_element_api_volume_pairing_order_of_operations.adoc[ボリュームペアリングの操作順序]
+* xref:reference_element_api_supported_modes_of_replication.adoc[ペアクラスタでサポートされるレプリケーションモード]
+* xref:reference_element_api_completeclusterpairing.adoc[完全なクラスターペアリング]
+* xref:reference_element_api_completevolumepairing.adoc[完全な音量ペアリング]
+* xref:reference_element_api_listclusterpairs.adoc[クラスターペアのリスト]
+* xref:reference_element_api_listactivepairedvolumes.adoc[アクティブペアボリュームのリスト]
+* xref:reference_element_api_modifyvolumepair.adoc[ボリュームペアの変更]
+* xref:reference_element_api_removeclusterpair.adoc[クラスターペアの削除]
+* xref:reference_element_api_removevolumepair.adoc[ボリュームペアの削除]
+* xref:reference_element_api_startclusterpairing.adoc[クラスタペアリングの開始]
+* xref:reference_element_api_startvolumepairing.adoc[ボリュームペアリングの開始]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

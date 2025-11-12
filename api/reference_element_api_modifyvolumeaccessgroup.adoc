@@ -1,0 +1,199 @@
+---
+permalink: api/reference_element_api_modifyvolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,access,group,modify,modifying,updating,changing,change,update,edit,editing,modifyvolumeaccessgroup 
+summary: ModifyVolumeAccessGroup メソッドを使用して、イニシエーターを更新し、ボリューム アクセス グループにボリュームを追加または削除できます。 
+---
+= ボリュームアクセスグループの変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ModifyVolumeAccessGroup`イニシエーターを更新し、ボリューム アクセス グループにボリュームを追加または削除する方法。
+
+指定されたイニシエーターまたはボリュームが現在存在するものと重複している場合、ボリューム アクセス グループはそのまま残されます。ボリュームまたはイニシエーターの値を指定しない場合は、イニシエーターとボリュームの現在のリストは変更されません。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+
+
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+ボリュームアクセスグループID
+ a| 
+変更するボリューム アクセス グループの ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+名前
+ a| 
+このボリューム アクセス グループの新しい名前。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+attributes
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+イニシエータ
+ a| 
+ボリューム アクセス グループに含めるイニシエーター ID または名前 (IQN および WWPN) のリスト。イニシエーター名のリストを渡すと、イニシエーターがまだ存在しない場合は作成されます。イニシエーター ID のリストを渡す場合、いずれかのイニシエーターがまだ存在しないと、メソッドはエラーを返します。イニシエーター名を渡すことは非推奨です。可能な場合はイニシエーター ID を使用する必要があります。
+ a| 
+整数配列（推奨）または文字列配列（非推奨）
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+孤立イニシエーターの削除
+ a| 
+イニシエーター オブジェクトをボリューム アクセス グループから削除した後に削除するかどうかを指定します。有効な値は次のとおりです。
+
+* true: ボリューム アクセス グループから削除された後、イニシエーター オブジェクトを削除します。
+* false: ボリューム アクセス グループから削除された後、イニシエーター オブジェクトを削除しません。これがデフォルトです。
+
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+
+
+ a| 
+ボリューム
+ a| 
+変更するボリュームのボリューム ID のリスト。
+ a| 
+整数配列
+ a| 
+なし
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[ボリュームアクセスグループ]
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+ボリュームアクセスグループ
+ a| 
+新しく変更されたボリューム アクセス グループに関する情報を含むオブジェクト。
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[ボリュームアクセスグループ]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "ModifyVolumeAccessGroup",
+   "params": {
+      "volumeAccessGroupID": 96,
+      "name": "accessgrouptest",
+      "initiators": [115,114],
+      "volumes": [
+         346
+    ],
+      "attributes": {}
+   }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": null,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [
+        327
+      ],
+      "initiatorIDs": [
+        114,
+        115
+      ],
+      "initiators": [
+        "iqn.1998-01.com.vmware:desk1-esx1-577b283a",
+        "iqn.1998-01.com.vmware:donesq-esx1-421b281b"
+      ],
+      "name": "accessgrouptest",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        346
+      ]
+    }
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_addinitiatorstovolumeaccessgroup.adoc[ボリュームアクセスグループにイニシエーターを追加]
+* xref:reference_element_api_addvolumestovolumeaccessgroup.adoc[ボリュームアクセスグループにボリュームを追加]
+* xref:reference_element_api_removeinitiatorsfromvolumeaccessgroup.adoc[ボリュームアクセスグループからイニシエーターを削除する]
+* xref:reference_element_api_removevolumesfromvolumeaccessgroup.adoc[ボリュームアクセスグループからボリュームを削除]
+

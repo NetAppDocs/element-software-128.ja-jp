@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_enablesnmp.html 
+sidebar: sidebar 
+keywords: SNMP,enable,enabling,EnableSNMP 
+summary: EnableSnmp メソッドを使用して、クラスター ノードで SNMP を有効にすることができます。  SNMP を有効にすると、アクションはクラスター内のすべてのノードに適用され、渡された値によって EnableSnmp への以前の呼び出しで設定されたすべての値が置き換えられます。 
+---
+= Snmpを有効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `EnableSnmp`クラスター ノードで SNMP を有効にする方法。  SNMPを有効にすると、アクションはクラスタ内のすべてのノードに適用され、渡された値は以前の呼び出しで設定されたすべての値を置き換えます。 `EnableSnmp` 。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+snmpV3有効
+ a| 
+true に設定すると、クラスター内の各ノードで SNMP v3 が有効になります。  false に設定すると、SNMP v2 が有効になります。
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "EnableSnmp",
+  "params": {
+      "snmpV3Enabled"  : "true"
+  },
+  "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

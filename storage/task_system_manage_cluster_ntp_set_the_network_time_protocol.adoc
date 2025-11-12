@@ -1,0 +1,16 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_set_the_network_time_protocol.html 
+sidebar: sidebar 
+keywords: set, ntp, broadcasts, query, updates, clocks, synchronize, 
+summary: 'ネットワーク タイム プロトコル (NTP) の設定は、クラスター内の各ノードにブロードキャストをリッスンするように指示するか、各ノードに NTP サーバーに更新を照会するように指示するかのいずれかの方法で実行できます。' 
+---
+= ネットワークタイムプロトコルを設定する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ネットワーク タイム プロトコル (NTP) の設定は、クラスター内の各ノードにブロードキャストをリッスンするように指示するか、各ノードに NTP サーバーに更新を照会するように指示するかのいずれかの方法で実行できます。
+
+NTP はネットワーク上で時計を同期するために使用されます。内部または外部の NTP サーバーへの接続は、初期のクラスター セットアップの一部である必要があります。

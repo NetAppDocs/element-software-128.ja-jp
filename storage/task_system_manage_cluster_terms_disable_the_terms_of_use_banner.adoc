@@ -1,0 +1,23 @@
+---
+permalink: storage/task_system_manage_cluster_terms_disable_the_terms_of_use_banner.html 
+sidebar: sidebar 
+keywords: terms of use banner, disable 
+summary: 利用規約バナーを無効にすることができます。バナーを無効にすると、Element UI を使用するときにユーザーは利用規約に同意する必要がなくなります。 
+---
+= 利用規約バナーを無効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+利用規約バナーを無効にすることができます。バナーを無効にすると、Element UI を使用するときにユーザーは利用規約に同意する必要がなくなります。
+
+* 利用規約を構成するには、クラスター管理者の権限が必要です。
+* 利用規約が有効になっていることを確認してください。
++
+.. *ユーザー* > *利用規約*をクリックします。
+.. *無効*をクリックします。
+
+
+

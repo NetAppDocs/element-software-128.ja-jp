@@ -1,0 +1,91 @@
+---
+permalink: api/reference_element_api_setremotelogginghosts.html 
+sidebar: sidebar 
+keywords: remote,logging,host,hosts,set,setting,setremotelogginghosts 
+summary: SetRemoteLoggingHosts メソッドを使用して、ストレージ クラスター内のノードから集中ログ サーバーへのリモート ログ記録を構成できます。リモート ログは、デフォルトのポート 514 を使用して TCP 経由で実行されます。この API は既存のログ ホストに追加されません。むしろ、現在存在するものをこの API メソッドによって指定された新しい値に置き換えます。  GetRemoteLoggingHosts を使用して現在のログ ホストを確認し、SetRemoteLoggingHosts を使用して現在のログ ホストと新しいログ ホストの必要なリストを設定できます。 
+---
+= リモートログホストの設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `SetRemoteLoggingHosts`ストレージ クラスター内のノードから集中ログ サーバーへのリモート ログを構成する方法。リモート ログは、デフォルトのポート 514 を使用して TCP 経由で実行されます。この API は既存のログ ホストに追加されません。むしろ、現在存在するものをこの API メソッドによって指定された新しい値に置き換えます。使用できます `GetRemoteLoggingHosts`現在のログホストが何であるかを判断し、 `SetRemoteLoggingHosts`現在のログホストと新しいログホストの必要なリストを設定します。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+リモートホスト
+ a| 
+ログ メッセージの受信者であるホストのリスト。
+ a| 
+xref:reference_element_api_loggingserver.adoc[ログサーバー]配列
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "id": 1,
+   "method": "SetRemoteLoggingHosts",
+   "params": {
+     "remoteHosts": [
+        {
+          "host": "172.16.1.20",
+          "port": 10514
+        },
+        {
+          "host": "172.16.1.25"
+        }
+      ]
+   }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "id" : 1,
+    "result" : {}
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_getremotelogginghosts.adoc[リモートログホストの取得]

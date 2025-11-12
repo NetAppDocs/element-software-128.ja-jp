@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_deletekeyserverkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,deleting,delete 
+summary: 'DeleteKeyServerKmip メソッドを使用して、既存の Key Management Interoperability Protocol (KMIP) キー サーバーを削除できます。キー サーバーは、そのプロバイダーに割り当てられた最後のキー サーバーでない限り、またそのプロバイダーが現在使用中のキーを提供している場合を除き、削除できます。' 
+---
+= キーサーバーKmipの削除
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `DeleteKeyServerKmip`既存のキー管理相互運用性プロトコル (KMIP) キー サーバーを削除する方法。キー サーバーは、そのプロバイダーに割り当てられた最後のキー サーバーでない限り、またそのプロバイダーが現在使用中のキーを提供している場合を除き、削除できます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+キーサーバーID
+ a| 
+削除する KMIP キー サーバーの ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。エラーがない場合、削除操作は成功したとみなされます。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "DeleteKeyServerKmip",
+  "params": {
+     "keyServerID": 15
+  },
+"id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+}
+----
+
+
+== バージョン以降の新機能
+
+11.7

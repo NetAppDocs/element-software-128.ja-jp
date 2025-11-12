@@ -1,0 +1,22 @@
+---
+permalink: storage/task_system_manage_fips_avoid_mixing_nodes_for_fips_drives.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, nodes, drives, ear 
+summary: FIPS ドライブ機能を有効にする準備をする際には、FIPS ドライブ対応のノードと対応していないノードが混在しないようにする必要があります。 
+---
+= FIPSドライブのノード混在を避ける
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+FIPS ドライブ機能を有効にする準備をする際には、FIPS ドライブ対応のノードと対応していないノードが混在しないようにする必要があります。
+
+クラスターは、次の条件に基づいて FIPS ドライブに準拠していると見なされます。
+
+* すべてのドライブは FIPS ドライブとして認定されています。
+* すべてのノードは FIPS ドライブ ノードです。
+* 保存時の暗号化 (EAR) が有効になっています。
+* FIPS ドライブ機能が有効になっています。  FIPS ドライブ機能を有効にするには、すべてのドライブとノードが FIPS 対応であり、保存時の暗号化が有効になっている必要があります。
+

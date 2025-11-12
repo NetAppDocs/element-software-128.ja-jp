@@ -1,0 +1,94 @@
+---
+permalink: api/reference_element_api_binding_vvols.html 
+sidebar: sidebar 
+keywords: binding,object,objects,volume,volumes,virtual 
+summary: バインディング オブジェクトには、仮想ボリュームのバインディングに関する情報が含まれています。  ListVirtualVolumeBindings API メソッドを使用して、すべての仮想ボリュームのこの情報のリストを取得できます。 
+---
+= バインディング（仮想ボリューム）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+バインディング オブジェクトには、仮想ボリュームのバインディングに関する情報が含まれています。すべての仮想ボリュームのこの情報のリストを取得するには、 `ListVirtualVolumeBindings` API メソッド。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+`protocolEndpointID`
+ a| 
+プロトコル エンドポイントの一意の ID。
+ a| 
+UUID
+
+
+
+ a| 
+`protocolEndpointInBandID`
+ a| 
+プロトコル エンドポイントの scsiNAADeviceID。
+ a| 
+string
+
+
+
+ a| 
+`protocolEndpointType`
+ a| 
+プロトコル エンドポイントの種類。プロトコル エンドポイント タイプに対して返される値は SCSI のみです。
+ a| 
+string
+
+
+
+ a| 
+`virtualVolumeBindingID`
+ a| 
+仮想ボリューム バインディング オブジェクトの一意の ID。
+ a| 
+integer
+
+
+
+ a| 
+`virtualVolumeHostID`
+ a| 
+仮想ボリューム ホストの一意の ID。
+ a| 
+UUID
+
+
+
+ a| 
+`virtualVolumeID`
+ a| 
+仮想ボリュームの一意の ID。
+ a| 
+UUID
+
+
+
+ a| 
+`virtualVolumeSecondaryID`
+ a| 
+仮想ボリュームのセカンダリ ID。
+ a| 
+string
+
+|===
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_listvirtualvolumebindings.adoc[仮想ボリュームバインディングのリスト]
+* xref:reference_element_api_protocolendpoint.adoc[プロトコルエンドポイント]
+

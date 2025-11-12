@@ -1,0 +1,92 @@
+---
+permalink: api/reference_element_api_volumeaccessgroup.html 
+sidebar: sidebar 
+keywords: object,objects,volumeAccessGroup 
+summary: volumeAccessGroup オブジェクトには、特定のボリューム アクセス グループに関する情報が含まれています。  API メソッド ListVolumeAccessGroups を使用して、すべてのアクセス グループのこの情報のリストを取得できます。 
+---
+= ボリュームアクセスグループ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+volumeAccessGroup オブジェクトには、特定のボリューム アクセス グループに関する情報が含まれています。  APIメソッドを使用して、すべてのアクセスグループのこの情報のリストを取得できます。 `ListVolumeAccessGroups` 。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+attributes
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+
+
+
+ a| 
+削除されたボリューム
+ a| 
+ボリューム アクセス グループから削除されたが、まだシステムから消去されていないボリュームの配列。
+ a| 
+整数配列
+
+
+
+ a| 
+イニシエーターID
+ a| 
+ボリューム アクセス グループにマップされているイニシエーターの ID のリスト。
+ a| 
+整数配列
+
+
+
+ a| 
+イニシエータ
+ a| 
+ボリューム アクセス グループにマップされる一意の IQN/WWPN イニシエーターの配列。
+ a| 
+文字列配列
+
+
+
+ a| 
+名前
+ a| 
+ボリューム アクセス グループの名前。
+ a| 
+string
+
+
+
+ a| 
+ボリュームアクセスグループID
+ a| 
+ボリューム アクセス グループの一意の VolumeAccessGroupID 識別子。
+ a| 
+integer
+
+
+
+ a| 
+ボリューム
+ a| 
+ボリューム アクセス グループに属する VolumeID のリスト。
+ a| 
+整数配列
+
+|===
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_listvolumeaccessgroups.adoc[ボリュームアクセスグループの一覧]

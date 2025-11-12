@@ -1,0 +1,22 @@
+---
+permalink: storage/concept_intro_fibre_channel_nodes.html 
+sidebar: sidebar 
+keywords: fibre channel nodes, fibre channel switch, clients, protcols, iSCSi protocols, clusters, interconnections, fc, FC, connectivity, fibre channel connectivity, fibre channel nodes, fibre channel protocol 
+summary: SolidFireファイバー チャネル ノードはファイバー チャネル スイッチへの接続を提供し、ファイバー チャネル クライアントに接続できます。ファイバー チャネル ノードは、ファイバー チャネル プロトコルと iSCSI プロトコル間のプロトコル コンバータとして機能します。これにより、新規または既存のSolidFireクラスターにファイバー チャネル接続を追加できます。 
+---
+= ファイバーチャネルノード
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFireファイバー チャネル ノードはファイバー チャネル スイッチへの接続を提供し、ファイバー チャネル クライアントに接続できます。ファイバー チャネル ノードは、ファイバー チャネル プロトコルと iSCSI プロトコル間のプロトコル コンバータとして機能します。これにより、新規または既存のSolidFireクラスターにファイバー チャネル接続を追加できます。
+
+ファイバー チャネル ノードには次の特性があります。
+
+* ファイバー チャネル スイッチはファブリックの状態を管理し、最適化された相互接続を提供します。
+* 2 つのポート間のトラフィックはスイッチのみを通過し、他のポートには送信されません。
+* ポートの障害は分離されており、他のポートの動作に影響を与えません。
+* ファブリック内で複数のポートのペアが同時に通信できます。
+

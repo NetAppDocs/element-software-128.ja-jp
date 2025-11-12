@@ -1,0 +1,43 @@
+---
+permalink: storage/task_system_manage_cluster_volume_load_balancing.html 
+sidebar: sidebar 
+keywords: cluster, volume, volumes, load, balancing, actual, IOPS 
+summary: Element 12.8 以降では、ボリューム負荷分散を有効にして、QoS ポリシーで構成された最小 IOPS ではなく、各ボリュームの実際の IOPS に基づいてノード間でボリュームを分散することができます。 
+---
+= ボリューム負荷分散の有効化と無効化
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 12.8 以降では、ボリューム負荷分散を使用して、QoS ポリシーで構成された最小 IOPS ではなく、各ボリュームの実際の IOPS に基づいてノード間でボリュームを分散できます。デフォルトでは無効になっているボリューム負荷分散を、Element UI または API を使用して有効または無効にすることができます。
+
+.手順
+. *クラスター* > *設定*を選択します。
+. クラスター固有セクションで、ボリューム負荷分散のステータスを変更します。
++
+[role="tabbed-block"]
+====
+.ボリューム負荷分散を有効にする
+--
+*実際の IOPS で負荷分散を有効にする* を選択し、選択内容を確認します。
+
+--
+.ボリューム負荷分散を無効にする:
+--
+*実際の IOPS で負荷分散を無効にする* を選択し、選択を確認します。
+
+--
+====
+. 必要に応じて、*レポート* > *概要* を選択して、実際の IOPS のバランスのステータスの変更を確認します。ステータスを表示するには、クラスターのヘルス情報を下にスクロールする必要がある場合があります。
+
+
+
+
+== 詳細情報の参照
+
+* link:../api/reference_element_api_enablefeature.html["APIを使用してボリューム負荷分散を有効にする"]
+* https://docs.netapp.com/us-en/element-software/api/reference_element_api_disablefeature.html["APIを使用してボリューム負荷分散を無効にする"]
+* link:../hccstorage/task-hcc-qos-policies.html["ボリュームQoSポリシーの作成と管理"]
+

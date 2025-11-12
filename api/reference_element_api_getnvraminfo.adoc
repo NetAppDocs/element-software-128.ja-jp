@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_getnvraminfo.html 
+sidebar: sidebar 
+keywords: nvram,info,get,getting,getnvraminfo 
+summary: GetNvramInfo メソッドを使用して、各ノードからNVRAMカードに関する情報を取得できます。 
+---
+= NVRAM情報を取得する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetNvramInfo`各ノードからNVRAMカードに関する情報を取得する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+力
+ a| 
+クラスター内のすべてのノードで正常に実行するには、このメソッドに force パラメータを含める必要があります。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+nvram情報
+ a| 
+NVRAMカードで検出されたイベントとエラーの配列。
+ a| 
+JSONオブジェクト
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "GetNvramInfo",
+  "params": {
+      "force": true
+	  },
+  "id" : 1
+}
+----
+
+
+== 応答例
+
+この応答例は長いため、補足トピックに記載されています。
+
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_response_example_getnvraminfo.adoc[NVRAM情報を取得する]

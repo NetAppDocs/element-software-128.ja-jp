@@ -1,0 +1,69 @@
+---
+permalink: api/reference_element_api_getlldpinfo.html 
+sidebar: sidebar 
+keywords: lldp,info,get,getting,getlldpinfo,storage 
+summary: 'GetLldpInfo メソッドを使用すると、ストレージ クラスターの各ノードまたは個々のストレージ ノードのリンク層検出プロトコル (LLDP) 構成を取得できます。' 
+---
+= GetLldpInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetLldpInfo`ストレージ クラスターの各ノードまたは個々のストレージ ノードのリンク層検出プロトコル (LLDP) 構成を取得する方法。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+lldpInfo
+ a| 
+ストレージ クラスターの各ノードのシャーシ、インターフェイス、およびネイバー LLDP 設定に関する情報。
+ a| 
+JSONオブジェクト
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "GetLldpInfo",
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+この応答例は長いため、補足トピックに記載されています。
+
+
+
+== バージョン以降の新機能
+
+11.0
+
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_response_example_getlldpinfo.adoc[GetLldpInfo]

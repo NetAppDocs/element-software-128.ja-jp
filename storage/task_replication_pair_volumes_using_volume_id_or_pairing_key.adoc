@@ -1,0 +1,34 @@
+---
+permalink: storage/task_replication_pair_volumes_using_volume_id_or_pairing_key.html 
+sidebar: sidebar 
+keywords: volume pairings, pairing key, volume id, replication 
+summary: ペアリング プロセスでは、ボリューム ID またはペアリング キーのいずれかを使用して 2 つのボリュームをペアリングします。 
+---
+= ボリュームIDまたはペアリングキーを使用してボリュームをペアリングする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ペアリング プロセスでは、ボリューム ID またはペアリング キーのいずれかを使用して 2 つのボリュームをペアリングします。
+
+. 次のいずれかの方法を選択してボリュームをペアリングします。
++
+** ボリューム ID の使用: ボリュームをペアにする両方のクラスターに対してクラスター管理者アクセス権がある場合は、この方法を使用します。このメソッドは、リモート クラスター上のボリュームのボリューム ID を使用して接続を開始します。
+** ペアリング キーの使用: ソース クラスターのみにクラスター管理者アクセス権がある場合は、この方法を使用します。このメソッドは、ボリューム ペアを完了するためにリモート クラスターで使用できるペアリング キーを生成します。
++
+
+NOTE: ボリュームペアリングキーにはボリューム情報の暗号化バージョンが含まれており、機密情報が含まれている可能性があります。このキーは安全な方法でのみ共有してください。
+
+
+
+
+
+
+
+== 詳細情報の参照
+
+* xref:task_replication_pair_volumes_using_a_volume_id.adoc[ボリュームIDを使用してボリュームをペアリングする]
+* xref:task_replication_pair_volumes_using_a_pairing_key.adoc[ペアリングキーを使用してボリュームをペアリングする]
+

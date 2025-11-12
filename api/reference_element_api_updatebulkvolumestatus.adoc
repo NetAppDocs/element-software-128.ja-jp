@@ -1,0 +1,184 @@
+---
+permalink: api/reference_element_api_updatebulkvolumestatus.html 
+sidebar: sidebar 
+keywords: updatebulkvolumestatus,update,updating,bulk,volume,status,job 
+summary: UpdateBulkVolumeStatus メソッドを使用して、StartBulkVolumeRead メソッドまたは StartBulkVolumeWrite メソッドで開始した一括ボリューム ジョブのステータスを更新できます。 
+---
+= 一括ボリュームステータスの更新
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `UpdateBulkVolumeStatus`開始したバルクボリュームジョブのステータスを更新する方法 `StartBulkVolumeRead`または `StartBulkVolumeWrite`方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+キー
+ a| 
+初期化中に割り当てられたキーxref:reference_element_api_startbulkvolumeread.adoc[一括ボリューム読み取り開始]またはxref:reference_element_api_startbulkvolumewrite.adoc[一括ボリューム書き込みの開始]セッション。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+ステータス
+ a| 
+システムは、指定されたバルク ボリューム ジョブのステータスを設定します。有効な値は次のとおりです。
+
+* 実行中: まだアクティブなジョブ。
+* 完了: 完了したジョブ。
+* 失敗: 失敗したジョブ。
+
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+完了率
+ a| 
+一括ボリューム ジョブの完了した進行状況のパーセンテージ。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+message
+ a| 
+ジョブが完了したら、バルク ボリューム ジョブのステータスを返します。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+attributes
+ a| 
+JSON 属性。一括ボリューム ジョブの内容を更新します。
+ a| 
+JSONオブジェクト
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+ステータス
+ a| 
+要求されたセッションのステータス。返されたステータス:
+
+* 準備
+* active
+* done
+* 障害
+
+ a| 
+string
+
+
+
+ a| 
+attributes
+ a| 
+メソッド呼び出しで指定された属性を返します。値は変更されたかどうかに関係なく返されます。
+ a| 
+string
+
+
+
+ a| 
+URL
+ a| 
+ノードの Web サーバーにアクセスするための URL。セッションがまだアクティブな場合にのみ提供されます。
+ a| 
+string
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "UpdateBulkVolumeStatus",
+   "params": {
+          "key": "0b2f532123225febda2625f55dcb0448",
+	      "status": "running"
+      },
+   "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id" : 1,
+   "result": {
+	  "status" : "running",
+	  "url" : "https://10.10.23.47:8443/"
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_startbulkvolumeread.adoc[一括ボリューム読み取り開始]
+* xref:reference_element_api_startbulkvolumewrite.adoc[一括ボリューム書き込みの開始]
+

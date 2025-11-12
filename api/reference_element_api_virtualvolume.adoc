@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_virtualvolume.html 
+sidebar: sidebar 
+keywords: object,objects,virtualVolume 
+summary: virtualVolume オブジェクトには、仮想ボリュームに関する構成情報と、仮想ボリュームのスナップショットに関する情報が含まれています。実行時間や使用状況の情報は含まれません。クラスターのこの情報を取得するには、ListVirtualVolumes メソッドを使用できます。 
+---
+= 仮想ボリューム
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+virtualVolume オブジェクトには、仮想ボリュームに関する構成情報と、仮想ボリュームのスナップショットに関する情報が含まれています。実行時間や使用状況の情報は含まれません。使用することができます `ListVirtualVolumes`クラスターのこの情報を取得する方法。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+バインディング
+ a| 
+この仮想ボリュームのバインド ID のリスト。
+ a| 
+UUID配列
+
+
+
+ a| 
+子供たち
+ a| 
+この仮想ボリュームの子である仮想ボリューム UUID のリスト。
+ a| 
+UUID配列
+
+
+
+ a| 
+子孫
+ a| 
+ListVirtualVolumes メソッドに recursive: true を渡すと、この仮想ボリュームの子孫である仮想ボリューム UUID のリストが含まれます。
+ a| 
+UUID配列
+
+
+
+ a| 
+metadata
+ a| 
+仮想ボリュームの種類、ゲスト OS の種類など、仮想ボリュームのメタデータのキーと値のペア。
+ a| 
+JSONオブジェクト
+
+
+
+ a| 
+親仮想ボリュームID
+ a| 
+親仮想ボリュームの仮想ボリューム ID。  ID がすべてゼロの場合、これは親へのリンクのない独立した仮想ボリュームです。
+ a| 
+UUID
+
+
+
+ a| 
+スナップショットID
+ a| 
+基礎となるボリューム スナップショットの ID。仮想ボリュームがスナップショットを表していない場合、この値は「0」になります。
+ a| 
+integer
+
+
+
+ a| 
+スナップショット情報
+ a| 
+関連付けられているスナップショットのスナップショット オブジェクト (無効な場合は null)。
+ a| 
+xref:reference_element_api_snapshot.adoc[Snapshot]
+
+
+
+ a| 
+ステータス
+ a| 
+仮想ボリュームの現在のステータス。有効な値は次のとおりです。
+
+* クローン作成: クローンまたはスナップショット操作に応じて仮想ボリュームが処理されています。
+* 待機中: 仮想ボリュームはスナップショット操作の完了を待機しています。
+* 準備完了: 仮想ボリュームは汎用的に使用できる状態です。
+
+ a| 
+string
+
+
+
+ a| 
+ストレージコンテナ
+ a| 
+この仮想ボリュームを所有するストレージ コンテナーを記述するオブジェクト。
+ a| 
+xref:reference_element_api_storagecontainer.adoc[ストレージコンテナ]
+
+
+
+ a| 
+仮想ボリュームID
+ a| 
+仮想ボリュームの一意の ID。
+ a| 
+UUID
+
+
+
+ a| 
+仮想ボリュームタイプ
+ a| 
+仮想ボリュームのタイプ。
+ a| 
+string
+
+
+
+ a| 
+volumeID
+ a| 
+基礎となるボリュームの ID。
+ a| 
+integer
+
+
+
+ a| 
+ボリューム情報
+ a| 
+ListVirtualVolumes メソッドに details: true を渡すと、このメンバーはボリュームを記述するオブジェクトになります。
+ a| 
+xref:reference_element_api_volume.adoc[音量]
+
+|===
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_listvirtualvolumes.adoc[仮想ボリュームの一覧]
+* xref:reference_element_api_snapshot.adoc[Snapshot]
+* xref:reference_element_api_storagecontainer.adoc[ストレージコンテナ]
+* xref:reference_element_api_volume.adoc[音量]
+

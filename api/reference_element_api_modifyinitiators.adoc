@@ -1,0 +1,147 @@
+---
+permalink: api/reference_element_api_modifyinitiators.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,initiators,initiator,attribute,attributes,modifyinitiators 
+summary: ModifyInitiators メソッドを使用して、1 つ以上の既存のイニシエーターの属性を変更できます。 
+---
+= イニシエーターの変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ModifyInitiators`1 つ以上の既存のイニシエーターの属性を変更するメソッド。
+
+既存のイニシエーターの名前を変更することはできません。イニシエーターの名前を変更する必要がある場合は、まずxref:reference_element_api_deleteinitiators.adoc[イニシエーターの削除]メソッドを使用して新しいものを作成し、xref:reference_element_api_createinitiators.adoc[イニシエーターの作成]方法。
+
+ModifyInitiators がパラメータで指定されたイニシエーターのいずれかを変更できない場合、メソッドはエラーを返し、イニシエーターを変更しません (部分的な完了は不可能です)。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+
+
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+イニシエータ
+ a| 
+変更する各イニシエーターの特性を含むオブジェクトのリスト。可能なオブジェクト:
+
+* `alias`: (オプション) イニシエーターに割り当てる新しいフレンドリ名。  （弦）
+* `attributes`: (オプション) イニシエーターに割り当てる新しい JSON 属性のセット。  (JSONオブジェクト)
+* `chapUsername`: (オプション) このイニシエーターの新しい一意の CHAP ユーザー名。  （弦）
+* `forceDuringUpgrade`: アップグレード中にイニシエーターの変更を完了します。
+* `initiatorID`: (必須) 変更するイニシエーターの ID。  （整数）
+* `initiatorSecret`: (オプション) イニシエーターの認証に使用される新しい CHAP シークレット。  （弦）
+* `requireChap`: (オプション) このイニシエーターに CHAP が必要な場合は True になります。  （ブール値）
+* `targetSecret`: (オプション) ターゲットを認証するために使用される新しい CHAP シークレット (相互 CHAP 認証を使用する場合)。  （弦）
+* `virtualNetworkIDs`: (オプション) このイニシエーターに関連付けられている仮想ネットワーク識別子のリスト。 1 つ以上の仮想ネットワークを定義した場合、このイニシエーターはそれらの仮想ネットワークにのみログインできます。仮想ネットワークを定義しない場合、このイニシエーターはすべてのネットワークにログインできます。
+* `volumeAccessGroupID`: (オプション) イニシエーターを追加するボリューム アクセス グループの ID。イニシエーターが以前は別のボリューム アクセス グループに属していた場合、古いボリューム アクセス グループから削除されます。このキーが存在するが null の場合、イニシエーターは現在のボリューム アクセス グループから削除されますが、新しいボリューム アクセス グループには配置されません。  （整数）
+
+ a| 
+JSONオブジェクト配列
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+イニシエータ
+ a| 
+新しく変更されたイニシエーターを記述するオブジェクトのリスト。
+ a| 
+xref:reference_element_api_initiator.adoc[イニシエータ]配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "id": 6683,
+  "method": "ModifyInitiators",
+  "params": {
+    "initiators": [
+      {
+        "initiatorID": 2,
+        "alias": "alias1",
+        "volumeAccessGroupID": null
+      },
+      {
+        "initiatorID": 3,
+        "alias": "alias2",
+        "volumeAccessGroupID": 1
+      }
+    ]
+  }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 6683,
+  "result": {
+    "initiators": [
+      {
+        "alias": "alias1",
+        "attributes": {},
+        "initiatorID": 2,
+        "initiatorName": "iqn.1993-08.org.debian:01:395543635",
+        "volumeAccessGroups": []
+      },
+      {
+        "alias": "alias2",
+        "attributes": {},
+        "initiatorID": 3,
+        "initiatorName": "iqn.1993-08.org.debian:01:935573135",
+        "volumeAccessGroups": [
+          1
+        ]
+      }
+    ]
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_createinitiators.adoc[イニシエーターの作成]
+* xref:reference_element_api_deleteinitiators.adoc[イニシエーターの削除]
+

@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_deletesnapmirrorrelationships.html 
+sidebar: sidebar 
+keywords: SnapMirror,relationship,relationships,delete,deleting,DeleteSnapMirrorRelationships 
+summary: Element Web UI は、DeleteSnapMirrorRelationships メソッドを使用して、ソース エンドポイントと宛先エンドポイント間の 1 つ以上のSnapMirror関係を削除します。 
+---
+= スナップミラー関係の削除
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ElementウェブUIは `DeleteSnapMirrorRelationships`ソース エンドポイントと宛先エンドポイント間の 1 つ以上のSnapMirror関係を削除する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+Element ストレージ クラスタと通信するリモートONTAPストレージ システムのエンドポイント ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+宛先ボリューム
+ a| 
+SnapMirror関係の宛先ボリューム。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[スナップミラーボリューム情報]配列
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+結果
+ a| 
+削除アクションが成功した場合、このオブジェクトには成功メッセージが含まれます。アクションが失敗した場合は、エラー メッセージが含まれます。
+ a| 
+JSONオブジェクト
+
+|===
+
+
+== バージョン以降の新機能
+
+10.1

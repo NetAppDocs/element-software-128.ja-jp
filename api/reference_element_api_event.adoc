@@ -1,0 +1,168 @@
+---
+permalink: api/reference_element_api_event.html 
+sidebar: sidebar 
+keywords: object,objects,event 
+summary: イベント オブジェクトには、API メソッドの呼び出し中またはシステムが操作を実行している間に発生するイベントの詳細が含まれます。 
+---
+= event
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+イベント オブジェクトには、API メソッドの呼び出し中またはシステムが操作を実行している間に発生するイベントの詳細が含まれます。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+詳細
+ a| 
+イベントに関する追加情報。
+ a| 
+JSONオブジェクト
+
+
+
+ a| 
+ドライブID
+ a| 
+障害を報告しているドライブのドライブ ID。該当しない場合は0。
+ a| 
+integer
+
+
+
+ a| 
+ドライブID
+ a| 
+障害を報告しているドライブのドライブ ID のリスト。該当しない場合は空のリスト。
+ a| 
+整数配列
+
+
+
+ a| 
+イベントID
+ a| 
+各イベントに関連付けられた一意の ID。
+ a| 
+integer
+
+
+
+ a| 
+イベント情報タイプ
+ a| 
+障害の種類。
+ a| 
+string
+
+
+
+ a| 
+message
+ a| 
+発生したイベントの文字列による説明。
+ a| 
+string
+
+
+
+ a| 
+nodeID
+ a| 
+障害を報告したノードのノードID。該当しない場合は0。
+ a| 
+integer
+
+
+
+ a| 
+サービスID
+ a| 
+失敗を報告したサービスのサービス ID。該当しない場合は0。
+ a| 
+integer
+
+
+
+ a| 
+severity
+ a| 
+イベントが報告する重大度。
+ a| 
+integer
+
+
+
+ a| 
+公開時刻
+ a| 
+クラスターのイベント ログがイベントを受信した時刻 (UTC+0 形式)。
+ a| 
+ISO 8601日付文字列
+
+
+
+ a| 
+報告時間
+ a| 
+クラスター上でイベントが発生した時刻（UTC+0 形式）。
+ a| 
+ISO 8601日付文字列
+
+|===
+*注意:* イベントが発生し、すぐに公開できなかった場合、timeOfReport と timeOfPublish の間に若干の差異が生じる可能性があります。
+
+
+
+== イベントの種類
+
+次のリストは、eventInfoType メンバーに含めることができるイベント タイプを示しています。
+
+* apiEvent: 設定を変更する API または Web UI を通じて開始されるイベント。
+* binAssignmentsEvent: 内部コンテナーへのデータの割り当てに関連するイベント。
+* binSyncEvent: ブロック サービス間でのデータの再割り当てに関連するイベント。
+* bsCheckEvent: ブロック サービス チェックに関連するイベント。
+* bsKillEvent: ブロック サービスの終了に関連するイベント。
+* bulkOpEvent: ボリュームのバックアップ、復元、スナップショット、クローンなど、ボリューム全体を操作するイベント。
+* cloneEvent: ボリュームのクローン作成に関連するイベント。
+* clusterMasterEvent: ノードの追加や削除などのクラスター構成変更イベント。
+* dataEvent: データの読み取りと書き込みに関連するイベント。
+* dbEvent: アンサンブル ノード データベースに関連するイベント。
+* driveEvent: ドライブ操作に関連するイベント。
+* encryptionAtRestEvent: 保存されたデータの暗号化に関連するイベント。
+* ensembleEvent: アンサンブル サイズの増加または減少に関連するイベント。
+* fibreChannelEvent: ファイバー チャネル ノードの構成または接続に関連するイベント。
+* gcEvent: ガベージ コレクションに関連するイベント。これらのプロセスは 60 分ごとに実行され、ブロック ドライブ上のストレージを再利用します。
+* ieEvent: 内部システムエラーに関連するイベント。
+* installEvent: 保留中のストレージ ノードへの自動ソフトウェア インストールに関連するイベント。
+* iSCSIEvent: iSCSI 接続または構成の問題に関連するイベント。
+* limitEvent: アカウント内またはクラスター内のボリュームまたは仮想ボリュームの数が許可された最大値に近づいていることに関連するイベント。
+* networkEvent: 仮想ネットワークに関連するイベント。
+* platformHardwareEvent: ハードウェア デバイスで検出された問題に関連するイベント。
+* remoteClusterEvent: リモート クラスターのペアリングに関連するイベント。
+* schedulerEvent: スケジュールされたスナップショットに関連するイベント。
+* serviceEvent: システム サービスのステータスに関連するイベント。
+* statEvent: システム統計に関連するイベント。
+* sliceEvent: メタデータの保存に関連するイベント。
+* snmpTrapEvent: SNMP トラップに関連するイベント。
+* tsEvent: システム トランスポート サービス イベント。
+* expectedException: 予期しないエラーに関連するイベント。
+* vasaProviderEvent: VMware VASA プロバイダーに関連するイベント。
+
+
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_listevents.adoc[リストイベント]

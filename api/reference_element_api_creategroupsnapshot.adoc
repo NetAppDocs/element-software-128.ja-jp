@@ -1,0 +1,272 @@
+---
+permalink: api/reference_element_api_creategroupsnapshot.html 
+sidebar: sidebar 
+keywords: volume,volumes,snapshot,snapshots,CreateGroupSnapshot,group,create,creating 
+summary: CreateGroupSnapshot を使用して、ボリュームのグループの特定時点のコピーを作成できます。 
+---
+= グループスナップショットの作成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用できます `CreateGroupSnapshot`ボリュームのグループの特定時点のコピーを作成します。
+
+このスナップショットを後でバックアップまたはロールバックとして使用して、ボリューム グループ上のデータがスナップショットを作成した時点と一貫していることを確認できます。
+
+*クラスターの満杯度*
+
+
+NOTE: クラスターの満杯度がステージ 1、2、または 3 の場合、スナップショットを作成できます。クラスターの満杯状態がステージ 4 または 5 に達すると、スナップショットを作成できません。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+`attributes`
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+`enableRemoteReplication`
+ a| 
+スナップショットをリモート ストレージに複製するかどうかを指定します。有効な値は次のとおりです。
+
+* `true`: スナップショットはリモート ストレージに複製されます。
+* `false`: スナップショットはリモート ストレージに複製されません。
+
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+
+
+| `ensureSerialCreation`  a| 
+以前のスナップショットのレプリケーションが進行中の場合はスナップショットを作成しないことを指定します。有効な値は次のとおりです。
+
+* `true`: これにより、一度に 1 つのスナップショットのみが複製されるようになります。以前のスナップショットのレプリケーションがまだ進行中の場合、新しいスナップショットの作成は失敗します。
+* `false`： デフォルト。別のスナップショットレプリケーションがまだ進行中の場合、このスナップショットの作成は許可されます。
+
+| ブーリアン | `false` | いいえ 
+
+
+ a| 
+`expirationTime`
+ a| 
+スナップショットを削除できるまでの時間を指定します。使用できません `retention`。どちらでもない `expirationTime`、 または `retention`が指定されている場合、スナップショットは期限切れになりません。時間形式は、時間ベースの有効期限の場合は ISO 8601 日付文字列です。それ以外の場合は、有効期限は切れません。の値は `null`スナップショットが永続的に保持されます。の値は `fifo`ボリューム上の他の FIFO スナップショットと比較して、スナップショットが先入れ先出し (FIFO) ベースで保存されます。  FIFO スペースが利用できない場合、API は失敗します。
+ a| 
+ISO 8601日付文字列
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+`name`
+ a| 
+グループ スナップショットの名前。名前を入力しない場合は、グループスナップショットが作成された日時が使用されます。許可される名前の最大長は 255 文字です。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+`retention`
+ a| 
+このパラメータは `expirationTime`パラメータと同じですが、時刻形式は HH:mm:ss です。どちらでもない `expirationTime`または `retention`が指定されている場合、スナップショットは期限切れになりません。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+`snapMirrorLabel`
+ a| 
+SnapMirrorエンドポイントのスナップショット保持ポリシーを指定するためにSnapMirrorソフトウェアによって使用されるラベル。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+`volumes`
+ a| 
+コピー元のボリューム イメージの一意の ID。
+ a| 
+ボリュームID配列
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+members
+ a| 
+グループの各メンバーのチェックサム、ボリューム ID、スナップショット ID のリスト。有効な値は次のとおりです。
+
+* チェックサム: 保存されたスナップショット内のデータの小さな文字列表現。このチェックサムは、後で他のスナップショットと比較してデータ内のエラーを検出するために使用できます。  （弦）
+* snapshotID: 新しいスナップショットが作成されるスナップショットの一意の ID。スナップショット ID は、指定されたボリューム上のスナップショットからのものである必要があります。  （整数）
+* volumeID: スナップショットのソースボリューム ID。  （整数）
+
+ a| 
+JSONオブジェクト配列
+
+
+
+ a| 
+グループスナップショットID
+ a| 
+新しいグループ スナップショットの一意の ID。
+ a| 
+グループスナップショットID
+
+
+
+ a| 
+グループスナップショット
+ a| 
+新しく作成されたグループ スナップショットに関する情報を含むオブジェクト。
+ a| 
+xref:reference_element_api_groupsnapshot.adoc[グループスナップショット]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "CreateGroupSnapshot",
+   "params": {
+      "volumes": [1,2]
+   },
+   "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "groupSnapshot": {
+      "attributes": {},
+      "createTime": "2016-04-04T22:43:29Z",
+      "groupSnapshotID": 45,
+      "groupSnapshotUUID": "473b78a3-ef85-4541-9438-077306b2d3ca",
+      "members": [
+        {
+          "attributes": {},
+          "checksum": "0x0",
+          "createTime": "2016-04-04T22:43:29Z",
+          "enableRemoteReplication": false,
+          "expirationReason": "None",
+          "expirationTime": null,
+          "groupID": 45,
+          "groupSnapshotUUID": "473b78a3-ef85-4541-9438-077306b2d3ca",
+          "name": "2016-04-04T22:43:29Z",
+          "snapshotID": 3323,
+          "snapshotUUID": "7599f200-0092-4b41-b362-c431551937d1",
+          "status": "done",
+          "totalSize": 5000658944,
+          "virtualVolumeID": null,
+          "volumeID": 1
+        },
+        {
+          "attributes": {},
+          "checksum": "0x0",
+          "createTime": "2016-04-04T22:43:29Z",
+          "enableRemoteReplication": false,
+          "expirationReason": "None",
+          "expirationTime": null,
+          "groupID": 45,
+          "groupSnapshotUUID": "473b78a3-ef85-4541-9438-077306b2d3ca",
+          "name": "2016-04-04T22:43:29Z",
+          "snapshotID": 3324,
+          "snapshotUUID": "a0776a48-4142-451f-84a6-5315dc37911b",
+          "status": "done",
+          "totalSize": 6001000448,
+          "virtualVolumeID": null,
+          "volumeID": 2
+        }
+      ],
+      "name": "2016-04-04T22:43:29Z",
+      "status": "done"
+    },
+    "groupSnapshotID": 45,
+    "members": [
+      {
+        "checksum": "0x0",
+        "snapshotID": 3323,
+        "snapshotUUID": "7599f200-0092-4b41-b362-c431551937d1",
+        "volumeID": 1
+      },
+      {
+        "checksum": "0x0",
+        "snapshotID": 3324,
+        "snapshotUUID": "a0776a48-4142-451f-84a6-5315dc37911b",
+        "volumeID": 2
+      }
+    ]
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

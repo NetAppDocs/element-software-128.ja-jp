@@ -1,0 +1,76 @@
+---
+permalink: storage/concept_prereq_switch_configuration_for_solidfire_clusters.html 
+sidebar: sidebar 
+keywords: cluster switch configuration, best practices for switch configuration, optimal storage performance, node hardware, traffic, cluster, Element software, best practices, switches, switch requirements, storage, performance, storage performance 
+summary: NetApp Elementソフトウェア システムには、最適なストレージ パフォーマンスを実現するための特定のスイッチ要件とベスト プラクティスがあります。 
+---
+= Elementソフトウェアを実行するクラスタのスイッチ構成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Elementソフトウェア システムには、最適なストレージ パフォーマンスを実現するための特定のスイッチ要件とベスト プラクティスがあります。
+
+ストレージ ノードには、iSCSI ストレージ サービスおよびノード クラスタ内サービス通信のために、特定のノード ハードウェアに応じて 10 または 25GbE イーサネット スイッチが必要です。  1GbE スイッチは次の種類のトラフィックに使用できます。
+
+* クラスターとノードの管理
+* ノード間のクラスタ内管理トラフィック
+* クラスタノードと管理ノード仮想マシン間のトラフィック
+
+
+|===
+
+
+ a| 
+*ベスト プラクティス:* クラスター トラフィック用にイーサネット スイッチを構成するときは、次のベスト プラクティスを実装する必要があります。
+
+* クラスター内の非ストレージ トラフィックの場合は、高可用性と負荷分散を実現するために 1GbE スイッチのペアを展開します。
+* ストレージ ネットワーク スイッチでは、スイッチをペアで展開し、ジャンボ フレーム (MTU サイズ 9216 バイト) を構成して使用します。これにより、インストールが確実に成功し、断片化されたパケットによるストレージ ネットワーク エラーが排除されます。
+
+
+|===
+要素の展開には、次のトラフィック タイプごとに 1 つずつ、少なくとも 2 つのネットワーク セグメントが必要です。
+
+* 管理
+* ストレージ/データ
+
+
+NetApp H シリーズ ストレージ ノード モデルと計画されているケーブル構成に応じて、個別のスイッチを使用してこれらのネットワークを物理的に分離したり、VLAN を使用して論理的に分離したりできます。ただし、ほとんどの展開では、VLAN を使用してこれらのネットワークを論理的に分離する必要があります。
+
+ストレージ ノードは、展開前、展開中、展開後に通信できる必要があります。
+
+ストレージ ノードに個別の管理ネットワークを実装する場合は、これらの管理ネットワーク間にネットワーク ルートがあることを確認してください。これらのネットワークにはゲートウェイが割り当てられている必要があり、ゲートウェイ間にルートが存在する必要があります。ノードと管理ネットワーク間の通信を容易にするために、各新しいノードにゲートウェイが割り当てられていることを確認します。
+
+NetApp Element には次のものが必要です。
+
+* NetApp H シリーズ ストレージ ノードに接続されているすべてのスイッチ ポートは、スパニング ツリー エッジ ポートとして設定する必要があります。
++
+** Ciscoスイッチでは、スイッチ モデル、ソフトウェア バージョン、およびポート タイプに応じて、次のいずれかのコマンドを使用してこれを実行できます。
++
+*** `spanning-tree port type edge`
+*** `spanning-tree port type edge trunk`
+*** `spanning-tree portfast`
+*** `spanning-tree portfast trunk`
+
+
+** Mellanoxスイッチでは、 `spanning-tree port type edge`指示。
+
+
+* ストレージ トラフィックを処理するスイッチは、ポートあたり少なくとも 10GbE の速度をサポートする必要があります (ポートあたり最大 25GbE がサポートされます)。
+* 管理トラフィックを処理するスイッチは、ポートあたり1GbE以上の速度をサポートする必要があります。
+* ストレージ トラフィックを処理するスイッチ ポートでジャンボ フレームを構成する必要があります。インストールを正常に行うには、ホストがエンドツーエンドで 9000 バイトのパケットを送信できる必要があります。
+* すべてのストレージ ノード間の往復ネットワーク遅延は 2 ミリ秒を超えてはなりません。
+
+
+一部のノードは、専用の管理ポートを介して追加の帯域外管理機能を提供します。  NetApp H300S、H500S、および H700S ノードでは、ポート A 経由の IPMI アクセスも許可されます。ベスト プラクティスとして、環境内のすべてのノードに対してアウトオブバンド管理を構成することで、リモート管理を容易にする必要があります。
+
+
+
+== 詳細情報
+
+* https://docs.netapp.com/us-en/hci/docs/hci_prereqs_network_switch.html["NetApp HCIネットワークとスイッチの要件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

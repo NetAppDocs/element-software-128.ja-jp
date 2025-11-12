@@ -1,0 +1,38 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_configure_to_listen_for_ntp_broadcasts.html 
+sidebar: sidebar 
+keywords: ntp, broadcasts, server, config, server list, broadcast client 
+summary: 'ブロードキャスト モードを使用すると、クラスター内の各ノードに、特定のサーバーからのネットワーク タイム プロトコル (NTP) ブロードキャスト メッセージをネットワーク上でリッスンするように指示できます。' 
+---
+= NTPブロードキャストをリッスンするようにクラスタを構成する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ブロードキャスト モードを使用すると、クラスター内の各ノードに、特定のサーバーからのネットワーク タイム プロトコル (NTP) ブロードキャスト メッセージをネットワーク上でリッスンするように指示できます。
+
+NTP はネットワーク上で時計を同期するために使用されます。内部または外部の NTP サーバーへの接続は、初期のクラスター セットアップの一部である必要があります。
+
+.要件
+* この設定を構成するには、クラスタ管理者の権限が必要です。
+* ネットワーク上の NTP サーバーをブロードキャスト サーバーとして構成する必要があります。
+
+
+.手順
+. *クラスター* > *設定*をクリックします。
+. ブロードキャスト モードを使用している NTP サーバーをサーバー リストに入力します。
+. ネットワーク タイム プロトコル設定で、ブロードキャスト クライアントを使用するには *はい* を選択します。
+. ブロードキャスト クライアントを設定するには、[*サーバー*] フィールドに、ブロードキャスト モードで設定した NTP サーバーを入力します。
+. *変更を保存*をクリックします。
+
+
+
+
+== 詳細情報の参照
+
+* link:../storage/task_system_manage_cluster_ntp_configure.html["クラスタがクエリを実行するネットワークタイムプロトコルサーバを構成する"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

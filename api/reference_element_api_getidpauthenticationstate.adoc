@@ -1,0 +1,68 @@
+---
+permalink: api/reference_element_api_getidpauthenticationstate.html 
+sidebar: sidebar 
+keywords: IdP,idp,authentication,retrieve get,idp state 
+summary: GetIdpAuthenticationState メソッドを使用すると、サードパーティの IdP を使用した認証の状態に関する情報を返すことができます。 
+---
+= GetIdpAuthenticationState
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetIdpAuthenticationState`サードパーティの IdP を使用した認証の状態に関する情報を返すメソッド。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+有効
+ a| 
+サードパーティの IdP 認証が有効かどうかを示します。
+ a| 
+ブーリアン
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "GetIdpAuthenticationState"
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "result": {"enabled": true}
+}
+----
+
+
+== バージョン以降の新機能
+
+12.0

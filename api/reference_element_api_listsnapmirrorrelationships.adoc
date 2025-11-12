@@ -1,0 +1,114 @@
+---
+permalink: api/reference_element_api_listsnapmirrorrelationships.html 
+sidebar: sidebar 
+keywords: snapmirror,endpoints,endpoint,list,listing,listsnapmirrorrelationships 
+summary: Element ソフトウェア Web UI は、ListSnapMirrorRelationships メソッドを使用して、Element ストレージ クラスター上の 1 つまたはすべてのSnapMirror関係を一覧表示します。 
+---
+= スナップミラー関係のリスト
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ElementソフトウェアのWeb UIは、 `ListSnapMirrorRelationships` Element ストレージ クラスター上の 1 つまたはすべてのSnapMirror関係を一覧表示するメソッド。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+指定されたエンドポイント ID に関連付けられている関係のみを一覧表示します。エンドポイント ID が指定されていない場合、システムは既知のすべてのSnapMirrorエンドポイントからの関係を一覧表示します。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+宛先ボリューム
+ a| 
+指定された宛先ボリュームに関連付けられている関係を一覧表示します。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[スナップミラーボリューム情報]
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+ソースボリューム
+ a| 
+指定されたソース ボリュームに関連付けられている関係を一覧表示します。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[スナップミラーボリューム情報]
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+SVM
+ a| 
+指定された Vserver 上の関係を一覧表示します。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+関係ID
+ a| 
+指定されたリレーションシップ ID に関連付けられたリレーションシップを一覧表示します。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラー関係
+ a| 
+SnapMirror関係に関する情報を含むオブジェクトのリスト。
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[スナップミラー関係]配列
+
+|===
+
+
+== バージョン以降の新機能
+
+10.1

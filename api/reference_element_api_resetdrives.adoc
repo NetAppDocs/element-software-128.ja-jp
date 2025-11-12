@@ -1,0 +1,116 @@
+---
+permalink: api/reference_element_api_resetdrives.html 
+sidebar: sidebar 
+keywords: drive,drives,remove,removing,data,reset,resetting,resetdrives,erase 
+summary: ResetDrives メソッドを使用すると、ドライブを事前に初期化し、現在ドライブ上にあるすべてのデータを削除できます。ドライブは既存のノードで再利用したり、アップグレードされたノードで使用したりできます。 
+---
+= リセットドライブ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ResetDrives`ドライブを事前に初期化し、現在ドライブ上にあるすべてのデータを削除する方法。ドライブは既存のノードで再利用したり、アップグレードされたノードで使用したりできます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+ドライブ
+ a| 
+リセットするデバイス名 (ドライブ ID ではない) のリスト。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+力
+ a| 
+ドライブをリセットするには true に設定します。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+詳細
+ a| 
+リセットされるドライブの詳細。
+ a| 
+JSONオブジェクト配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "ResetDrives",
+   "params": {
+      "drives" : "slot3",
+      "force" : true
+   },
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+   "details": {
+    "drives": [
+    {
+      "drive": "slot3",
+      "returnCode": 0,
+      "stderr": " * Unlocking /dev/slot9 .[ ok ]\ * Setting master password /dev/slot9 .[ ok ]\ * Secure erasing /dev/slot9 (hdparm) [tries=0/1] ...........................[ ok ]",
+      "stdout": ""
+    }
+   ]
+  },
+  "duration": "00:00:28.501269",
+  "result": "Passed"
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

@@ -1,0 +1,222 @@
+---
+permalink: api/reference_element_api_createcluster.html 
+sidebar: sidebar 
+keywords: CreateCluster,cluster,create,creating,initialize,initializing 
+summary: 'CreateCluster メソッドを使用して、「mvip」および「svip」アドレスの所有権を持つクラスター内のノードを初期化できます。各新しいクラスターは、クラスター内の最初のノードの管理 IP (MIP) を使用して初期化されます。この方法では、構成されているすべてのノードがクラスターに自動的に追加されます。新しいクラスターを初期化するたびに、このメソッドを 1 回だけ使用する必要があります。' 
+---
+= CreateCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `CreateCluster`「mvip」および「svip」アドレスの所有権を持つクラスター内のノードを初期化するメソッド。各新しいクラスターは、クラスター内の最初のノードの管理 IP (MIP) を使用して初期化されます。この方法では、構成されているすべてのノードがクラスターに自動的に追加されます。新しいクラスターを初期化するたびに、このメソッドを 1 回だけ使用する必要があります。
+
+
+NOTE: クラスタのマスターノードにログインしてxref:reference_element_api_getbootstrapconfig.adoc[ブートストラップ設定の取得]クラスターに含める残りのノードの IP アドレスを取得するには、クラスターのマスター ノードに対して CreateCluster メソッドを実行します。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+EULAを受け入れる
+ a| 
+このクラスターを作成するときに、エンド ユーザー ライセンス契約に同意することを示します。  EULA に同意するには、このパラメータを true に設定します。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+attributes
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+ソフトウェア暗号化を有効にする
+ a| 
+保存時にソフトウェアベースの暗号化を使用するには、このパラメータを有効にします。すべてのクラスターでデフォルトで false に設定されます。保存時のソフトウェア暗号化を有効にすると、クラスター上で無効にすることはできません。
+ a| 
+ブーリアン
+ a| 
+true
+ a| 
+いいえ
+
+
+
+ a| 
+mvip
+ a| 
+管理ネットワーク上のクラスターのフローティング (仮想) IP アドレス。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+ノード
+ a| 
+クラスターを構成するノードの初期セットの CIP/SIP アドレス。このノードの IP はリストに含まれている必要があります。
+ a| 
+文字列配列
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+注文番号
+ a| 
+英数字の販売注文番号。ソフトウェア ベースのプラットフォームで必須です。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ（ハードウェアベースのプラットフォーム）
+
+はい（ソフトウェアベースのプラットフォーム）
+
+
+
+ a| 
+パスワード
+ a| 
+クラスター管理者アカウントの初期パスワード。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+シリアルナンバー
+ a| 
+9 桁の英数字のシリアル番号。ソフトウェアベースのプラットフォームでは必要になる場合があります。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ（ハードウェアベースのプラットフォーム）
+
+はい（ソフトウェアベースのプラットフォーム）
+
+
+
+ a| 
+svip
+ a| 
+ストレージ (iSCSI) ネットワーク上のクラスターのフローティング (仮想) IP アドレス。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+ユーザ名
+ a| 
+クラスター管理者のユーザー名。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "CreateCluster",
+  "params": {
+    "acceptEula": true,
+    "mvip": "10.0.3.1",
+    "svip": "10.0.4.1",
+    "username": "Admin1",
+    "password": "9R7ka4rEPa2uREtE",
+    "attributes": {
+      "clusteraccountnumber": "axdf323456"
+    },
+    "nodes": [
+      "10.0.2.1",
+      "10.0.2.2",
+      "10.0.2.3",
+      "10.0.2.4"
+    ]
+  },
+  "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+"id" : 1,
+"result" : {}
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+[discrete]
+== 詳細情報の参照
+
+* link:reference_element_api_getbootstrapconfig.html["ブートストラップ設定の取得"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

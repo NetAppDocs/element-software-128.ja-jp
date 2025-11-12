@@ -1,0 +1,55 @@
+---
+permalink: storage/task_data_manage_vvol_enable_virtual_volumes.html 
+sidebar: sidebar 
+keywords: virtual volumes, enable, functionality on the cluster, vvols 
+summary: 'NetApp Elementソフトウェアを使用して、vSphere Virtual Volumes (VVols) 機能を手動で有効にする必要があります。  Element ソフトウェア システムでは、VVols 機能はデフォルトで無効になっており、新規インストールまたはアップグレードの一部として自動的に有効になることはありません。  VVols 機能の有効化は、1 回限りの構成タスクです。' 
+---
+= 仮想ボリュームを有効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Elementソフトウェアを使用して、vSphere Virtual Volumes (VVols) 機能を手動で有効にする必要があります。  Element ソフトウェア システムでは、VVols 機能はデフォルトで無効になっており、新規インストールまたはアップグレードの一部として自動的に有効になることはありません。  VVols 機能の有効化は、1 回限りの構成タスクです。
+
+.要件
+* クラスターは Element 9.0 以降を実行している必要があります。
+* クラスターは、VVol と互換性のある ESXi 6.0 以降の環境に接続されている必要があります。
+* Element 11.3 以降を使用している場合は、クラスターを ESXi 6.0 Update 3 以降の環境に接続する必要があります。
+
+
+
+IMPORTANT: vSphere Virtual Volumes 機能を有効にすると、Element ソフトウェア構成が永続的に変更されます。クラスターが VMware ESXi VVols 互換環境に接続されている場合にのみ、VVols 機能を有効にする必要があります。  VVols 機能を無効にしてデフォルト設定を復元するには、クラスターを工場出荷時のイメージに戻す必要がありますが、これによりシステム上のすべてのデータが削除されます。
+
+.手順
+. *クラスター* > *設定*を選択します。
+. 仮想ボリュームのクラスター固有の設定を見つけます。
+. *仮想ボリュームを有効にする*をクリックします。
+. 仮想ボリュームの構成変更を確認するには、[*はい*] をクリックします。
++
+Element UI に *VVols* タブが表示されます。
+
++
+
+NOTE: VVols 機能が有効になっている場合、 SolidFireクラスターは VASA プロバイダーを起動し、VASA トラフィック用にポート 8444 を開き、vCenter およびすべての ESXi ホストによって検出できるプロトコル エンドポイントを作成します。
+
+. *クラスター* > *設定* の仮想ボリューム (VVol) 設定から VASA プロバイダー URL をコピーします。このURLは、VASA ProviderをvCenterに登録する際に使用します。
+. *VVols* > *ストレージ コンテナー* でストレージ コンテナーを作成します。
++
+
+NOTE: VM を VVol データストアにプロビジョニングできるようにするには、少なくとも 1 つのストレージ コンテナーを作成する必要があります。
+
+. *VVols* > *プロトコル エンドポイント* を選択します。
+. クラスタ内のノードごとにプロトコル エンドポイントが作成されていることを確認します。
++
+
+NOTE: vSphere では追加の構成タスクが必要です。  VASA プロバイダーを vCenter に登録し、VVol データストアを作成および管理し、ポリシーに基づいてストレージを管理するには、『VMware vSphere Virtual Volumes for SolidFireストレージ構成ガイド』を参照してください。
+
+
+
+
+
+== 詳細情報の参照
+
+https://www.netapp.com/pdf.html?item=/media/10516-tr4642pdf.pdf["VMware vSphere Virtual Volumes for SolidFireストレージ構成ガイド"^]

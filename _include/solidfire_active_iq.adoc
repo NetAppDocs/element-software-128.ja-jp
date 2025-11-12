@@ -1,0 +1,24 @@
+= 詳細情報
+:allow-uri-read: 
+
+
+https://activeiq.solidfire.com["SolidFireActive IQ"^]クラスター全体のデータの継続的に更新された履歴ビューを提供する Web ベースのツールです。特定のイベント、しきい値、またはメトリックに対してアラートを設定できます。  SolidFire Active IQすると、システムのパフォーマンスと容量を監視し、クラスターの健全性に関する情報を常に把握できます。
+
+SolidFire Active IQでは、システムに関する次の情報を確認できます。
+
+* ノードの数とノードのステータス: 正常、オフライン、または障害
+* CPU、メモリ使用量、ノードスロットリングのグラフィカルな表現
+* ノードに関する詳細情報（シリアル番号、シャーシ内のスロット位置、モデル、ストレージノードで実行されているNetApp Elementソフトウェアのバージョンなど）
+* 仮想マシンのCPUおよびストレージ関連の情報
+
+
+SolidFire Active IQの詳細については、 https://docs.netapp.com/us-en/solidfire-active-iq/index.html["SolidFire Active IQドキュメント"^] 。
+
+
+
+== 詳細情報
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://mysupport.netapp.com/site/tools/tool-eula/5ddb829ebd393e00015179b2["NetAppサポート サイト > Active IQ用ツール"^]
+

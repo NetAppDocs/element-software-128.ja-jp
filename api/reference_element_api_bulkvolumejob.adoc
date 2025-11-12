@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_bulkvolumejob.html 
+sidebar: sidebar 
+keywords: bulkVolumeJob,object,objects,read,write,clones,snapshots,clone,snapshot 
+summary: bulkVolumeJob オブジェクトには、クローン作成やスナップショットの作成など、一括ボリュームの読み取りまたは書き込み操作に関する情報が含まれています。 
+---
+= バルクボリュームジョブ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+その `bulkVolumeJob`オブジェクトには、クローン作成やスナップショットの作成など、ボリュームの一括読み取りまたは書き込み操作に関する情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+`attributes`
+ a| 
+一括ボリューム ジョブの JSON 属性。
+ a| 
+JSONオブジェクト
+
+
+
+ a| 
+`bulkVolumeID`
+ a| 
+内部バルクボリューム ジョブ ID。
+ a| 
+integer
+
+
+
+ a| 
+`createTime`
+ a| 
+一括ボリューム ジョブ用に作成されたタイムスタンプ (UTC+0 形式)。
+ a| 
+ISO 8601日付文字列
+
+
+
+ a| 
+`elapsedTime`
+ a| 
+ジョブが開始されてからの秒数。
+ a| 
+string
+
+
+
+ a| 
+`format`
+ a| 
+一括ボリューム操作の形式。有効な値は次のとおりです。
+
+* ネイティブ
+* 圧縮されていない
+
+ a| 
+string
+
+
+
+ a| 
+`key`
+ a| 
+バルク ボリューム セッションによって作成された一意のキー。
+ a| 
+string
+
+
+
+ a| 
+`percentComplete`
+ a| 
+操作によって報告された完了率。
+ a| 
+integer
+
+
+
+ a| 
+`remainingTime`
+ a| 
+残り時間の見積もり（秒）。
+ a| 
+integer
+
+
+
+ a| 
+`srcVolumeID`
+ a| 
+ソースボリューム ID。
+ a| 
+integer
+
+
+
+ a| 
+`status`
+ a| 
+処理のステータス。有効な値は次のとおりです。
+
+* 準備
+* 実行
+* 完了
+* 障害
+
+ a| 
+string
+
+
+
+ a| 
+`script`
+ a| 
+スクリプトの名前（指定されている場合）。
+ a| 
+string
+
+
+
+ a| 
+`snapshotID`
+ a| 
+スナップショットが一括ボリューム ジョブのソースにある場合のスナップショットの ID。
+ a| 
+integer
+
+
+
+ a| 
+`type`
+ a| 
+一括操作のタイプ。有効な値は次のとおりです。
+
+* 読む
+* 書く
+
+ a| 
+string
+
+|===

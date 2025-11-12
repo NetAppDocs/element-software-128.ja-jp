@@ -1,0 +1,37 @@
+---
+permalink: storage/index.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= Elementソフトウェアでストレージを管理する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element ソフトウェアを使用して、 SolidFireストレージをセットアップし、クラスターの容量とパフォーマンスを監視し、マルチテナント インフラストラクチャ全体でストレージ アクティビティを管理します。
+
+Element は、 SolidFireクラスターの中核となるストレージ オペレーティング システムです。  Element ソフトウェアはクラスター内のすべてのノードで独立して実行され、クラスターのノードがリソースを結合し、外部クライアントに対して単一のストレージ システムとして提示できるようにします。  Element ソフトウェアは、システム全体のすべてのクラスターの調整、スケール、および管理を担当します。
+
+ソフトウェア インターフェイスは Element API 上に構築されています。
+
+* link:task_post_deploy_access_the_element_software_user_interface.html["Elementソフトウェアのユーザーインターフェースにアクセスする"]
+* link:task_post_deploy_configure_system_options.html["導入後にSolidFireシステムオプションを構成する"]
+* link:../upgrade/concept_element_upgrade_overview.html["ストレージシステムコンポーネントのアップグレード"]
+* link:task_intro_use_basic_options_in_the_element_software_ui.html["ElementソフトウェアUIの基本オプションを使用する"]
+* link:concept_system_manage_accounts_overview.html["アカウントを管理する"]
+* link:concept_system_manage_system_management.html["システムを管理する"]
+* link:concept_data_manage_data_management.html["ボリュームと仮想ボリュームを管理する"]
+* link:concept_data_protection.html["データの保護"]
+* link:concept_system_monitoring_and_troubleshooting.html["システムのトラブルシューティング"]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

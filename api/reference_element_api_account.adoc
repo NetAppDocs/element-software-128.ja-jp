@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_account.html 
+sidebar: sidebar 
+keywords: account,object,accounts 
+summary: アカウント オブジェクトには、アカウントに関する情報が含まれます。このオブジェクトには、アカウントに関する「構成された」情報のみが含まれ、実行時間や使用状況の情報は含まれません。 
+---
+= アカウント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+その `account`オブジェクトにはアカウントに関する情報が含まれています。このオブジェクトには、アカウントに関する「構成された」情報のみが含まれ、実行時間や使用状況の情報は含まれません。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+`accountID`
+ a| 
+アカウントの一意のアカウント ID。
+ a| 
+integer
+
+
+
+ a| 
+`attributes`
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+
+
+
+ a| 
+`enableChap`
+ a| 
+イニシエーターがボリュームにアクセスするために CHAP アカウント資格情報を使用できるかどうかを指定します。
+ a| 
+ブーリアン
+
+
+
+ a| 
+`initiatorSecret`
+ a| 
+イニシエーターの CHAP シークレット。
+ a| 
+string
+
+
+
+ a| 
+`status`
+ a| 
+アカウントの現在のステータス。有効な値は次のとおりです。
+
+* アクティブ: アクティブなアカウント。
+* ロック済み: ロックされたアカウント。
+* 削除済み: 削除され、消去されたアカウント。
+
+ a| 
+string
+
+
+
+ a| 
+`storageContainerID`
+ a| 
+このアカウントに関連付けられている仮想ボリューム ストレージ コンテナーの一意の ID。
+ a| 
+UUID
+
+
+
+ a| 
+`targetSecret`
+ a| 
+ターゲットの CHAP シークレット。
+ a| 
+string
+
+
+
+ a| 
+`username`
+ a| 
+アカウントのユーザー名。
+ a| 
+string
+
+
+
+ a| 
+`volumes`
+ a| 
+このアカウントが所有するボリュームのボリューム ID のリスト。
+ a| 
+整数配列
+
+|===
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_addaccount.adoc[アカウントを追加]
+* xref:reference_element_api_getaccountbyid.adoc[アカウントIDを取得]
+* xref:reference_element_api_getaccountbyname.adoc[名前でアカウントを取得]
+* xref:reference_element_api_listaccounts.adoc[アカウント一覧]
+

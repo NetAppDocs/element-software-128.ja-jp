@@ -1,0 +1,127 @@
+---
+permalink: api/reference_element_api_getsnmpinfo.html 
+sidebar: sidebar 
+keywords: snmp,information,info,get,getting 
+summary: 'GetSnmpInfo メソッドを使用して、現在の簡易ネットワーク管理プロトコル (SNMP) 構成情報を取得できます。' 
+---
+= SnmpInfo の取得
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetSnmpInfo`現在の簡易ネットワーク管理プロトコル (SNMP) 構成情報を取得する方法。
+
+
+
+== パラメータ
+
+
+NOTE: GetSnmpInfo は、Element バージョン 8.0 以降では非推奨です。そのxref:reference_element_api_getsnmpstate.adoc[GetSnmpState]そしてxref:reference_element_api_setsnmpacl.adoc[SnmpACLの設定]メソッドは GetSnmpInfo メソッドに代わるものです。
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+ネットワーク
+ a| 
+SNMP が有効になっているネットワークとアクセス タイプのリスト。  *注:* ネットワークは、SNMP v3 が無効になっている場合にのみ表示されます。
+ a| 
+xref:reference_element_api_network_snmp.adoc[network]
+
+
+
+ a| 
+有効
+ a| 
+クラスター内のノードが SNMP 用に構成されているかどうかを示します。有効な値は次のとおりです。
+
+* true
+* false
+
+ a| 
+ブーリアン
+
+
+
+ a| 
+snmpV3有効
+ a| 
+クラスター内のノードが SNMP v3 用に設定されている場合。有効な値は次のとおりです。
+
+* true
+* false
+
+ a| 
+ブーリアン
+
+
+
+ a| 
+usmユーザー
+ a| 
+SNMP v3 が有効になっている場合、クラスターから SNMP のユーザー アクセス パラメータのリストが返されます。これは、ネットワーク パラメータの代わりに返されます。
+ a| 
+xref:reference_element_api_usmuser.adoc[usmユーザー]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "GetSnmpInfo",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "enabled" : true,
+      "networks" : [
+         {
+            "access" : "rosys",
+            "cidr" : 0,
+            "community" : "public",
+            "network" : "localhost"
+         }
+      ]
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_getsnmpstate.adoc[GetSnmpState]
+* xref:reference_element_api_setsnmpacl.adoc[SnmpACLの設定]
+

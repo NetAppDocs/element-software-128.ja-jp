@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_system_configuration_getnodefipsdrivesreport.html 
+sidebar: sidebar 
+keywords: individual,fips,feature,support,info,report,get,getting,getnodefipsdrivesreport,drive 
+summary: GetNodeFipsDrivesReport メソッドを使用して、ストレージ クラスター内の単一ノードの FIPS 140-2 ドライブ暗号化機能のステータスを確認できます。このメソッドは、個々のストレージ ノードに対して実行する必要があります。 
+---
+= GetNodeFipsDrivesReport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetNodeFipsDrivesReport`ストレージ クラスター内の単一ノードの FIPS 140-2 ドライブ暗号化機能のステータスを確認する方法。このメソッドは、個々のストレージ ノードに対して実行する必要があります。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータがありません。
+
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+fipsドライブ
+ a| 
+このノードの FIPS 140-2 機能のサポートのステータスを含む JSON オブジェクト。有効な値は次のとおりです。
+
+* なし: ノードは FIPS に対応していません。
+* 部分的: ノードは FIPS 対応ですが、ノード内のすべてのドライブが FIPS ドライブではありません。
+* 準備完了: ノードは FIPS 対応であり、ノード内のすべてのドライブは FIPS ドライブです (またはドライブが存在しません)。
+
+ a| 
+string
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "GetNodeFipsDrivesReport",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "fipsDrives": "None"
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+11.5

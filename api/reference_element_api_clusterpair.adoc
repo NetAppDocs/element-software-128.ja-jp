@@ -1,0 +1,107 @@
+---
+permalink: api/reference_element_api_clusterpair.html 
+sidebar: sidebar 
+keywords: objects,object,clusterPair 
+summary: clusterPair オブジェクトには、ローカル クラスターとペアになっているクラスターに関する情報が含まれます。  ListClusterPairs メソッドを使用して、ローカル クラスターの clusterPair オブジェクトのリストを取得できます。 
+---
+= クラスターペア
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+clusterPair オブジェクトには、ローカル クラスターとペアになっているクラスターに関する情報が含まれます。  ListClusterPairs メソッドを使用して、ローカル クラスターの clusterPair オブジェクトのリストを取得できます。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+クラスター名
+ a| 
+ペア内のもう一方のクラスターの名前。
+ a| 
+string
+
+
+
+ a| 
+クラスターペアID
+ a| 
+ペア内の各クラスターに付与される一意の ID。
+ a| 
+integer
+
+
+
+ a| 
+クラスターペアUUID
+ a| 
+クラスター ペアのユニバーサル一意識別子。
+ a| 
+string
+
+
+
+ a| 
+UUID
+ a| 
+クラスター ペア内のリモート クラスターの一意の識別子。
+ a| 
+integer
+
+
+
+ a| 
+latency
+ a| 
+クラスター間の遅延 (ミリ秒単位)。
+ a| 
+integer
+
+
+
+ a| 
+mvip
+ a| 
+ペアリングされたクラスターの管理接続の IP アドレス。
+ a| 
+string
+
+
+
+ a| 
+ステータス
+ a| 
+ペアリングされたクラスター間の接続のステータス。有効な値は次のとおりです。
+
+* 未設定
+* 接続済み
+* 設定ミス
+* 切断
+
+ a| 
+string
+
+
+
+ a| 
+version
+ a| 
+ペア内のもう一方のクラスターの要素バージョン。
+ a| 
+string
+
+|===
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_listclusterpairs.adoc[クラスターペアのリスト]

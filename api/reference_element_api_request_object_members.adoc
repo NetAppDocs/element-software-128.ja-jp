@@ -1,0 +1,57 @@
+---
+permalink: api/reference_element_api_request_object_members.html 
+sidebar: sidebar 
+keywords: request,object,members 
+summary: 各 Element ソフトウェア API リクエストには、次の基本部分があります。 
+---
+= リクエストオブジェクトのメンバー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+各 Element ソフトウェア API リクエストには、次の基本部分があります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+方法
+ a| 
+呼び出すメソッドの名前。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+parameters
+ a| 
+呼び出されるメソッドへのパラメータを含むオブジェクト。名前付きパラメータが必要です。位置パラメータ (配列として渡される) は許可されません。
+ a| 
+JSONオブジェクト
+ a| 
+{}
+ a| 
+いいえ
+
+
+
+ a| 
+id
+ a| 
+要求と応答を一致させるために使用され、結果で返される識別子。
+ a| 
+文字列または整数
+ a| 
+{}
+ a| 
+いいえ
+
+|===

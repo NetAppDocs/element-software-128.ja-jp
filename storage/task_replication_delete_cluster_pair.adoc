@@ -1,0 +1,21 @@
+---
+permalink: storage/task_replication_delete_cluster_pair.html 
+sidebar: sidebar 
+keywords: cluster pairs, delete 
+summary: クラスター ペアは、ペア内のいずれかのクラスターの Element UI から削除できます。 
+---
+= クラスターペアを削除する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスター ペアは、ペア内のいずれかのクラスターの Element UI から削除できます。
+
+. *データ保護* > *クラスターペア*をクリックします。
+. クラスター ペアの [アクション] アイコンをクリックします。
+. 表示されたメニューで、[削除] をクリックします。
+. 操作を確定します。
+. クラスターペアリングの 2 番目のクラスターから手順を再度実行します。
+

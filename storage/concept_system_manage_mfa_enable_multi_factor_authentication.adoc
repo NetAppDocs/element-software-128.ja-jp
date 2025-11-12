@@ -1,0 +1,14 @@
+---
+permalink: storage/concept_system_manage_mfa_enable_multi_factor_authentication.html 
+sidebar: sidebar 
+keywords: saml, idp, mfa, enable 
+summary: '多要素認証 (MFA) では、セキュリティアサーションマークアップ言語 (SAML) を介してサードパーティのアイデンティティプロバイダー (IdP) を使用してユーザーセッションを管理します。  MFA を使用すると、管理者は必要に応じて、パスワードとテキスト メッセージ、パスワードと電子メール メッセージなどの追加の認証要素を構成できます。' 
+---
+= 多要素認証を有効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+多要素認証 (MFA) は、セキュリティアサーションマークアップ言語 (SAML) を介してサードパーティの ID プロバイダー (IdP) を使用してユーザーセッションを管理します。  MFA を使用すると、管理者は必要に応じて、パスワードとテキスト メッセージ、パスワードと電子メール メッセージなどの追加の認証要素を構成できます。

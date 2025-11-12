@@ -1,0 +1,38 @@
+---
+permalink: api/reference_element_api_cluster_pairing_order_of_operations.html 
+sidebar: sidebar 
+keywords: cluster,pairing,pair,order,operations,clusters 
+summary: リモート レプリケーションを使用する前に、Element ソフトウェアを実行しているストレージ クラスターのペア間の接続を確立する必要があります。 
+---
+= クラスターペアリング操作の順序
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+リモート レプリケーションを使用する前に、Element ソフトウェアを実行しているストレージ クラスターのペア間の接続を確立する必要があります。
+
+クラスター接続を確立するには、次の API メソッド セットを使用します。
+
+* xref:reference_element_api_startclusterpairing.adoc[クラスタペアリングの開始]:
++
+この API メソッドは、クラスター ペアを確立するために使用されるペアリング キーを作成して返します。キーはエンコードされており、クラスター間の通信を確立するために使用される情報が含まれています。 1 つのクラスターは最大 4 つの他のクラスターとペアリングできます。ただし、クラスターのペアリングごとに新しいキーを生成する必要があります。そのxref:reference_element_api_startclusterpairing.adoc[クラスタペアリングの開始]メソッドは呼び出されるたびに新しいキーを生成します。各固有キーをxref:reference_element_api_completeclusterpairing.adoc[完全なクラスターペアリング]追加の各クラスターをペアリングする方法。
+
++
+
+NOTE: セキュリティ上の理由から、ペアリング キーを電子メールで送信しないでください。キーにはユーザー名とパスワードが含まれています。
+
+* xref:reference_element_api_completeclusterpairing.adoc[完全なクラスターペアリング]:
++
+この方法では、xref:reference_element_api_startclusterpairing.adoc[クラスタペアリングの開始]クラスター ペアを作成する API メソッド。発行するxref:reference_element_api_completeclusterpairing.adoc[完全なクラスターペアリング]宛先への clusterPairingKey パラメータを持つ API メソッド。発信元クラスターは、キーを作成したクラスターです。
+
+
+
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_startclusterpairing.adoc[クラスタペアリングの開始]
+* xref:reference_element_api_completeclusterpairing.adoc[完全なクラスターペアリング]
+

@@ -1,0 +1,254 @@
+---
+permalink: api/reference_element_api_drivestats.html 
+sidebar: sidebar 
+keywords: object,objects,driveStats 
+summary: driveStats オブジェクトには、単一のドライブの高レベルのアクティビティ測定値が含まれています。  API メソッド GetDriveStats を使用して測定情報を取得できます。 
+---
+= ドライブ統計
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+driveStats オブジェクトには、単一のドライブの高レベルのアクティビティ測定値が含まれています。  APIメソッドを使用して測定情報を取得できます `GetDriveStats`。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+アクティブセッション
+ a| 
+現在このドライブを使用している iSCSI セッションの数 (メタデータ ドライブの場合のみ)。
+ a| 
+integer
+
+
+
+ a| 
+ドライブID
+ a| 
+クラスター内のドライブの一意の ID。
+ a| 
+integer
+
+
+
+ a| 
+失敗したダイカウント
+ a| 
+障害が発生したドライブ ハードウェア要素の数。
+ a| 
+integer
+
+
+
+ a| 
+ios進行中
+ a| 
+このドライブに対して進行中の I/O の数。
+ a| 
+integer
+
+
+
+ a| 
+残り寿命パーセント
+ a| 
+ドライブメディア摩耗インジケーター。
+ a| 
+integer
+
+
+
+ a| 
+生涯読み取りバイト数
+ a| 
+ドライブの寿命中にこのドライブから読み取られた合計バイト数。
+ a| 
+integer
+
+
+
+ a| 
+生涯書き込みバイト
+ a| 
+ドライブの有効期間中にこのドライブに書き込まれた合計バイト数。
+ a| 
+integer
+
+
+
+ a| 
+電源オン時間
+ a| 
+このドライブの電源がオンになっている時間数。
+ a| 
+integer
+
+
+
+ a| 
+読む
+ a| 
+このドライブへの 1 秒あたりの read() 呼び出しの数。
+ a| 
+integer
+
+
+
+ a| 
+readBytes
+ a| 
+クライアント操作によりドライブから読み取られた合計バイト数。
+ a| 
+integer
+
+
+
+ a| 
+読み取り結合
+ a| 
+より大きな読み取りに組み合わせることができる、隣接セクターへの read() 呼び出しの数。
+ a| 
+integer
+
+
+
+ a| 
+読み取りミリ秒
+ a| 
+読み取りに費やされた時間（ミリ秒）。
+ a| 
+integer
+
+
+
+ a| 
+readOps
+ a| 
+クライアント操作によるドライブ上の読み取り操作の合計。
+ a| 
+integer
+
+
+
+ a| 
+再割り当てされたセクター
+ a| 
+このドライブ内で置き換えられた不良セクターの数。
+ a| 
+integer
+
+
+
+ a| 
+予約容量パーセント
+ a| 
+ドライブの使用可能な予備容量。
+ a| 
+integer
+
+
+
+ a| 
+タイムスタンプ
+ a| 
+UTC+0 形式の現在の時刻。
+ a| 
+ISO 8601日付文字列
+
+
+
+ a| 
+totalCapacity
+ a| 
+ドライブの合計容量（バイト単位）。
+ a| 
+integer
+
+
+
+ a| 
+修正不可能なエラー
+ a| 
+ドライブの自己監視、分析、およびレポート テクノロジー (SMART) 監視システムから報告された修正不可能なエラーの値。
+ a| 
+integer
+
+
+
+ a| 
+usedCapacity
+ a| 
+ドライブの使用容量（バイト単位）。
+ a| 
+integer
+
+
+
+ a| 
+使用メモリ
+ a| 
+このドライブをホストしているノードによって現在使用されているメモリの量。
+ a| 
+integer
+
+
+
+ a| 
+書く
+ a| 
+このドライブへの 1 秒あたりの write() 呼び出しの数。
+ a| 
+integer
+
+
+
+ a| 
+writeBytes
+ a| 
+クライアントのアクティビティによりドライブに書き込まれた合計バイト数。
+ a| 
+integer
+
+
+
+ a| 
+writesCombined
+ a| 
+より大きな書き込みに組み合わせることができる、隣接セクターへの write() 呼び出しの数。
+ a| 
+integer
+
+
+
+ a| 
+書き込みミリ秒
+ a| 
+書き込みに要した時間（ミリ秒）。
+ a| 
+integer
+
+
+
+ a| 
+writeOps
+ a| 
+クライアントのアクティビティによるドライブへの書き込み操作の合計数。
+ a| 
+integer
+
+|===
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_getdrivestats.adoc[ドライブ統計を取得]

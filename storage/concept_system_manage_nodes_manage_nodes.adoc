@@ -1,0 +1,22 @@
+---
+permalink: storage/concept_system_manage_nodes_manage_nodes.html 
+sidebar: sidebar 
+keywords: nodes, manage, cluster, capacity rule, pairs, stranded nodes 
+summary: 「クラスター」タブの「ノード」ページから、 SolidFireストレージおよびファイバー チャネル ノードを管理できます。 
+---
+= ノードの管理
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+「クラスター」タブの「ノード」ページから、 SolidFireストレージおよびファイバー チャネル ノードを管理できます。
+
+新しく追加されたノードがクラスターの総容量の 50% 以上を占める場合、このノードの容量の一部は使用不可 (「取り残される」) になり、容量ルールに準拠します。ストレージが追加されるまで、この状態は続きます。容量ルールにも従わない非常に大きなノードが追加された場合、以前に取り残されていたノードは取り残されなくなりますが、新しく追加されたノードは取り残されます。このような事態を回避するには、容量を常にペアで追加する必要があります。ノードが孤立すると、適切なクラスター障害がスローされます。
+
+
+
+== 詳細情報の参照
+
+xref:task_system_manage_nodes_adding_a_node_to_a_cluster.adoc[クラスターにノードを追加する]

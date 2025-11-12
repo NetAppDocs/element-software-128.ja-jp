@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_disablefeature.html 
+sidebar: sidebar 
+keywords: SNMP,disable,disabling,DisableFeature,vvols,virtual volumes 
+summary: VolumeLoadBalanceOnActualIOPS を無効にするには、DisableFeature メソッドを使用できます。 
+---
+= 機能を無効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `DisableFeature`無効にする方法 `VolumeLoadBalanceOnActualIOPS`特徴。 `VolumeLoadBalanceOnActualIOPS`デフォルトでは無効になっています。
+
+[NOTE]
+====
+VVols などの別の機能を無効にしようとすると、次のエラー メッセージが表示されます。
+
+[listing]
+----
+{"error":{"code":500,"message":"VolumeLoadBalanceOnActualIOPS is the only feature that can be disabled","name":"xAPINotPermitted"},"id":null}
+----
+====
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+機能
+ a| 
+クラスター機能を無効にします。可能な値:
+
+* `VolumeLoadBalanceOnActualIOPS`: 最小 IOPS ではなく実際の IOPS に基づいてスライスのバランス調整を無効にします。
+
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "DisableFeature",
+    "params": {
+        "feature" : "VolumeLoadBalanceOnActualIOPS"
+    },
+    "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {}
+}
+----
+
+
+== バージョン以降の新機能
+
+12.8

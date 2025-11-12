@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectionschemeresiliency.html 
+sidebar: sidebar 
+keywords: object,objects,protectionSchemeResiliency 
+summary: 'protectionSchemeResiliency オブジェクトには、特定の保護スキームのストレージ クラスターが、関連付けられている protectionDomainType 内の 1 つ以上の障害から自動的に修復できるかどうかに関する情報が含まれています。ストレージ クラスターは、単一のストレージ ノードに障害が発生してもデータの読み取りと書き込みを続行できる場合 (ノード許容度と呼ばれる状態)、修復されたとみなされます。' 
+---
+= 保護スキーム回復力
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionSchemeResiliency オブジェクトには、特定の保護スキームのストレージ クラスターが、関連付けられている protectionDomainType 内の 1 つ以上の障害から自動的に修復できるかどうかに関する情報が含まれています。ストレージ クラスターは、単一のストレージ ノードに障害が発生してもデータの読み取りと書き込みを続行できる場合 (ノード許容度と呼ばれる状態)、修復されたとみなされます。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+保護スキーム
+ a| 
+このストレージ クラスターの現在の保護スキーム。可能な値は doubleHelix のみです。
+ a| 
+string
+
+
+
+ a| 
+ブロックデータの持続可能な障害
+ a| 
+データのノード許容状態に自動的に修復する能力を失うことなく発生する可能性がある同時障害の予測数。
+ a| 
+integer
+
+
+
+ a| 
+メタデータの持続可能な障害
+ a| 
+メタデータのノード許容状態に自動的に修復する機能を失うことなく発生する可能性がある同時障害の予測数。
+ a| 
+integer
+
+|===

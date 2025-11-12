@@ -1,0 +1,24 @@
+---
+permalink: storage/task_replication_validate_volume_replication.html 
+sidebar: sidebar 
+keywords: volume pairings, replication, validate volume replication 
+summary: ボリュームが複製された後、ソース ボリュームとターゲット ボリュームがアクティブであることを確認する必要があります。アクティブ状態の場合、ボリュームはペアリングされ、データはソース ボリュームからターゲット ボリュームに送信され、データは同期されています。 
+---
+= ボリュームレプリケーションの検証
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ボリュームが複製された後、ソース ボリュームとターゲット ボリュームがアクティブであることを確認する必要があります。アクティブ状態の場合、ボリュームはペアリングされ、データはソース ボリュームからターゲット ボリュームに送信され、データは同期されています。
+
+. 両方のクラスターから、[*データ保護*] > [*ボリューム ペア*] を選択します。
+. ボリュームのステータスがアクティブであることを確認します。
+
+
+
+
+== 詳細情報の参照
+
+xref:reference_replication_volume_pairing_warnings.adoc[ボリュームペアリングの警告]

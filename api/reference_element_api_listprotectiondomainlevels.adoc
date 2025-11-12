@@ -1,0 +1,122 @@
+---
+permalink: api/reference_element_api_listprotectiondomainlevels.html 
+sidebar: sidebar 
+keywords: list,listing,protection,domain,levels,level,listprotectiondomainlevels 
+summary: ListProtectionDomainLevels メソッドを使用して、ストレージ クラスターの許容レベルと回復力レベルを一覧表示できます。許容レベルは、障害発生時にクラスターがデータの読み取りと書き込みを続行する能力を示し、回復力レベルは、ストレージ クラスターが 1 つ以上の障害から自動的に修復する能力を示します。 
+---
+= リスト保護ドメインレベル
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ListProtectionDomainLevels`ストレージ クラスターの許容度と回復力のレベルを一覧表示するメソッド。許容レベルは、障害発生時にクラスターがデータの読み取りと書き込みを続行する能力を示し、回復力レベルは、ストレージ クラスターが 1 つ以上の障害から自動的に修復する能力を示します。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータがありません。
+
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+保護ドメインレベル
+ a| 
+さまざまな保護ドメイン レベルのリスト。各レベルは、ストレージ クラスターの許容度と回復力に関する情報を提供します。
+ a| 
+xref:reference_element_api_protectiondomainlevel.adoc[保護ドメインレベル]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "ListProtectionDomainLevels",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"protectionDomainLevels": [
+			{
+				"protectionDomainType": "node",
+				"resiliency": {
+					"protectionSchemeResiliencies": [
+							{
+								"protectionScheme": "doubleHelix",
+								"sustainableFailuresForBlockData": 0,
+								"sustainableFailuresForMetadata": 1
+							}
+					],
+					"singleFailureThresholdBytesForBlockData": 0,
+					"sustainableFailuresForEnsemble": 1
+				},
+				"tolerance": {
+					"protectionSchemeTolerances": [
+							{
+								"protectionScheme": "doubleHelix",
+								"sustainableFailuresForBlockData": 0,
+								"sustainableFailuresForMetadata": 1
+							}
+					],
+					"sustainableFailuresForEnsemble": 1
+				}
+			},
+			{
+				"protectionDomainType": "chassis",
+				"resiliency": {
+					"protectionSchemeResiliencies": [
+							{
+								"protectionScheme": "doubleHelix",
+								"sustainableFailuresForBlockData": 0,
+								"sustainableFailuresForMetadata": 1
+							}
+					],
+					"singleFailureThresholdBytesForBlockData": 0,
+					"sustainableFailuresForEnsemble": 1
+				},
+				"tolerance": {
+					"protectionSchemeTolerances": [
+							{
+								"protectionScheme": "doubleHelix",
+								"sustainableFailuresForBlockData": 0,
+								"sustainableFailuresForMetadata": 1
+							}
+					],
+					"sustainableFailuresForEnsemble": 1
+				}
+			}
+		]
+	}
+}
+----
+
+
+== バージョン以降の新機能
+
+11.0

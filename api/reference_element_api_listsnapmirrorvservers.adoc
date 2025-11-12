@@ -1,0 +1,94 @@
+---
+permalink: api/reference_element_api_listsnapmirrorvservers.html 
+sidebar: sidebar 
+keywords: snapmirror,vserver,vservers,list,listing,listsnapmirrorvservers 
+summary: Element ソフトウェア Web UI は、ListSnapMirrorVservers メソッドを使用して、リモートONTAPシステムで使用可能なすべてのSnapMirror Vserver を一覧表示します。 
+---
+= SnapMirrorVサーバーのリスト
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ElementソフトウェアのWeb UIは、 `ListSnapMirrorVservers`リモートONTAPシステムで使用可能なすべてのSnapMirror Vserver を一覧表示する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+指定されたエンドポイント ID に関連付けられている Vserver のみを一覧表示します。エンドポイント ID が指定されていない場合、システムはすべての既知のSnapMirrorエンドポイントの Vserver を一覧表示します。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+vserverタイプ
+ a| 
+指定されたタイプの Vserver のみを一覧表示します。有効な値は次のとおりです。
+
+* admin
+* data
+* ノード
+* システム
+
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+vserverName
+ a| 
+指定された名前の Vserver のみを一覧表示します。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+snapMirrorVサーバー
+ a| 
+ONTAPストレージ システムで使用可能なSnapMirror Vserver のリスト。
+ a| 
+xref:reference_element_api_snapmirrorvserver.adoc[スナップミラーVサーバー]配列
+
+|===
+
+
+== バージョン以降の新機能
+
+10.1

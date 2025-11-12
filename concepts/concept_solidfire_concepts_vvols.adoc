@@ -1,0 +1,62 @@
+---
+permalink: concepts/concept_solidfire_concepts_vvols.html 
+sidebar: sidebar 
+keywords: netapp, vvol, virtual volume, storage container, protocol endpoint, vcp, vcenter, element 
+summary: 'vSphere Virtual Volumes は、vSphere のストレージ管理の多くをストレージ システムから VMware vCenter に移行する VMware のストレージ パラダイムです。仮想ボリューム (vVols) を使用すると、個々の仮想マシンの要件に応じてストレージを割り当てることができます。' 
+---
+= 仮想ボリューム（vVols）
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+vSphere Virtual Volumes は、vSphere のストレージ管理の多くをストレージ システムから VMware vCenter に移行する VMware のストレージ パラダイムです。仮想ボリューム (vVols) を使用すると、個々の仮想マシンの要件に応じてストレージを割り当てることができます。
+
+
+
+== バインディング
+
+NetApp Elementクラスタは最適なプロトコル エンドポイントを選択し、ESXi ホストと仮想ボリュームをプロトコル エンドポイントに関連付けるバインディングを作成し、そのバインディングを ESXi ホストに返します。バインドされると、ESXi ホストはバインドされた仮想ボリュームを使用して I/O 操作を実行できるようになります。
+
+
+
+== プロトコルエンドポイント
+
+VMware ESXi ホストは、プロトコル エンドポイントと呼ばれる論理 I/O プロキシを使用して仮想ボリュームと通信します。 ESXi ホストは、仮想ボリュームをプロトコル エンドポイントにバインドして I/O 操作を実行します。ホスト上の仮想マシンが I/O 操作を実行すると、関連付けられたプロトコル エンドポイントは、ペアになっている仮想ボリュームに I/O を送信します。
+
+NetApp Elementクラスタ内のプロトコル エンドポイントは、SCSI 管理論理ユニットとして機能します。各プロトコル エンドポイントはクラスターによって自動的に作成されます。クラスター内の各ノードに対して、対応するプロトコル エンドポイントが作成されます。たとえば、4 ノードのクラスターには 4 つのプロトコル エンドポイントがあります。
+
+iSCSI は、 NetApp Elementソフトウェアでサポートされている唯一のプロトコルです。ファイバー チャネル プロトコルはサポートされていません。プロトコル エンドポイントは、ユーザーによって削除または変更することはできず、アカウントに関連付けられておらず、ボリューム アクセス グループに追加することもできません。
+
+
+
+== 保管容器
+
+ストレージ コンテナは、 NetApp Elementアカウントにマップされ、レポートとリソースの割り当てに使用される論理構造です。これらは、生のストレージ容量をプールするか、ストレージ システムが仮想ボリュームに提供できるストレージ機能を集約します。 vSphere で作成された VVol データストアは、個別のストレージ コンテナーにマップされます。デフォルトでは、単一のストレージ コンテナーにNetApp Elementクラスターから使用可能なすべてのリソースが含まれます。マルチテナントに対してよりきめ細かなガバナンスが必要な場合は、複数のストレージ コンテナーを作成できます。
+
+ストレージ コンテナーは従来のアカウントのように機能し、仮想ボリュームと従来のボリュームの両方を含めることができます。クラスターごとに最大 4 つのストレージ コンテナーがサポートされます。  VVols 機能を使用するには、少なくとも 1 つのストレージ コンテナーが必要です。  VVol の作成中に、vCenter でストレージ コンテナーを検出できます。
+
+
+
+== VASAプロバイダー
+
+vSphere がNetApp Elementクラスタ上の vVol 機能を認識できるようにするには、vSphere 管理者がNetApp Element VASA プロバイダーを vCenter に登録する必要があります。  VASA プロバイダーは、vSphere と Element クラスタ間の帯域外制御パスです。  VM の作成、VM を vSphere で使用可能にする、ストレージ機能を vSphere にアドバタイズするなど、vSphere に代わって Element クラスタ上でリクエストを実行する役割を担います。
+
+VASA プロバイダーは、Element ソフトウェアのクラスター マスターの一部として実行されます。クラスター マスターは、必要に応じてクラスター内の任意のノードにフェールオーバーする高可用性サービスです。クラスタ マスターがフェイルオーバーすると、VASA プロバイダーもそれとともに移動し、VASA プロバイダーの高可用性が確保されます。すべてのプロビジョニングおよびストレージ管理タスクでは、VASA プロバイダーが使用されます。VASA プロバイダーは、Element クラスターで必要な変更を処理します。
+
+
+NOTE: Element 12.5 以前の場合、1 つの vCenter インスタンスに複数のNetApp Element VASA プロバイダーを登録しないでください。  2 番目のNetApp Element VASA プロバイダーが追加されると、すべての VVOL データストアにアクセスできなくなります。
+
+
+NOTE: VASA プロバイダーを vCenter にすでに登録している場合は、最大 10 個の vCenter に対する VASA サポートがアップグレード パッチとして利用できます。インストールするには、VASA39マニフェストの指示に従って、.tar.gzファイルをlink:https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab/download/62654/vasa39["NetAppソフトウェア ダウンロード"^]サイト。 NetApp Element VASA プロバイダーはNetApp証明書を使用します。このパッチにより、証明書は vCenter によって変更されずに使用され、VASA および VVols の使用のために複数の vCenter がサポートされるようになります。証明書を変更しないでください。カスタム SSL 証明書は VASA ではサポートされていません。
+
+[discrete]
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

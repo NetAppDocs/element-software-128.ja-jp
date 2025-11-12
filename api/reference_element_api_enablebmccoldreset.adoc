@@ -1,0 +1,91 @@
+---
+permalink: api/reference_element_api_enablebmccoldreset.html 
+sidebar: sidebar 
+keywords: BMC cold reset,BMC reset,enable BMC 
+summary: 'EnableBmcColdReset メソッドを使用すると、クラスター内のすべてのノードのベースボード管理コントローラー (BMC) を定期的にリセットするバックグラウンド タスクを有効にすることができます。' 
+---
+= BmcColdReset を有効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `EnableBmcColdReset`クラスター内のすべてのノードのベースボード管理コントローラー (BMC) を定期的にリセットするバックグラウンド タスクを有効にする方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+timeout
+ a| 
+BMCリセット操作間の時間 (分)。
+ a| 
+integer
+ a| 
+20160分
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+cBmcリセット時間（分）
+ a| 
+リセット間隔の時間を返します。コマンドが完了した後、間隔は常に 0 になります。
+ a| 
+integer
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+    "method": "EnableBmcColdReset",
+    "params": {
+                "timeout": 36000
+    },
+    "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "cBmcResetDurationMinutes": 36000
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+12.0

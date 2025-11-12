@@ -1,0 +1,75 @@
+---
+permalink: api/concept_element_api_node_api_methods.html 
+sidebar: sidebar 
+keywords: node,api,methods 
+summary: ノード API メソッドを使用して個々のノードを構成できます。これらのメソッドは、構成する必要がある単一ノード、構成されているがまだクラスターに参加していない単一ノード、またはクラスターにアクティブに参加している単一ノードで動作します。ノード API メソッドを使用すると、個々のノードと、ノードとの通信に使用されるクラスター ネットワークの設定を表示および変更できます。これらのメソッドは個々のノードに対して実行する必要があります。クラスターのアドレスに対してノードごとの API メソッドを実行することはできません。 
+---
+= ノードAPIメソッド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ノード API メソッドを使用して個々のノードを構成できます。これらのメソッドは、構成する必要がある単一ノード、構成されているがまだクラスターに参加していない単一ノード、またはクラスターにアクティブに参加している単一ノードで動作します。ノード API メソッドを使用すると、個々のノードと、ノードとの通信に使用されるクラスター ネットワークの設定を表示および変更できます。これらのメソッドは個々のノードに対して実行する必要があります。クラスターのアドレスに対してノードごとの API メソッドを実行することはできません。
+
+* xref:reference_element_api_checkpingonvlan.adoc[CheckPingOnVlan]
+* xref:reference_element_api_checkproposednodeadditions.adoc[提案ノード追加のチェック]
+* xref:reference_element_api_createclustersupportbundle.adoc[クラスターサポートバンドルの作成]
+* xref:reference_element_api_createsupportbundle.adoc[サポートバンドルの作成]
+* xref:reference_element_api_deleteallsupportbundles.adoc[すべてのサポートバンドルを削除]
+* xref:reference_element_api_disablemaintenancemode.adoc[メンテナンスモードを無効にする]
+* xref:reference_element_api_disablessh.adoc[SSHを無効にする]
+* xref:reference_element_api_enablemaintenancemode.adoc[メンテナンスモードを有効にする]
+* xref:reference_element_api_enablessh.adoc[SSHを有効にする]
+* xref:reference_element_api_getclusterconfig.adoc[クラスタ構成の取得]
+* xref:reference_element_api_getclusterstate.adoc[クラスター状態を取得する]
+* xref:reference_element_api_getconfig.adoc[ゲットコンフィグ]
+* xref:reference_element_api_getdriveconfig.adoc[ドライブ構成を取得]
+* xref:reference_element_api_gethardwareconfig.adoc[ハードウェア構成の取得]
+* xref:reference_element_api_gethardwareinfo.adoc[ハードウェア情報を取得する]
+* xref:reference_element_api_getipmiconfig.adoc[GetIpmiConfig]
+* xref:reference_element_api_getipmiinfo.adoc[GetIpmiInfo]
+* xref:reference_element_api_getnetworkconfig.adoc[ネットワーク構成の取得]
+* xref:reference_element_api_getnetworkinterface.adoc[ネットワークインターフェースの取得]
+* xref:reference_element_api_getnodeactivetlsciphers.adoc[GetNodeActiveTlsCiphers]
+* xref:reference_element_api_node_getnodefipsdrivesreport.adoc[GetNodeFipsDrivesReport]
+* xref:reference_element_api_getnodesslcertificate.adoc[ノードSSL証明書の取得]
+* xref:reference_element_api_getnodesupportedtlsciphers.adoc[GetNodeSupportedTlsCiphers]
+* xref:reference_element_api_getpendingoperation.adoc[保留中の操作を取得する]
+* xref:reference_element_api_getsshinfo.adoc[GetSshInfo]
+* xref:reference_element_api_listdrivehardware.adoc[ドライブハードウェアのリスト]
+* xref:reference_element_api_listnetworkinterfaces.adoc[ネットワークインターフェースの一覧]
+* xref:reference_element_api_listtests.adoc[リストテスト]
+* xref:reference_element_api_listutilities.adoc[リストユーティリティ]
+* xref:reference_element_api_removenodesslcertificate.adoc[ノードSSL証明書の削除]
+* xref:reference_element_api_resetdrives.adoc[リセットドライブ]
+* xref:reference_element_api_resetnode.adoc[リセットノード]
+* xref:reference_element_api_resetnodesupplementaltlsciphers.adoc[リセットノード補足Tls暗号]
+* xref:reference_element_api_restartnetworking.adoc[再起動ネットワーク]
+* xref:reference_element_api_restartservices.adoc[サービスの再起動]
+* xref:reference_element_api_setclusterconfig.adoc[クラスタ構成の設定]
+* xref:reference_element_api_setconfig.adoc[設定]
+* xref:reference_element_api_setnetworkconfig.adoc[ネットワーク設定の設定]
+* xref:reference_element_api_setnodesslcertificate.adoc[ノードSSL証明書の設定]
+* xref:reference_element_api_setnodesupplementaltlsciphers.adoc[ノード補足Tls暗号の設定]
+* xref:reference_element_api_node_shutdown.adoc[シャットダウン]
+* xref:reference_element_api_testconnectensemble.adoc[テストコネクトアンサンブル]
+* xref:reference_element_api_testconnectmvip.adoc[テストコネクトMvip]
+* xref:reference_element_api_testconnectsvip.adoc[テスト接続Svip]
+* xref:reference_element_api_testdrives.adoc[テストドライブ]
+* xref:reference_element_api_testhardwareconfig.adoc[テストハードウェア構成]
+* xref:reference_element_api_testlocatecluster.adoc[テスト配置クラスター]
+* xref:reference_element_api_testlocalconnectivity.adoc[ローカル接続のテスト]
+* xref:reference_element_api_testnetworkconfig.adoc[テストネットワーク構成]
+* xref:reference_element_api_testping.adoc[テストピング]
+* xref:reference_element_api_testremoteconnectivity.adoc[リモート接続のテスト]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

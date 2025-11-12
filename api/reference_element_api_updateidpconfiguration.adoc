@@ -1,0 +1,159 @@
+---
+permalink: api/reference_element_api_updateidpconfiguration.html 
+sidebar: sidebar 
+keywords: IdP,idp,configuration,update 
+summary: UpdateIdpConfiguration メソッドを使用して、クラスターのサードパーティ IdP で既存の構成を更新できます。 
+---
+= IdpConfiguration の更新
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `UpdateIdpConfiguration`クラスターのサードパーティ IdP を使用して既存の構成を更新する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+新しい証明書を生成する
+ a| 
+true に指定すると、新しい SAML キーと証明書が生成され、既存のペアが置き換えられます。注意: 既存の証明書を置き換えると、クラスターのサービス プロバイダー メタデータが IdP で再ロードされるまで、クラスターと IdP の間に確立された信頼が破壊されます。指定されない場合、または false に設定されている場合、SAML 証明書とキーは変更されません。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+idp構成ID
+ a| 
+サードパーティの IdP 構成の UUID。
+ a| 
+UUID
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+idpメタデータ
+ a| 
+SAML 2.0 シングル サインオンの構成と統合の詳細に関する IdP メタデータ。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+idp名
+ a| 
+SAML 2.0 シングル サインオンの IdP プロバイダーを識別および取得するために使用される名前。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+新しいIdp名
+ a| 
+指定すると、この名前が古い IdP 名に置き換えられます。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+idpConfigInfo
+ a| 
+サードパーティの IdP 構成に関する情報。
+ a| 
+link:reference_element_api_idpconfiginfo.html["idpConfigInfo"]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+"method": "UpdateIdpConfiguration",
+"params": {
+        "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+        "generateNewCertificate": true
+    }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "result": {
+        "idpConfigInfo": {
+        "enabled": true,
+        "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+        "idpMetadata": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n
+        <EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\"\r\n
+        xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"\r\n
+        xmlns:shibmd=\"urn:mace:shibboleth:metadata:1.0\"\r\n
+        xmlns:xml=\"http://www.w3.org/XML/1998/namespace\"\r\n
+        ...</Organization>\r\n
+        </EntityDescriptor>",
+        "idpName": "https://privider.name.url.com",
+        "serviceProviderCertificate": "-----BEGIN CERTIFICATE-----\n
+        MI...BHi\n
+        -----END CERTIFICATE-----\n",
+        "spMetadataUrl": "https://10.193.100.100/auth/ui/saml2"
+        }
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+12.0

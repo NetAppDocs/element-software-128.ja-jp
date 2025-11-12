@@ -1,0 +1,56 @@
+---
+permalink: api/reference_element_api_protectiondomainlevel.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainLevel 
+summary: protectionDomainLevel オブジェクトには、ストレージ クラスターの現在の許容レベルと回復力レベルに関する情報が含まれています。許容レベルは、障害発生時にクラスタがデータの読み取りと書き込みを続行する能力を示し、回復力レベルは、関連するタイプの保護ドメイン内で 1 つ以上の障害からクラスタが自動的に修復する能力を示します。 
+---
+= 保護ドメインレベル
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionDomainLevel オブジェクトには、ストレージ クラスターの現在の許容レベルと回復力レベルに関する情報が含まれています。許容レベルは、障害発生時にクラスタがデータの読み取りと書き込みを続行する能力を示し、回復力レベルは、関連するタイプの保護ドメイン内で 1 つ以上の障害からクラスタが自動的に修復する能力を示します。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+保護ドメインタイプ
+ a| 
+関連する許容度と回復力を持つ保護ドメインのタイプ。有効な値は次のとおりです。
+
+* node: 任意の個別のノード。
+* シャーシ: 単一のシャーシ内の個々のノードまたはすべてのストレージ ノード。
+* カスタム: 単一の顧客定義の保護ドメイン内のすべてのストレージ ノード。
+
+ a| 
+string
+
+
+
+ a| 
+回復力
+ a| 
+この保護ドメイン タイプの観点から見たこのクラスターの現在の回復力。
+ a| 
+xref:reference_element_api_protectiondomainresiliency.adoc[保護ドメイン回復力]
+
+
+
+ a| 
+許容範囲
+ a| 
+この保護ドメイン タイプの観点から見たこのクラスターの現在の許容値。
+ a| 
+xref:reference_element_api_protectiondomaintolerance.adoc[保護ドメイン許容度]
+
+|===

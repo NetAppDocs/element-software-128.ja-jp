@@ -1,0 +1,19 @@
+---
+permalink: storage/concept_data_protection_volume_snapshot_backup_operations.html 
+sidebar: sidebar 
+keywords: volume snapshot, backup operations, back up volume snapshot, cluster, object store 
+summary: 統合バックアップ機能を使用してボリューム スナップショットをバックアップできます。 SolidFireクラスターのスナップショットを外部オブジェクト ストアまたは別のSolidFireクラスターにバックアップできます。スナップショットを外部オブジェクト ストアにバックアップする場合は、読み取り/書き込み操作を許可するオブジェクト ストアへの接続が必要です。 
+---
+= ボリュームスナップショットをバックアップする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+統合バックアップ機能を使用してボリューム スナップショットをバックアップできます。 SolidFireクラスターのスナップショットを外部オブジェクト ストアまたは別のSolidFireクラスターにバックアップできます。スナップショットを外部オブジェクト ストアにバックアップする場合は、読み取り/書き込み操作を許可するオブジェクト ストアへの接続が必要です。
+
+* link:task_data_protection_back_up_a_volume_snapshot_to_an_amazon_s3_object_store["ボリュームスナップショットを Amazon S3 オブジェクトストアにバックアップする"]
+* link:task_data_protection_back_up_a_volume_snapshot_to_openstack_swift["ボリュームスナップショットをOpenStack Swiftオブジェクトストアにバックアップする"]
+* link:task_data_protection_back_up_volume_to_solidfire["ボリュームスナップショットをSolidFireクラスタにバックアップする"]
+

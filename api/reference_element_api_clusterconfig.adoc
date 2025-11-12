@@ -1,0 +1,150 @@
+---
+permalink: api/reference_element_api_clusterconfig.html 
+sidebar: sidebar 
+keywords: objects,object,clusterConfig 
+summary: clusterConfig オブジェクトは、ノードがクラスターと通信するために使用する情報を返します。 
+---
+= クラスター構成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+その `clusterConfig`オブジェクトは、ノードがクラスターと通信するために使用する情報を返します。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+`cipi`
+ a| 
+クラスター通信に使用されるネットワーク インターフェイス。
+ a| 
+string
+
+
+
+ a| 
+`cluster`
+ a| 
+クラスターの一意の名前。
+ a| 
+string
+
+
+
+ a| 
+`encryptionCapable`
+ a| 
+ノードが暗号化をサポートするかどうかを指定します。
+ a| 
+ブーリアン
+
+
+
+ a| 
+`ensemble`
+ a| 
+クラスターに参加しているノード。
+ a| 
+文字列配列
+
+
+
+ a| 
+`fipsDriveConfiguration`
+ a| 
+ノードが FIPS 140-2 認定ドライブをサポートするかどうかを指定します。
+ a| 
+ブーリアン
+
+
+
+ a| 
+`hasLocalAdmin`
+ a| 
+クラスターにローカル管理者が存在するかどうかを指定します。
+ a| 
+ブーリアン
+
+
+
+ a| 
+`mipi`
+ a| 
+ノード管理に使用されるネットワーク インターフェイス。
+ a| 
+string
+
+
+
+ a| 
+`name`
+ a| 
+クラスターの一意の識別子。
+ a| 
+string
+
+
+
+ a| 
+`nodeID`
+ a| 
+ノードの一意の識別子。
+ a| 
+integer
+
+
+
+ a| 
+`pendingNodeID`
+ a| 
+保留中のノードの一意の識別子。
+ a| 
+integer
+
+
+
+ a| 
+`role`
+ a| 
+ノードの役割を識別します。
+ a| 
+string
+
+
+
+ a| 
+`sipi`
+ a| 
+ストレージに使用されるネットワーク インターフェイス。
+ a| 
+string
+
+
+
+ a| 
+`state`
+ a| 
+ノードの状態を示します。
+ a| 
+string
+
+
+
+ a| 
+`version`
+ a| 
+ノードのバージョンを示します。
+ a| 
+string
+
+|===

@@ -1,0 +1,39 @@
+---
+permalink: api/concept_element_api_volume_snapshot_api_methods.html 
+sidebar: sidebar 
+keywords: volume,snapshot,API,method 
+summary: Element ソフトウェア ボリューム スナップショット API メソッドを使用すると、ボリューム スナップショットを管理できます。ボリューム スナップショット API メソッドを使用して、ボリューム スナップショットを作成、変更、複製、および削除できます。 
+---
+= ボリュームスナップショットAPIメソッド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element ソフトウェア ボリューム スナップショット API メソッドを使用すると、ボリューム スナップショットを管理できます。ボリューム スナップショット API メソッドを使用して、ボリューム スナップショットを作成、変更、複製、および削除できます。
+
+* xref:concept_element_api_snapshots_overview.adoc[Snapshotの概要]
+* xref:reference_element_api_creategroupsnapshot.adoc[グループスナップショットの作成]
+* xref:reference_element_api_createschedule.adoc[スケジュールの作成]
+* xref:reference_element_api_createsnapshot.adoc[スナップショットを作成]
+* xref:reference_element_api_deletegroupsnapshot.adoc[グループスナップショットの削除]
+* xref:reference_element_api_deletesnapshot.adoc[スナップショットを削除]
+* xref:reference_element_api_getschedule.adoc[スケジュールを取得]
+* xref:reference_element_api_listgroupsnapshots.adoc[リストグループスナップショット]
+* xref:reference_element_api_listschedules.adoc[リストスケジュール]
+* xref:reference_element_api_listsnapshots.adoc[リストスナップショット]
+* xref:reference_element_api_modifygroupsnapshot.adoc[グループスナップショットの変更]
+* xref:reference_element_api_modifyschedule.adoc[スケジュールの変更]
+* xref:reference_element_api_modifysnapshot.adoc[スナップショットの変更]
+* xref:reference_element_api_rollbacktogroupsnapshot.adoc[グループスナップショットへのロールバック]
+* xref:reference_element_api_rollbacktosnapshot.adoc[スナップショットへのロールバック]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

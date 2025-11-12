@@ -1,0 +1,348 @@
+---
+permalink: api/reference_element_api_modifyvolumes.html 
+sidebar: sidebar 
+keywords: volume,volumes,modifying,modify,change,changing,edit,editing,modifyvolumes 
+summary: ModifyVolumes メソッドを使用すると、一度に最大 500 個の既存のボリュームを構成できます。変更は直ちに行われます。  ModifyVolumes が指定されたボリュームのいずれかの変更に失敗した場合、指定されたボリュームはいずれも変更されません。 
+---
+= ボリュームの変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ModifyVolumes`一度に最大 500 個の既存のボリュームを構成する方法。変更は直ちに行われます。もし `ModifyVolumes`指定されたボリュームのいずれかを変更できない場合、指定されたボリュームはいずれも変更されません。
+
+ボリュームを変更するときに QoS 値を指定しないと、各ボリュームの QoS 値は変更されません。新しく作成されたボリュームのデフォルトのQoS値を取得するには、 `GetDefaultQoS`方法。
+
+複製されるボリュームのサイズを増やす必要がある場合は、レプリケーション エラーを防ぐために次の順序で実行してください。
+
+. replicationTarget アクセスを使用してボリュームのサイズを増やします。
+. 読み取り/書き込みアクセスを持つソースまたはボリュームのサイズを増やします。
+
+
+ターゲット ボリュームとソース ボリュームの両方が同じサイズであることを確認します。
+
+
+NOTE: アクセス ステータスをロックまたはレプリケーション ターゲットに変更すると、既存のすべての iSCSI 接続が終了します。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+アクセス
+ a| 
+ボリュームへのアクセスが許可されました。有効な値は次のとおりです。
+
+* `readOnly`: 読み取り操作のみが許可されます。
+* `readWrite`: 読み取りと書き込みが許可されます。
+* `locked`: 読み取りも書き込みも許可されません。指定しない場合はアクセス値は変更されません。
+* `replicationTarget`: ボリュームを、ペアになったボリューム セットのターゲット ボリュームとして識別します。ボリュームがペアリングされていない場合、アクセス状態はロックされます。値が指定されていない場合、アクセス値は変更されません。
+
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+accountID
+ a| 
+ボリュームが再割り当てされるアカウント ID。何も指定されていない場合は、以前のアカウント名が使用されます。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+QoSポリシーに関連付ける
+ a| 
+指定された QoS ポリシーにボリュームを関連付けます。有効な値は次のとおりです。
+
+* `true`: ボリュームを QoSPolicyID パラメータで指定された QoS ポリシーに関連付けます。
+* `false`: ボリュームを QoSPolicyID パラメータで指定された QoS ポリシーに関連付けないでください。  false の場合、QoSPolicy パラメータで QoS ポリシーを指定したかどうかに関係なく、既存のポリシー関連付けは削除されます。
+
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+attributes
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+作成時間
+ a| 
+新しいボリュームの作成日として設定する ISO 8601 日付文字列。  setCreateTime が true に設定されている場合は必須です。
+ a| 
+ISO 8601文字列
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+Iopsの再バランスのために動かない
+ a| 
+実際の IOPS で負荷分散するときにボリュームが移動しないようにします。この設定はElement 12.8以降で利用可能で、link:reference_element_api_enablefeature.html["実際のIOPSでのボリューム負荷バランス"]が有効になります。有効な値は次のとおりです。
+
+* `true`: ボリュームは実際の IOPS に基づいて負荷分散されません。
+* `false`: ボリュームは実際の IOPS に基づいて負荷分散を行います。
+
+
+*注*: 高可用性（ノード障害）のバランス調整は、 `VolumeLoadBalanceOnActualIOPS`そして `dontMoveforIopsRebalance`。
+| ブーリアン | false | いいえ 
+
+
+ a| 
+SnapMirrorReplication を有効にする
+ a| 
+ボリュームをSnapMirrorエンドポイントでのレプリケーションに使用できるかどうかを決定します。有効な値は次のとおりです。
+
+* `true`
+* `false`
+
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+
+
+| fifoサイズ | ボリュームでサポートされる先入れ先出し (FIFO) スナップショットの最大数を指定します。 FIFO スナップショットと非 FIFO スナップショットはどちらも、ボリューム上の使用可能なスナップショット スロットの同じプールを使用することに注意してください。このオプションを使用して、使用可能なスナップショット スロットの FIFO スナップショットの消費を制限します。この値を現在の FIFO スナップショット数より小さく変更することはできないことに注意してください。 | integer | なし | いいえ 
+
+
+| 最小Fifoサイズ | 先入れ先出し (FIFO) スナップショット専用に予約されているスナップショット スロットの数を指定します。 FIFO スナップショットと非 FIFO スナップショットは同じプールを共有するため、minFifoSize パラメータは、可能な非 FIFO スナップショットの合計数を同じ量だけ削減します。この値は、現在の非 FIFO スナップショット数と競合するように変更することはできないことに注意してください。 | integer | なし | いいえ 
+
+
+ a| 
+モード
+ a| 
+ボリュームレプリケーションモード。有効な値は次のとおりです。
+
+* `asynch`: ターゲットに書き込む前に、データがソースに保存されていることをシステムが確認するまで待機します。
+* `sync`: ソースからのデータ転送確認を待たずに、ターゲットへのデータの書き込みを開始します。
+
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+qos
+ a| 
+ボリュームの新しいサービス品質設定。指定しない場合は、QoS 設定は変更されません。有効な値は次のとおりです。
+
+* `minIOPS`
+* `maxIOPS`
+* `burstIOPS`
+
+ a| 
+xref:reference_element_api_qos.adoc[QoS]
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+qosポリシーID
+ a| 
+指定されたボリュームに QoS 設定を適用するポリシーの ID。このパラメータは qos パラメータと相互に排他的です。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+作成時間の設定
+ a| 
+ボリューム作成の記録日を変更するには、true に設定します。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+合計サイズ
+ a| 
+ボリュームの新しいサイズ（バイト単位）。 1000000000 は 1GB に相当します。サイズは最も近いメガバイトに切り上げられます。このパラメータはボリュームのサイズを増やすためにのみ使用できます。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+ボリュームID
+ a| 
+変更するボリュームのボリュームIDのリスト。
+ a| 
+整数配列
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+音量
+ a| 
+新しく変更された各ボリュームに関する情報を含むオブジェクトの配列。
+ a| 
+xref:reference_element_api_volume.adoc[音量]配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "ModifyVolumes",
+  "params": {
+    "volumeIDs": [319,22],
+    "access": "readWrite",
+    "dontMoveForIopsRebalance": false
+  },
+  "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumes":
+      {
+        "access":  "readWrite,
+        "accountID": 22,
+        "attributes": {},
+        "blockSize": 4096,
+        "createTime": "2024-04-01T19:39:40Z",
+        "currentProtectionScheme": "doubleHelix",
+        "deleteTime": "",
+        "dontMoveForIopsRebalance": false,
+        "enable512e": false,
+        "enableSnapMirrorReplication": false,
+        "fifoSize": 24,
+        "iqn": "iqn.2010-01.com.solidfire:3eeu.suite40.319",
+        "lastAccessTime": "2024-04-02T12:41:34Z",
+        "lastAccessTimeIO": "2024-04-01T20:41:19Z",
+        "minFifoSize": 0,
+        "name": "suite40",
+        "previousProtectionScheme": null,
+        "purgeTime": "",
+        "qos": {
+          "burstIOPS": 27000,
+          "burstTime": 60,
+          "curve": {
+            "1048576": 15000,
+            "131072": 1950,
+            "16384": 270,
+            "262144": 3900,
+            "32768": 500,
+            "4096": 100,
+            "524288": 7600,
+            "65536": 1000,
+            "8192": 160
+          },
+          "maxIOPS": 27000,
+          "minIOPS": 500
+        },
+        "qosPolicyID": null,
+        "scsiEUIDeviceID": "336565750000013ff47acc0100000000",
+        "scsiNAADeviceID": "6f47acc100000000336565750000013f",
+        "sliceCount": 1,
+        "status": "active",
+        "totalSize": 1000000716800,
+        "virtualVolumeID": null,
+        "volumeAccessGroups": [
+        22
+        ],
+        "volumeConsistencyGroupUUID": "3003109e-6e75-444c-8cee-470d641a09c3",
+        "volumeID": 319,
+        "volumePairs": [],
+        "
+      }
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_getdefaultqos.adoc[デフォルトQoSを取得する]

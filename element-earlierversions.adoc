@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: element-earlierversions.html 
+keywords: earlier versions, element versions 
+summary: 最新バージョンを実行していない場合は、以前のリリースのドキュメントを利用できます。 
+---
+= SolidFireおよびNetApp Elementソフトウェアドキュメントの以前のバージョン
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+以前のリリースのドキュメントは、 NetAppサポート サイトで入手できます。
+
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63945&language=en-US["Element 12.2.1 ドキュメント"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63593&language=en-US["Element 12.2 ドキュメント"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63946&language=en-US["Element 12.0.1 ドキュメント"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63368&language=en-US["Element 12.0 ドキュメント"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=64187&language=en-US["Element 11.8.2 ドキュメント"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63944&language=en-US["Element 11.8.1 ドキュメント"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63293&language=en-US["Element 11.8 ドキュメント"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63138&language=en-US["Element 11.7 ドキュメント"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63207&language=en-US["Element 11.5.1 ドキュメント"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63058&language=en-US["Element 11.5 ドキュメント"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63027&language=en-US["要素11.3P1のドキュメント"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63206&language=en-US["Element 11.3.2 ドキュメント"^]
+* https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=62654["Element 11.1 ドキュメントおよび以前のバージョン"^]
+
+
+
+
+== 詳細情報
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

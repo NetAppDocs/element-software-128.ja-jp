@@ -1,0 +1,83 @@
+---
+permalink: api/reference_element_api_usmuser.html 
+sidebar: sidebar 
+keywords: object,objects,usmUser 
+summary: SetSnmpInfo API メソッドと共に SNMP usmUser オブジェクトを使用して、ストレージ クラスター上で SNMP を構成できます。 
+---
+= usmユーザー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SNMP usmUserオブジェクトは、 `SetSnmpInfo`ストレージ クラスターで SNMP を構成するための API メソッド。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+アクセス
+ a| 
+このユーザーの SNMP アクセスのタイプ。有効な値は次のとおりです。
+
+* rouser: 読み取り専用アクセス。
+* rwuser: 読み取り/書き込みアクセス。すべての Element ソフトウェア MIB オブジェクトは読み取り専用です。
+
+ a| 
+string
+
+
+
+ a| 
+名前
+ a| 
+ユーザの名前。
+ a| 
+string
+
+
+
+ a| 
+パスワード
+ a| 
+ユーザのパスワード。
+ a| 
+string
+
+
+
+ a| 
+パスフレーズ
+ a| 
+ユーザーのパスフレーズ。
+ a| 
+string
+
+
+
+ a| 
+secLevel
+ a| 
+このユーザーに必要な資格情報の種類。有効な値は次のとおりです。
+
+* noauth: パスワードまたはパスフレーズは必要ありません。
+* auth: ユーザーアクセスにはパスワードが必要です。
+* priv: ユーザーのアクセスにはパスワードとパスフレーズが必要です。
+
+ a| 
+string
+
+|===
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_setsnmpinfo.adoc[SnmpInfo の設定]

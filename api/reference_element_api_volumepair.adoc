@@ -1,0 +1,99 @@
+---
+permalink: api/reference_element_api_volumepair.html 
+sidebar: sidebar 
+keywords: object,objects,volumePair 
+summary: volumePair オブジェクトには、別のクラスター上の別のボリュームとペアになっているボリュームに関する情報が含まれています。ボリュームがペアリングされていない場合、このオブジェクトは空になります。  ListActivePairedVolumes および ListActiveVolumes API メソッドを使用して、ペアリングされたボリュームに関する情報を返すことができます。 
+---
+= ボリュームペア
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+volumePair オブジェクトには、別のクラスター上の別のボリュームとペアになっているボリュームに関する情報が含まれています。ボリュームがペアリングされていない場合、このオブジェクトは空になります。使用することができます `ListActivePairedVolumes`そして `ListActiveVolumes`ペアボリュームに関する情報を返す API メソッド。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+クラスターペアID
+ a| 
+ボリュームがペアになっているクラスター。
+ a| 
+integer
+
+
+
+ a| 
+リモートレプリケーション
+ a| 
+ボリュームレプリケーションの詳細。メンバー:
+
+* mode: (文字列) 「Async」、「Sync」、または「SnapshotsOnly」のいずれか。
+* pauseLimit: (整数) 内部使用のみ。
+* remoteServiceID: (整数) リモート スライス サービス ID。
+* resumeDetails: (文字列) 将来の使用のために予約されています。
+* snapshotReplication (JSON オブジェクト)
++
+** state: (文字列) 進行中のスナップショットレプリケーションの状態（進行中の場合）。
+** stateDetails: (文字列) 将来の使用のために予約されています。
+
+
+* state: (文字列) ボリュームレプリケーションの状態。
+* stateDetails: (文字列) 将来の使用のために予約されています。
+
+ a| 
+JSONオブジェクト
+
+
+
+ a| 
+リモートスライスID
+ a| 
+リモート クラスター上のクラスター定義のスライス ID。
+ a| 
+integer
+
+
+
+ a| 
+リモートボリュームID
+ a| 
+ローカル ボリュームがペアになっているリモート クラスター上のボリュームの ID。
+ a| 
+integer
+
+
+
+ a| 
+リモートボリューム名
+ a| 
+リモート ボリュームの名前。
+ a| 
+string
+
+
+
+ a| 
+ボリュームペアUUID
+ a| 
+このペアリングの、標準形式での、普遍的に一意の、クラスター定義の識別子。
+ a| 
+string
+
+|===
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_listactivepairedvolumes.adoc[アクティブペアボリュームのリスト]
+* xref:reference_element_api_listactivevolumes.adoc[アクティブボリュームの一覧]
+

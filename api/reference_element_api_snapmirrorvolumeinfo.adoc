@@ -1,0 +1,64 @@
+---
+permalink: api/reference_element_api_snapmirrorvolumeinfo.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVolumeInfo 
+summary: snapMirrorVolumeInfo オブジェクトには、名前やタイプなど、 SnapMirror関係におけるボリュームの場所に関する情報が含まれています。 
+---
+= スナップミラーボリューム情報
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorVolumeInfo オブジェクトには、名前やタイプなど、 SnapMirror関係におけるボリュームの場所に関する情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+type
+ a| 
+ボリュームの種類。有効な値は次のとおりです。
+
+* solidfire: ボリュームは、Element ソフトウェアを実行しているストレージ クラスター上に存在します。
+* ontap: ボリュームはリモートONTAPクラスター上に存在します。
+
+ a| 
+string
+
+
+
+ a| 
+volumeID
+ a| 
+ボリュームのID。「type」が solidfire の場合にのみ有効です。
+ a| 
+integer
+
+
+
+ a| 
+SVM
+ a| 
+このボリュームを所有する Vserver の名前。  「type」が ontap の場合にのみ有効です。
+ a| 
+string
+
+
+
+ a| 
+名前
+ a| 
+ボリュームの名前。
+ a| 
+string
+
+|===

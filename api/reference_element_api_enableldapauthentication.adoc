@@ -1,0 +1,215 @@
+---
+permalink: api/reference_element_api_enableldapauthentication.html 
+sidebar: sidebar 
+keywords: LDAP,auth,authentication,enable,enabling,EnableLdapAuthentication 
+summary: EnableLdapAuthentication メソッドを使用して、クラスターへの LDAP 認証用の LDAP ディレクトリ接続を構成できます。  LDAP ディレクトリのメンバーであるユーザーは、LDAP 資格情報を使用してストレージ システムにログインできます。 
+---
+= LDAP認証を有効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `EnableLdapAuthentication`クラスターへの LDAP 認証用の LDAP ディレクトリ接続を構成する方法。  LDAP ディレクトリのメンバーであるユーザーは、LDAP 資格情報を使用してストレージ システムにログインできます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+認証タイプ
+ a| 
+使用するユーザー認証方法を識別します。有効な値は次のとおりです。
+
+* `DirectBind`
+* `SearchAndBind`
+
+ a| 
+string
+ a| 
+検索とバインド
+ a| 
+いいえ
+
+
+
+ a| 
+グループ検索ベースDN
+ a| 
+グループ サブツリーの検索を開始するツリーのベース DN。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+グループ検索タイプ
+ a| 
+使用されるデフォルトのグループ検索フィルターを制御します。有効な値は次のとおりです。
+
+* NoGroups: グループはサポートされません。
+* ActiveDirectory: ユーザーのすべての Active Directory グループのネストされたメンバーシップ。
+* MemberDN: MemberDN スタイルのグループ (単一レベル)。
+
+ a| 
+string
+ a| 
+アクティブディレクトリ
+ a| 
+いいえ
+
+
+
+ a| 
+サーバーURI
+ a| 
+LDAP または LDAPS サーバー URI のコンマ区切りリスト。コロンの後にポート番号を続けることで、LDAP または LDAPS URI の末尾にカスタム ポートを追加できます。たとえば、URI「ldap://1.2.3.4」はデフォルト ポートを使用し、URI「ldaps://1.2.3.4:123」はカスタム ポート 123 を使用します。
+ a| 
+文字列配列
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+ユーザー検索ベースDN
+ a| 
+サブツリー検索を開始するツリーのベース DN。  authType として SearchAndBind を使用する場合、このパラメータは必須です。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+検索バインドDN
+ a| 
+ユーザーの LDAP 検索を実行するためにログインするときに使用する完全修飾 DN。  DN には LDAP ディレクトリへの読み取りアクセスが必要です。  authType として SearchAndBind を使用する場合、このパラメータは必須です。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+searchBindPassword
+ a| 
+検索に使用される searchBindDN アカウントのパスワード。  authType として SearchAndBind を使用する場合、このパラメータは必須です。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+ユーザー検索フィルター
+ a| 
+LDAP サーバーを照会するときに使用する LDAP 検索フィルター。文字列にはプレースホルダー テキスト「%USERNAME%」が含まれている必要があり、これは認証ユーザーのユーザー名に置き換えられます。たとえば、(&(objectClass=person)(sAMAccountName=%USERNAME%)) は、Active Directory の sAMAccountName フィールドを使用して、クラスター ログイン時に入力されたユーザー名と一致させます。  authType として SearchAndBind を使用する場合、このパラメータは必須です。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+ユーザーDNTemplate
+ a| 
+完全なユーザー識別名 (DN) を構築するためのパターンを定義するために使用される文字列テンプレート。文字列にはプレースホルダー テキスト「%USERNAME%」が含まれている必要があり、これは認証ユーザーのユーザー名に置き換えられます。  DirectBind の authType を使用する場合、このパラメーターは必須です。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+グループ検索カスタムフィルター
+ a| 
+CustomFilter 検索タイプで使用する、ユーザーのグループの DN を返すために使用する LDAP フィルター。文字列には、必要に応じてユーザー名と完全な userDN に置き換えられる %USERNAME% と %USERDN% のプレースホルダー テキストを含めることができます。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "EnableLdapAuthentication",
+  "params": {
+     "authType": "SearchAndBind",
+     "groupSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+     "groupSearchType": "ActiveDirectory",
+     "searchBindDN": "SFReadOnly@prodtest.solidfire.net",
+     "searchBindPassword": "zsw@#edcASD12",
+     "sslCert": "",
+     "userSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+     "userSearchFilter": "(&(objectClass=person)(sAMAccountName=%USERNAME%))",
+     "serverURIs":[
+           "ldaps://111.22.333.444",
+           "ldap://555.66.777.888"
+           ]
+       },
+  "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+"id": 1,
+"result": {
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

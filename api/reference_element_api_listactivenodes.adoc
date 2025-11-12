@@ -1,0 +1,70 @@
+---
+permalink: api/reference_element_api_listactivenodes.html 
+sidebar: sidebar 
+keywords: cluster,list,listing,active,node,nodes,listactivenodes 
+summary: ListActiveNodes メソッドを使用して、クラスター内の現在アクティブなノードのリストを返すことができます。 
+---
+= ListActiveNodes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ListActiveNodes`クラスター内の現在アクティブなノードのリストを返すメソッド。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+ノード
+ a| 
+クラスター内のアクティブなノードのリスト。
+ a| 
+xref:reference_element_api_node.adoc[ノード]配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "ListActiveNodes",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+この応答例は長いため、補足トピックに記載されています。
+
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_response_example_listactivenodes.adoc[ListActiveNodes]

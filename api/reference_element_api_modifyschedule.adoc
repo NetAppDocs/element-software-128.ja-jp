@@ -1,0 +1,351 @@
+---
+permalink: api/reference_element_api_modifyschedule.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapshot,schedule,scheduled,delete,pause,modifyschedule 
+summary: ModifySchedule を使用して、スケジュールされたスナップショットの実行間隔を変更できます。この方法を使用して、スケジュールを削除または一時停止することもできます。 
+---
+= スケジュールの変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用できます `ModifySchedule`スケジュールされたスナップショットの実行間隔を変更します。この方法を使用して、スケジュールを削除または一時停止することもできます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+attributes
+ a| 
+スナップショットの発生頻度を変更するために使用します。有効な値は次のとおりです。
+
+* `Days of Week`
+* `Days of Month`
+* `Time Interval`
+
+ a| 
+JSONオブジェクト
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+hours
+ a| 
+スナップショット間の時間数、または曜日モードまたは月日モードでスナップショットが実行される時刻。有効な値は 0 ～ 24 です。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+名前
+ a| 
+スナップショットの名前。名前を入力しない場合は、グループスナップショットが作成された日時が使用されます。許可される名前の最大長は 244 文字です。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+minutes
+ a| 
+スナップショット間の分数、または曜日モードまたは月日モードでスナップショットが実行される分数。有効な値は 0 ～ 59 です。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+| 最終実行ステータス | 最後にスケジュールされたスナップショット作成の結果またはステータス。 | string | なし | いいえ 
+
+
+ a| 
+一時停止
+ a| 
+スケジュールを一時停止するかどうかを示します。有効な値は次のとおりです。
+
+* `true`
+* `false`
+
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+定期的な
+ a| 
+スケジュールが定期的に実行されるかどうかを示します。指定できる値は次のとおりです。
+
+* `true`
+* `false`
+
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+実行次の間隔
+ a| 
+次回スケジューラがアクティブになったときにスナップショットを実行するかどうかを選択するために使用します。有効な値は次のとおりです。
+
+* `true`
+* `false`
+
+
+true に設定すると、スケジュールされたスナップショットはスケジューラが次回アクティブになったときに実行され、その後 false にリセットされます。
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+
+
+ a| 
+スケジュールID
+ a| 
+スケジュールの一意のID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+スケジュール名
+ a| 
+スケジュールの一意の名前。スケジュール名の最大長は 244 文字です。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+スケジュールタイプ
+ a| 
+作成するスケジュールの種類を示します。サポートされている値は `snapshot`。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+`scheduleInfo`
+ a| 
+スケジュールに付けられた一意の名前、作成されたスナップショットの保持期間、およびスナップショットが作成されたボリュームのボリューム ID。有効な値は次のとおりです。
+
+* `enableRemoteReplication`: スナップショットをリモート レプリケーションに含めるかどうかを示します。  （ブール値）
+* `ensureSerialCreation`: 以前のスナップショットのレプリケーションが進行中の場合に、新しいスナップショットの作成を許可するかどうかを指定します。  （ブール値）
+* `name`: 使用するスナップショット名。  （弦）
+* `retention`: スナップショットが保持される時間の長さ。時間に応じて、次のいずれかの形式で表示されます。
++
+** `fifo`: スナップショットは先入れ先出し (FIFO) 方式で保持されます。空の場合、スナップショットは永久に保持されます。  （弦）
+** 時:分:秒
+
+
+* `volumeID`: スナップショットに含めるボリュームの ID。  （整数）
+* `volumes`: グループ スナップショットに含めるボリューム ID のリスト。  （整数配列）
+
+ a| 
+link:reference_element_api_schedule.html["スケジュール"^]
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+スナップミラーラベル
+ a| 
+SnapMirrorエンドポイントのスナップショット保持ポリシーを指定するためにSnapMirrorソフトウェアによって使用されるラベル。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+削除予定
+ a| 
+スケジュールが削除対象としてマークされているかどうかを示します。有効な値は次のとおりです。
+
+* `true`
+* `false`
+
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+開始日
+ a| 
+スケジュールが最初に開始された日付、または開始される日付を示します。
+ a| 
+ISO 8601日付文字列
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+月日
+ a| 
+スナップショットが作成される月の日付。有効な値は 1 ～ 31 です。
+ a| 
+整数配列
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+weekdays
+ a| 
+スナップショットが作成される曜日。曜日は日曜日から始まり、値は 0、オフセットは 1 です。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+スケジュール
+ a| 
+変更されたスケジュール属性を含むオブジェクト。
+ a| 
+xref:reference_element_api_schedule.adoc[スケジュール]
+
+|===
+
+
+== リクエスト例
+
+[listing]
+----
+{
+  "method": "ModifySchedule",
+  "params": {
+    "scheduleName" : "Chicago",
+    "scheduleID" : 3
+    },
+  "id": 1
+}
+----
+
+
+== 応答例
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Week"
+            },
+      "hasError": false,
+      "hours": 5,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 0,
+      "monthdays": [],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 3,
+      "scheduleInfo": {
+        "volumeID": "2"
+            },
+      "scheduleName": "Chicago",
+      "scheduleType": "Snapshot",
+      "startingDate": null,
+      "toBeDeleted": false,
+      "weekdays": [
+        {
+          "day": 2,
+          "offset": 1
+      }
+      ]
+    }
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

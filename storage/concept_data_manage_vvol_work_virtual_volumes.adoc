@@ -1,0 +1,41 @@
+---
+permalink: storage/concept_data_manage_vvol_work_virtual_volumes.html 
+sidebar: sidebar 
+keywords: virtual volume, configure vvols, use UI to manage 
+summary: Element UI を使用して、仮想ボリュームとそれに関連付けられたストレージ コンテナー、プロトコル エンドポイント、バインディング、ホストの情報を表示し、タスクを実行できます。 
+---
+= 仮想ボリュームの操作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element UI を使用して、仮想ボリュームとそれに関連付けられたストレージ コンテナー、プロトコル エンドポイント、バインディング、ホストの情報を表示し、タスクを実行できます。
+
+NetApp Elementソフトウェア ストレージ システムは、仮想ボリューム (VVol) 機能が無効の状態で出荷されます。  Element UI を使用して vSphere VVol 機能を手動で有効にする 1 回限りのタスクを実行する必要があります。
+
+VVol 機能を有効にすると、VVol 関連の監視と制限された管理オプションを提供する VVol タブがユーザー インターフェイスに表示されます。さらに、VASA プロバイダーと呼ばれるストレージ側のソフトウェア コンポーネントは、vSphere のストレージ認識サービスとして機能します。 VVol の作成、クローン作成、編集などのほとんどの VVol コマンドは、vCenter Server または ESXi ホストによって開始され、VASA プロバイダーによって Element ソフトウェア ストレージ システムの Element API に変換されます。ストレージ コンテナーを作成、削除、管理し、仮想ボリュームを削除するコマンドは、Element UI を使用して開始できます。
+
+Element ソフトウェア ストレージ システムで仮想ボリューム機能を使用するために必要な構成の大部分は、vSphere で行われます。  VASA プロバイダーを vCenter に登録し、VVol データストアを作成および管理し、ポリシーに基づいてストレージを管理するには、『VMware vSphere Virtual Volumes for SolidFireストレージ構成ガイド』を参照してください。
+
+
+NOTE: Element 12.5 以前の場合、1 つの vCenter インスタンスに複数のNetApp Element VASA プロバイダーを登録しないでください。  2 番目のNetApp Element VASA プロバイダーが追加されると、すべての VVOL データストアにアクセスできなくなります。
+
+
+NOTE: VASA プロバイダーを vCenter にすでに登録している場合は、複数の vCenter に対する VASA サポートをアップグレード パッチとして利用できます。インストールするには、VASA39 .tar.gzファイルを https://mysupport.netapp.com/products/element_software/VASA39/index.html["NetAppソフトウェア ダウンロード"]サイトにアクセスし、マニフェストの指示に従ってください。 NetApp Element VASA プロバイダーはNetApp証明書を使用します。このパッチにより、証明書は vCenter によって変更されずに使用され、VASA および VVols の使用のために複数の vCenter がサポートされるようになります。証明書を変更しないでください。カスタム SSL 証明書は VASA ではサポートされていません。
+
+
+
+== 詳細情報の参照
+
+* xref:task_data_manage_vvol_enable_virtual_volumes.adoc[仮想ボリュームを有効にする]
+* xref:task_data_manage_vvol_view_virtual_volume_details.adoc[仮想ボリュームの詳細を表示する]
+* xref:task_data_manage_vvol_delete_a_virtual_volume.adoc[仮想ボリュームを削除する]
+* xref:concept_data_manage_vvol_manage_storage_containers.adoc[ストレージコンテナを作成する]
+* xref:concept_data_manage_vvol_manage_storage_containers.adoc[ストレージコンテナを編集する]
+* xref:concept_data_manage_vvol_manage_storage_containers.adoc[ストレージコンテナを削除する]
+* xref:concept_data_manage_vvol_protocol_endpoints.adoc[プロトコルエンドポイント]
+* xref:concept_data_manage_vvol_bindings.adoc[バインディング]
+* xref:reference_data_manage_vvol_host_details.adoc[ホストの詳細]
+

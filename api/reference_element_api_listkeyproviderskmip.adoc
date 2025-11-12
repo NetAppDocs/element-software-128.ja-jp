@@ -1,0 +1,127 @@
+---
+permalink: api/reference_element_api_listkeyproviderskmip.html 
+sidebar: sidebar 
+keywords: KMIP,key providers,key,provider,retrieving,listing,list,retrieve,listkeyproviderskmip 
+summary: 'ListKeyProvidersKmip メソッドを使用して、既存のすべての Key Management Interoperability Protocol (KMIP) キー プロバイダーのリストを取得できます。追加のパラメータを指定してリストをフィルタリングできます。' 
+---
+= リストキープロバイダーKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ListKeyProvidersKmip`既存のすべてのキー管理相互運用性プロトコル (KMIP) キー プロバイダーのリストを取得するメソッド。追加のパラメータを指定してリストをフィルタリングできます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+キープロバイダーがアクティブ
+ a| 
+返された KMIP キー サーバー オブジェクトを、アクティブかどうかに基づいてフィルターします。有効な値は次のとおりです。
+
+* true: アクティブな KMIP キー プロバイダーのみを返します (現在使用中のキーを提供します)。
+* false: 非アクティブな (キーを提供しておらず、削除可能な) KMIP キー プロバイダーのみを返します。
+
+
+省略した場合、返される KMIP キー プロバイダーは、アクティブかどうかに基づいてフィルター処理されません。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+kmipKeyProviderHasServerAssigned
+ a| 
+返された KMIP キー プロバイダーを、KMIP キー サーバーが割り当てられているかどうかに基づいてフィルターします。有効な値は次のとおりです。
+
+* true: KMIP キー サーバーが割り当てられている KMIP キー プロバイダーのみを返します。
+* false: KMIP キー サーバーが割り当てられていない KMIP キー プロバイダーのみを返します。
+
+
+省略した場合、返される KMIP キー プロバイダーは、KMIP キー サーバーが割り当てられているかどうかに基づいてフィルター処理されません。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+kmipキープロバイダー
+ a| 
+作成された KMIP キープロバイダーのリスト。
+ a| 
+link:reference_element_api_keyproviderkmip.html["キープロバイダーKmip"]配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "ListKeyProvidersKmip",
+  "params": {},
+"id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+    {
+    "kmipKeyProviders": [
+        {
+            "keyProviderID": 15,
+            "kmipCapabilities": "SSL",
+            "keyProviderIsActive": true,
+            "keyServerIDs": [
+                1
+            ],
+            "keyProviderName": "KeyProvider1"
+        }
+    ]
+}
+}
+----
+
+
+== バージョン以降の新機能
+
+11.7

@@ -1,0 +1,42 @@
+---
+permalink: storage/task_system_manage_virtual_edit_a_virtual_network.html 
+sidebar: sidebar 
+keywords: virtual network, edit, ip address block, vlan attributes 
+summary: VLAN 名、ネットマスク、IP アドレス ブロックのサイズなどの VLAN 属性を変更できます。 VLAN の VLAN タグと SVIP は変更できません。ゲートウェイ属性は、非 VRF VLAN では有効なパラメータではありません。 
+---
+= 仮想ネットワークを編集する
+:allow-uri-read: 
+:url-peak: https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_determine_which_VLAN_IP%27s_are_in_use_and_which_nodes_those_IP%27s_are_assigned_to_in_Element
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VLAN 名、ネットマスク、IP アドレス ブロックのサイズなどの VLAN 属性を変更できます。 VLAN の VLAN タグと SVIP は変更できません。ゲートウェイ属性は、非 VRF VLAN では有効なパラメータではありません。
+
+iSCSI、リモート レプリケーション、またはその他のネットワーク セッションが存在する場合、変更は失敗する可能性があります。
+
+VLAN IP アドレス範囲のサイズを管理するときは、次の制限に注意する必要があります。
+
+* VLAN の作成時に割り当てられた初期 IP アドレス範囲からのみ IP アドレスを削除できます。
+* 最初の IP アドレス範囲の後に追加された IP アドレス ブロックを削除することはできますが、IP アドレスを削除して IP ブロックのサイズを変更することはできません。
+* クラスター内のノードによって使用されている IP アドレスを、初期 IP アドレス範囲または IP ブロックから削除しようとすると、操作が失敗する可能性があります。
+* 使用中の特定の IP アドレスをクラスター内の他のノードに再割り当てすることはできません。
+
+
+次の手順で IP アドレス ブロックを追加できます。
+
+. *クラスター* > *ネットワーク*を選択します。
+. 編集する VLAN のアクション アイコンを選択します。
+. *編集*を選択します。
+. *VLAN の編集* ダイアログ ボックスで、VLAN の新しい属性を入力します。
+. 仮想ネットワークに連続しない IP アドレス ブロックを追加するには、[ブロックの追加] を選択します。
+. *変更を保存*を選択します。
+
+
+.トラブルシューティングの KB 記事へのリンク
+VLAN IP アドレス範囲の管理に関する問題のトラブルシューティングに役立つナレッジベースの記事へのリンク。
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/Duplicate_IP_warning_after_adding_a_storage_node_in_VLAN_on_Element_cluster["Element クラスタの VLAN にストレージ ノードを追加した後の重複 IP 警告"^]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_determine_which_VLAN_IP%27s_are_in_use_and_which_nodes_those_IP%27s_are_assigned_to_in_Element["ElementでどのVLAN IPが使用されており、どのノードにそれらのIPが割り当てられているかを確認する方法"^]
+

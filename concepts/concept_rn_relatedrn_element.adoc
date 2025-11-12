@@ -1,0 +1,90 @@
+---
+permalink: concepts/concept_rn_relatedrn_element.html 
+sidebar: sidebar 
+keywords: release information,previous,current,updates 
+summary: Element ストレージ環境のさまざまなコンポーネントの最新および以前のリリース ノートへのリンクがあります。 
+---
+= 現在のリリース情報と以前のリリース情報
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element ストレージ環境のさまざまなコンポーネントの最新および以前のリリース ノートへのリンクがあります。
+
+
+NOTE: NetAppサポートの資格情報を使用してログインするように求められます。
+
+
+
+== NetApp Elementソフトウェア
+
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2886996["NetApp Elementソフトウェア 12.8 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2884468["NetApp Elementソフトウェア 12.7 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2882193["NetApp Elementソフトウェア 12.5 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2881056["NetApp Elementソフトウェア 12.3.2 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2878089["NetApp Elementソフトウェア 12.3.1 リリース ノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2876498["NetApp Elementソフトウェア 12.3 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2877210["NetApp Elementソフトウェア 12.2.1 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2873789["NetApp Elementソフトウェア 12.2 リリース ノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2877208["NetApp Elementソフトウェア 12.0.1 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2865022["NetApp Elementソフトウェア 12.0 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2880259["NetApp Elementソフトウェア 11.8.2 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2877206["NetApp Elementソフトウェア 11.8.1 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2864256["NetApp Elementソフトウェア 11.8 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2861225["NetApp Elementソフトウェア 11.7 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2863854["NetApp Elementソフトウェア 11.5.1 リリース ノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2859857["NetApp Elementソフトウェア 11.3P1 リリースノート"^]
+
+
+
+
+== 管理サービス
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["管理サービスリリースノート"^]
+
+
+
+
+== vCenter Server 用NetApp Elementプラグイン
+
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP3344864["vCenter プラグイン 5.5 リリースノート"^]_新しい_
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP3330676["vCenter プラグイン 5.4 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP3316480["vCenter プラグイン 5.3 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2886272["vCenter プラグイン 5.2 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2885734["vCenter プラグイン 5.1 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2884992["vCenter プラグイン 5.0 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2884458["vCenter プラグイン 4.10 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2881904["vCenter プラグイン 4.9 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2879296["vCenter プラグイン 4.8 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2876748["vCenter プラグイン 4.7 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2874631["vCenter プラグイン 4.6 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2873396["vCenter プラグイン 4.5 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2866569["vCenter プラグイン 4.4 リリースノート"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2856119["vCenter プラグイン 4.3 リリースノート"^]
+
+
+
+
+== ストレージファームウェア
+
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.182.0.html["ストレージファームウェアバンドル 2.182.0 リリースノート"^]_新しい_
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.175.0.html["ストレージファームウェアバンドル 2.175.0 リリースノート"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.164.0.html["ストレージファームウェアバンドル 2.164.0 リリースノート"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.150.html["ストレージファームウェアバンドル 2.150 リリースノート"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.146.html["ストレージファームウェアバンドル 2.146 リリースノート"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.99.2.html["ストレージファームウェアバンドル 2.99.2 リリースノート"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.76.html["ストレージファームウェアバンドル 2.76 リリースノート"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.27.html["ストレージファームウェアバンドル 2.27 リリースノート"^]
+* https://docs.netapp.com/us-en/hci/docs/rn_H610S_BMC_3.84.07.html["H610S BMC 3.84.07 リリースノート"^]
+* https://docs.netapp.com/us-en/hci/docs/firmware_driver_versions.html["サポートされているファームウェアとESXiドライバのバージョン"]_新しい_
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

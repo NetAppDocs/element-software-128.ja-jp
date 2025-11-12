@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-volumes.html 
+summary: Hybrid Cloud のコントロール ボリューム ページを使用して、システム内のボリュームを監視できます。 
+keywords: netapp, element, volumes, storage, access groups, initiators, capacity, data protection, QoS 
+---
+= ストレージクラスター上のボリュームを監視する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFireシステムはボリュームを使用してストレージをプロビジョニングします。ボリュームは、iSCSI またはファイバー チャネル クライアントによってネットワーク経由でアクセスされるブロック デバイスです。アクセス グループ、アカウント、イニシエーター、使用容量、スナップショット データ保護ステータス、iSCSI セッションの数、ボリュームに関連付けられたサービス品質 (QoS) ポリシーに関する詳細を監視できます。
+
+アクティブなボリュームと削除されたボリュームの詳細も表示できます。
+
+このビューでは、まず使用済み容量の列を監視する必要があります。
+
+この情報にアクセスできるのは、 NetApp Hybrid Cloud Control の管理者権限を持っている場合のみです。
+
+.手順
+. 管理ノードの IP アドレスを Web ブラウザで開きます。例えば：
++
+[listing]
+----
+https://[management node IP address]
+----
+. SolidFireオールフラッシュ ストレージ クラスタ管理者の資格情報を入力して、 NetApp Hybrid Cloud Control にログインします。
+. 左側のナビゲーションの青いボックスで、 SolidFireオールフラッシュ ストレージのインストールを選択します。
+. 左側のナビゲーションでクラスターを選択し、*ストレージ* > *ボリューム* を選択します。
++
+image::hcc_volumes_overview_active.png[HCCボリュームページ > 概要タブの画像]
+
+. 「ボリューム」ページで、次のオプションを使用します。
++
+image::hcc_volumes_icons.png[HCCボリュームページアイコン]
+
++
+.. *フィルター*アイコンを選択して結果をフィルターします。
+.. *非表示/表示*アイコンを選択して、列を非表示または表示します。
+.. *更新*アイコンを選択してデータを更新します。
+.. *ダウンロード*アイコンを選択して CSV ファイルをダウンロードします。
+
+
+. 使用済み容量列を監視します。警告、エラー、またはクリティカルしきい値に達した場合、色は使用容量の状態を表します。
++
+.. 警告 - 黄色
+.. エラー - オレンジ
+.. クリティカル - 赤
+
+
+. ボリューム ビューからタブを選択して、ボリュームに関する追加の詳細を表示します。
++
+.. *アクセス グループ*: 安全なアクセスのためにイニシエーターからボリュームのコレクションにマップされているボリューム アクセス グループを表示できます。
++
+に関する情報を見る link:../concepts/concept_solidfire_concepts_volume_access_groups.html["ボリュームアクセスグループ"]。
+
+.. *アカウント*: クライアントがノード上のボリュームに接続できるようにするユーザー アカウントを表示できます。ボリュームを作成すると、特定のユーザー アカウントに割り当てられます。
++
+に関する情報を見る link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#user-accounts["SolidFireオールフラッシュストレージシステムのユーザーアカウント"]。
+
+.. *イニシエーター*: ボリュームの iSCSI イニシエーター IQN またはファイバー チャネル WWPN を確認できます。アクセス グループに追加された各 IQN は、CHAP 認証を必要とせずにグループ内の各ボリュームにアクセスできます。アクセス グループに追加された各 WWPN により、アクセス グループ内のボリュームへのファイバー チャネル ネットワーク アクセスが可能になります。
+.. *QoS ポリシー*: ボリュームに適用されている QoS ポリシーを確認できます。  QoS ポリシーは、最小 IOPS、最大 IOPS、バースト IOPS の標準化された設定を複数のボリュームに適用します。
++
+に関する情報を見る link:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html#qos-performance["パフォーマンスとQoSポリシー"]。
+
+
+
+
+
+[discrete]
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireとElementのドキュメント"^]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

@@ -1,0 +1,95 @@
+---
+permalink: api/reference_element_api_snapmirrornode.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorNode 
+summary: snapMirrorNode オブジェクトには、 SnapMirror関係の宛先ONTAPクラスタのノードに関する情報が含まれています。 
+---
+= スナップミラーノード
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorNode オブジェクトには、 SnapMirror関係の宛先ONTAPクラスタのノードに関する情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+宛先ONTAPシステムの ID。
+ a| 
+integer
+
+
+
+ a| 
+名前
+ a| 
+ONTAPノードの名前。
+ a| 
+string
+
+
+
+ a| 
+model
+ a| 
+ONTAPノードのモデル。
+ a| 
+string
+
+
+
+ a| 
+シリアルナンバー
+ a| 
+ONTAPノードのシリアル番号。
+ a| 
+string
+
+
+
+ a| 
+製品バージョン
+ a| 
+ONTAP製品のバージョン。
+ a| 
+string
+
+
+
+ a| 
+ノードが正常かどうか
+ a| 
+ONTAPクラスタ内のノードの健全性。有効な値は次のとおりです。
+
+* true
+* false
+
+ a| 
+string
+
+
+
+ a| 
+ノードが適格かどうか
+ a| 
+ノードがONTAPクラスタに参加する資格があるかどうか。有効な値は次のとおりです。
+
+* true
+* false
+
+ a| 
+string
+
+|===

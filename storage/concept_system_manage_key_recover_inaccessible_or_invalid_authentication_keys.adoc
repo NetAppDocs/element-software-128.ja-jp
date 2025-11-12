@@ -1,0 +1,35 @@
+---
+permalink: storage/concept_system_manage_key_recover_inaccessible_or_invalid_authentication_keys.html 
+sidebar: sidebar 
+keywords: slice drive error, cluster fault, authentication keys 
+summary: 場合によっては、ユーザーの介入が必要なエラーが発生することがあります。エラーが発生した場合、クラスター障害が生成されます。最も可能性の高い 2 つのケースをここで説明します。 
+---
+= アクセスできない、または無効な認証キーを回復する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+場合によっては、ユーザーの介入が必要なエラーが発生することがあります。エラーが発生した場合、クラスター障害 (クラスター障害コードと呼ばれる) が生成されます。最も可能性の高い 2 つのケースをここで説明します。
+
+
+
+== KmipServerFault クラスター障害のため、クラスターはドライブのロックを解除できません。
+
+これは、クラスターが最初に起動し、キー サーバーにアクセスできない場合、または必要なキーが利用できない場合に発生する可能性があります。
+
+. クラスター障害コード (存在する場合) の回復手順に従います。
+
+
+
+
+== メタデータ ドライブが障害ありとしてマークされ、「使用可能」状態になっているため、sliceServiceUnhealthy 障害が設定されている可能性があります。
+
+クリアする手順:
+
+. ドライブを再度追加します。
+. 3～4分後、 `sliceServiceUnhealthy`障害は解消されました。
+
+
+見るlink:reference_monitor_cluster_fault_codes.html["クラスター障害コード"]詳細についてはこちらをご覧ください。

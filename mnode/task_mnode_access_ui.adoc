@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_access_ui.html 
+summary: 管理 UI または REST API UI にアクセスできます。 
+keywords: netapp, mnode, management node, api, Element 
+---
+= 管理ノードにアクセスする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Elementソフトウェア バージョン 11.3 以降、管理ノードには、REST ベースのサービスを管理するための UI と、ネットワークとクラスタの設定、オペレーティング システムのテストとユーティリティを管理するためのノードごとの UI の 2 つの UI が含まれています。
+
+Element ソフトウェア バージョン 11.3 以降を実行しているクラスターでは、次の 2 つのインターフェイスのいずれかを使用できます。
+
+* 管理ノードUIを使用する(`https:// [mNode IP}:442`) では、ネットワークやクラスターの設定を変更したり、システム テストを実行したり、システム ユーティリティを使用したりすることができます。
+* 組み込みのREST API UIを使用する(`https://[mNode IP}/mnode`) では、プロキシ サーバーの構成、サービス レベルの更新、資産管理などの管理ノード サービスに関連する API を実行したり理解したりできます。
+
+
+
+
+== 管理ノードごとのUIにアクセスする
+
+ノードごとの UI から、ネットワークとクラスターの設定にアクセスし、システム テストとユーティリティを利用できます。
+
+.手順
+. 管理ノードのIPアドレスに続けて:442を入力して、管理ノードのノードごとのUIにアクセスします。
++
+[listing]
+----
+https://[IP address]:442
+----
++
+image::mnode_per_node_442_ui.png[管理ノードごとのノードUI]
+
+. プロンプトが表示されたら、管理ノードのユーザー名とパスワードを入力します。
+
+
+
+
+== 管理ノードのREST API UIにアクセスする
+
+REST API UI からは、管理ノード上の管理サービスを制御するサービス関連 API のメニューにアクセスできます。
+
+.手順
+. 管理サービスのREST API UIにアクセスするには、管理ノードのIPアドレスに続けて `/mnode`:
++
+[listing]
+----
+https://[IP address]/mnode
+----
++
+image::mnode_swagger_ui.png[管理ノード REST API UI]
+
+. *承認* または任意のロック アイコンを選択し、API を使用する権限のクラスター管理者の資格情報を入力します。
+
+
+[discrete]
+== 詳細情報はこちら
+
+* link:task_mnode_enable_activeIQ.html["Active IQとNetAppの監視を有効にする"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

@@ -1,0 +1,20 @@
+---
+permalink: storage/task_replication_delete_volume_relationship_after_replication.html 
+sidebar: sidebar 
+keywords: volume pair, delete, replication 
+summary: レプリケーションが完了し、ボリューム ペアの関係が不要になったら、ボリュームの関係を削除できます。 
+---
+= レプリケーション後にボリューム関係を削除する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+レプリケーションが完了し、ボリューム ペアの関係が不要になったら、ボリュームの関係を削除できます。
+
+. *データ保護* > *ボリュームペア*を選択します。
+. 削除するボリューム ペアの *アクション* アイコンをクリックします。
+. *削除*をクリックします。
+. メッセージを確認します。
+

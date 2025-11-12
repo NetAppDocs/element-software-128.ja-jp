@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_abortsnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords:  
+summary: Element ソフトウェア Web UI は、AbortSnapMirrorRelationship メソッドを使用して、開始されているがまだ完了していないSnapMirror転送を停止します。 
+---
+= スナップミラー関係の中止
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ElementソフトウェアのWeb UIは、 `AbortSnapMirrorRelationship`開始されているがまだ完了していないSnapMirror転送を停止する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+Element ストレージ クラスタと通信するリモートONTAPストレージ システムのエンドポイント ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+宛先ボリューム
+ a| 
+SnapMirror関係の宛先ボリューム。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[スナップミラーボリューム情報]
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+クリアチェックポイント
+ a| 
+再起動チェックポイントをクリアするかどうかを決定します。有効な値は次のとおりです。
+
+* true
+* false
+
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラー関係
+ a| 
+中止されたSnapMirror関係に関する情報を含むオブジェクト。
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[スナップミラー関係]
+
+|===
+
+
+== バージョン以降の新機能
+
+10.1

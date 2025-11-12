@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_modifysnapmirrorendpoint_unmanaged.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapmirror,endpoint,modifysnapmirrorendpoint 
+summary: Element ソフトウェアは、このバージョンの ModifySnapMirrorEndpoint メソッドを使用して、管理されていないSnapMirrorエンドポイントのストレージ クラスター名または IP アドレス属性を変更します。管理されていないエンドポイントは、Element SnapMirror API を使用して管理することはできません。これらは、 ONTAP管理ソフトウェアまたは API を使用して管理する必要があります。 
+---
+= ModifySnapMirrorEndpoint（管理対象外）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+エレメントソフトウェアはこのバージョンの `ModifySnapMirrorEndpoint`管理されていないSnapMirrorエンドポイントのストレージ クラスター名または IP アドレス属性を変更する方法。管理されていないエンドポイントは、Element SnapMirror API を使用して管理することはできません。これらは、 ONTAP管理ソフトウェアまたは API を使用して管理する必要があります。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+
+
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+変更するSnapMirrorエンドポイント。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+クラスター名
+ a| 
+エンドポイントの新しい名前。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+IPアドレス
+ a| 
+この Element ストレージ クラスタと通信する必要があるONTAPストレージ システムのクラスタの IP アドレスの新しいリスト。
+ a| 
+文字列配列
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラーエンドポイント
+ a| 
+変更されたSnapMirrorエンドポイントに関する情報。
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[スナップミラーエンドポイント]
+
+|===
+
+
+== バージョン以降の新機能
+
+10.3

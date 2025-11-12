@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_getconfig.html 
+sidebar: sidebar 
+keywords: node,get,getting,info,config,configuration,getconfig 
+summary: GetConfig API メソッドを使用して、ノードのすべての構成情報を取得できます。この API メソッドには、GetClusterConfig および GetNetworkConfig API メソッドの両方で使用できる同じ情報が含まれています。 
+---
+= ゲットコンフィグ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetConfig`ノードのすべての構成情報を取得するための API メソッド。このAPIメソッドには、 `GetClusterConfig`そして `GetNetworkConfig`API メソッド。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+設定
+ a| 
+クラスターの構成の詳細。このオブジェクトには次のものが含まれます。
+
+* xref:reference_element_api_cluster.adoc[cluster]: ストレージ ノードが関連付けられているストレージ クラスターと通信する方法を識別するクラスター情報。
+* xref:reference_element_api_network_all_interfaces.adoc[ネットワーク（すべてのインターフェース）]: ノードの各ネットワーク インターフェイスのネットワーク接続タイプと現在の設定。
+
+ a| 
+JSONオブジェクト
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "GetConfig",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+この応答例は長いため、補足トピックに記載されています。
+
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_getclusterconfig.adoc[クラスタ構成の取得]
+* xref:reference_element_api_getnetworkconfig.adoc[ネットワーク構成の取得]
+* xref:reference_element_api_response_example_getconfig.adoc[ゲットコンフィグ]
+

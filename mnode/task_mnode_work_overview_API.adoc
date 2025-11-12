@@ -1,0 +1,56 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview_API.html 
+summary: '管理ノード (mNode) API を使用すると、システム サービスのアップグレード、クラスタ アセットと設定の管理、システム テストとユーティリティの実行、システム監視用のActive IQの構成、トラブルシューティングのためのNetAppサポート SSH アクセスの有効化または無効化を行うことができます。' 
+keywords: netapp, mnode api, management node api, rest api 
+---
+= 管理ノード REST API UI の概要
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+組み込みのREST API UIを使用する(`https://<ManagementNodeIP>/mnode`) では、プロキシ サーバーの構成、サービス レベルの更新、資産管理などの管理ノード サービスに関連する API を実行したり理解したりできます。
+
+REST API で実行できるタスク:
+
+
+
+== 承認
+
+* link:task_mnode_api_get_authorizationtouse.html["REST APIを使用するための承認を取得する"]
+
+
+
+
+== 資産構成
+
+* link:task_mnode_enable_activeIQ.html["Active IQとNetAppの監視を有効にする"]
+* link:task_mnode_configure_proxy_server.html["管理ノードのプロキシサーバーを構成する"]
+* link:task_mnode_multi_vcenter_config.html["複数の vCenter 用にNetApp Hybrid Cloud Control を構成する"]
+* link:task_mnode_add_assets.html["管理ノードにコントローラアセットを追加する"]
+* link:task_mnode_manage_storage_cluster_assets.html["ストレージ クラスター アセットの作成と管理"]
+
+
+
+
+== 資産運用管理
+
+* link:task_mnode_edit_vcenter_assets.html["既存のコントローラーアセットを表示または編集する"]
+* link:task_mnode_manage_storage_cluster_assets.html["ストレージ クラスター アセットの作成と管理"]
+* link:../hccstorage/task-hcc-collectlogs.html#use-the-rest-api-to-collect-netapp-hci-logs["REST APIを使用してElementシステムログを収集する"]
+* link:task_mnode_api_find_mgmt_svcs_version.html["管理ノードのOSとサービスのバージョンを確認する"]
+* link:task_mnode_logs.html["管理サービスからログを取得する"]
+
+
+[discrete]
+== 詳細情報の参照
+
+* link:task_mnode_access_ui.html["管理ノードにアクセスする"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

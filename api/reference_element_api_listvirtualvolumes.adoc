@@ -1,0 +1,195 @@
+---
+permalink: api/reference_element_api_listvirtualvolumes.html 
+sidebar: sidebar 
+keywords: virtual,volume,volumes,vvol,list,listing,listvirtualvolumes 
+summary: ListVirtualVolumes メソッドを使用して、現在システム内にある仮想ボリュームを一覧表示できます。この方法を使用すると、すべての仮想ボリュームを一覧表示することも、サブセットのみを一覧表示することもできます。 
+---
+= 仮想ボリュームの一覧
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ListVirtualVolumes`現在システム内にある仮想ボリュームを一覧表示するメソッド。この方法を使用すると、すべての仮想ボリュームを一覧表示することも、サブセットのみを一覧表示することもできます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+詳細
+ a| 
+応答の詳細レベル。有効な値は次のとおりです。
+
+* true: 応答に各 VVol に関する詳細を含めます。
+* false: 応答に各 VVol に関する標準レベルの詳細を含めます。
+
+ a| 
+ブーリアン
+ a| 
+間違い
+ a| 
+いいえ
+
+
+
+ a| 
+limit
+ a| 
+リストする仮想ボリュームの最大数。
+ a| 
+integer
+ a| 
+10000
+ a| 
+いいえ
+
+
+
+ a| 
+再帰的
+ a| 
+応答に各 VVol の子に関する情報を含めるかどうかを指定します。有効な値は次のとおりです。
+
+* true: 応答に各 VVol の子に関する情報を含めます。
+* false: 応答に各 VVol の子に関する情報を含めません。
+
+ a| 
+ブーリアン
+ a| 
+間違い
+ a| 
+いいえ
+
+
+
+ a| 
+開始仮想ボリュームID
+ a| 
+応答内のリストを開始する仮想ボリュームの ID。
+ a| 
+UUIDタイプ
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+仮想ボリュームID
+ a| 
+情報を取得する仮想ボリューム ID のリスト。このパラメータを省略すると、メソッドはこれらの仮想ボリュームに関する情報のみを返します。
+ a| 
+仮想ボリュームID UUID配列
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+次の仮想ボリュームID
+ a| 
+リスト内の次の仮想ボリュームの ID。
+ a| 
+UUID
+
+
+
+ a| 
+仮想ボリューム
+ a| 
+現在システム内にある仮想ボリュームを記述するオブジェクトのリスト。
+ a| 
+xref:reference_element_api_virtualvolume.adoc[仮想ボリューム]配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "ListVirtualVolumes",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "nextVirtualVolumeID": "00000000-0000-0000-0000-000000000000",
+    "virtualVolumes": [
+      {
+        "bindings": [
+          177
+        ],
+        "children": [],
+        "metadata": {
+          "SFProfileId": "f4e5bade-15a2-4805-bf8e-52318c4ce443",
+          "SFgenerationId": "0",
+          "VMW_ContainerId": "abaab415-bedc-44cd-98b8-f37495884db0",
+          "VMW_VVolName": "asdf",
+          "VMW_VVolType": "Config",
+          "VMW_VmID": "502e0676-e510-ccdd-394c-667f6867fcdf",
+          "VMW_VvolProfile": "f4e5bade-15a2-4805-bf8e-52318c4ce443:0"
+        },
+        "parentVirtualVolumeID": "00000000-0000-0000-0000-000000000000",
+        "snapshotID": 0,
+        "snapshotInfo": null,
+        "status": "done",
+        "storageContainer": {
+          "accountID": 1,
+          "initiatorSecret": "B5)D1y10K)8IDN58",
+          "name": "test",
+          "protocolEndpointType": "SCSI",
+          "status": "active",
+          "storageContainerID": "abaab415-bedc-44cd-98b8-f37495884db0",
+          "targetSecret": "qgae@{o{~8\"2U)U^"
+        },
+        "virtualVolumeID": "269d3378-1ca6-4175-a18f-6d4839e5c746",
+        "virtualVolumeType": "config",
+        "volumeID": 166,
+        "volumeInfo": null
+      }
+    ]
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

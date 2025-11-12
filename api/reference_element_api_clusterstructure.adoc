@@ -1,0 +1,48 @@
+---
+permalink: api/reference_element_api_clusterstructure.html 
+sidebar: sidebar 
+keywords: objects,cluster,structure,clusterStructure,object 
+summary: clusterStructure オブジェクトは、GetClusterStructure メソッドによって作成されたクラスター構成のバックアップ情報を保持します。  SetClusterStructure メソッドを使用して、再構築中のストレージ クラスターにこの情報を復元できます。 
+---
+= クラスター構造
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+clusterStructure オブジェクトは、GetClusterStructure メソッドによって作成されたクラスター構成のバックアップ情報を保持します。  SetClusterStructure メソッドを使用して、再構築中のストレージ クラスターにこの情報を復元できます。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには、次のメソッドからの結合された戻り情報が含まれます。
+
+* xref:reference_element_api_getclusterinfo.adoc[クラスター情報を取得]
+* xref:reference_element_api_listaccounts.adoc[アカウント一覧]
+* xref:reference_element_api_listinitiators.adoc[リストイニシエーター]
+* xref:reference_element_api_listvolumes.adoc[リストボリューム]（includeVirtualVolumes=falseの場合）
+* xref:reference_element_api_listvolumeaccessgroups.adoc[ボリュームアクセスグループの一覧]
+* xref:reference_element_api_liststoragecontainers.adoc[ストレージコンテナのリスト]
+* xref:reference_element_api_listqospolicies.adoc[QoSポリシーの一覧]
+* xref:reference_element_api_getsnmpinfo.adoc[SnmpInfo の取得]
+* xref:reference_element_api_getntpinfo.adoc[GetNtpInfo]
+* xref:reference_element_api_listvirtualnetworks.adoc[ListVirtualNetworks]
+* xref:reference_element_api_listclusteradmins.adoc[クラスタ管理者のリスト]
+* xref:reference_element_api_listschedules.adoc[リストスケジュール]
+* xref:reference_element_api_listsnapmirrorendpoints.adoc[SnapMirrorエンドポイントの一覧]
+* xref:reference_element_api_getfeaturestatus.adoc[フィーチャステータスの取得]
+* xref:reference_element_api_getldapconfiguration.adoc[LDAP構成の取得]
+* xref:reference_element_api_getremotelogginghosts.adoc[リモートログホストの取得]
+* xref:reference_element_api_getdefaultqos.adoc[デフォルトQoSを取得する]
+* xref:reference_element_api_getvolumeaccessgrouplunassignments.adoc[ボリュームアクセスグループのLUN割り当ての取得]
+
+
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_getclusterstructure.adoc[クラスター構造を取得する]
+* xref:reference_element_api_setclusterstructure.adoc[クラスター構造の設定]
+

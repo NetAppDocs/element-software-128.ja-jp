@@ -1,0 +1,104 @@
+---
+permalink: concepts/reference_data_manage_volumes_qos_limits.html 
+sidebar: sidebar 
+keywords:  
+summary: 'サービス品質 (QoS) の可能な最小値と最大値に関する情報が見つかります。' 
+---
+= QoS値の制限
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+サービス品質 (QoS) の可能な最小値と最大値に関する情報が見つかります。
+
+|===
+
+
+|  | I/Oサイズの最大値 
+
+
+| パラメータ | 最小値 
+
+
+| デフォルト | 4 KB 
+
+
+| 8 KB | 16 KB 
+
+
+| 262 KB  a| 
+最小 IOPS
+
+
+
+ a| 
+50
+ a| 
+50
+
+
+
+ a| 
+15,000
+ a| 
+9,375*
+
+
+
+ a| 
+5556*
+ a| 
+385*
+
+
+
+ a| 
+最大 IOPS
+ a| 
+100
+
+
+
+ a| 
+15,000
+ a| 
+200,000**
+
+
+
+ a| 
+125,000
+ a| 
+74,074
+
+
+
+ a| 
+5128
+ a| 
+バースト IOPS
+
+
+
+ a| 
+100
+ a| 
+15,000
+
+
+
+ a| 
+200,000**
+ a| 
+125,000
+
+
+
+ a| 
+74,074
+ a| 
+5128
+
+|===

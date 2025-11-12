@@ -1,0 +1,14 @@
+---
+permalink: concepts/concept_solidfire_concepts_initiators.html 
+sidebar: sidebar 
+keywords: netapp, element, initiator, storage volume, element volume, access group 
+summary: イニシエーターについて、またイニシエーターを使用してボリューム アクセス グループ内のストレージへのアクセスを許可する方法について学習します。 
+---
+= イニシエーター
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+イニシエーターは、外部クライアントがクラスター内のボリュームにアクセスできるようにし、クライアントとボリューム間の通信のエントリ ポイントとして機能します。ストレージ ボリュームへのアカウント ベースではなく、CHAP ベースのアクセスにイニシエーターを使用できます。単一のイニシエーターをボリューム アクセス グループに追加すると、ボリューム アクセス グループのメンバーは認証を必要とせずに、グループに追加されたすべてのストレージ ボリュームにアクセスできるようになります。イニシエーターは 1 つのアクセス グループにのみ属することができます。

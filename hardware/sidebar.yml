@@ -1,0 +1,36 @@
+---
+section: hardware
+title: ハードウェアのインストールと保守
+entries:
+- title: H410SおよびH610Sのハードウェア情報
+  entries:
+  - title: H410SおよびH610Sノードをインストールする
+    url: "/hardware/task_h410s_h610s_install.html"
+  - title: H410Sノードの交換
+    url: "/hardware/task_h410s_repl.html"
+  - title: H610Sノードを交換する
+    url: "/hardware/task_h610s_repl.html"
+  - title: ドライブを交換する
+    url: "/hardware/task_hseries_driverepl.html"
+  - title: 電源ユニットを交換する
+    url: "/hardware/task_psu_repl.html"
+- title: SFシリーズのハードウェア情報
+  entries:
+  - title: シャーシを交換する
+    url: "/hardware/task_sfseries_chassisrepl.html"
+  - title: ドライブを交換する
+    url: "/hardware/task_sfseries_driverepl.html"
+  - title: 電源ユニットを交換する
+    url: "/hardware/task_sfseries_psurepl.html"
+- title: 工場出荷時の画像情報
+  entries:
+  - title: 工場出荷時イメージへの復帰を構成する
+    url: "/hardware/concept_rtfi_configure.html"
+  - title: RTFIの展開とインストールのオプション
+    url: "/hardware/task_rtfi_deployment_and_install_options.html"
+  - title: RTFIプロセス
+    url: "/hardware/task_rtfi_process.html"
+  - title: RTFIオプションメニュー
+    url: "/hardware/task_rtfi_options_menu.html"
+- title: ストレージノードでサポートされているファームウェアバージョン
+  url: "/hardware/fw_storage_nodes.html"

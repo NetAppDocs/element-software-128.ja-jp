@@ -1,0 +1,44 @@
+---
+permalink: storage/task_troubleshoot_power_down_a_cluster.html 
+sidebar: sidebar 
+keywords: cluster, power down, mvip 
+summary: NetAppサポートに連絡して準備手順を完了したら、クラスタ全体の電源をオフにすることができます。 
+---
+= クラスターの電源を切る
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスター全体の電源をオフにするには、次の手順を実行します。
+
+.手順
+. (オプション) 準備手順の完了については、 NetAppサポートにお問い合わせください。
+. すべての I/O が停止したことを確認します。
+. すべての iSCSI セッションを切断します。
++
+.. クラスター上の管理仮想 IP (MVIP) アドレスに移動して、Element UI を開きます。
+.. ノード リストにリストされているノードに注意してください。
+.. クラスター内の各ノード ID に停止オプションを指定して、シャットダウン API メソッドを実行します。
+
+
+
+
+[NOTE]
+====
+クラスターを再起動するときは、すべてのノードがオンラインになっていることを確認するために、特定の手順に従う必要があります。
+
+. すべての重大度と `volumesOffline`クラスター障害は解決されました。
+. クラスターが落ち着くまで 10 ～ 15 分間待ちます。
+. データにアクセスするためにホストの起動を開始します。
+
+
+メンテナンス後にノードの電源をオンにして正常であることを確認する際にさらに時間をかけたい場合は、不要なビン同期を防ぐためにデータ同期を遅らせる方法についてテクニカル サポートにお問い合わせください。
+
+====
+
+
+== 詳細情報の参照
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/How_to_gracefully_shut_down_and_power_on_a_NetApp_Solidfire_HCI_storage_cluster["NetApp Solidfire/HCI ストレージ クラスターを正常にシャットダウンおよび電源オンする方法"^]

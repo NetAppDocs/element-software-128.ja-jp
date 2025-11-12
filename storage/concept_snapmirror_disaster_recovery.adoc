@@ -1,0 +1,17 @@
+---
+permalink: storage/concept_snapmirror_disaster_recovery.html 
+sidebar: sidebar 
+keywords: dr, disaster recovery, snapmirror 
+summary: NetApp Elementソフトウェアを実行しているボリュームまたはクラスタに問題が発生した場合、 SnapMirror機能を使用して関係を解除し、宛先ボリュームにフェイルオーバーします。 
+---
+= SnapMirrorを使用した災害復旧
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Elementソフトウェアを実行しているボリュームまたはクラスタに問題が発生した場合、 SnapMirror機能を使用して関係を解除し、宛先ボリュームにフェイルオーバーします。
+
+
+NOTE: 元のクラスターが完全に失敗したか存在しない場合は、 NetAppサポートに問い合わせてさらにサポートを受けてください。

@@ -1,0 +1,92 @@
+---
+permalink: api/reference_element_api_disableclusterssh.html 
+sidebar: sidebar 
+keywords: SSH,disable,disabling,cluster,DisableClusterSsh 
+summary: DisableClusterSsh メソッドを使用して、ストレージ クラスター全体の SSH サービスを無効にすることができます。ストレージ クラスターにノードを追加すると、新しいノードはこのクラスター全体の設定を継承します。 
+---
+= クラスタSshを無効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `DisableClusterSsh`ストレージ クラスター全体の SSH サービスを無効にする方法。ストレージ クラスターにノードを追加すると、新しいノードはこのクラスター全体の設定を継承します。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータがありません。
+
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+結果
+ a| 
+ストレージ クラスターの SSH サービスのステータス、SSH が無効になるまでの残り時間、および各ノードの SSH サービスのステータスを含む JSON オブジェクト。
+ a| 
+JSONオブジェクト
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "DisableClusterSsh",
+  "params": {
+      },
+  "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+	"id": 1,
+	"result" : {
+    "enabled": true,
+    "timeRemaining": "00:43:21",
+    "nodes": [
+    {
+        "nodeID": 1,
+        "enabled": true
+    },
+    {
+        "nodeID": 2,
+        "enabled": true
+    },
+    {
+        "nodeID": 3,
+        "enabled": false
+    },
+    {
+        "nodeID": 4,
+        "enabled": false
+    } ]
+			}
+	}
+----
+
+
+== バージョン以降の新機能
+
+10.3

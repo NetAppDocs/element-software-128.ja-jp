@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_resumesnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: ResumeSnapMirrorRelationship,resume,SnapMirror,relationship,resuming 
+summary: Element ソフトウェア Web UI は、ResumeSnapMirrorRelationship メソッドを使用して、静止したSnapMirror関係の将来の転送を有効にします。 
+---
+= ResumeSnapMirror関係
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ElementソフトウェアのWeb UIは、 `ResumeSnapMirrorRelationship`静止したSnapMirror関係の将来の転送を有効にする方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+Element ストレージ クラスタと通信するリモートONTAPストレージ システムのエンドポイント ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+宛先ボリューム
+ a| 
+SnapMirror関係の宛先ボリューム。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[スナップミラーボリューム情報]
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラー関係
+ a| 
+再開されたSnapMirror関係に関する情報を含むオブジェクト。
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[スナップミラー関係]
+
+|===
+
+
+== バージョン以降の新機能
+
+10.1

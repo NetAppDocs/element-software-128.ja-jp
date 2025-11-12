@@ -1,0 +1,41 @@
+---
+permalink: storage/concept_system_manage_cluster_configure_cluster_settings.html 
+sidebar: sidebar 
+keywords: configure, cluster, threshold, support access, encryption at rest, virtual volumes, ntp broadcast, client, snapmirror 
+summary: 'Element UI の [クラスター] タブから、クラスター全体の設定を表示および変更したり、クラスター固有のタスクを実行したりできます。' 
+---
+= クラスター設定を構成する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element UI の [クラスター] タブから、クラスター全体の設定を表示および変更したり、クラスター固有のタスクを実行したりできます。
+
+クラスターの完全しきい値、サポート アクセス、保存時の暗号化、仮想ボリューム、 SnapMirror、NTP ブロードキャスト クライアントなどの設定を構成できます。
+
+.オプション
+* xref:concept_data_manage_vvol_work_virtual_volumes.adoc[仮想ボリュームの操作]
+* xref:task_snapmirror_use_replication_between_element_and_ontap_clusters.adoc[ElementとONTAPクラスタ間のSnapMirrorレプリケーションを使用する]
+* xref:task_system_manage_cluster_set_the_cluster_full_threshold.adoc[クラスターのフルしきい値を設定する]
+* xref:task_system_manage_cluster_volume_load_balancing.adoc[ボリューム負荷分散の有効化と無効化]
+* xref:task_system_manage_cluster_enable_and_disable_support_access.adoc[サポートアクセスを有効または無効にする]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/How_are_the_blockSpace_thresholds_calculated_for_Element["要素のブロックスペースしきい値はどのように計算されるか"]
+* xref:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.adoc[クラスターの暗号化を有効または無効にする]
+* xref:concept_system_manage_cluster_terms_manage_the_terms_of_use_banner.adoc[利用規約バナーを管理する]
+* xref:task_system_manage_cluster_ntp_configure.adoc[クラスタがクエリを実行するネットワークタイムプロトコルサーバを構成する]
+* xref:concept_system_manage_snmp_manage_snmp.adoc[SNMPの管理]
+* xref:concept_system_manage_drives_managing_drives.adoc[ドライブの管理]
+* xref:concept_system_manage_nodes_manage_nodes.adoc[ノードの管理]
+* xref:task_system_manage_fc_view_fibre_channel_ports_details.adoc[ファイバーチャネルポートの詳細を表示]
+* xref:concept_system_manage_virtual_manage_virtual_networks.adoc[仮想ネットワークを管理する]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

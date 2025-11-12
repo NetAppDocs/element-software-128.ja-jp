@@ -1,0 +1,209 @@
+---
+permalink: api/reference_element_api_rollbacktogroupsnapshot.html 
+sidebar: sidebar 
+keywords: rollbacktogroupsnapshot,snapshot,group,individual,creating,create,roll,back,rollback,roll back,existing 
+summary: RollbackToGroupSnapshot を使用すると、スナップショット グループ内のすべての個別ボリュームを各ボリュームの個別スナップショットにロールバックできます。 
+---
+= グループスナップショットへのロールバック
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用できます `RollbackToGroupSnapshot`スナップショット グループ内のすべての個別ボリュームを各ボリュームの個別スナップショットにロールバックします。
+
+グループ スナップショットにロールバックすると、グループ スナップショット内の各ボリュームの一時スナップショットが作成されます。
+
+[NOTE]
+====
+* クラスターの満杯度がステージ 1、2、または 3 の場合、スナップショットの作成が許可されます。クラスターの満杯状態がステージ 4 または 5 の場合、スナップショットは作成されません。
+* スライスの同期が進行中の場合、ボリュームをグループ スナップショットにロールバックすると失敗する可能性があります。リトライ `RollbackToGroupSnapshot`同期が完了した後。
+
+
+====
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+`groupSnapshotID`
+ a| 
+グループ スナップショットの一意の ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+`attributes`
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+`name`
+ a| 
+ボリュームの現在の状態のグループスナップショットの名前。 `saveCurrentState` true に設定されています。名前を付けない場合、スナップショット (グループおよび個々のボリューム) の名前は、ロールバックが発生した時刻のタイムスタンプに設定されます。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+`saveCurrentState`
+ a| 
+以前のアクティブボリュームイメージを保存するかどうかを指定します。有効な値は次のとおりです。
+
+* `true`: 以前のアクティブなボリューム イメージが保持されます。
+* `false`: 以前のアクティブなボリューム イメージは削除されます。
+
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+members
+ a| 
+グループ スナップショットのメンバーのボリューム ID とスナップショット ID を含む配列。値:
+
+* チェックサム: 保存されたスナップショット内のデータの小さな文字列表現。このチェックサムは、後で他のスナップショットと比較してデータ内のエラーを検出するために使用できます。  （弦）
+* snapshotID: 新しいスナップショットが作成されるスナップショットの一意の ID。スナップショットIDは、指定されたボリューム上のスナップショットである必要があります。  （整数）
+* volumeID: スナップショットのソースボリューム ID。  （整数）
+
+ a| 
+JSONオブジェクト配列
+
+
+
+ a| 
+グループスナップショットID
+ a| 
+もし `saveCurrentState`false に設定されている場合、この値は null になります。
+
+もし `saveCurrentState`新しく作成されたグループ スナップショットの一意の ID が true に設定されました。
+ a| 
+integer
+
+
+
+ a| 
+グループスナップショット
+ a| 
+もし `saveCurrentState`false に設定されている場合、この値は null になります。
+
+もし `saveCurrentState`trueに設定された場合、グループスナップショットに関する情報を含むオブジェクトは `RollbackToGroupSnapshot`ちょうどロールバックしました。
+ a| 
+xref:reference_element_api_groupsnapshot.adoc[グループスナップショット]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "id": 438,
+  "method": "RollbackToGroupSnapshot",
+  "params": {
+    "groupSnapshotID": 1,
+    "name": "grpsnap1",
+    "saveCurrentState": true
+  }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 438,
+  "result": {
+    "groupSnapshot": {
+      "attributes": {},
+      "createTime": "2016-04-06T17:27:17Z",
+      "groupSnapshotID": 1,
+      "groupSnapshotUUID": "468fe181-0002-4b1d-ae7f-8b2a5c171eee",
+      "members": [
+        {
+          "attributes": {},
+          "checksum": "0x0",
+          "createTime": "2016-04-06T17:27:17Z",
+          "enableRemoteReplication": false,
+          "expirationReason": "None",
+          "expirationTime": null,
+          "groupID": 1,
+          "groupSnapshotUUID": "468fe181-0002-4b1d-ae7f-8b2a5c171eee",
+          "name": "2016-04-06T17:27:17Z",
+          "snapshotID": 4,
+          "snapshotUUID": "03563c5e-51c4-4e3b-a256-a4d0e6b7959d",
+          "status": "done",
+          "totalSize": 1000341504,
+          "virtualVolumeID": null,
+          "volumeID": 2
+        }
+      ],
+      "name": "2016-04-06T17:27:17Z",
+      "status": "done"
+    },
+    "groupSnapshotID": 3,
+    "members": [
+      {
+        "checksum": "0x0",
+        "snapshotID": 2,
+        "snapshotUUID": "719b162c-e170-4d80-b4c7-1282ed88f4e1",
+        "volumeID": 2
+      }
+    ]
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

@@ -1,0 +1,62 @@
+---
+permalink: api/reference_element_api_listsnapmirrorendpoints.html 
+sidebar: sidebar 
+keywords: snapmirror,endpoint,endpoints,list,listing,listsnapmirrorendpoints 
+summary: Element ソフトウェア Web UI は、ListSnapMirrorEndpoints メソッドを使用して、Element ストレージ クラスターが通信しているすべてのSnapMirrorエンドポイントを一覧表示します。 
+---
+= SnapMirrorエンドポイントの一覧
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ElementソフトウェアのWeb UIは、 `ListSnapMirrorEndpoints` Element ストレージ クラスターが通信しているすべてのSnapMirrorエンドポイントを一覧表示するメソッド。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+snapMirrorエンドポイントID
+ a| 
+これらの ID に関連付けられたオブジェクトのみを返します。  ID が指定されていない場合、または配列が空の場合、メソッドはすべてのSnapMirrorエンドポイント ID を返します。
+ a| 
+整数配列
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラーエンドポイント
+ a| 
+既存のSnapMirrorエンドポイントのリスト。
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[スナップミラーエンドポイント]配列
+
+|===
+
+
+== バージョン以降の新機能
+
+10.0

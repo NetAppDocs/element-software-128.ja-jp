@@ -1,0 +1,45 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_configure.html 
+sidebar: sidebar 
+keywords: ntp, cluster, query, fqdn, dns server 
+summary: 'クラスター内の各ノードに、ネットワーク タイム プロトコル (NTP) サーバーに更新を照会するように指示できます。クラスターは構成されたサーバーにのみ接続し、そこから NTP 情報を要求します。' 
+---
+= クラスタがクエリを実行するネットワークタイムプロトコルサーバを構成する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスター内の各ノードに、ネットワーク タイム プロトコル (NTP) サーバーに更新を照会するように指示できます。クラスターは構成されたサーバーにのみ接続し、そこから NTP 情報を要求します。
+
+NTP はネットワーク上で時計を同期するために使用されます。内部または外部の NTP サーバーへの接続は、初期のクラスター セットアップの一部である必要があります。
+
+クラスター上の NTP をローカル NTP サーバーを指すように構成します。 IP アドレスまたは FQDN ホスト名を使用できます。クラスター作成時のデフォルトの NTP サーバーは us.pool.ntp.org に設定されていますが、 SolidFireクラスターの物理的な場所によっては、このサイトへの接続が常に確立されるとは限りません。
+
+FQDN を使用するかどうかは、個々のストレージ ノードの DNS 設定が適切に実行され、動作しているかどうかによって異なります。これを行うには、すべてのストレージ ノードで DNS サーバーを構成し、「ネットワーク ポート要件」ページを確認してポートが開いていることを確認します。
+
+最大 5 つの異なる NTP サーバーを入力できます。
+
+
+NOTE: IPv4 アドレスと IPv6 アドレスの両方を使用できます。
+
+.要件
+この設定を構成するには、クラスタ管理者の権限が必要です。
+
+.手順
+. サーバー設定で IP および/または FQDN のリストを構成します。
+. ノード上で DNS が適切に設定されていることを確認します。
+. *クラスター* > *設定*をクリックします。
+. [ネットワーク タイム プロトコル設定] で、標準の NTP 構成を使用する *いいえ* を選択します。
+. *変更を保存*をクリックします。
+
+
+
+
+== 詳細情報の参照
+
+* link:../storage/task_system_manage_cluster_ntp_configure_to_listen_for_ntp_broadcasts.html["NTPブロードキャストをリッスンするようにクラスタを構成する"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

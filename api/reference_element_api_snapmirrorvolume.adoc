@@ -1,0 +1,107 @@
+---
+permalink: api/reference_element_api_snapmirrorvolume.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVolume 
+summary: snapMirrorVolume オブジェクトには、 ONTAPボリュームに関する情報が含まれています。 
+---
+= スナップミラーボリューム
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorVolume オブジェクトには、 ONTAPボリュームに関する情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+宛先ONTAPシステムの ID。
+ a| 
+integer
+
+
+
+ a| 
+名前
+ a| 
+ボリュームの名前。
+ a| 
+string
+
+
+
+ a| 
+type
+ a| 
+ボリュームの種類。有効な値は次のとおりです。
+
+* rw: 読み書きボリューム
+* ls: 負荷分散ボリューム
+* dp: データ保護ボリューム
+
+ a| 
+string
+
+
+
+ a| 
+SVM
+ a| 
+このボリュームを所有する Vserver の名前。
+ a| 
+string
+
+
+
+ a| 
+集約名
+ a| 
+包含する集約名。
+ a| 
+string
+
+
+
+ a| 
+状態
+ a| 
+ボリュームの状態。有効な値は次のとおりです。
+
+* オンライン
+* 制限
+* オフライン
+* 混合
+
+ a| 
+string
+
+
+
+ a| 
+サイズ
+ a| 
+ボリュームのファイルシステムの合計サイズ (バイト単位)。
+ a| 
+string
+
+
+
+ a| 
+利用可能なサイズ
+ a| 
+ボリューム内の使用可能なスペースのサイズ (バイト単位)。
+ a| 
+string
+
+|===

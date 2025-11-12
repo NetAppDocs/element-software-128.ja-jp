@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_virtualnetwork.html 
+sidebar: sidebar 
+keywords: object,objects,virtualNetwork 
+summary: virtualNetwork オブジェクトには、特定の仮想ネットワークに関する情報が含まれています。  ListVirtualNetworks API メソッドを使用して、システム内のすべての仮想ネットワークに関するこの情報のリストを取得できます。 
+---
+= 仮想ネットワーク
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+virtualNetwork オブジェクトには、特定の仮想ネットワークに関する情報が含まれています。使用することができます `ListVirtualNetworks`システム内のすべての仮想ネットワークのこの情報のリストを取得するための API メソッド。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+アドレスブロック
+ a| 
+現在仮想ネットワークに割り当てられているアドレス ブロックの範囲。メンバー:
+
+* available: 「1」と「0」のバイナリ文字列。「1」は IP アドレスが使用可能であることを示し、「0」は IP アドレスが使用できないことを示します。文字列は右から左に読み取られ、右端の数字がアドレス ブロックのリストの最初の IP アドレスになります。
+* size: このアドレス ブロックのサイズ。
+* start: ブロック内の最初の IP アドレス。
+
+ a| 
+JSONオブジェクト配列
+
+
+
+ a| 
+attributes
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+
+
+
+ a| 
+名前
+ a| 
+仮想ネットワークに割り当てられた名前。
+ a| 
+string
+
+
+
+ a| 
+netmask
+ a| 
+仮想ネットワークのネットマスクの IP アドレス。
+ a| 
+string
+
+
+
+ a| 
+svip
+ a| 
+仮想ネットワークのストレージ IP アドレス。
+ a| 
+string
+
+
+
+ a| 
+ゲートウェイ
+ a| 
+仮想ネットワークに使用されるゲートウェイ。
+ a| 
+string
+
+
+
+ a| 
+仮想ネットワークID
+ a| 
+仮想ネットワークの一意の識別子。
+ a| 
+integer
+
+
+
+ a| 
+仮想ネットワークタグ
+ a| 
+VLAN タグ識別子。
+ a| 
+integer
+
+|===
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_listvirtualnetworks.adoc[ListVirtualNetworks]

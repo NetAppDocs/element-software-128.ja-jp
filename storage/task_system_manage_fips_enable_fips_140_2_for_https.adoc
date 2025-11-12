@@ -1,0 +1,45 @@
+---
+permalink: storage/task_system_manage_fips_enable_fips_140_2_for_https.html 
+sidebar: sidebar 
+keywords: FIPS 140-2, enable fips, federal information processing standards, ncsm 
+summary: EnableFeature API メソッドを使用して、HTTPS 通信の FIPS 140-2 動作モードを有効にすることができます。 
+---
+= クラスターでHTTPSにFIPS 140-2を有効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+EnableFeature API メソッドを使用して、HTTPS 通信の FIPS 140-2 動作モードを有効にすることができます。
+
+NetApp Elementソフトウェアを使用すると、クラスターで連邦情報処理標準 (FIPS) 140-2 動作モードを有効にすることができます。このモードを有効にすると、 NetApp暗号化セキュリティ モジュール (NCSM) がアクティブになり、 NetApp Element UI および API への HTTPS 経由のすべての通信に FIPS 140-2 レベル 1 認定の暗号化が活用されます。
+
+
+IMPORTANT: FIPS 140-2 モードを有効にすると、無効にすることはできません。 FIPS 140-2 モードが有効になっている場合、クラスター内の各ノードが再起動し、NCSM が正しく有効になっていて FIPS 140-2 認定モードで動作していることを確認するためのセルフテストが実行されます。これにより、クラスター上の管理接続とストレージ接続の両方が中断されます。慎重に計画し、環境でこのモードが提供する暗号化メカニズムが必要な場合にのみ、このモードを有効にする必要があります。
+
+詳細については、Element API 情報を参照してください。
+
+以下は、FIPS を有効にするための API リクエストの例です。
+
+[listing]
+----
+{
+  "method": "EnableFeature",
+    "params": {
+        "feature" : "fips"
+    },
+    "id": 1
+}
+----
+この動作モードを有効にすると、すべての HTTPS 通信で FIPS 140-2 承認の暗号が使用されます。
+
+
+
+== 詳細情報の参照
+
+* xref:reference_system_manage_fips_ssl_cipher_changes.adoc[SSL暗号]
+* link:../api/concept_element_api_about_the_api.html["Element APIでストレージを管理する"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

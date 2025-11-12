@@ -1,0 +1,208 @@
+---
+permalink: api/reference_element_api_nodestats.html 
+sidebar: sidebar 
+keywords: object,objects,nodestats 
+summary: nodeStats オブジェクトには、ノードの高レベルのアクティビティ測定値が含まれています。  GetNodeStats および ListNodeStats API メソッドを使用して、nodeStats オブジェクトの一部またはすべてを取得できます。 
+---
+= nodeStats
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+nodeStats オブジェクトには、ノードの高レベルのアクティビティ測定値が含まれています。使用することができます `GetNodeStats`そして `ListNodeStats`nodeStats オブジェクトの一部またはすべてを取得するための API メソッド。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+count
+ a| 
+nodeStats オブジェクト内のサンプルの合計数。
+ a| 
+integer
+
+
+
+ a| 
+cpu
+ a| 
+CPU 使用率（%）。
+ a| 
+integer
+
+
+
+ a| 
+CPU合計
+ a| 
+CPU 使用率の単調に増加する値。
+ a| 
+integer
+
+
+
+ a| 
+cバイトイン
+ a| 
+クラスター インターフェイスの受信バイト数。
+ a| 
+integer
+
+
+
+ a| 
+cバイトアウト
+ a| 
+クラスター インターフェイス上の出力バイト。
+ a| 
+integer
+
+
+
+ a| 
+sBytesIn
+ a| 
+ストレージ インターフェイス上の受信バイト。
+ a| 
+integer
+
+
+
+ a| 
+sBytesOut
+ a| 
+ストレージ インターフェイス上の出力バイト。
+ a| 
+integer
+
+
+
+ a| 
+ミリ秒単位
+ a| 
+管理インターフェースの受信バイト。
+ a| 
+integer
+
+
+
+ a| 
+mBytesOut
+ a| 
+管理インターフェース上の送信バイト。
+ a| 
+integer
+
+
+
+ a| 
+ネットワーク使用率クラスター
+ a| 
+クラスター ネットワーク インターフェイスのネットワーク インターフェイス使用率 (%)。
+ a| 
+integer
+
+
+
+ a| 
+ネットワーク利用ストレージ
+ a| 
+ストレージ ネットワーク インターフェイスのネットワーク インターフェイス使用率 (%)。
+ a| 
+integer
+
+
+
+ a| 
+ノードヒート
+ a| 
+ノードの使用率情報。 Element 12.8 以降で使用可能です。メンバー:
+
+* primaryTotalHeat: ノードプライマリ合計 IOPS / ノード構成 IOPS（24 時間平均）
+* recentPrimaryTotalHeat: ノードプライマリ合計IOPS / ノード構成IOPS（1時間平均）
+* recentTotalHeat: ノードの合計 IOPS / ノードの構成済み IOPS（1 時間あたり平均）
+* totalHeat: ノードの合計 IOPS / ノードの構成済み IOPS（24 時間平均）
+
+ a| 
+JSONオブジェクト
+
+
+
+ a| 
+読み取りレイテンシUSec合計
+ a| 
+ノードへの読み取り操作の実行に費やされた合計時間の単調に増加する値。
+ a| 
+integer
+
+
+
+ a| 
+readOps
+ a| 
+ノードへの合計読み取り操作の単調に増加する値。
+ a| 
+integer
+
+
+
+ a| 
+ssLoadHistogram
+ a| 
+時間の経過に伴うスライス サービスの負荷を示すヒストグラム データ。
+ a| 
+JSONオブジェクト
+
+
+
+ a| 
+タイムスタンプ
+ a| 
+UTC+0 形式の現在の時刻。
+ a| 
+ISO 8601日付文字列
+
+
+
+ a| 
+使用メモリ
+ a| 
+合計メモリ使用量（バイト単位）。
+ a| 
+integer
+
+
+
+ a| 
+書き込みレイテンシUSec合計
+ a| 
+ノードへの書き込み操作の実行に費やされた合計時間の単調に増加する値。
+ a| 
+integer
+
+
+
+ a| 
+writeOps
+ a| 
+ノードへの書き込み操作の合計値が単調に増加します。
+ a| 
+integer
+
+|===
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_getnodestats.adoc[ノード統計情報を取得する]
+* xref:reference_element_api_listnodestats.adoc[リストノード統計]
+

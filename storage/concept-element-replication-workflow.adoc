@@ -1,0 +1,18 @@
+---
+permalink: storage/concept-element-replication-workflow.html 
+sidebar: sidebar 
+keywords: workflow, replication, element, ontap, cli 
+summary: データをElementからONTAPにレプリケートする場合も、ONTAPからElementにレプリケートする場合も、ジョブ スケジュールの設定、ポリシーの指定、および関係の作成と初期化を実行する必要があります。デフォルト ポリシーまたはカスタム ポリシーを使用できます。 
+---
+= ElementとONTAP間のレプリケーションのワークフロー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+データをElementからONTAPにレプリケートする場合も、ONTAPからElementにレプリケートする場合も、ジョブ スケジュールの設定、ポリシーの指定、および関係の作成と初期化を実行する必要があります。デフォルト ポリシーまたはカスタム ポリシーを使用できます。
+
+このワークフローでは、以下の前提条件タスクを完了していることを前提としています。link:element-replication-index.html#prerequisites["前提条件"] 。  SnapMirrorポリシーの完全な背景情報（どのポリシーを使用するかのガイダンスを含む）については、以下を参照してください。link:https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["データ保護の概要"^] 。
+
+image:solidfire-to-ontap-backup-workflow.gif["SolidfireからONTAPへのワークフロー"]

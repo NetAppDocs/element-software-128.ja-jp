@@ -1,0 +1,42 @@
+---
+permalink: storage/reference_data_manage_vvol_host_details.html 
+sidebar: sidebar 
+keywords: host details, vvols, ESXi host details, virtual volumes, bindings, endpoints 
+summary: VVols タブのホスト ページには、仮想ボリュームをホストする VMware ESXi ホストに関する情報が表示されます。 
+---
+= ホストの詳細
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VVols タブのホスト ページには、仮想ボリュームをホストする VMware ESXi ホストに関する情報が表示されます。
+
+次の情報が表示されます。
+
+* *ホストID*
++
+仮想ボリュームをホストし、クラスターに認識されている ESXi ホストの UUID。
+
+* *ホストアドレス*
++
+ESXi ホストの IP アドレスまたは DNS 名。
+
+* *バインディング*
++
+ESXi ホストによってバインドされているすべての仮想ボリュームのバインド ID。
+
+* *ESX クラスタ ID*
++
+vSphere ホスト クラスタ ID または vCenter GUID。
+
+* *イニシエーターIQN*
++
+仮想ボリューム ホストのイニシエーター IQN。
+
+* * SolidFireプロトコル エンドポイント ID*
++
+現在 ESXi ホストに表示されているプロトコル エンドポイント。
+
+

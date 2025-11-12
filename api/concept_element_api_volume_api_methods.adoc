@@ -1,0 +1,67 @@
+---
+permalink: api/concept_element_api_volume_api_methods.html 
+sidebar: sidebar 
+keywords: volume,API,method,methods 
+summary: Element ソフトウェア ボリューム API メソッドを使用すると、ストレージ ノードに存在するボリュームを管理できます。これらの方法を使用して、ボリュームを作成、変更、複製、および削除できます。ボリューム API メソッドを使用して、ボリュームのデータ測定値を収集および表示することもできます。 
+---
+= ボリュームAPIメソッド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element ソフトウェア ボリューム API メソッドを使用すると、ストレージ ノードに存在するボリュームを管理できます。これらの方法を使用して、ボリュームを作成、変更、複製、および削除できます。ボリューム API メソッドを使用して、ボリュームのデータ測定値を収集および表示することもできます。
+
+* xref:reference_element_api_cancelclone.adoc[キャンセルクローン]
+* xref:reference_element_api_cancelgroupclone.adoc[グループクローンのキャンセル]
+* xref:reference_element_api_clonemultiplevolumes.adoc[複数のボリュームのクローン]
+* xref:reference_element_api_clonevolume.adoc[CloneVolume]
+* xref:reference_element_api_copyvolume.adoc[コピーボリューム]
+* xref:reference_element_api_createqospolicy.adoc[QoSポリシーの作成]
+* xref:reference_element_api_createvolume.adoc[ボリュームの作成]
+* xref:reference_element_api_createbackuptarget.adoc[バックアップターゲットの作成]
+* xref:reference_element_api_deleteqospolicy.adoc[QoSポリシーの削除]
+* xref:reference_element_api_deletevolume.adoc[ボリュームの削除]
+* xref:reference_element_api_deletevolumes.adoc[ボリュームの削除]
+* xref:reference_element_api_getbackuptarget.adoc[バックアップターゲットを取得]
+* xref:reference_element_api_getvolumestats.adoc[ボリューム統計情報を取得する]
+* xref:reference_element_api_getdefaultqos.adoc[デフォルトQoSを取得する]
+* xref:reference_element_api_getqospolicy.adoc[QoSポリシーの取得]
+* xref:reference_element_api_getvolumecount.adoc[ボリュームカウントを取得]
+* xref:reference_element_api_getvolumeefficiency.adoc[ボリューム効率の取得]
+* xref:reference_element_api_listactivevolumes.adoc[アクティブボリュームの一覧]
+* xref:reference_element_api_listbackuptargets.adoc[バックアップターゲットのリスト]
+* xref:reference_element_api_listbulkvolumejobs.adoc[バルクボリュームジョブのリスト]
+* xref:reference_element_api_listdeletedvolumes.adoc[削除されたボリュームの一覧]
+* xref:reference_element_api_listqospolicies.adoc[QoSポリシーの一覧]
+* xref:reference_element_api_listsyncjobs.adoc[リスト同期ジョブ]
+* xref:reference_element_api_listvolumeqoshistograms.adoc[リストボリュームQoSヒストグラム]
+* xref:reference_element_api_listvolumes.adoc[リストボリューム]
+* xref:reference_element_api_listvolumestats.adoc[リストボリューム統計]
+* xref:reference_element_api_listvolumesforaccount.adoc[アカウントのボリューム一覧]
+* xref:reference_element_api_listvolumestatsbyaccount.adoc[アカウント別ボリューム統計リスト]
+* xref:reference_element_api_listvolumestatsbyvirtualvolume.adoc[仮想ボリュームごとのボリューム統計のリスト]
+* xref:reference_element_api_listvolumestatsbyvolume.adoc[ボリューム別リストボリューム統計]
+* xref:reference_element_api_listvolumestatsbyvolumeaccessgroup.adoc[ボリュームアクセスグループごとのボリューム統計のリスト]
+* xref:reference_element_api_modifybackuptarget.adoc[バックアップターゲットの変更]
+* xref:reference_element_api_modifyqospolicy.adoc[QoSポリシーの変更]
+* xref:reference_element_api_modifyvolume.adoc[ボリュームの変更]
+* xref:reference_element_api_modifyvolumes.adoc[ボリュームの変更]
+* xref:reference_element_api_purgedeletedvolume.adoc[削除されたボリュームの消去]
+* xref:reference_element_api_purgedeletedvolumes.adoc[削除されたボリュームの消去]
+* xref:reference_element_api_removebackuptarget.adoc[バックアップターゲットの削除]
+* xref:reference_element_api_restoredeletedvolume.adoc[削除されたボリュームの復元]
+* xref:reference_element_api_setdefaultqos.adoc[デフォルトQoSの設定]
+* xref:reference_element_api_startbulkvolumeread.adoc[一括ボリューム読み取り開始]
+* xref:reference_element_api_startbulkvolumewrite.adoc[一括ボリューム書き込みの開始]
+* xref:reference_element_api_updatebulkvolumestatus.adoc[一括ボリュームステータスの更新]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

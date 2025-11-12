@@ -1,0 +1,29 @@
+---
+permalink: api/concept_element_api_fibre_channel_api_methods.html 
+sidebar: sidebar 
+keywords: fibre,channel,method,API,fibre channel 
+summary: ファイバー チャネル API メソッドを使用して、ストレージ クラスターのファイバー チャネル ノード メンバーを追加、変更、または削除できます。 
+---
+= ファイバーチャネルAPIメソッド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ファイバー チャネル API メソッドを使用して、ストレージ クラスターのファイバー チャネル ノード メンバーを追加、変更、または削除できます。
+
+* xref:reference_element_api_getvolumeaccessgrouplunassignments.adoc[ボリュームアクセスグループのLUN割り当ての取得]
+* xref:reference_element_api_listfibrechannelportinfo.adoc[ファイバーチャネルポート情報のリスト]
+* xref:reference_element_api_listfibrechannelsessions.adoc[ファイバーチャネルセッションのリスト]
+* xref:reference_element_api_listnodefibrechannelportinfo.adoc[リストノードファイバーチャネルポート情報]
+* xref:reference_element_api_modifyvolumeaccessgrouplunassignments.adoc[ボリュームアクセスグループLUN割り当ての変更]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

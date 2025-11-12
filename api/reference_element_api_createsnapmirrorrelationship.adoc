@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_createsnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: SnapMirror,relationship,relationships,create,creating,CreateSnapMirrorRelationship 
+summary: Element Web UI は、CreateSnapMirrorRelationship メソッドを使用して、ソース エンドポイントと宛先エンドポイント間のSnapMirror拡張データ保護関係を作成します。 
+---
+= スナップミラー関係の作成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ElementウェブUIは `CreateSnapMirrorRelationship`ソース エンドポイントと宛先エンドポイント間のSnapMirror拡張データ保護関係を作成する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+Element ストレージ クラスタと通信するリモートONTAPストレージ システムのエンドポイント ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+ソースボリューム
+ a| 
+関係内のソース ボリューム。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[スナップミラーボリューム情報]
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+宛先ボリューム
+ a| 
+関係内の宛先ボリューム。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[スナップミラーボリューム情報]
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+関係タイプ
+ a| 
+関係の種類。  Element ソフトウェアを実行しているストレージ システムでは、この値は常に「`extended_data_protection`」になります。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+ポリシー名
+ a| 
+関係のONTAP SnapMirrorポリシーの名前を指定します。指定しない場合、デフォルトのポリシー名は MirrorLatest になります。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+スケジュール名
+ a| 
+SnapMirror関係を更新するために使用される、 ONTAPシステム上の既存の cron スケジュールの名前。スケジュールが指定されていない場合、snapMirror の更新はスケジュールされず、手動で更新する必要があります。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+最大転送速度
+ a| 
+ボリューム間の最大データ転送速度をキロバイト/秒単位で指定します。デフォルト値 0 は無制限であり、 SnapMirror関係で利用可能なネットワーク帯域幅を完全に利用できるようになります。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラー関係
+ a| 
+新しく作成されたSnapMirror関係に関する情報。
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[スナップミラー関係]
+
+|===
+
+
+== バージョン以降の新機能
+
+10.1

@@ -1,0 +1,125 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_install_add_storage_NIC.html 
+summary: ストレージに追加の NIC を使用している場合は、タグなしまたはタグ付きのネットワーク インターフェイスを設定する必要があります。 
+keywords: netapp, element, management node, mnode, network, nic, storage nic 
+---
+= ストレージ ネットワーク インターフェイス コントローラ (NIC) を構成する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+ストレージに追加の NIC を使用している場合は、管理ノードに SSH で接続するか、vCenter コンソールを使用して curl コマンドを実行し、タグ付きまたはタグなしのネットワーク インターフェイスを設定できます。
+
+.開始する前に
+* eth0 IP アドレスがわかっています。
+* クラスタ バージョンでは、 NetApp Elementソフトウェア 11.3 以降が実行されています。
+* 管理ノード 11.3 以降をデプロイしました。
+
+
+.構成オプション
+ご使用の環境に適したオプションを選択してください。
+
+* <<タグなしネットワークインターフェース用のストレージネットワークインターフェースコントローラ（NIC）を構成する>>
+* <<タグ付きネットワーク インターフェースのストレージ ネットワーク インターフェース コントローラ (NIC) を構成する>>
+
+
+
+
+== タグなしネットワークインターフェース用のストレージネットワークインターフェースコントローラ（NIC）を構成する
+
+.手順
+. SSH または vCenter コンソールを開きます。
+. 次のコマンド テンプレートの値を置き換えて、コマンドを実行します。
++
+
+NOTE: 値は次のように表される。 `$`新しいストレージ ネットワーク インターフェイスに必要な各パラメータについて。その `cluster`次のテンプレートのオブジェクトは必須であり、管理ノードのホスト名の変更に使用できます。 `--insecure`または `-k`オプションは実稼働環境では使用しないでください。
+
++
+[listing]
+----
+curl -u $mnode_user_name:$mnode_password --insecure -X POST \
+https://$mnode_IP:442/json-rpc/10.0 \
+-H 'Content-Type: application/json' \
+-H 'cache-control: no-cache' \
+-d ' {
+     "params": {
+               "network": {
+                          "$eth1": {
+                                   "#default" : false,
+                                   "address" : "$storage_IP",
+                                   "auto" : true,
+                                   "family" : "inet",
+                                   "method" : "static",
+                                   "mtu" : "9000",
+                                   "netmask" : "$subnet_mask",
+                                   "status" : "Up"
+                                   }
+                          },
+               "cluster": {
+                         "name": "$mnode_host_name"
+                         }
+             },
+    "method": "SetConfig"
+}
+'
+----
+
+
+
+
+== タグ付きネットワーク インターフェースのストレージ ネットワーク インターフェース コントローラ (NIC) を構成する
+
+.手順
+. SSH または vCenter コンソールを開きます。
+. 次のコマンド テンプレートの値を置き換えて、コマンドを実行します。
++
+
+NOTE: 値は次のように表される。 `$`新しいストレージ ネットワーク インターフェイスに必要な各パラメータについて。その `cluster`次のテンプレートのオブジェクトは必須であり、管理ノードのホスト名の変更に使用できます。 `--insecure`または `-k`オプションは実稼働環境では使用しないでください。
+
++
+[listing]
+----
+curl -u $mnode_user_name:$mnode_password --insecure -X POST \
+https://$mnode_IP:442/json-rpc/10.0 \
+-H 'Content-Type: application/json' \
+-H 'cache-control: no-cache' \
+-d ' {
+     "params": {
+               "network": {
+                          "$eth1": {
+                                   "#default" : false,
+                                   "address" : "$storage_IP",
+                                   "auto" : true,
+                                   "family" : "inet",
+                                   "method" : "static",
+                                   "mtu" : "9000",
+                                   "netmask" : "$subnet_mask",
+                                   "status" : "Up",
+                                   "virtualNetworkTag" : "$vlan_id"
+                                   }
+                          },
+               "cluster": {
+                         "name": "$mnode_host_name",
+                         "cipi": "$eth1.$vlan_id",
+                         "sipi": "$eth1.$vlan_id"
+                         }
+             },
+    "method": "SetConfig"
+}
+'
+----
+
+
+[discrete]
+== 詳細情報はこちら
+
+* link:task_mnode_add_assets.html["管理ノードにコントローラアセットを追加する"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

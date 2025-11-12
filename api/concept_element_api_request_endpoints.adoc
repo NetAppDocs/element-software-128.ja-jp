@@ -1,0 +1,54 @@
+---
+permalink: api/concept_element_api_request_endpoints.html 
+sidebar: sidebar 
+keywords: request,endpoints 
+summary: API で使用されるリクエスト エンドポイントには、ストレージ クラスター、ストレージ クラスターの作成、ノードごとの 3 種類があります。常に、Element ソフトウェアのバージョンでサポートされている最新のエンドポイントを使用する必要があります。 
+---
+= リクエストエンドポイント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+API で使用されるリクエスト エンドポイントには 3 種類あります (ストレージ クラスター、ストレージ クラスターの作成、ノードごと)。常に、Element ソフトウェアのバージョンでサポートされている最新のエンドポイントを使用する必要があります。
+
+API の 3 つのリクエスト エンドポイントは、次のように指定されます。
+
+
+
+== クラスターAPIメソッド
+
+ストレージクラスタ全体のAPIリクエストのHTTPSエンドポイントは `+https://<mvip>/json-rpc/<api-version>+`、 どこ：
+
+* `<mvip>`ストレージ クラスターの管理仮想 IP アドレスです。
+* `<api-version>`使用している API のバージョンです。
+
+
+
+
+== クラスター作成とブートストラップAPIメソッド
+
+ストレージクラスターを作成し、ブートストラップAPIリクエストにアクセスするためのHTTPSエンドポイントは `+https://<nodeIP>/json-rpc/<api-version>+`、 どこ：
+
+* `<nodeIP>`クラスターに追加するノードの IP アドレスです。
+* `<api-version>`使用している API のバージョンです。
+
+
+
+
+== ノードごとのAPIメソッド
+
+個々のストレージノードAPIリクエストのHTTPSエンドポイントは `+https://<nodeIP>:442/json-rpc/<api-version>+`、 どこ：
+
+* `<nodeIP>`はストレージ ノードの管理 IP アドレスです。442 は HTTPS サーバーが実行されているポートです。
+* `<api-version>`使用している API のバージョンです。
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

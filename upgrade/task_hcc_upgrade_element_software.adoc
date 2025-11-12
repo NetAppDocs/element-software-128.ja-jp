@@ -1,0 +1,450 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_element_software.html 
+summary: NetApp SolidFireシステムのアップグレードの一環として、 NetApp Elementソフトウェアをアップグレードします。 
+keywords: netapp, solidfire, cluster, element, H610S upgrade, hcc, upgrade role 
+---
+= Elementソフトウェアをアップグレード
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Elementソフトウェアをアップグレードするには、 NetApp Hybrid Cloud Control UI または REST API を使用できます。  Element ソフトウェアのアップグレード中は、ノードの追加と削除、ドライブの追加と削除、イニシエーター、ボリューム アクセス グループ、仮想ネットワークなどに関連付けられたコマンドなど、特定の操作が抑制されます。
+
+[CAUTION]
+====
+管理サービス 2.27 バンドルには、管理ノード 12.8 とのみ互換性のある vCenter Server 5.5 用の Element プラグインが含まれています。管理サービス 2.27 に更新する場合は、管理ノードと管理サービス間の互換性を確保するために、アップグレード シーケンスを変更し、Element 12.8 にアップグレードした後に管理サービス バンドルを更新する必要があります。
+
+管理サービス 2.21.61 から 2.26.40 に更新する場合は、Element 12.8 にアップグレードする前に、管理サービス バンドルを更新する必要があります。
+
+====
+.開始する前に
+* *管理者権限*: アップグレードを実行するためのストレージ クラスター管理者権限があります。
+* *有効なアップグレード パス*: アップグレード先の Element バージョンのアップグレード パス情報を確認し、アップグレード パスが有効であることを確認しました。https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_is_the_upgrade_matrix_for_storage_clusters_running_NetApp_Element_software%3F["NetApp KB: NetApp Elementソフトウェアを実行するストレージ クラスタのアップグレード マトリックス"^]
++
+Element 12.5 以降、 NetApp HealthTools は Element ソフトウェア アップグレードではサポートされなくなりました。  Element 11.0または11.1を実行している場合は、まずlink:https://docs.netapp.com/us-en/element-software-123/upgrade/task_hcc_upgrade_element_software.html#upgrade-element-software-at-connected-sites-using-healthtools["HealthToolsを使用してElement 12.3.xにアップグレードする"^]その後、 NetApp Hybrid Cloud Control を使用して Element 12.5 以降にアップグレードします。
+
+* *システム時間の同期*: すべてのノードのシステム時間が同期され、ストレージ クラスターとノードに対して NTP が正しく構成されていることを確認しました。各ノードは、ノードごとのWeb UIでDNSネームサーバーを設定する必要があります。(`https://[IP address]:442` ) 時間のずれに関連する未解決のクラスター障害はありません。
+* *システム ポート*: アップグレードにNetApp Hybrid Cloud Control を使用している場合は、必要なポートが開いていることを確認します。見るlink:../storage/reference_prereq_network_port_requirements.html["ネットワーク ポート"]詳細についてはこちらをご覧ください。
+* *管理ノード*: NetApp Hybrid Cloud Control UI および API の場合、環境内の管理ノードはバージョン 11.3 を実行しています。
+* *クラスターの健全性*: クラスターをアップグレードする準備ができていることを確認しました。見るlink:task_hcc_upgrade_element_prechecks.html["ストレージをアップグレードする前に、Element ストレージのヘルスチェックを実行します。"]。
+* *H610S ストレージ ノードのベースボード管理コントローラ (BMC) が更新されました*: H610S ノードのBMCバージョンがアップグレードされました。参照link:https://docs.netapp.com/us-en/hci/docs/rn_H610S_BMC_3.84.07.html["リリースノートとアップグレード手順"^]。
+
+
+[[element-upgrade-tim]]
+* *アップグレード プロセスの時間*: アップグレードを実行するために十分な時間をスケジュールしました。  Element ソフトウェア 12.5 以降にアップグレードする場合、アップグレード プロセスの時間は、現在の Element ソフトウェア バージョンとファームウェアの更新によって異なります。
++
+[cols="20,20,20,20,20"]
+|===
+| ストレージ ノード | 現在のElementソフトウェアバージョン | ノードあたりのソフトウェアおよびファームウェアのインストール時間の概算^1^ | ノードあたりのおおよそのデータ同期時間^2^ | ノードあたりのアップグレード時間の概算 
+
+
+| 最新のファームウェアを搭載したすべてのSolidFireおよびNetApp H シリーズ ノード^3^ | 12.x | 15分 | 10～15分 | 20～30分 
+
+
+| H610SとH410S | 12.x および 11.8 | 60分 | 30～60分 | 90～120分 
+
+
+| H610S | 11.7以前 | 90分 | 40～70分 | 130～160分 また、 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["完全なノードシャットダウンと電源切断を実行する"^]各H610Sノードに対して。 
+|===
++
+^1^ハードウェアのファームウェアとドライバファームウェアの完全なマトリックスについては、link:../hardware/fw_storage_nodes.html["SolidFireストレージノードでサポートされているストレージファームウェアバージョン"] 。
+
++
+^2^書き込み IOPS 負荷が大きいクラスターとファームウェア更新時間の長いクラスターを組み合わせると、データ同期時間が長くなります。
+
++
+^3^ 次のノードはサポートされていません。これらのノードのいずれかをサポートされていない Element バージョンにアップグレードしようとすると、ノードが Element 12.x でサポートされていないことを示すエラーが表示されます。
+
++
+** Element 12.8、SF4805、SF9605、SF19210、および SF38410 ストレージ ノード以降。
+** エレメント 12.7 以降、SF2405 および SF9608 ストレージ ノードと FC0025 および SF-FCN-01 FC ノード。
+
+
+* *エンド ユーザー ライセンス契約 (EULA)*: 管理サービス 2.20.69 以降では、 NetApp Hybrid Cloud Control UI または API を使用して Element ソフトウェアをアップグレードする前に、EULA に同意して保存する必要があります。
++
+.. Web ブラウザで管理ノードの IP アドレスを開きます。
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. ストレージ クラスタ管理者の資格情報を入力して、 NetApp Hybrid Cloud Control にログインします。
+.. インターフェースの右上近くにある*アップグレード*を選択します。
+.. EULA がポップアップ表示されます。下にスクロールして、「*現在および今後のすべての更新に同意します*」を選択し、「*保存*」を選択します。
+
+
+
+
+.アップグレードオプション
+次のいずれかの Element ソフトウェア アップグレード オプションを選択します。
+
+* <<NetApp Hybrid Cloud Control UI を使用して Element ストレージをアップグレードする>>
+* <<NetApp Hybrid Cloud Control APIを使用してElementストレージをアップグレードする>>
+
+
+
+IMPORTANT: H610SシリーズノードをElement 12.5以降にアップグレードする場合、ノードがElement 11.8より前のバージョンを実行している場合は、この追加のアップグレード手順を実行する必要があります。 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["技術情報"^]各ストレージノードに対して。  Element 11.8 以降を実行している場合、追加のアップグレード手順は必要ありません。
+
+
+
+== NetApp Hybrid Cloud Control UI を使用して Element ストレージをアップグレードする
+
+NetApp Hybrid Cloud Control UI を使用して、ストレージ クラスターをアップグレードできます。
+
+
+CAUTION: NetApp Hybrid Cloud Controlを使用してストレージクラスタをアップグレードする際に発生する可能性のある問題とその回避策については、こちらをご覧ください。 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Potential_issues_and_workarounds_when_running_storage_upgrades_using_NetApp_Hybrid_Cloud_Control["技術情報"^] 。
+
+.手順
+. Web ブラウザで管理ノードの IP アドレスを開きます。
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. ストレージ クラスタ管理者の資格情報を入力して、 NetApp Hybrid Cloud Control にログインします。
+. インターフェースの右上近くにある*アップグレード*を選択します。
+. *アップグレード*ページで、*ストレージ*を選択します。
++
+*ストレージ* タブには、インストールに含まれるストレージ クラスターが一覧表示されます。クラスターがNetApp Hybrid Cloud Control からアクセスできない場合は、*アップグレード* ページに表示されません。
+
+. 次のオプションから選択し、クラスターに該当する一連の手順を実行します。
++
+[cols="2*"]
+|===
+| オプション | 手順 
+
+
+| Element 11.8以降を実行しているすべてのクラスタ  a| 
+.. *参照* を選択して、ダウンロードしたアップグレード パッケージをアップロードします。
+.. アップロードが完了するまでお待ちください。進行状況バーにアップロードのステータスが表示されます。
++
+
+CAUTION: ブラウザ ウィンドウから移動すると、ファイルのアップロードは失われます。
+
++
+ファイルが正常にアップロードされ、検証されると、画面にメッセージが表示されます。検証には数分かかる場合があります。この段階でブラウザ ウィンドウから移動しても、ファイルのアップロードは保持されます。
+
+.. *アップグレードの開始*を選択します。
++
+
+TIP: *アップグレード ステータス* は、アップグレード中にプロセスのステータスを反映して変化します。また、アップグレードを一時停止したり、アップグレードでエラーが返されたりした場合など、実行したアクションに応じても変更されます。見る<<アップグレードステータスの変更>>。
+
++
+
+NOTE: アップグレードの進行中は、ページを離れて後で戻って、引き続き進行状況を監視できます。クラスター行が折りたたまれている場合、ページのステータスと現在のバージョンは動的に更新されません。テーブルを更新するには、クラスター行を展開するか、ページを更新する必要があります。
+
++
+アップグレードが完了したら、ログをダウンロードできます。
+
+
+
+
+
+| 11.8 より前のバージョンの Element を実行している H610S クラスターをアップグレードしています。  a| 
+.. アップグレードするクラスターの横にあるドロップダウン矢印を選択し、利用可能なアップグレード バージョンから選択します。
+.. *アップグレードの開始*を選択します。アップグレードが完了すると、UI によって追加のアップグレード手順を実行するように求められます。
+.. 必要な追加手順を完了してください。 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["技術情報"^] 、フェーズ 2 が完了したことを UI で確認します。
+
+
+アップグレードが完了したら、ログをダウンロードできます。アップグレードステータスのさまざまな変更については、以下を参照してください。<<アップグレードステータスの変更>> 。
+
+|===
+
+
+
+
+=== アップグレードステータスの変更
+
+アップグレード プロセスの前、最中、および後に UI の *アップグレード ステータス* 列に表示されるさまざまな状態は次のとおりです。
+
+[cols="2*"]
+|===
+| アップグレード状態 | 説明 
+
+
+| 最新 | クラスターは利用可能な最新の Element バージョンにアップグレードされました。 
+
+
+| 使用可能なバージョンあり | Element および/またはストレージ ファームウェアの新しいバージョンをアップグレードできます。 
+
+
+| 実行中 | アップグレードが進行中です。進行状況バーにアップグレードのステータスが表示されます。画面上のメッセージには、ノード レベルの障害も表示され、アップグレードの進行中にクラスター内の各ノードのノード ID も表示されます。  Element UI または vCenter Server UI 用のNetApp Elementプラグインを使用して、各ノードのステータスを監視できます。 
+
+
+| アップグレードを一時停止中 | アップグレードを一時停止することもできます。アップグレード プロセスの状態に応じて、一時停止操作は成功または失敗する可能性があります。一時停止操作の確認を求める UI プロンプトが表示されます。アップグレードを一時停止する前にクラスターが安全な場所にあることを確認するために、アップグレード操作が完全に一時停止されるまでに最大 2 時間かかる場合があります。アップグレードを再開するには、[再開] を選択します。 
+
+
+| 一時停止 | アップグレードを一時停止しました。プロセスを再開するには、[*再開*] を選択します。 
+
+
+| エラー | アップグレード中にエラーが発生しました。エラー ログをダウンロードしてNetAppサポートに送信できます。エラーを解決したら、ページに戻って「*再開*」を選択できます。アップグレードを再開すると、システムがヘルスチェックを実行し、アップグレードの現在の状態をチェックする間、進行状況バーは数分間逆戻りします。 
+
+
+| 完了（要フォローアップ） | Element バージョン 11.8 より前からアップグレードする H610S ノードのみ。アップグレードプロセスのフェーズ1が完了すると、この状態では追加のアップグレード手順を実行するように求められます（ https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["技術情報"^] ）。フェーズ 2 を完了し、完了したことを確認すると、ステータスが「最新」に変わります。 
+|===
+
+
+== NetApp Hybrid Cloud Control APIを使用してElementストレージをアップグレードする
+
+API を使用して、クラスター内のストレージ ノードを最新の Element ソフトウェア バージョンにアップグレードできます。任意の自動化ツールを使用して API を実行できます。ここで説明する API ワークフローでは、管理ノードで使用可能な REST API UI を例として使用します。
+
+.手順
+. 管理ノードからアクセス可能なデバイスにストレージ アップグレード パッケージをダウンロードします。
++
+Elementソフトウェアへ https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["ダウンロードページ"^]最新のストレージ ノード イメージをダウンロードします。
+
+. ストレージ アップグレード パッケージを管理ノードにアップロードします。
++
+.. 管理ノードで管理ノード REST API UI を開きます。
++
+[listing]
+----
+https://<ManagementNodeIP>/package-repository/1/
+----
+.. *承認*を選択し、以下を完了します。
++
+... クラスターのユーザー名とパスワードを入力します。
+... クライアントIDを入力してください `mnode-client`。
+... セッションを開始するには、[承認] を選択します。
+... 認証ウィンドウを閉じます。
+
+
+.. REST API UI から、*POST /packages* を選択します。
+.. *試してみる*を選択します。
+.. *参照*を選択し、アップグレード パッケージを選択します。
+.. アップロードを開始するには、[実行] を選択します。
+.. レスポンスからパッケージIDをコピーして保存します(`"id"`) を後のステップで使用します。
+
+
+. アップロードのステータスを確認します。
++
+.. REST API UI から、*GET​ /packages​/{id}​/status* を選択します。
+.. *試してみる*を選択します。
+.. *id* に、前の手順でコピーしたパッケージ ID を入力します。
+.. ステータス要求を開始するには、[実行] を選択します。
++
+回答は `state`として `SUCCESS`完了したら。
+
+
+
+. ストレージ クラスター ID を見つけます。
++
+.. 管理ノードで管理ノード REST API UI を開きます。
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. *承認*を選択し、以下を完了します。
++
+... クラスターのユーザー名とパスワードを入力します。
+... クライアントIDを入力してください `mnode-client`。
+... セッションを開始するには、[承認] を選択します。
+... 認証ウィンドウを閉じます。
+
+
+.. REST API UI から、*GET /installations* を選択します。
+.. *試してみる*を選択します。
+.. *実行*を選択します。
+.. レスポンスからインストールアセットIDをコピーします(`"id"`）。
+.. REST API UI から、*GET /installations/{id}* を選択します。
+.. *試してみる*を選択します。
+.. インストール アセット ID を *id* フィールドに貼り付けます。
+.. *実行*を選択します。
+.. レスポンスからストレージクラスタIDをコピーして保存します(`"id"`後の手順で使用するために、アップグレードする予定のクラスターの .dmg ファイル ( ) を保存します。
+
+
+. ストレージ アップグレードを実行します。
++
+.. 管理ノードでストレージ REST API UI を開きます。
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. *承認*を選択し、以下を完了します。
++
+... クラスターのユーザー名とパスワードを入力します。
+... クライアントIDを入力してください `mnode-client`。
+... セッションを開始するには、[承認] を選択します。
+... 認証ウィンドウを閉じます。
+
+
+.. *POST /upgrades*を選択します。
+.. *試してみる*を選択します。
+.. パラメータ フィールドにアップグレード パッケージ ID を入力します。
+.. パラメータ フィールドにストレージ クラスター ID を入力します。
++
+ペイロードは次の例のようになります。
+
++
+[listing]
+----
+{
+  "config": {},
+  "packageId": "884f14a4-5a2a-11e9-9088-6c0b84e211c4",
+  "storageId": "884f14a4-5a2a-11e9-9088-6c0b84e211c4"
+}
+----
+.. アップグレードを開始するには、[実行] を選択します。
++
+応答では、状態を次のように示す必要があります。 `initializing` :
+
++
+[listing]
+----
+{
+  "_links": {
+    "collection": "https://localhost:442/storage/upgrades",
+    "self": "https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1",
+    "log": https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1/log
+  },
+  "storageId": "114f14a4-1a1a-11e9-9088-6c0b84e200b4",
+  "upgradeId": "334f14a4-1a1a-11e9-1055`-6c0b84e2001b4",
+  "packageId": "774f14a4-1a1a-11e9-8888-6c0b84e200b4",
+  "config": {},
+  "state": "initializing",
+  "status": {
+    "availableActions": [
+      "string"
+    ],
+    "message": "string",
+    "nodeDetails": [
+      {
+        "message": "string",
+        "step": "NodePreStart",
+        "nodeID": 0,
+        "numAttempt": 0
+      }
+    ],
+    "percent": 0,
+    "step": "ClusterPreStart",
+    "timestamp": "2020-04-21T22:10:57.057Z",
+    "failedHealthChecks": [
+      {
+        "checkID": 0,
+        "name": "string",
+        "displayName": "string",
+        "passed": true,
+        "kb": "string",
+        "description": "string",
+        "remedy": "string",
+        "severity": "string",
+        "data": {},
+        "nodeID": 0
+      }
+    ]
+  },
+  "taskId": "123f14a4-1a1a-11e9-7777-6c0b84e123b2",
+  "dateCompleted": "2020-04-21T22:10:57.057Z",
+  "dateCreated": "2020-04-21T22:10:57.057Z"
+}
+----
+.. アップグレードIDをコピーする(`"upgradeId"`) は応答の一部です。
+
+
+. アップグレードの進行状況と結果を確認します。
++
+.. *GET ​/upgrades/{upgradeId}* を選択します。
+.. *試してみる*を選択します。
+.. *upgradeId* に前の手順のアップグレード ID を入力します。
+.. *実行*を選択します。
+.. アップグレード中に問題や特別な要件が発生した場合は、次のいずれかを実行します。
++
+[cols="2*"]
+|===
+| オプション | 手順 
+
+
+| クラスタの健全性の問題を修正する必要があるのは、 `failedHealthChecks`レスポンス本文のメッセージ。  a| 
+... 各問題について記載されている特定の KB 記事に移動する、または指定された解決策を実行します。
+... KB が指定されている場合は、関連する KB 記事に記載されているプロセスを完了します。
+... クラスターの問題を解決したら、必要に応じて再認証し、*PUT ​/upgrades/{upgradeId}* を選択します。
+... *試してみる*を選択します。
+... *upgradeId* に前の手順のアップグレード ID を入力します。
+... 入力 `"action":"resume"`リクエスト本文に。
++
+[listing]
+----
+{
+  "action": "resume"
+}
+----
+... *実行*を選択します。
+
+
+
+
+| メンテナンス期間が終了するか、またはその他の理由により、アップグレードを一時停止する必要があります。  a| 
+... 必要に応じて再認証し、*PUT ​/upgrades/{upgradeId}* を選択します。
+... *試してみる*を選択します。
+... *upgradeId* に前の手順のアップグレード ID を入力します。
+... 入力 `"action":"pause"`リクエスト本文に。
++
+[listing]
+----
+{
+  "action": "pause"
+}
+----
+... *実行*を選択します。
+
+
+
+
+| 11.8より前のバージョンのElementを実行しているH610Sクラスタをアップグレードする場合は、状態が表示されます。 `finishedNeedsAck`応答本文に、H610S ストレージ ノードごとに追加のアップグレード手順を実行する必要があります。  a| 
+... 追加のアップグレード手順を完了してください https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["技術情報"^]各ノードに対して。
+... 必要に応じて再認証し、*PUT ​/upgrades/{upgradeId}* を選択します。
+... *試してみる*を選択します。
+... *upgradeId* に前の手順のアップグレード ID を入力します。
+... 入力 `"action":"acknowledge"`リクエスト本文に。
++
+[listing]
+----
+{
+  "action": "acknowledge"
+}
+----
+... *実行*を選択します。
+
+
+|===
+.. プロセスが完了するまで、必要に応じて *GET ​/upgrades/{upgradeId}* API を複数回実行します。
++
+アップグレード中、 `status`示す `running`エラーが発生しなかった場合。各ノードがアップグレードされるにつれて、 `step`値が変更される `NodeFinished`。
+
++
+アップグレードが正常に完了すると、 `percent`価値は `100`そして `state`示す `finished`。
+
+
+
+
+
+
+
+== NetApp Hybrid Cloud Control を使用したアップグレードが失敗した場合はどうなるでしょうか?
+
+アップグレード中にドライブまたはノードに障害が発生した場合、Element UI にクラスター障害が表示されます。アップグレード プロセスは次のノードに進まず、クラスターの障害が解決されるまで待機します。 UI の進行状況バーには、アップグレードがクラスター障害の解決を待機中であることが示されます。この段階では、アップグレードはクラスターが正常になるまで待機するため、UI で *一時停止* を選択しても機能しません。障害の調査を支援するためにNetAppサポートに問い合わせる必要があります。
+
+NetApp Hybrid Cloud Control には 3 時間の待機期間が事前に設定されており、その間に次のいずれかのシナリオが発生する可能性があります。
+
+* クラスターの障害は 3 時間以内に解決され、アップグレードが再開されます。このシナリオでは、何らかのアクションを実行する必要はありません。
+* 問題は 3 時間経過しても解決せず、アップグレード ステータスに赤いバナーとともに *エラー* が表示されます。問題が解決したら、[*再開*] を選択してアップグレードを再開できます。
+* NetAppサポートは、3 時間の期限が切れる前に修正措置を講じるためにアップグレードを一時的に中止する必要があると判断しました。サポートは API を使用してアップグレードを中止します。
+
+
+
+CAUTION: ノードの更新中にクラスターのアップグレードを中止すると、ドライブがノードから不用意に削除される可能性があります。ドライブが不適切に取り外された場合、アップグレード中にドライブを再度追加するには、 NetAppサポートによる手動介入が必要になります。ノードでは、ファームウェアの更新や更新後の同期アクティビティに時間がかかる可能性があります。アップグレードの進行が停止していると思われる場合は、 NetAppサポートにお問い合わせください。
+
+[discrete]
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

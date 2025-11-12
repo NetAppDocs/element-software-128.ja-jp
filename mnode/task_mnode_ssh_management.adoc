@@ -1,0 +1,155 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_ssh_management.html 
+summary: NetApp Hybrid Cloud Control UI または REST API UI を使用して、管理ノードの SSH 機能を無効または有効にしたり、REST API UI を使用して SSH サポート接続機能のステータスを確認したりできます。 
+keywords: netapp, mnode, management node, ssh, disable, enable, rest api, hybrid, cloud, control, hcc 
+---
+= 管理ノードでSSH機能を管理する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+REST API を使用して、管理ノード (mNode) 上の SSH 機能を無効化、再有効化、またはステータスを確認することもできます。  SSH機能により、link:task_mnode_enable_remote_support_connections.html["NetAppサポート リモート サポート トンネル (RST) セッション アクセス"]管理サービス 2.18 以降を実行している管理ノードでは、デフォルトで無効になっています。
+
+Management Services 2.20.69 以降では、 NetApp Hybrid Cloud Control UI を使用して管理ノードで SSH 機能を有効または無効にすることができます。
+
+.要件
+* * NetApp Hybrid Cloud Control の権限*: 管理者としての権限があります。
+* *クラスター管理者の権限*: ストレージ クラスターに対する管理者としての権限があります。
+* *Element ソフトウェア*: クラスターはNetApp Elementソフトウェア 11.3 以降を実行しています。
+* *管理ノード*: バージョン 11.3 以降を実行している管理ノードをデプロイしました。
+* *管理サービスの更新*:
++
+** NetApp Hybrid Cloud Control UIを使用するには、 https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["管理サービスバンドル"^]バージョン 2.20.69 以降。
+** REST API UIを使用するには、 https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["管理サービスバンドル"^]バージョン 2.17 に。
+
+
+
+
+.オプション
+* <<NetApp Hybrid Cloud Control UI を使用して管理ノードの SSH 機能を無効または有効にします>>
+
+
+以下のタスクは、link:task_mnode_api_get_authorizationtouse.html["認証する"] :
+
+* <<API を使用して管理ノードの SSH 機能を無効または有効にする>>
+* <<APIを使用して管理ノードのSSH機能のステータスを確認する>>
+
+
+
+
+== NetApp Hybrid Cloud Control UI を使用して管理ノードの SSH 機能を無効または有効にします
+
+管理ノードで SSH 機能を無効にしたり、再度有効にしたりすることができます。  SSH機能により、link:task_mnode_enable_remote_support_connections.html["NetAppサポート リモート サポート トンネル (RST) セッション アクセス"]管理サービス 2.18 以降を実行している管理ノードでは、デフォルトで無効になっています。  SSH を無効にしても、管理ノードへの既存の SSH クライアント セッションは終了または切断されません。  SSH を無効にして、後で再度有効にすることを選択した場合は、 NetApp Hybrid Cloud Control UI を使用して行うことができます。
+
+
+NOTE: ストレージクラスターのSSHを使用したサポートアクセスを有効または無効にするには、link:../storage/task_system_manage_cluster_enable_and_disable_support_access.html["要素UIクラスター設定ページ"] 。
+
+.手順
+. ダッシュボードから、右上にあるオプション メニューを選択し、[構成] を選択します。
+. *管理ノードのサポートアクセス*画面で、スイッチを切り替えて管理ノード SSH を有効にします。
+. トラブルシューティングが完了したら、*管理ノードのサポート アクセス* 画面でスイッチを切り替えて管理ノード SSH を無効にします。
+
+
+
+
+== API を使用して管理ノードの SSH 機能を無効または有効にする
+
+管理ノードで SSH 機能を無効にしたり、再度有効にしたりすることができます。  SSH機能により、link:task_mnode_enable_remote_support_connections.html["NetAppサポート リモート サポート トンネル (RST) セッション アクセス"]管理サービス 2.18 以降を実行している管理ノードでは、デフォルトで無効になっています。  SSH を無効にしても、管理ノードへの既存の SSH クライアント セッションは終了または切断されません。  SSH を無効にして、後で再度有効にすることを選択した場合は、同じ API を使用して行うことができます。
+
+.APIコマンド
+管理サービス 2.18 以降の場合:
+
+[listing]
+----
+curl -k -X PUT "https://<<ManagementNodeIP>/mnode/2/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+管理サービス 2.17 以前の場合:
+
+[listing]
+----
+curl -X PUT "https://<ManagementNodeIP>/mnode/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+
+NOTE: 持ち主を見つけることができます `${TOKEN}`APIコマンドで使用されるlink:task_mnode_api_get_authorizationtouse.html["許可する"]。持ち主 `${TOKEN}`curl レスポンスにあります。
+
+.REST API UI の手順
+. 管理ノードのIPアドレスに続けて、管理ノードAPIサービスのREST API UIにアクセスします。 `/mnode/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. *承認*を選択し、以下を完了します。
++
+.. クラスターのユーザー名とパスワードを入力します。
+.. クライアントIDを入力してください `mnode-client`。
+.. セッションを開始するには、[承認] を選択します。
+.. ウィンドウを閉じます。
+
+
+. REST API UI から、*PUT /settings​/ssh* を選択します。
++
+.. *試してみる*を選択します。
+.. *enabled*パラメータを `false`SSHを無効にするか `true`以前無効にされた SSH 機能を再度有効にします。
+.. *実行*を選択します。
+
+
+
+
+
+
+== APIを使用して管理ノードのSSH機能のステータスを確認する
+
+管理ノード サービス API を使用して、管理ノードで SSH 機能が有効になっているかどうかを確認できます。管理サービス 2.18 以降を実行している管理ノードでは、SSH はデフォルトで無効になっています。
+
+.APIコマンド
+管理サービス 2.18 以降の場合:
+
+[listing]
+----
+curl -k -X PUT "https://<<ManagementNodeIP>/mnode/2/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+管理サービス 2.17 以前の場合:
+
+[listing]
+----
+curl -X PUT "https://<ManagementNodeIP>/mnode/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+
+NOTE: 持ち主を見つけることができます `${TOKEN}`APIコマンドで使用されるlink:task_mnode_api_get_authorizationtouse.html["許可する"]。持ち主 `${TOKEN}`curl 応答にあります。
+
+.REST API UI の手順
+. 管理ノードのIPアドレスに続けて、管理ノードAPIサービスのREST API UIにアクセスします。 `/mnode/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. *承認*を選択し、以下を完了します。
++
+.. クラスターのユーザー名とパスワードを入力します。
+.. クライアントIDを入力してください `mnode-client`。
+.. セッションを開始するには、[承認] を選択します。
+.. ウィンドウを閉じます。
+
+
+. REST API UI から、*GET /settings​/ssh* を選択します。
++
+.. *試してみる*を選択します。
+.. *実行*を選択します。
+
+
+
+
+[discrete]
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_snapmirrorpolicyrule.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorPolicyRule 
+summary: snapMirrorPolicyRule オブジェクトには、 SnapMirrorポリシー内のルールに関する情報が含まれています。 
+---
+= スナップミラーポリシールール
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorPolicyRule オブジェクトには、 SnapMirrorポリシー内のルールに関する情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラーラベル
+ a| 
+拡張データ保護関係におけるスナップショット コピーの選択に使用されるスナップショット コピー ラベル。
+ a| 
+string
+
+
+
+ a| 
+キープカウント
+ a| 
+SnapMirrorデスティネーション ボリュームで保持するSnapshotコピーの最大数を指定します。
+ a| 
+integer
+
+|===

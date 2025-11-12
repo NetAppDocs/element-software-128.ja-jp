@@ -1,0 +1,24 @@
+---
+permalink: storage/task_monitor_iscsi_sessions.html 
+sidebar: sidebar 
+keywords: iscsi sessions, monitor 
+summary: クラスターに接続されている iSCSI セッションを表示できます。必要なセッションのみを含めるように情報をフィルタリングできます。 
+---
+= iSCSIセッションの表示
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスターに接続されている iSCSI セッションを表示できます。必要なセッションのみを含めるように情報をフィルタリングできます。
+
+. Element UI で、*レポート* > *iSCSI セッション* を選択します。
+. フィルター条件フィールドを表示するには、[*フィルター*] をクリックします。
+
+
+
+
+== 詳細情報の参照
+
+xref:reference_monitor_iscsi_session_details.adoc[iSCSIセッションの詳細]

@@ -1,0 +1,51 @@
+---
+permalink: storage/concept_data_manage_vol_access_group_work_with_volume_access_groups_and_initiators.html 
+sidebar: sidebar 
+keywords: volume access groups, initiators, working with, chap, fc, iscsi 
+summary: iSCSI イニシエーターまたはファイバー チャネル イニシエーターを使用して、ボリューム アクセス グループ内で定義されたボリュームにアクセスできます。 
+---
+= ボリューム アクセス グループとイニシエーターの操作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+iSCSI イニシエーターまたはファイバー チャネル イニシエーターを使用して、ボリューム アクセス グループ内で定義されたボリュームにアクセスできます。
+
+ボリュームのコレクション内の iSCSI イニシエーター IQN またはファイバー チャネル WWPN をマッピングすることにより、アクセス グループを作成できます。アクセス グループに追加した各 IQN は、CHAP 認証を必要とせずにグループ内の各ボリュームにアクセスできます。
+
+CHAP 認証方法には 2 種類あります。
+
+* アカウント レベルの CHAP 認証: アカウントに CHAP 認証を割り当てることができます。
+* イニシエーター レベルの CHAP 認証: 単一のアカウント全体で単一の CHAP にバインドされることなく、特定のイニシエーターに一意の CHAP ターゲットとシークレットを割り当てることができます。このイニシエーター レベルの CHAP 認証は、アカウント レベルの資格情報を置き換えます。
+
+
+オプションで、イニシエータごとの CHAP を使用すると、イニシエータの承認とイニシエータごとの CHAP 認証を強制できます。これらのオプションはイニシエータごとに定義でき、アクセス グループには異なるオプションを持つイニシエータが混在できます。
+
+アクセス グループに追加する各 WWPN により、アクセス グループ内のボリュームへのファイバー チャネル ネットワーク アクセスが可能になります。
+
+
+NOTE: ボリューム アクセス グループには次の制限があります。
+
+* アクセス グループでは最大 64 個の IQN または WWPN が許可されます。
+* アクセス グループは最大 2000 個のボリュームで構成できます。
+* 1つのIQNまたはWWPNが属することのできるアクセス グループは1つだけです。
+* 1つのボリュームが最大4つのアクセス グループに属することができます。
+
+
+
+
+== 詳細情報の参照
+
+* xref:task_data_manage_vol_access_group_create_a_volume_access_group.adoc[ボリュームアクセスグループを作成する]
+* xref:task_data_manage_vol_access_group_add_volumes.adoc[アクセスグループにボリュームを追加する]
+* xref:task_data_manage_vol_access_group_remove_volumes.adoc[アクセスグループからボリュームを削除する]
+* xref:task_data_manage_vol_access_group_create_an_initiator.adoc[イニシエーターを作成する]
+* xref:task_data_manage_vol_access_group_edit_an_initiator.adoc[イニシエーターを編集する]
+* xref:task_data_manage_vol_access_group_add_a_single_initiator.adoc[ボリューム アクセス グループに単一のイニシエーターを追加する]
+* xref:task_data_manage_vol_access_group_add_multiple_initiators.adoc[ボリューム アクセス グループに複数のイニシエーターを追加する]
+* xref:task_data_manage_vol_access_group_remove_initiators_from_an_access_group.adoc[アクセス グループからイニシエーターを削除する]
+* xref:task_data_manage_vol_access_group_delete.adoc[アクセスグループを削除する]
+* xref:task_data_manage_vol_access_group_delete_an_initiator.adoc[イニシエーターを削除する]
+

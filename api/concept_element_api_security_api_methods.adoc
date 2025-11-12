@@ -1,0 +1,42 @@
+---
+permalink: api/concept_element_api_security_api_methods.html 
+sidebar: sidebar 
+keywords: security,key management,encryption 
+summary: Element ソフトウェアを、外部キー管理サーバーなどの外部セキュリティ関連サービスと統合できます。これらのセキュリティ関連のメソッドを使用すると、保存時の暗号化の外部キー管理などの Element セキュリティ機能を構成できます。 
+---
+= セキュリティAPIメソッド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element ソフトウェアを、外部キー管理サーバーなどの外部セキュリティ関連サービスと統合できます。これらのセキュリティ関連のメソッドを使用すると、保存時の暗号化の外部キー管理などの Element セキュリティ機能を構成できます。
+
+* xref:reference_element_api_addkeyservertoproviderkmip.adoc[プロバイダーKmipにキーサーバーを追加]
+* xref:reference_element_api_createkeyproviderkmip.adoc[キープロバイダーKmipの作成]
+* xref:reference_element_api_createkeyserverkmip.adoc[キーサーバーKmipの作成]
+* xref:reference_element_api_createpublicprivatekeypair.adoc[公開鍵ペアの作成]
+* xref:reference_element_api_deletekeyproviderkmip.adoc[削除キープロバイダーKmip]
+* xref:reference_element_api_deletekeyserverkmip.adoc[キーサーバーKmipの削除]
+* xref:reference_element_api_disableencryptionatrest.adoc[保存時の暗号化を無効にする]
+* xref:reference_element_api_enableencryptionatrest.adoc[保存時の暗号化を有効にする]
+* xref:reference_element_api_getclientcertificatesignrequest.adoc[GetClientCertificateSignRequest]
+* xref:reference_element_api_getkeyproviderkmip.adoc[GetKeyProviderKmip]
+* xref:reference_element_api_getkeyserverkmip.adoc[GetKeyServerKmip]
+* xref:reference_element_api_listkeyproviderskmip.adoc[リストキープロバイダーKmip]
+* xref:reference_element_api_listkeyserverskmip.adoc[リストキーサーバーKmip]
+* xref:reference_element_api_modifykeyserverkmip.adoc[キーサーバーKmipの変更]
+* xref:reference_element_api_removekeyserverfromproviderkmip.adoc[プロバイダーKmipからキーサーバーを削除]
+* xref:reference_element_api_signsshkeys.adoc[署名Sshキー]
+* xref:reference_element_api_testkeyproviderkmip.adoc[テストキープロバイダーKmip]
+* xref:reference_element_api_testkeyserverkmip.adoc[テストキーサーバーKmip]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

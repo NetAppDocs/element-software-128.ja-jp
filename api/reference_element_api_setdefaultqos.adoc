@@ -1,0 +1,139 @@
+---
+permalink: api/reference_element_api_setdefaultqos.html 
+sidebar: sidebar 
+keywords: qos,value,configure,configuring,default,set,setting,setdefaultqos 
+summary: 'SetDefaultQoS メソッドを使用して、ボリュームのデフォルトのサービス品質 (QoS) 値 (1 秒あたりの入出力数 (IOPS) で測定) を構成できます。' 
+---
+= デフォルトQoSの設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `SetDefaultQoS`ボリュームのデフォルトのサービス品質 (QoS) 値 (1 秒あたりの入出力数、つまり IOPS で測定) を構成する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+最小IOPS
+ a| 
+クラスターによってボリュームに提供される持続的な IOPS の最小数。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+最大IOPS
+ a| 
+クラスターによってボリュームに提供される持続的な IOPS の最大数。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+バーストIOPS
+ a| 
+短いバーストシナリオで許可される IOPS の最大数。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+最小IOPS
+ a| 
+クラスターによってボリュームに提供される持続的な IOPS の最小数。
+ a| 
+integer
+
+
+
+ a| 
+最大IOPS
+ a| 
+クラスターによってボリュームに提供される持続的な IOPS の最大数。
+ a| 
+integer
+
+
+
+ a| 
+バーストIOPS
+ a| 
+短いバーストシナリオで許可される IOPS の最大数。
+ a| 
+integer
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "SetDefaultQoS",
+    "params": {
+        "burstIOPS":8000,
+        "maxIOPS":1000,
+        "minIOPS":200
+    },
+    "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "id":1,
+    "result": {
+        "burstIOPS":8000,
+        "maxIOPS":1000,
+        "minIOPS":200
+    ​}
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

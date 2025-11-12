@@ -1,0 +1,263 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_recover.html 
+summary: NetApp Elementソフトウェアを実行しているクラスターの管理ノードを回復して再展開できます。構成によっては、管理ノードの認証を再構成する必要がある場合があります。 
+keywords: netapp, element, management node, mnode, disaster recovery, redeploy, VM 
+---
+= 管理ノードを回復する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+以前の管理ノードで永続ボリュームを使用していた場合は、 NetApp Elementソフトウェアを実行しているクラスターの管理ノードを手動で回復して再展開できます。
+
+新しい OVA をデプロイし、再デプロイ スクリプトを実行して、バージョン 11.3 以降を実行している以前にインストールされた管理ノードから構成データを取得できます。
+
+.要件
+* 以前の管理ノードではNetApp Elementソフトウェアバージョン11.3以降が実行されており、link:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["永続ボリューム"]機能が有効になりました。
+* 永続ボリュームを含むクラスターの MVIP と SVIP がわかっています。
+* クラスタ バージョンでは、 NetApp Elementソフトウェア 11.3 以降が実行されています。
+* インストールでは IPv4 を使用します。管理ノード 11.3 は IPv6 をサポートしていません。
+* NetAppサポート サイトからソフトウェアをダウンロードする権限があります。
+* プラットフォームに適した管理ノード イメージ タイプを特定しました。
++
+[cols="30,30"]
+|===
+| プラットフォーム | インストールイメージの種類 
+
+
+| Microsoft Hyper-V | .iso 
+
+
+| KVM | .iso 
+
+
+| VMware vSphere | .iso、.ova 
+
+
+| Citrix XenServer | .iso 
+
+
+| OpenStack | .iso 
+|===
+
+
+.手順
+. <<ISOまたはOVAをダウンロードしてVMを展開する>>
+. <<ネットワークを構成する>>
+. <<時刻同期を設定する>>
+. <<管理ノードを構成する>>
+
+
+
+
+== ISOまたはOVAをダウンロードしてVMを展開する
+
+. インストール用のOVAまたはISOを以下からダウンロードします。 https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["エレメントソフトウェア"^] NetAppサポート サイトのページ。
++
+.. *最新リリースをダウンロード*を選択し、EULA に同意します。
+.. ダウンロードする管理ノード イメージを選択します。
+
+
+. OVA をダウンロードした場合は、次の手順に従ってください。
++
+.. OVA をデプロイします。
+.. ストレージ クラスターが管理ノード (eth0) とは別のサブネット上にあり、永続ボリュームを使用する場合は、ストレージ サブネット (eth1 など) 上の VM に 2 番目のネットワーク インターフェイス コントローラー (NIC) を追加するか、管理ネットワークがストレージ ネットワークにルーティングできることを確認します。
+
+
+. ISO をダウンロードした場合は、次の手順に従ってください。
++
+.. 次の構成で、ハイパーバイザーから新しい 64 ビット仮想マシンを作成します。
++
+*** 6つの仮想CPU
+*** 24GBのRAM
+*** 400GBの仮想ディスク、シンプロビジョニング
+*** インターネット アクセスとストレージ MVIP へのアクセスを備えた 1 つの仮想ネットワーク インターフェイス。
+*** ( SolidFireオールフラッシュ ストレージの場合はオプション) ストレージ クラスターへの管理ネットワーク アクセスを備えた 1 つの仮想ネットワーク インターフェイス。ストレージ クラスターが管理ノード (eth0) とは別のサブネット上にあり、永続ボリュームを使用する場合は、ストレージ サブネット (eth1) 上の VM に 2 番目のネットワーク インターフェイス コントローラー (NIC) を追加するか、管理ネットワークがストレージ ネットワークにルーティングできることを確認します。
++
+
+IMPORTANT: この手順の後半で仮想マシンの電源をオンにするように指示されるステップの前に、仮想マシンの電源をオンにしないでください。
+
+
+
+.. ISO を仮想マシンに接続し、.iso インストール イメージから起動します。
++
+
+NOTE: イメージを使用して管理ノードをインストールすると、スプラッシュ スクリーンが表示されるまでに 30 秒の遅延が発生する可能性があります。
+
+
+
+. インストールが完了したら、管理ノードの仮想マシンの電源をオンにします。
+
+
+
+
+== ネットワークを構成する
+
+. ターミナル ユーザー インターフェイス (TUI) を使用して、管理ノードの管理者ユーザーを作成します。
++
+
+TIP: メニュー オプション間を移動するには、上矢印キーまたは下矢印キーを押します。ボタン間を移動するには、Tab キーを押します。ボタンからフィールドに移動するには、Tab キーを押します。フィールド間を移動するには、上矢印キーまたは下矢印キーを押します。
+
+. 管理ノードネットワーク (eth0) を構成します。
++
+
+NOTE: ストレージ トラフィックを分離するために追加の NIC が必要な場合は、別の NIC を構成する手順を参照してください。link:task_mnode_install_add_storage_NIC.html["ストレージ ネットワーク インターフェイス コントローラ (NIC) を構成する"] 。
+
+
+
+
+
+== 時刻同期を設定する
+
+. NTP を使用して管理ノードとストレージ クラスター間で時刻が同期されていることを確認します。
+
+
+
+NOTE: 要素12.3.1以降、サブステップ(a)～(e)は自動的に実行されます。管理ノード12.3.1以降の場合は、<<substep_f_recover_config_time_sync,サブステップ（f）>>時刻同期の構成を完了します。
+
+. SSH またはハイパーバイザーが提供するコンソールを使用して管理ノードにログインします。
+. NTPDを停止します。
++
+[listing]
+----
+sudo service ntpd stop
+----
+. NTP設定ファイルを編集する `/etc/ntp.conf`:
++
+.. デフォルトサーバーをコメントアウトする(`server 0.gentoo.pool.ntp.org`）を追加することで `#`それぞれの前に。
+.. 追加したいデフォルトのタイムサーバーごとに新しい行を追加します。デフォルトのタイムサーバーは、ストレージクラスターで使用するNTPサーバーと同じである必要があります。 link:task_mnode_recover.html#configure-the-management-node["後のステップ"]。
++
+[listing]
+----
+vi /etc/ntp.conf
+
+#server 0.gentoo.pool.ntp.org
+#server 1.gentoo.pool.ntp.org
+#server 2.gentoo.pool.ntp.org
+#server 3.gentoo.pool.ntp.org
+server <insert the hostname or IP address of the default time server>
+----
+.. 完了したら設定ファイルを保存します。
+
+
+. 新しく追加されたサーバーとの NTP 同期を強制します。
++
+[listing]
+----
+sudo ntpd -gq
+----
+. NTPD を再起動します。
++
+[listing]
+----
+sudo service ntpd start
+----
+. [[substep_f_recover_config_time_sync]]ハイパーバイザー経由でホストとの時刻同期を無効にします（以下は VMware の例です）。
++
+
+NOTE: Openstack 環境の .iso イメージなど、VMware 以外のハイパーバイザー環境に mNode を展開する場合は、同等のコマンドについてはハイパーバイザーのドキュメントを参照してください。
+
++
+.. 定期的な時刻同期を無効にする:
++
+[listing]
+----
+vmware-toolbox-cmd timesync disable
+----
+.. サービスの現在のステータスを表示して確認します。
++
+[listing]
+----
+vmware-toolbox-cmd timesync status
+----
+.. vSphereで、 `Synchronize guest time with host` VM オプションのボックスがオフになっています。
++
+
+NOTE: 今後 VM に変更を加える場合は、このオプションを有効にしないでください。
+
+
+
+
+
+
+NOTE: 時刻同期の設定が完了したら、NTPを編集しないでください。これは、実行時にNTPに影響します。 <<step_6_recover_mnode_redeploy,再展開コマンド>> 管理ノード上。
+
+
+
+== 管理ノードを構成する
+
+. 管理サービス バンドルのコンテンツ用の一時的な保存先ディレクトリを作成します。
++
+[listing]
+----
+mkdir -p /sf/etc/mnode/mnode-archive
+----
+. 既存の管理ノードに以前インストールされていた管理サービスバンドル（バージョン2.15.28以降）をダウンロードし、 `/sf/etc/mnode/`ディレクトリ。
+. 次のコマンドを使用してダウンロードしたバンドルを抽出し、[ ] 括弧内の値 (括弧を含む) をバンドル ファイルの名前に置き換えます。
++
+[listing]
+----
+tar -C /sf/etc/mnode -xvf /sf/etc/mnode/[management services bundle file]
+----
+. 結果のファイルを `/sf/etc/mnode-archive`ディレクトリ：
++
+[listing]
+----
+tar -C /sf/etc/mnode/mnode-archive -xvf /sf/etc/mnode/services_deploy_bundle.tar.gz
+----
+. アカウントとボリュームの構成ファイルを作成します。
++
+[listing]
+----
+echo '{"trident": true, "mvip": "[mvip IP address]", "account_name": "[persistent volume account name]"}' | sudo tee /sf/etc/mnode/mnode-archive/management-services-metadata.json
+----
++
+.. 次の必須パラメータごとに、[ ] 括弧内の値（括弧を含む）を置き換えます。
++
+*** *[mvip IP アドレス]*: ストレージ クラスターの管理仮想 IP アドレス。管理ノードを、インストール時に使用したのと同じストレージクラスターで構成します。 link:task_mnode_recover.html#configure-time-sync["NTPサーバーの構成"]。
+*** *[永続ボリューム アカウント名]*: このストレージ クラスター内のすべての永続ボリュームに関連付けられているアカウントの名前。
+
+
+
+
+
+
+[[step_6_recover_mnode_redeploy]]
+. 管理ノードの再デプロイ コマンドを構成して実行し、クラスターでホストされている永続ボリュームに接続し、以前の管理ノード構成データを使用してサービスを開始します。
++
+
+NOTE: 安全なプロンプトでパスワードを入力するよう求められます。クラスターがプロキシ サーバーの背後にある場合は、パブリック ネットワークにアクセスできるようにプロキシ設定を構成する必要があります。
+
++
+[listing]
+----
+sudo /sf/packages/mnode/redeploy-mnode --mnode_admin_user [username]
+----
++
+.. [ ] 括弧内の値（括弧を含む）を管理ノード管理者アカウントのユーザー名に置き換えます。これは、管理ノードにログインするために使用したユーザー アカウントのユーザー名である可能性があります。
++
+
+NOTE: ユーザー名を追加するか、スクリプトに情報の入力を求めるようにすることができます。
+
+.. 実行 `redeploy-mnode`指示。再デプロイメントが完了すると、スクリプトによって成功メッセージが表示されます。
+.. システムの完全修飾ドメイン名（FQDN）を使用してElement Webインターフェース（管理ノードやNetApp Hybrid Cloud Controlなど）にアクセスする場合、link:../upgrade/task_hcc_upgrade_management_node.html#reconfigure-authentication-using-the-management-node-rest-api["管理ノードの認証を再構成する"] 。
+
+
+
+
+
+IMPORTANT: SSH機能により、link:task_mnode_enable_remote_support_connections.html["NetAppサポート リモート サポート トンネル (RST) セッション アクセス"]管理サービス 2.18 以降を実行している管理ノードでは、デフォルトで無効になっています。以前に管理ノードでSSH機能を有効にしていた場合は、link:task_mnode_ssh_management.html["SSHを再度無効にする"]回復した管理ノード上。
+
+[discrete]
+== 詳細情報はこちら
+
+* link:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["永続ボリューム"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

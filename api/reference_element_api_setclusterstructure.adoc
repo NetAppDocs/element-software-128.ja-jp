@@ -1,0 +1,85 @@
+---
+permalink: api/reference_element_api_setclusterstructure.html 
+sidebar: sidebar 
+keywords: storage,cluster,configuration,info,restore,set,setting,setclusterstructure 
+summary: SetClusterStructure メソッドを使用して、バックアップからストレージ クラスターの構成情報を復元できます。メソッドを呼び出すときは、復元する構成情報を含む clusterStructure オブジェクトを params パラメータとして渡します。 
+---
+= クラスター構造の設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `SetClusterStructure`バックアップからストレージ クラスターの構成情報を復元する方法。メソッドを呼び出すときは、復元する構成情報を含む clusterStructure オブジェクトを params パラメータとして渡します。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+パラメータ
+ a| 
+現在のストレージ クラスターの構成情報を含む JSON オブジェクト。
+ a| 
+xref:reference_element_api_clusterstructure.adoc[クラスター構造]
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+結果
+ a| 
+非同期結果ハンドル。
+ a| 
+非同期ハンドル
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "SetClusterStructure",
+  "params": <insert clusterStructure object here>,
+  "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+	"id": 1,
+	"result" : {
+	"asyncHandle": 1
+	}
+}
+----
+
+
+== バージョン以降の新機能
+
+10.3

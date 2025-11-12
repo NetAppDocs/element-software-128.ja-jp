@@ -1,0 +1,33 @@
+---
+permalink: storage/task-element-replication-enable-snapmirror-cluster.html 
+sidebar: sidebar 
+keywords: ontap, cli, enable, snapmirror, element, cluster 
+summary: レプリケーション関係を作成するには、事前にElementクラスタでSnapMirrorを有効にする必要があります。このタスクは、Element ソフトウェアの Web UI または API メソッドを使用してのみ実行できます。 
+---
+= ElementクラスタでのSnapMirrorの有効化
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+レプリケーション関係を作成するには、事前にElementクラスタでSnapMirrorを有効にする必要があります。このタスクは、ElementソフトウェアのWeb UIまたは link:../api/reference_element_api_enablefeature.html["APIメソッド"]。
+
+.開始する前に
+* Element クラスタでは、 NetApp Elementソフトウェア バージョン 10.1 以降が実行されている必要があります。
+* SnapMirrorは、NetApp ONTAPボリュームを使用するElementクラスタに対してのみ有効にすることができます。
+
+
+.タスク概要
+ElementシステムのSnapMirrorはデフォルトでは無効になっています。新規インストールやアップグレード時に自動的に有効になることはありません。
+
+[NOTE]
+====
+SnapMirrorは一度有効にするとあとで無効にすることはできません。SnapMirror機能を無効にしてデフォルト設定に戻すには、クラスタを工場出荷時のイメージに戻す必要があります。
+
+====
+.手順
+. *クラスター* > *設定*をクリックします。
+. クラスタ用のSnapMirror設定を探します。
+. * SnapMirrorを有効にする *をクリックします。
+

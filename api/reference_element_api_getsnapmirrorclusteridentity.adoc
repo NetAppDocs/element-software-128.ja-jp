@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_getsnapmirrorclusteridentity.html 
+sidebar: sidebar 
+keywords: get,getting,SnapMirror,cluster,identity,GetSnapMirrorClusterIdentity 
+summary: Element ソフトウェア Web UI は、GetSnapMirrorClusterIdentity を使用してONTAPクラスタに関する ID 情報を取得します。 
+---
+= スナップミラークラスタアイデンティティの取得
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ElementソフトウェアのWeb UIは `GetSnapMirrorClusterIdentity`ONTAPクラスタに関する ID 情報を取得します。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+指定されている場合、システムは指定された snapMirrorEndpointID を持つエンドポイントのクラスター ID を一覧表示します。指定しない場合は、システムは既知のすべてのSnapMirrorエンドポイントのクラスタ ID を一覧表示します。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+snapMirrorClusterIdentity
+ a| 
+SnapMirrorエンドポイントのクラスタ ID のリスト。
+ a| 
+xref:reference_element_api_snapmirrorclusteridentity.adoc[snapMirrorClusterIdentity]配列
+
+|===
+
+
+== バージョン以降の新機能
+
+10.1

@@ -1,0 +1,162 @@
+---
+permalink: api/reference_element_api_createclustersupportbundle.html 
+sidebar: sidebar 
+keywords: CreateClusterSupportBundle,create,cluster,support,bundle,creating 
+summary: 管理ノードで CreateClusterSupportBundle を使用して、クラスター内のすべてのノードからサポート バンドルを収集できます。バンドルが作成されると、.tar.gz ファイルとしてノードに保存されます。このメソッドは管理ノードでのみ実行できます。ストレージノードで実行した場合は機能しません。 
+---
+= クラスターサポートバンドルの作成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `CreateClusterSupportBundle`管理ノードで、クラスター内のすべてのノードからサポート バンドルを収集します。個々のノード サポート バンドルは、tar.gz ファイルとして圧縮されます。クラスター サポート バンドルは、ノード サポート バンドルを含む tar ファイルです。このメソッドは管理ノードでのみ実行できます。ストレージノードで実行した場合は機能しません。
+
+
+
+== パラメータ
+
+
+NOTE: このメソッドは管理ノードに対して呼び出す必要があります。例えば：
+
+[listing]
+----
+https://<management node IP>:442/json-rpc/10.0
+----
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+不完全な許可
+ a| 
+1 つ以上のノードからバンドルを収集できない場合でも、スクリプトの実行を継続できます。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+バンドル名
+ a| 
+作成された各サポート バンドルの一意の名前。名前が指定されていない場合は、「supportbundle」とノード名がファイル名として使用されます。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+mvip
+ a| 
+クラスターの MVIP。バンドルはクラスター内のすべてのノードから収集されます。  nodes パラメータが指定されていない場合は、このパラメータは必須です。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+ノード
+ a| 
+バンドルを収集するノードの IP アドレス。バンドルを収集するノードを指定するには、nodes または mvip のいずれかを使用します (両方は使用できません)。  mvip が指定されていない場合は、このパラメータは必須です。
+ a| 
+文字列配列
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+パスワード
+ a| 
+クラスター管理者のパスワード。  *注意:* このパスワードは入力するとテキストとして表示されます。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+ユーザ名
+ a| 
+クラスター管理者のユーザー名。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+"method": "CreateClusterSupportBundle",
+"params": {
+          "bundlename": "clusterbundle",
+          "mvip": "132.119.120.100"
+     }
+   },
+ "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id":1,
+  "result":{
+   "details":{
+      "bundleName":"clusterbundle",
+      "extraArgs":"",
+      "files":[
+          "/tmp/supportbundles/clusterbundle.cl-4SD5.tar"
+      ],
+      "output":"timeout -s KILL 1790s /usr/local/bin/sfclustersupportbundle --quiet --name=\"clusterbundle\" --target-directory=\"/tmp/solidfire-dtemp.MM7f0m\" --user=\"admin\" --pass=\"admin\" --mvip=132.119.120.100"
+       },
+       "duration":"00:00:24.938127",
+       "result":"Passed"
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

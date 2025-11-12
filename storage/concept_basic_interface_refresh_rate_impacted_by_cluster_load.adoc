@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_basic_interface_refresh_rate_impacted_by_cluster_load.html 
+sidebar: sidebar 
+keywords: data refresh interval, cluster, interval controls, API requests, heavy load cluster, cluster credentials 
+summary: API 応答時間に応じて、クラスタは、表示しているNetApp Elementソフトウェア ページの特定の部分のデータ更新間隔を自動的に調整する場合があります。 
+---
+= インターフェースの更新レートはクラスタ負荷の影響を受けます
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+API 応答時間に応じて、クラスタは、表示しているNetApp Elementソフトウェア ページの特定の部分のデータ更新間隔を自動的に調整する場合があります。
+
+ブラウザでページを再読み込みすると、更新間隔はデフォルトにリセットされます。ページの右上にあるクラスター名をクリックすると、現在の更新間隔を確認できます。間隔は、データがサーバーから返される速度ではなく、API リクエストの実行頻度を制御することに注意してください。
+
+クラスターの負荷が高い場合、Element UI からの API リクエストがキューに入れられることがあります。まれに、ネットワーク接続が遅く、クラスターが混雑しているなどの理由でシステム応答が大幅に遅れると、キューに入れられた API 要求にシステムが十分な速さで応答せず、Element UI からログアウトされることがあります。ログアウト画面にリダイレクトされた場合は、ブラウザの最初の認証プロンプトを閉じた後、再度ログインできます。概要ページに戻ると、ブラウザにクラスターの資格情報が保存されていない場合は、その入力を求められることがあります。

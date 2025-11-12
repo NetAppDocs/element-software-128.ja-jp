@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_system_manage_key_external_key_management_api_commands.html 
+sidebar: sidebar 
+keywords: ekm, api commands, key providers 
+summary: EKM の管理と構成に使用できるすべての API のリスト。 
+---
+= 外部キー管理APIコマンド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+EKM の管理と構成に使用できるすべての API のリスト。
+
+クラスターと外部の顧客所有サーバー間の信頼関係を確立するために使用されます。
+
+* 公開鍵ペアの作成
+* GetClientCertificateSignRequest
+
+
+外部顧客所有サーバーの具体的な詳細を定義するために使用されます。
+
+* キーサーバーKmipの作成
+* キーサーバーKmipの変更
+* キーサーバーKmipの削除
+* GetKeyServerKmip
+* リストキーサーバーKmip
+* テストキーサーバーKmip
+
+
+外部キー サーバーを管理するキー プロバイダーの作成と管理に使用されます。
+
+* キープロバイダーKmipの作成
+* 削除キープロバイダーKmip
+* プロバイダーKmipにキーサーバーを追加
+* プロバイダーKmipからキーサーバーを削除
+* GetKeyProviderKmip
+* リストキープロバイダーKmip
+* 再鍵ソフトウェア暗号化保存マスターキー
+* テストキープロバイダーKmip
+
+
+APIメソッドの詳細については、以下を参照してください。 link:../api/concept_element_api_about_the_api.html["APIリファレンス情報"]。

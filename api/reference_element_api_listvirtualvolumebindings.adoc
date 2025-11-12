@@ -1,0 +1,100 @@
+---
+permalink: api/reference_element_api_listvirtualvolumebindings.html 
+sidebar: sidebar 
+keywords: virtual,volume,vvol,cluster,bound,protocol,endpoint,binding,bindings,list,listing,listvirtualvolumebindings 
+summary: ListVirtualVolumeBindings メソッドを使用すると、プロトコル エンドポイントにバインドされているクラスター内のすべての仮想ボリュームのリストを取得できます。 
+---
+= 仮想ボリュームバインディングのリスト
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ListVirtualVolumeBindings`プロトコルエンドポイントにバインドされているクラスター内のすべての仮想ボリュームのリストを取得するメソッド。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+仮想ボリュームバインディングID
+ a| 
+情報を取得する仮想ボリューム バインディング ID のリスト。このパラメータを省略すると、メソッドはすべての仮想ボリューム バインディングに関する情報を返します。
+ a| 
+整数配列
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+バインディング
+ a| 
+プロトコル エンドポイントにバインドされているクラスター内のすべての仮想ボリュームを記述するオブジェクトのリスト。
+ a| 
+xref:reference_element_api_binding_vvols.adoc[バインディング]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "ListVirtualVolumeBindings",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "bindings": [
+      {
+        "protocolEndpointID": "5dd53da0-b9b7-43f9-9b7e-b41c2558e92b",
+        "protocolEndpointInBandID": "naa.6f47acc2000000016a67746700000000",
+        "protocolEndpointType": "SCSI",
+        "virtualVolumeBindingID": 177,
+        "virtualVolumeHostID": "564de1a4-9a99-da0f-8b7c-3a41dfd64bf1",
+        "virtualVolumeID": "269d3378-1ca6-4175-a18f-6d4839e5c746",
+        "virtualVolumeSecondaryID": "0xe200000000a6"
+      }
+    ]
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

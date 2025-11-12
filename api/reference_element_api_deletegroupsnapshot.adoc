@@ -1,0 +1,97 @@
+---
+permalink: api/reference_element_api_deletegroupsnapshot.html 
+sidebar: sidebar 
+keywords: volume,volumes,group,snapshot,snapshots,delete,deleting,DeleteGroupSnapshot 
+summary: DeleteGroupSnapshot を使用してグループ スナップショットを削除できます。 
+---
+= グループスナップショットの削除
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用できます `DeleteGroupSnapshot`グループスナップショットを削除します。
+
+saveMembers パラメータを使用すると、グループ内のボリュームに対して作成されたすべてのスナップショットを保存できますが、グループの関連付けは削除されます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+グループスナップショットID
+ a| 
+グループ スナップショットの一意の ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+メンバーを保存
+ a| 
+グループ スナップショットを削除するときに削除する内容を指定します。有効な値は次のとおりです。
+
+* true: スナップショットは保持されますが、グループの関連付けは削除されます。
+* false: グループとスナップショットは削除されます。
+
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "DeleteGroupSnapshot",
+     "params": {
+       "groupSnapshotID": 10,
+       "saveMembers" : true
+        },
+     "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {}
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

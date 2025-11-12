@@ -1,0 +1,21 @@
+---
+permalink: storage/task_system_manage_virtual_edit_vrf_vlans.html 
+sidebar: sidebar 
+keywords: vrf vlans edit, vrf vlan attributes, change 
+summary: VLAN 名、ネットマスク、ゲートウェイ、IP アドレス ブロックなどの VRF VLAN 属性を変更できます。 
+---
+= VRF VLANの編集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VLAN 名、ネットマスク、ゲートウェイ、IP アドレス ブロックなどの VRF VLAN 属性を変更できます。
+
+. *クラスター* > *ネットワーク*をクリックします。
+. 編集する VLAN のアクション アイコンをクリックします。
+. *編集*をクリックします。
+. *VLAN 編集* ダイアログ ボックスに VRF VLAN の新しい属性を入力します。
+. *変更を保存*をクリックします。
+

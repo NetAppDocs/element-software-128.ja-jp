@@ -1,0 +1,116 @@
+---
+permalink: api/reference_element_api_modifysnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapmirror,relationship,modifysnapmirrorrelationship 
+summary: ModifySnapMirrorRelationship を使用して、スケジュールされたスナップショットの発生間隔を変更できます。この方法を使用して、スケジュールを削除または一時停止することもできます。 
+---
+= スナップミラー関係の変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用できます `ModifySnapMirrorRelationship`スケジュールされたスナップショットの実行間隔を変更します。この方法を使用して、スケジュールを削除または一時停止することもできます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+
+
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+宛先ボリューム
+ a| 
+SnapMirror関係の宛先ボリューム。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[スナップミラーボリューム情報]
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+最大転送速度
+ a| 
+ボリューム間の最大データ転送速度をキロバイト/秒単位で指定します。デフォルト値 0 は無制限であり、 SnapMirror関係で利用可能なネットワーク帯域幅を完全に利用できるようになります。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+ポリシー名
+ a| 
+関係のONTAP SnapMirrorポリシーの名前を指定します。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+スケジュール名
+ a| 
+SnapMirror関係を更新するために使用される、 ONTAPシステム上の既存の cron スケジュールの名前。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+Element ストレージ クラスタと通信するリモートONTAPストレージ システムのエンドポイント ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラー関係
+ a| 
+変更されたSnapMirror関係属性を含むオブジェクト。
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[スナップミラー関係]
+
+|===
+
+
+== バージョン以降の新機能
+
+10.1

@@ -1,0 +1,126 @@
+---
+permalink: api/reference_element_api_addvolumestovolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,volumes,adding,add,access,group,addvolumestovolumeaccessgroup 
+summary: AddVolumesToVolumeAccessGroup メソッドを使用して、指定したボリューム アクセス グループにボリュームを追加できます。 
+---
+= ボリュームアクセスグループにボリュームを追加
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `AddVolumesToVolumeAccessGroup`指定されたボリューム アクセス グループにボリュームを追加する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+ボリューム
+ a| 
+ボリューム アクセス グループに追加するボリューム ID のリスト。
+ a| 
+整数配列
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+ボリュームアクセスグループID
+ a| 
+ボリュームが追加されるボリューム アクセス グループの VolumeAccessGroupID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+ボリュームアクセスグループ
+ a| 
+新しく変更されたボリューム アクセス グループに関する情報を含むオブジェクト。
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[ボリュームアクセスグループ]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "AddVolumesToVolumeAccessGroup",
+   "params": {
+      "volumeAccessGroupID": 96,
+      "volumes": [1,2]
+   },
+   "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [
+        346
+      ],
+      "initiatorIDs": [
+        116,
+        117
+      ],
+      "initiators": [
+        "iqn.1993-08.org.debian:01:181324777",
+        "iqn.1993-08.org.debian:01:181324888"
+      ],
+      "name": "northbanktest",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        1,
+        2
+      ]
+    }
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

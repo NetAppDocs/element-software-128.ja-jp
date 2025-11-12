@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_disablebmccoldreset.html 
+sidebar: sidebar 
+keywords: BMC cold reset,BMC reset,disable BMC 
+summary: 'DisableBmcColdReset メソッドを使用すると、クラスター内のすべてのノードのベースボード管理コントローラー (BMC) を定期的にリセットするバックグラウンド タスクを無効にすることができます。' 
+---
+= DisableBmcColdReset
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `DisableBmcColdReset`クラスター内のすべてのノードのベースボード管理コントローラー (BMC) を定期的にリセットするバックグラウンド タスクを無効にする方法。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータがありません。
+
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+cBmcリセット時間（分）
+ a| 
+リセット間隔の時間を返します。コマンドが完了した後、間隔は常に 0 になります。
+ a| 
+integer
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "DisableBmcColdReset",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "cBmcResetDurationMinutes": 0
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+12.0

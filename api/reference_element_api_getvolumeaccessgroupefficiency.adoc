@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getvolumeaccessgroupefficiency.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,access,group,efficiency,GetVolumeAccessGroupEfficiency 
+summary: GetVolumeAccessGroupEfficiency メソッドを使用して、ボリューム アクセス グループに関する効率情報を取得できます。この API メソッドのパラメーターとして指定したボリューム アクセス グループのみが容量の計算に使用されます。 
+---
+= ボリュームアクセスグループ効率の取得
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetVolumeAccessGroupEfficiency`ボリューム アクセス グループに関する効率情報を取得する方法。この API メソッドのパラメーターとして指定したボリューム アクセス グループのみが容量の計算に使用されます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+ボリュームアクセスグループID
+ a| 
+容量を計算するボリューム アクセス グループを指定します。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+圧縮
+ a| 
+ボリューム アクセス グループ内のすべてのボリュームのデータ圧縮によって節約されるスペースの量。比率として表され、値 1 はデータが圧縮されずに保存されていることを意味します。
+ a| 
+float
+
+
+
+ a| 
+重複排除
+ a| 
+ボリューム アクセス グループ内のすべてのボリュームのデータを重複させないことで節約されるスペースの量。比率で表します。
+ a| 
+float
+
+
+
+ a| 
+シンプロビジョニング
+ a| 
+データの保存に割り当てられたスペースの量に対する使用済みスペースの比率。比率で表します。
+ a| 
+float
+
+
+
+ a| 
+タイムスタンプ
+ a| 
+ガベージ コレクション後に効率データが最後に収集された時刻。
+ a| 
+ISO 8601データ文字列
+
+
+
+ a| 
+不足しているボリューム
+ a| 
+効率データのクエリができなかったボリューム。ボリュームの欠落は、最近のガベージ コレクション、一時的なネットワーク損失、またはガベージ コレクション サイクル以降のサービスの再起動によって発生する可能性があります。
+ a| 
+整数配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "GetVolumeAccessGroupEfficiency",
+   "params": {
+      "volumeAccessGroupID": 1
+   },
+   "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.006012925331075,
+       "deduplication": 1,
+       "missingVolumes": [],
+       "thinProvisioning": 1.009861932938856,
+       "timestamp": "2014-03-10T17:05:27Z"
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

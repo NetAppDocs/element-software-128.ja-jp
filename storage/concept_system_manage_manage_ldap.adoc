@@ -1,0 +1,352 @@
+---
+permalink: storage/concept_system_manage_manage_ldap.html 
+sidebar: sidebar 
+keywords: element, solidfire, ldap, enable, disable, test, config, addresses, pre-configuration steps, authentication, element api, view ldap details 
+summary: 'Lightweight Directory Access Protocol (LDAP) を設定すると、 SolidFireストレージへの安全なディレクトリベースのログイン機能が有効になります。クラスター レベルで LDAP を構成し、LDAP ユーザーとグループを承認できます。' 
+---
+= LDAPの管理
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lightweight Directory Access Protocol (LDAP) を設定すると、 SolidFireストレージへの安全なディレクトリベースのログイン機能が有効になります。クラスター レベルで LDAP を構成し、LDAP ユーザーとグループを承認できます。
+
+LDAP を管理するには、既存の Microsoft Active Directory 環境を使用してSolidFireクラスターへの LDAP 認証を設定し、構成をテストする必要があります。
+
+
+NOTE: IPv4 アドレスと IPv6 アドレスの両方を使用できます。
+
+LDAP を有効にするには、詳細に説明されている次の大まかな手順を実行する必要があります。
+
+. *LDAP サポートの事前構成手順を完了します*。  LDAP 認証を構成するために必要なすべての詳細が揃っていることを確認します。
+. *LDAP 認証を有効にします*。  Element UI または Element API のいずれかを使用します。
+. *LDAP 構成を検証します*。オプションとして、GetLdapConfiguration API メソッドを実行するか、Element UI を使用して LCAP 構成をチェックして、クラスターが正しい値で構成されていることを確認します。
+. *LDAP認証をテストする*（ `readonly`ユーザー）。 TestLdapAuthentication API メソッドを実行するか、Element UI を使用して、LDAP 構成が正しいことをテストします。この初期テストでは、 `readonly`ユーザー。これにより、クラスタがLDAP認証用に正しく設定されていることが検証され、 `readonly`資格情報とアクセスは正しいです。この手順が失敗した場合は、手順 1 ～ 3 を繰り返します。
+. *LDAP 認証をテストします* (追加するユーザー アカウントを使用)。 Element クラスター管理者として追加するユーザー アカウントで手順 4 を繰り返します。コピー `distinguished`名前 (DN) またはユーザー (またはグループ)。この DN は手順 6 で使用されます。
+. *LDAP クラスター管理者を追加します* (LDAP 認証のテスト手順から DN をコピーして貼り付けます)。 Element UI または AddLdapClusterAdmin API メソッドのいずれかを使用して、適切なアクセス レベルを持つ新しいクラスター管理者ユーザーを作成します。ユーザー名には、手順 5 でコピーした完全な DN を貼り付けます。これにより、DN が正しくフォーマットされていることが保証されます。
+. *クラスター管理者のアクセスをテストします*。新しく作成された LDAP クラスター管理者ユーザーを使用してクラスターにログインします。  LDAP グループを追加した場合は、そのグループ内の任意のユーザーとしてログインできます。
+
+
+
+
+== LDAPサポートの事前構成手順を完了する
+
+Element で LDAP サポートを有効にする前に、Windows Active Directory サーバーをセットアップし、その他の事前構成タスクを実行する必要があります。
+
+.手順
+. Windows Active Directory サーバーをセットアップします。
+. *オプション:* LDAPS サポートを有効にします。
+. ユーザーとグループを作成します。
+. LDAP ディレクトリの検索に使用する読み取り専用サービス アカウント (「`sfreadonly`」など) を作成します。
+
+
+
+
+== ElementユーザーインターフェースでLDAP認証を有効にする
+
+既存の LDAP サーバーとのストレージ システムの統合を構成できます。これにより、LDAP 管理者はユーザーのストレージ システム アクセスを集中管理できるようになります。
+
+LDAP は、Element ユーザー インターフェイスまたは Element API を使用して構成できます。この手順では、Element UI を使用して LDAP を構成する方法について説明します。
+
+この例では、 SolidFireでLDAP認証を構成する方法を示しており、 `SearchAndBind`認証タイプとして。この例では、単一の Windows Server 2012 R2 Active Directory サーバーを使用します。
+
+.手順
+. *クラスター* > *LDAP* をクリックします。
+. LDAP 認証を有効にするには、[*はい*] をクリックします。
+. *サーバーを追加*をクリックします。
+. *ホスト名/IPアドレス*を入力します。
++
+
+NOTE: オプションでカスタム ポート番号を入力することもできます。
+
++
+たとえば、カスタムポート番号を追加するには、<ホスト名またはIPアドレス>:<ポート番号>と入力します。
+
+. *オプション:* *LDAPS プロトコルを使用する*を選択します。
+. *一般設定*に必要な情報を入力します。
++
+image::../media/element_new_ldap_servers.jpg[一般設定情報のスクリーンショット]
+
+. *LDAP を有効にする*をクリックします。
+. ユーザーのサーバーアクセスをテストする場合は、[*ユーザー認証のテスト*] をクリックします。
+. 表示される識別名とユーザー グループ情報をコピーして、後でクラスタ管理者を作成するときに使用します。
+. 新しい設定を保存するには、[*変更を保存*] をクリックします。
+. 誰でもログインできるようにこのグループにユーザーを作成するには、次の手順を実行します。
++
+.. *ユーザー* > *表示*をクリックします。
++
+image::../media/element_new_cluster_admin.jpg[新しいユーザーの作成ページのスクリーンショット]
+
+.. 新しいユーザーの場合、ユーザー タイプとして *LDAP* をクリックし、コピーしたグループを識別名フィールドに貼り付けます。
+.. 権限（通常はすべての権限）を選択します。
+.. エンドユーザー使用許諾契約まで下にスクロールし、「同意します」をクリックします。
+.. *クラスター管理者の作成*をクリックします。
++
+これで、Active Directory グループの値を持つユーザーが作成されました。
+
+
+
+
+
+これをテストするには、Element UI からログアウトし、そのグループのユーザーとして再度ログインします。
+
+
+
+== Element APIでLDAP認証を有効にする
+
+既存の LDAP サーバーとのストレージ システムの統合を構成できます。これにより、LDAP 管理者はユーザーのストレージ システム アクセスを集中管理できるようになります。
+
+LDAP は、Element ユーザー インターフェイスまたは Element API を使用して構成できます。この手順では、Element API を使用して LDAP を構成する方法について説明します。
+
+SolidFireクラスタでLDAP認証を利用するには、まずクラスタでLDAP認証を有効にします。 `EnableLdapAuthentication` API メソッド。
+
+.手順
+. まずクラスタ上でLDAP認証を有効にします。 `EnableLdapAuthentication` API メソッド。
+. 必要な情報を入力します。
++
+[listing]
+----
+{
+     "method":"EnableLdapAuthentication",
+     "params":{
+          "authType": "SearchAndBind",
+          "groupSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+          "groupSearchType": "ActiveDirectory",
+          "searchBindDN": "SFReadOnly@prodtest.solidfire.net",
+          "searchBindPassword": "ReadOnlyPW",
+          "userSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net ",
+          "userSearchFilter": "(&(objectClass=person)(sAMAccountName=%USERNAME%))"
+          "serverURIs": [
+               "ldap://172.27.1.189",
+          [
+     },
+  "id":"1"
+}
+----
+. 次のパラメータの値を変更します。
++
+[cols="2*"]
+|===
+| 使用されるパラメータ | 説明 
+
+
+ a| 
+認証タイプ: SearchAndBind
+ a| 
+クラスターが読み取り専用サービス アカウントを使用して、最初に認証対象のユーザーを検索し、その後、そのユーザーが見つかり認証された場合にバインドすることを指定します。
+
+
+
+ a| 
+グループ検索ベースDN: dc=prodtest、dc=solidfire、dc=net
+ a| 
+グループの検索を開始する LDAP ツリー内の場所を指定します。この例では、ツリーのルートを使用しました。  LDAP ツリーが非常に大きい場合は、検索時間を短縮するために、これをより細かいサブツリーに設定するとよいでしょう。
+
+
+
+ a| 
+ユーザー検索ベースDN: dc=prodtest、dc=solidfire、dc=net
+ a| 
+LDAP ツリー内でユーザーの検索を開始する場所を指定します。この例では、ツリーのルートを使用しました。  LDAP ツリーが非常に大きい場合は、検索時間を短縮するために、これをより細かいサブツリーに設定するとよいでしょう。
+
+
+
+ a| 
+グループ検索タイプ: ActiveDirectory
+ a| 
+Windows Active Directory サーバーを LDAP サーバーとして使用します。
+
+
+
+ a| 
+[listing]
+----
+userSearchFilter:
+“(&(objectClass=person)(sAMAccountName=%USERNAME%))”
+----
+userPrincipalName (ログイン用のメール アドレス) を使用するには、userSearchFilter を次のように変更できます。
+
+[listing]
+----
+“(&(objectClass=person)(userPrincipalName=%USERNAME%))”
+----
+または、userPrincipalName と sAMAccountName の両方を検索するには、次の userSearchFilter を使用できます。
+
+[listing]
+----
+“(&(objectClass=person)(
+----| (sAMAccountName=%USERNAME%)(userPrincipalName=%USERNAME%))" ---- 
+
+
+ a| 
+SolidFireクラスターにログインするためのユーザー名として sAMAccountName を活用します。これらの設定は、LDAP に、ログイン時に sAMAccountName 属性で指定されたユーザー名を検索するように指示し、また、objectClass 属性の値として "`person`" を持つエントリに検索を制限します。
+ a| 
+検索バインドDN
+
+
+
+ a| 
+これは、LDAP ディレクトリの検索に使用される読み取り専用ユーザーの識別名です。  Active Directory の場合、通常、ユーザーの userPrincipalName (電子メール アドレス形式) を使用するのが最も簡単です。
+ a| 
+searchBindPassword
+
+|===
+
+
+これをテストするには、Element UI からログアウトし、そのグループのユーザーとして再度ログインします。
+
+
+
+== LDAPの詳細を表示
+
+クラスター タブの LDAP ページで LDAP 情報を表示します。
+
+
+NOTE: これらの LDAP 構成設定を表示するには、LDAP を有効にする必要があります。
+
+. Element UI で LDAP の詳細を表示するには、*クラスター* > *LDAP* をクリックします。
++
+** *ホスト名/IP アドレス*: LDAP または LDAPS ディレクトリ サーバーのアドレス。
+** *認証タイプ*: ユーザー認証方法。有効な値は次のとおりです。
++
+*** 直接バインド
+*** サーチ・アンド・バインド
+
+
+** *検索バインド DN*: ユーザーの LDAP 検索を実行するためにログインするときに使用する完全修飾 DN (LDAP ディレクトリへのバインド レベルのアクセスが必要です)。
+** *検索バインドパスワード*: LDAP サーバーへのアクセスを認証するために使用されるパスワード。
+** *ユーザー検索ベース DN*: ユーザー検索を開始するために使用されるツリーのベース DN。システムは指定された場所からサブツリーを検索します。
+** *ユーザー検索フィルター*: ドメイン名を使用して以下を入力します。
++
+`(&(objectClass=person)(|(sAMAccountName=%USERNAME%)(userPrincipalName=%USERNAME%)))`
+
+** *グループ検索タイプ*: 使用されるデフォルトのグループ検索フィルターを制御する検索のタイプ。有効な値は次のとおりです。
++
+*** Active Directory: ユーザーのすべての LDAP グループのネストされたメンバーシップ。
+*** グループなし: グループ サポートはありません。
+*** メンバー DN: メンバー DN スタイルのグループ (単一レベル)。
+
+
+** *グループ検索ベース DN*: グループ検索を開始するために使用されるツリーのベース DN。システムは指定された場所からサブツリーを検索します。
+** *ユーザー認証のテスト*: LDAP が設定された後、これを使用して LDAP サーバーのユーザー名とパスワードの認証をテストします。これをテストするには、既存のアカウントを入力してください。識別名とユーザー グループ情報が表示されます。これをコピーして、後でクラスタ管理者を作成するときに使用できます。
+
+
+
+
+
+
+== LDAP構成をテストする
+
+LDAPを設定したら、Element UIまたはElement APIを使用してテストする必要があります。 `TestLdapAuthentication`方法。
+
+.手順
+. Element UI を使用して LDAP 構成をテストするには、次の手順を実行します。
++
+.. *クラスター* > *LDAP* をクリックします。
+.. *LDAP 認証のテスト*をクリックします。
+.. 以下の表の情報を参考にして問題を解決してください。
++
+[cols="2*"]
+|===
+| エラー メッセージ | 説明 
+
+
+ a| 
+ xLDAPUserNotFound a| 
+*** テスト対象のユーザーは設定された `userSearchBaseDN`サブツリー。
+*** その `userSearchFilter`設定が正しくありません。
+
+
+
+
+ a| 
+ xLDAPBindFailed (Error: Invalid credentials) a| 
+*** テスト対象のユーザー名は有効な LDAP ユーザーですが、提供されたパスワードが正しくありません。
+*** テスト対象のユーザー名は有効な LDAP ユーザーですが、アカウントは現在無効になっています。
+
+
+
+
+ a| 
+ xLDAPSearchBindFailed (Error: Can't contact LDAP server) a| 
+LDAP サーバーの URI が正しくありません。
+
+
+
+ a| 
+ xLDAPSearchBindFailed (Error: Invalid credentials) a| 
+読み取り専用のユーザー名またはパスワードが正しく設定されていません。
+
+
+
+ a| 
+ xLDAPSearchFailed (Error: No such object) a| 
+その `userSearchBaseDN`LDAP ツリー内の有効な場所ではありません。
+
+
+
+ a| 
+ xLDAPSearchFailed (Error: Referral) a| 
+*** その `userSearchBaseDN`LDAP ツリー内の有効な場所ではありません。
+*** その `userSearchBaseDN`そして `groupSearchBaseDN`ネストされた OU 内にあります。これにより、権限の問題が発生する可能性があります。回避策としては、ユーザーとグループのベースDNエントリにOUを含めることです（例： `ou=storage, cn=company, cn=com` ）
+
+
+|===
+
+
+. Element API を使用して LDAP 構成をテストするには、次の手順を実行します。
++
+.. TestLdapAuthentication メソッドを呼び出します。
++
+[listing]
+----
+{
+  "method":"TestLdapAuthentication",
+     "params":{
+        "username":"admin1",
+        "password":"admin1PASS
+      },
+      "id": 1
+}
+----
+.. 結果を確認します。  API 呼び出しが成功した場合、結果には指定されたユーザーの識別名と、ユーザーがメンバーになっているグループのリストが含まれます。
++
+[listing]
+----
+{
+"id": 1
+     "result": {
+         "groups": [
+              "CN=StorageMgmt,OU=PTUsers,DC=prodtest,DC=solidfire,DC=net"
+         ],
+         "userDN": "CN=Admin1 Jones,OU=PTUsers,DC=prodtest,DC=solidfire,DC=net"
+     }
+}
+----
+
+
+
+
+
+
+== LDAPを無効にする
+
+Element UI を使用して LDAP 統合を無効にすることができます。
+
+LDAP を無効にするとすべての設定が消去されるため、開始する前にすべての構成設定をメモしておく必要があります。
+
+.手順
+. *クラスター* > *LDAP* をクリックします。
+. *いいえ*をクリックします。
+. *LDAP を無効にする*をクリックします。
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

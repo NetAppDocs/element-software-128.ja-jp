@@ -1,0 +1,32 @@
+---
+permalink: storage/concept_system_manage_mfa_additional_information_for_multi_factor_authentication.html 
+sidebar: sidebar 
+keywords: mfa, idp, certificates, api method 
+summary: 多要素認証に関しては、次の注意事項に注意する必要があります。 
+---
+= 多要素認証に関する追加情報
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+多要素認証に関しては、次の注意事項に注意する必要があります。
+
+* 有効ではなくなった IdP 証明書を更新するには、IdP 以外の管理者ユーザーを使用して次の API メソッドを呼び出す必要があります。 `UpdateIdpConfiguration`
+* MFA は、長さが 2048 ビット未満の証明書とは互換性がありません。デフォルトでは、クラスター上に 2048 ビットの SSL 証明書が作成されます。  API メソッドを呼び出すときは、小さいサイズの証明書の設定を避ける必要があります。 `SetSSLCertificate`
++
+
+NOTE: アップグレード前にクラスターが 2048 ビット未満の証明書を使用している場合は、Element 12.0 以降にアップグレードした後、クラスター証明書を 2048 ビット以上の証明書に更新する必要があります。
+
+* IdP 管理ユーザーは、API 呼び出しを直接行うために使用することはできません (たとえば、SDK または Postman 経由)。また、他の統合 (たとえば、OpenStack Cinder または vCenter プラグイン) に使用することもできません。これらの権限を持つユーザーを作成する必要がある場合は、LDAP クラスター管理者ユーザーまたはローカル クラスター管理者ユーザーのいずれかを追加します。
+
+
+
+
+== 詳細情報の参照
+
+* link:../api/concept_element_api_about_the_api.html["Element API によるストレージの管理"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

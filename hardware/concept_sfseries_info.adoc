@@ -1,0 +1,32 @@
+---
+permalink: hardware/concept_sfseries_info.html 
+sidebar: sidebar 
+keywords: sf-series nodes, hardware installation, hardware maintenance 
+summary: SF シリーズ ストレージ ノードのインストールと保守に関する情報が記載されています。 
+---
+= SFシリーズのハードウェア情報
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SF シリーズ ストレージ ノードのインストールと保守に関する情報が記載されています。
+
+インストールとメンテナンスのコンテンツへのリンクは次のとおりです。
+
+* link:../media/c-series-isi.pdf["SolidFire Cシリーズノードのインストールとセットアップ"^]
+* link:../media/fc-getting-started-guide.pdf["ファイバーチャネルノードのインストールとセットアップ"^]
+* link:../media/solidfire-10-getting-started-guide.pdf["SFシリーズストレージノードのインストールとセットアップ"^]
+* link:task_sfseries_chassisrepl.html["シャーシを交換する"^]
+* link:task_sfseries_driverepl.html["ドライブを交換する"^]
+* link:task_sfseries_psurepl.html["電源ユニットを交換する"^]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

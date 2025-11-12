@@ -1,0 +1,160 @@
+---
+permalink: api/reference_element_api_testconnectsvip.html 
+sidebar: sidebar 
+keywords: storage,connection,svip,test,testing,testconnectsvip 
+summary: TestConnectSvip メソッドを使用して、ストレージ クラスターへのストレージ接続をテストできます。テストは ICMP パケットを使用して SVIP に ping し、成功すると iSCSI イニシエーターとして接続します。 
+---
+= テスト接続Svip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `TestConnectSvip`ストレージ クラスターへのストレージ接続をテストする方法。テストは ICMP パケットを使用して SVIP に ping し、成功すると iSCSI イニシエーターとして接続します。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+svip
+ a| 
+この値を渡すと、別の SVIP の管理接続をテストできます。ターゲット クラスターへの接続をテストするときは、この値を使用する必要はありません。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+詳細
+ a| 
+テスト操作に関する情報 (JSON オブジェクト):
+
+* `connected`: テストがSVIPに接続できたかどうかを示します（ブール値）
+* `svip`: テスト対象のSVIP（文字列）
+* `pingBytes`: 56バイトと9000バイトのpingテストの詳細（オブジェクト）
++
+** `56`: 56 バイトの ping テストの結果 (JSON オブジェクト):
++
+*** `individualResponseTimes`: 各アンサンブルノードからの応答時間のリスト（文字列配列）
+*** `individualStatus`: 各アンサンブルノードからのpingステータスのリスト（ブール配列）
+*** `responseTime`: 平均ping応答時間（文字列）
+*** `successful`: pingテストが成功したかどうかを示します（ブール値）
+
+
+** `9000`: 9000 バイトの ping テストの結果 (JSON オブジェクト):
++
+*** `individualResponseTimes`: 各アンサンブルノードからの応答時間のリスト（文字列配列）
+*** `individualStatus`: 各アンサンブルノードからのpingステータスのリスト（ブール配列）
+*** `responseTime`: 平均ping応答時間（文字列）
+*** `successful`: pingテストが成功したかどうかを示します（ブール値）
+
+
+** `duration`: テストの実行に必要な時間の長さ（文字列）
+** `result`: テスト全体の結果（文字列）
+
+
+
+ a| 
+string
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "TestConnectSvip",
+   "params": {
+      "svip" : "172.27.62.50"
+      },
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "details": {
+      "connected": true,
+      "pingBytes": {
+           "56": {
+               "individualResponseTimes": [
+                   "00:00:00.000152",
+                   "00:00:00.000132",
+                   "00:00:00.000119",
+                   "00:00:00.000114",
+                   "00:00:00.000112"
+              ],
+              "individualStatus": [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+              ],
+              "responseTime": "00:00:00.000126",
+              "successful": true
+           },
+          "9000": {
+                "individualResponseTimes": [
+                    "00:00:00.000295",
+                    "00:00:00.000257",
+                    "00:00:00.000172",
+                    "00:00:00.000172",
+                    "00:00:00.000267"
+              ],
+              "individualStatus": [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+             ],
+             "responseTime": "00:00:00.000233",
+             "successful": true
+           }
+        },
+        "svip": "172.27.62.50"
+      },
+      "duration": "00:00:00.421907",
+      "result": "Passed"
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

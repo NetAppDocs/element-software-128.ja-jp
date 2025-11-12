@@ -1,0 +1,202 @@
+---
+permalink: api/reference_element_api_rollbacktosnapshot.html 
+sidebar: sidebar 
+keywords: rollbacktosnapshot,snapshot,creating,create,roll,back,rollback,roll back,existing 
+summary: RollbackToSnapshot メソッドを使用して、アクティブ ボリューム イメージの既存のスナップショットを作成できます。このメソッドは、既存のスナップショットから新しいスナップショットを作成します。 
+---
+= スナップショットへのロールバック
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `RollbackToSnapshot`アクティブボリュームイメージの既存のスナップショットを作成する方法。このメソッドは、既存のスナップショットから新しいスナップショットを作成します。
+
+新しいスナップショットがアクティブになり、既存のスナップショットは手動で削除されるまで保持されます。  saveCurrentState パラメータを true に設定しない限り、以前アクティブだったスナップショットは削除されます。
+
+*クラスターの満杯度*
+
+[NOTE]
+====
+* クラスターの満杯度がステージ 1、2、または 3 の場合、スナップショットを作成できます。クラスターの満杯状態がステージ 4 または 5 に達すると、スナップショットを作成できません。
+* スライスの同期が進行中の場合、ボリュームをスナップショットにロールバックすると失敗する可能性があります。リトライ `RollbackToSnapshot`同期が完了した後。
+
+
+====
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+volumeID
+ a| 
+ボリュームのボリュームID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+attributes
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSON属性
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+名前
+ a| 
+スナップショットの名前。名前が指定されていない場合は、ロールバック先のスナップショットの名前の末尾に「-copy」が追加された名前が使用されます。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+スナップショットID
+ a| 
+指定されたボリューム上に以前に作成されたスナップショットの ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+現在の状態を保存する
+ a| 
+以前のアクティブボリュームイメージを保存するかどうかを指定します。有効な値は次のとおりです。
+
+* true: 以前のアクティブなボリューム イメージが保持されます。
+* false: 以前のアクティブなボリューム イメージは削除されます。
+
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+checksum
+ a| 
+保存されたスナップショット内のデータの小さな文字列表現。
+ a| 
+string
+
+
+
+ a| 
+スナップショットID
+ a| 
+saveCurrentState が false に設定されている場合、この値は null になります。
+
+saveCurrentState が true に設定されている場合、新しく作成されたスナップショットの一意の ID。
+ a| 
+integer
+
+
+
+ a| 
+Snapshot
+ a| 
+saveCurrentState が false に設定されている場合、この値は null になります。
+
+saveCurrentState が true に設定されている場合、新しく作成されたスナップショットに関する情報を含むオブジェクト。
+ a| 
+xref:reference_element_api_snapshot.adoc[Snapshot]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+ "method": "RollbackToSnapshot",
+ "params": {
+    "volumeID": 1,
+    "snapshotID": 3114,
+    "saveCurrentState": true
+  },
+  "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "checksum": "0x0",
+    "snapshot": {
+      "attributes": {},
+      "checksum": "0x0",
+      "createTime": "2016-04-04T17:27:32Z",
+      "enableRemoteReplication": false,
+      "expirationReason": "None",
+      "expirationTime": null,
+      "groupID": 0,
+      "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+      "name": "test1-copy",
+      "snapshotID": 1,
+      "snapshotUUID": "30d7e3fe-0570-4d94-a8d5-3cc8097a6bfb",
+      "status": "done",
+      "totalSize": 5000658944,
+      "virtualVolumeID": null,
+      "volumeID": 1
+    },
+    "snapshotID": 1
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

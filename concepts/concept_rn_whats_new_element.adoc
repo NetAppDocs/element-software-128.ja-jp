@@ -1,0 +1,172 @@
+---
+permalink: concepts/concept_rn_whats_new_element.html 
+sidebar: sidebar 
+keywords: netapp, solidfire, element, storage, solidfire enterprise sds 
+summary: NetApp は、新しい機能、拡張機能、バグ修正を提供するために、 SolidFireおよび Element ソフトウェアを定期的に更新します。 
+---
+= Elementソフトウェアの新機能
+:allow-uri-read: 
+:url-peak: https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/Element_Software_-_Apache_Log4j_Vulnerability_-_Workaround
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp は、新しい機能、拡張機能、バグ修正を提供するために、 SolidFireおよび Element ソフトウェアを定期的に更新します。  Element 12.8 は最新リリースであり、セキュリティとシステム コンポーネントの更新、運用の改善、および解決された問題が含まれています。
+
+
+NOTE: 累積的なソフトウェアおよびファームウェアの更新は、ストレージ クラスターで実行されている現在の Element バージョンに基づいて、Element 12.8 アップグレードの一部としてインストールされます。たとえば、クラスターが現在 Element 12.5 を実行している場合、Element 12.8 に直接アップグレードして、Element 12.7 と 12.8 の両方からの累積的な更新を取得できます。サポートされているアップグレードパスについては、ナレッジベースの記事を参照してください。 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_is_the_upgrade_matrix_for_storage_clusters_running_NetApp_Element_software["NetApp Elementソフトウェアを実行しているストレージクラスタのアップグレードマトリックスは何ですか？"^] 。
+
+
+
+== 要素12.8
+
+Element 12.8 の新機能について詳しくご覧ください。
+
+
+
+=== ボリューム負荷分散
+
+Element 12.8 では、ボリューム負荷分散機能が導入されています。この機能を使用すると、QoS ポリシーで設定された最小 IOPS ではなく、各ボリュームの実際の IOPS レベルに基づいて、ノード間でボリュームのバランスをとることができます。ボリュームのバランスをとるには、ボリューム負荷分散機能のみを使用できます。仮想ボリュームのバランスをとるために使用することはできません。ボリューム負荷分散機能はデフォルトで無効になっています。有効または無効にするには、 `VolumeLoadBalanceOnActualIOPS` APIパラメータlink:../api/reference_element_api_enablefeature.html["機能を有効にする"]そしてlink:../api/reference_element_api_disablefeature.html["機能を無効にする"]APIメソッドまたはlink:../storage/task_system_manage_cluster_volume_load_balancing.html["ボリューム負荷分散"]Element UI のオプション。
+
+
+
+=== ノード使用率情報を表示する
+
+Element 12.8では、ノードの使用率情報を次のように表示できます。 `nodeHeat`使用して `GetNodeStats`そして `ListNodeStats`API メソッド。その `nodeHeat`オブジェクトは `nodeStats`オブジェクトを作成し、プライマリ合計 IOPS または合計 IOPS と時間の経過に伴う平均構成 IOPS の比率に基づいてノード使用率情報を表示します。
+
+さらに、ノードの使用率をパーセンテージで表示できます。 `recentPrimaryTotalHeat`要素 UI のノードの詳細表示に表示されます。
+
+
+
+=== ボリュームのI/O統計を表示する
+
+Element 12.8では、ボリュームのI/O使用統計を次のように表示できます。 `sliceIopsStats`使用して `GetVolumeStats`そして `ListVolumeStatsByVolume`API メソッド。 I/O 統計は、ボリュームの読み取りおよび書き込み IOPS 情報を使用して計算され、過去 24 時間と過去 1 時間の 2 つの期間にわたって測定されます。link:../api/reference_element_api_volumestats.html#object-members["詳細情報"]。
+
+
+
+=== iSCSIセッションのCHAPアルゴリズム
+
+ホスト iSCSI イニシエーターは、Element iSCSI ターゲットとの iSCSI セッションを作成するときに使用するチャレンジ ハンドシェイク認証プロトコル (CHAP) アルゴリズムのリストを要求します。  Element 12.8 以降では、Element iSCSI ターゲットが iSCSI セッションに使用するために選択した、サポートされている CHAP アルゴリズムを表示できます。
+
+
+
+=== VMハードウェアバージョンのアップグレード
+
+既存の管理ノードを Element 12.8 にインプレース アップグレードする場合は、アップグレードする前に、環境に応じて、管理ノード上の VM ハードウェア バージョンが ESXi 6.7 (VM ハードウェア バージョン 14) 以降と互換性があることを確認する必要があります。link:../upgrade/task_hcc_upgrade_management_node.html#step-1-upgrade-vm-hardware-version-on-a-management-node["詳細情報"]。
+
+
+
+== 要素12.7
+
+Element 12.7 の新機能について詳しくご覧ください。
+
+
+
+=== 安全なCHAPアルゴリズム
+
+Element 12.7 には、安全な FIPS 準拠のチャレンジ ハンドシェイク認証プロトコル (CHAP) アルゴリズム SHA1、SHA-256、および SHA3-256 のサポートが含まれています。link:../storage/task_data_manage_accounts_work_with_accounts_task.html["詳細情報"]。
+
+
+
+=== 動的ブロック（ビン）同期レート
+
+ノードの追加、アップグレード、メンテナンス、ドライブの追加などのクラスター操作により、ブロック (ビン) 同期がトリガーされ、クラスター レイアウト内の新しいノードまたは更新されたノードにブロック データが配布されます。デフォルトの同期レートとして単一の低速を使用すると、これらの操作に長い時間がかかり、大規模ノードの高い処理能力を活用できなくなります。  Element 12.7 以降では、同期レートはストレージ ノード上のコア数に基づいて動的に調整されるため、これらの操作が大幅に高速化されます。
+
+たとえば、Element 12.7 を実行している 28 コアの大規模ストレージ ノード (H610S、SF19210、SF38410) を既存のクラスターに追加すると、データの同期レートは 60 Mbps ではなく 110 Mbps に自動的に調整されます。さらに、 NetApp Hybrid Cloud Control を使用して Element 12.3.x 以降から Element 12.7 にアップグレードするなど、これらの大規模なストレージ ノードをノード メンテナンス モードから解除すると、変更されたブロック データ レートの同期レートは 20 Mbps ではなく 110 Mbps に自動的に調整されます。
+
+中規模 16 コア ストレージ ノード (H410S) と小規模 12 コア ストレージ ノード (SF4805) を Element 12.7 クラスタに追加すると、データの同期レートは 60 Mbps のままになります。ただし、Element 12.3.x から Element 12.7 へのアップグレード中にノード メンテナンス モードを終了するときに変更されたブロックを同期する場合、中規模ストレージ ノードの同期レートは 20 Mbps から 60 Mbps に、小規模ストレージ ノードの同期レートは 40 Mbps に自動的に調整されます。
+
+ストレージ ノードを削除しても、ブロックの同期出力レートには影響がないため、クライアント I/O のパフォーマンスへの影響が回避されます。
+
+
+
+=== ガベージコレクションの改善
+
+1PB の使用済みスペースがあり、上書きを伴う非常に高いワークロードを実行し、重複排除と圧縮率が高い H610S-4 などの大規模なストレージ ノードを持つクラスターの場合、大規模なノードのデフォルトのブルーム フィルター サイズが 700GB 以上のメモリから 1048576 ビットに増加されたため、ガベージ コレクション操作が対応できるようになりました。この変更は、ストレージ ノードを Element 12.7 にアップグレードすると自動的に有効になり、小さいノードには影響しません。
+
+
+
+=== 規模の改善
+
+Element 12.7 では、複数のストレージ ノードに相当するブロック ドライブとメタデータ ドライブを既存のクラスターに追加するときに、特定のシーケンスに従う必要がなくなりました。  Element UI または API を使用すると、利用可能なすべてのドライブを選択し、同時に一括追加することができます。 Element 12.7 は、すべてのブロック サービスが同時に同期されるように、データ同期を自動的に管理します。各ノードのブロック サービスの同期が完了すると、そのノード上のメタデータ ドライブがホスト ボリュームに割り当て可能になります。このスケールの改善により、読み取り応答の待ち時間が大幅に短縮され、新しく追加されたストレージ ノード間でデータが同期されている間のパフォーマンスの低下を防ぎます。
+
+
+
+=== ストレージノードのファームウェアアップデート
+
+Element 12.7 には、新しいシステム コンポーネントのサポートを含むストレージ ファームウェア バンドル バージョン 2.164.0 が含まれています。link:https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.164.0.html["詳細情報"]。
+
+
+NOTE: Element 12.7 リリースには新しいファームウェア アップデートはありません。ただし、ストレージ ノードで実行されている現在のファームウェア バンドルに基づいて、Element 12.7 にアップグレードすると累積的な更新がインストールされます。
+
+
+
+=== SolidFire Active IQドキュメント
+
+SolidFire Active IQ UI では、QoS 管理ページに移動して、クラスターの推奨事項とノード スロットル情報を表示できるようになりました。さらに、クラスター ダッシュボードにスナップショットの合計数が表示されるようになりました。その他の最近の機能強化には、アクティブ ボリュームのプライマリ ノードとセカンダリ ノードの情報、ノード上のプライマリ ボリュームの過去 30 分間の平均スループット、IOPS、平均レイテンシの追加が含まれます。
+
+Element ソフトウェア ドキュメントからSolidFire Active IQドキュメントにアクセスできるようになりました。link:https://docs.netapp.com/us-en/element-software/monitor-storage-active-iq.html["詳細情報"]。
+
+
+
+=== NetApp Bugs Onlineには解決済みの問題と既知の問題が掲載されています
+
+解決済みの問題と既知の問題は、 NetApp Bugs Online ツールにリストされています。  Elementソフトウェアおよびその他の製品のこれらの問題は、次のURLで参照できます。 https://mysupport.netapp.com/site/products/all/details/element-software/bugsonline-tab["NetApp のバグオンライン"^] 。
+
+
+
+== 要素12.5
+
+Element 12.5 の新機能について詳しくご覧ください。
+
+
+
+=== ストレージノードアクセスの改善
+
+Element 12.5 では、署名された SSH 証明書を使用して個々のノードへのリモート アクセスが改善されています。ストレージノードへの安全なリモートアクセスを提供するために、新しい制限された権限を持つローカルユーザーアカウント `sfreadonly`ストレージ ノードの RTFI 中に作成されるようになりました。その `sfreadonly`アカウントにより、基本的なメンテナンスやトラブルシューティングの目的でストレージ ノードのバックエンドにアクセスできるようになります。これで、 `supportAdmin`クラスタ管理者ユーザーが必要に応じてNetAppサポートにクラスタへのアクセスを許可するためのアクセス タイプ。
+
+
+
+=== 強化されたカスタム保護ドメインの管理性
+
+Element 12.5 には、既存のカスタム保護ドメインをすばやく簡単に表示し、新しいカスタム保護ドメインを構成できる新しいユーザー インターフェイスが搭載されています。
+
+
+
+=== 新しく改良されたクラスタ障害、イベント、アラート
+
+Element 12.5では、新しいクラスタ障害コードの導入によりシステムのトラブルシューティングが強化されます。 `BmcSelfTestFailed`そして `CpuThermalEventThreshold`。エレメント12.5には、既存のクラスタイベントとアラートの堅牢性向上も含まれています。 `nodeOffline` 、 `volumeOffline` 、 `driveHealthFault` 、 `networkEvent` 、 そして	`cSumEvent`。
+
+
+
+=== クラスタ作成UIから保存時のソフトウェア暗号化を有効にする
+
+Element 12.5 では、クラスターの作成 UI に新しいチェックボックスが追加されたため、クラスターの作成時にSolidFireオールフラッシュ ストレージ クラスターのクラスター全体で保存時のソフトウェア暗号化を有効にするオプションが提供されます。
+
+
+
+=== ストレージノードのファームウェアアップデート
+
+要素 12.5 には、ストレージ ノードのファームウェア更新が含まれています。link:../concepts/concept_rn_relatedrn_element.html#storage-firmware["詳細情報"]。
+
+
+
+=== 強化されたセキュリティ
+
+Element 12.5 には、Element ソフトウェアの Apache Log4j 脆弱性への露出を阻止する緩和策が含まれています。仮想ボリューム (VVols) 機能が有効になっているNetApp SolidFireストレージ クラスターは、Apache Log4j の脆弱性にさらされています。  NetApp Elementソフトウェアの Apache Log4j 脆弱性の回避策については、{url-peak}[KB 記事^]を参照してください。
+
+Element 11.x、12.0、または 12.2 を実行している場合、またはストレージ クラスターがすでに Element 12.3 または 12.3.1 で VVols 機能が有効になっている場合は、12.5 にアップグレードする必要があります。
+
+Element 12.5 には、120 件を超える CVE セキュリティ脆弱性の修正も含まれています。
+
+
+
+== 詳細情報の参照
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["NetAppハイブリッド クラウド制御および管理サービス リリース ノート"^]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* http://docs.netapp.com/sfe-122/index.jsp["以前のバージョンのSolidFireおよび Element ソフトウェア ドキュメント センター"^]
+* https://docs.netapp.com/us-en/hci/index.html["NetApp HCIドキュメント"^]
+* link:../hardware/fw_storage_nodes.html["SolidFireストレージノードでサポートされているストレージファームウェアバージョン"]
+

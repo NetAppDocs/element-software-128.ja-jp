@@ -1,0 +1,99 @@
+---
+permalink: api/reference_element_api_deletesnapshot.html 
+sidebar: sidebar 
+keywords: snapshot,snapshots,delete,deleting,DeleteSnapshot 
+summary: スナップショットを削除するには、DeleteSnapshot メソッドを使用できます。 
+---
+= スナップショットを削除
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `DeleteSnapshot`スナップショットを削除する方法。
+
+現在アクティブなスナップショットは削除できません。現在のスナップショットを削除する前に、ロールバックして別のスナップショットをアクティブにする必要があります。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+スナップショットID
+ a| 
+削除するスナップショットの ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+オーバーライドSnapMirrorHold
+ a| 
+レプリケーション中にスナップショットにかけられたロックをオーバーライドします。このパラメータを使用すると、関連付けられたSnapMirror関係が削除された後に、古いSnapMirrorスナップショットを削除できます。
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "DeleteSnapshot",
+"params": {
+"snapshotID": 8,
+"overrideSnapMirrorHold": true
+},
+"id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {}
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_rollbacktosnapshot.adoc[スナップショットへのロールバック]

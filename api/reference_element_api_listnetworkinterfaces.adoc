@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_listnetworkinterfaces.html 
+sidebar: sidebar 
+keywords: network,interface,interfaces,list,listing,listnetworkinterfaces 
+summary: ListNetworkInterfaces メソッドを使用して、ノード上の各ネットワーク インターフェイスに関する情報を一覧表示できます。この API メソッドは個々のノードで使用することを目的としています。個々のノードにアクセスするには、ユーザー ID とパスワードの認証が必要です。ただし、メソッド呼び出しでパラメーター force に true の値が指定されている場合は、クラスターでこのメソッドを使用できます。パラメータをクラスターで使用すると、すべてのインターフェースがリストされます。 
+---
+= ネットワークインターフェースの一覧
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ListNetworkInterfaces`ノード上の各ネットワーク インターフェイスに関する情報を一覧表示するメソッド。この API メソッドは個々のノードで使用することを目的としています。個々のノードにアクセスするには、ユーザー ID とパスワードの認証が必要です。ただし、メソッド呼び出しでパラメーター force に true の値が指定されている場合は、クラスターでこのメソッドを使用できます。パラメータをクラスターで使用すると、すべてのインターフェースがリストされます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+力
+ a| 
+有効な値は次のとおりです。
+
+* true: クラスター内のすべてのネットワーク インターフェイスに関する情報が返されます。
+* false: 情報は返されません。
+
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+インターフェース
+ a| 
+ストレージノード（または、force = の場合はストレージクラスタ全体）の各ネットワークインタフェースの構成情報のリスト。 `true` ）。
+ a| 
+xref:reference_element_api_networkinterface.adoc[ネットワークインターフェース]配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+"method": "ListNetworkInterfaces",
+"params": {},
+"id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"nodes": [
+			{
+				"nodeID": 1,
+				"result": {
+					"interfaces": [
+						{
+							"address": "10.117.80.32",
+							"addressV6": "::",
+							"broadcast": "10.117.95.255",
+							"macAddress": "90:b1:1c:42:e0:1a",
+							"mtu": 9000,
+							"name": "Bond10G",
+							"namespace": false,
+							"netmask": "255.255.240.0",
+							"status": "UpAndRunning",
+							"type": "BondMaster",
+							"virtualNetworkTag": 0
+						},
+						{
+							"address": "10.117.64.32",
+							"addressV6": "::",
+							"broadcast": "10.117.79.255",
+							"macAddress": "90:b1:1c:42:e0:1e",
+							"mtu": 1500,
+							"name": "Bond1G",
+							"namespace": false,
+							"netmask": "255.255.240.0",
+							"status": "UpAndRunning",
+							"type": "BondMaster",
+							"virtualNetworkTag": 0
+						},
+						{
+							"address": "0.0.0.0",
+							"addressV6": "::",
+							"broadcast": "0.0.0.0",
+							"macAddress": "90:b1:1c:42:e0:1a",
+							"mtu": 9000,
+							"name": "eth0",
+							"namespace": false,
+							"netmask": "0.0.0.0",
+							"status": "UpAndRunning",
+							"type": "BondSlave",
+							"virtualNetworkTag": 0
+						},
+						{
+							"address": "127.0.0.1",
+							"addressV6": "::",
+							"broadcast": "0.0.0.0",
+							"macAddress": "00:00:00:00:00:00",
+							"mtu": 0,
+							"name": "lo",
+							"namespace": false,
+							"netmask": "0.0.0.0",
+							"status": "UpAndRunning",
+							"type": "Loopback",
+							"virtualNetworkTag": 0
+						}
+					]
+				}
+			}
+		]
+	}
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

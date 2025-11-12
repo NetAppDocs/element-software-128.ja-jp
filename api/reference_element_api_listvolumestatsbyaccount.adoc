@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_listvolumestatsbyaccount.html 
+sidebar: sidebar 
+keywords: volumes,volume,stats,list,listing,account,listvolumestatsbyaccount,activity 
+summary: ListVolumeStatsByAccount メソッドを使用すると、すべてのアカウントの高レベルのボリューム アクティビティ測定値を一覧表示できます。値は、アカウントが所有するすべてのボリュームから合計されます。 
+---
+= アカウント別ボリューム統計リスト
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ListVolumeStatsByAccount`各アカウントの高レベルのボリュームアクティビティ測定値を一覧表示するメソッド。値は、アカウントが所有するすべてのボリュームから合計されます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+仮想ボリュームを含める
+ a| 
+仮想ボリュームはデフォルトで応答に含まれます。仮想ボリュームを除外するには、false に設定します。
+ a| 
+ブーリアン
+ a| 
+true
+ a| 
+いいえ
+
+
+
+ a| 
+アカウント
+ a| 
+ボリューム統計を返すアカウント ID のリスト。省略した場合、すべてのアカウントの統計が返されます。
+ a| 
+整数配列
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+ボリューム統計
+ a| 
+各アカウントのボリューム アクティビティ情報のリスト。*注:* volumeID メンバーは各エントリに対して 0 になります。値はアカウントが所有するすべてのボリュームの合計を表します。
+ a| 
+xref:reference_element_api_volumestats.adoc[ボリューム統計]配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+"method": "ListVolumeStatsByAccount",
+  "params": {"accounts": [3]},
+  "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeStats": [
+      {
+        "accountID": 3,
+        "nonZeroBlocks": 155040175,
+        "readBytes": 3156273328128,
+        "readBytesLastSample": 0,
+        "readOps": 770574543,
+        "readOpsLastSample": 0,
+        "samplePeriodMSec": 500,
+        "timestamp": "2016-10-17T20:42:26.231661Z",
+        "unalignedReads": 0,
+        "unalignedWrites": 0,
+        "volumeAccessGroups": [],
+        "volumeID": 0,
+        "volumeSize": 1127428915200,
+        "writeBytes": 1051988406272,
+        "writeBytesLastSample": 0,
+        "writeOps": 256833107,
+        "writeOpsLastSample": 0,
+        "zeroBlocks": 120211025
+      }
+    ]
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

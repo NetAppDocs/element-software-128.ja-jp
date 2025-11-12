@@ -1,0 +1,110 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_edit_vcenter_assets.html 
+summary: REST API UI を使用して、vCenter 管理ノード コントローラを編集できます。 
+keywords: netapp, mnode, management node, rest api, Element 
+---
+= 既存のコントローラーアセットを表示または編集する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+REST API を使用して、管理ノード構成内の既存の VMware vCenter コントローラに関する情報を表示したり、編集したりできます。コントローラは、 NetApp SolidFireインストールの管理ノードに登録された VMware vCenter インスタンスです。
+
+.開始する前に
+* クラスター バージョンでNetApp Elementソフトウェア 11.3 以降が実行されていることを確認します。
+* バージョン 11.3 以降を実行している管理ノードがデプロイされていることを確認します。
+
+
+
+
+== 管理サービスREST APIにアクセスする
+
+.手順
+. 管理ノードのIPアドレスに続いて、管理サービスのREST API UIにアクセスします。 `/vcenter/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/vcenter/1/
+----
+. *承認*または任意のロックアイコンを選択し、次の手順に従います。
++
+.. クラスターのユーザー名とパスワードを入力します。
+.. クライアントIDを入力してください `mnode-client`。
+.. セッションを開始するには、[承認] を選択します。
+.. ウィンドウを閉じます。
+
+
+
+
+
+
+== 既存のコントローラに関する保存された情報を表示する
+
+REST API を使用して、管理ノードに登録されている既存の vCenter コントローラを一覧表示し、それらに関する保存された情報を表示できます。
+
+.手順
+. *GET /compute/controllers* を選択します。
+. *試してみる*を選択します。
+. *実行*を選択します。
++
+API は、各コントローラとの通信に使用される IP アドレス、コントローラ ID、ホスト名、およびユーザー ID とともに、既知のすべての vCenter コントローラのリストを返します。
+
+. 特定のコントローラーの接続ステータスを知りたい場合は、 `id`そのコントローラーのフィールドをクリップボードにコピーして<<既存のコントローラのステータスを表示する>>。
+
+
+
+
+== 既存のコントローラのステータスを表示する
+
+管理ノードに登録されている既存の vCenter コントローラのステータスを表示できます。  API は、 NetApp Hybrid Cloud Control が vCenter コントローラに接続できるかどうかと、そのステータスの理由を示すステータスを返します。
+
+.手順
+. *GET /compute/controllers/{controller_id}/status* を選択します。
+. *試してみる*を選択します。
+. 先ほどコピーしたコントローラーIDを `controller_id`パラメータ。
+. *実行*を選択します。
++
+API は、この特定の vCenter コントローラのステータスと、そのステータスの理由を返します。
+
+
+
+
+
+== コントローラーの保存されたプロパティを編集する
+
+管理ノードに登録されている既存の vCenter コントローラの保存されたユーザー名またはパスワードを編集できます。既存の vCenter コントローラの保存された IP アドレスを編集することはできません。
+
+.手順
+. *PUT /compute/controllers/{controller_id}* を選択します。
+. vCenterコントローラのコントローラIDを `controller_id`パラメータ。
+. *試してみる*を選択します。
+. *リクエスト本文* フィールドで次のいずれかのパラメータを変更します。
++
+|===
+| パラメータ | タイプ | 説明 
+
+
+| `userId` | string | vCenter コントローラとの通信に使用するユーザー ID を変更します (ユーザーには管理者権限が必要です)。 
+
+
+| `password` | string | vCenter コントローラとの通信に使用するパスワードを変更します。 
+|===
+. *実行*を選択します。
++
+API は更新されたコントローラー情報を返します。
+
+
+
+[discrete]
+== 詳細情報の参照
+
+* link:task_mnode_add_assets.html["管理ノードにコントローラアセットを追加する"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

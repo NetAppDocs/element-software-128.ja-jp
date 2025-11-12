@@ -1,0 +1,32 @@
+---
+permalink: storage/task_snapmirror_perform_failover_from_element_cluster.html 
+sidebar: sidebar 
+keywords: element, ui, failover, cluster, perform a failover, snapmirror 
+summary: Element クラスターからフェイルオーバーを実行して、宛先ボリュームを読み取り/書き込み可能にし、宛先側のホストからアクセスできるようにすることができます。  Element クラスタからフェイルオーバーを実行する前に、 SnapMirror関係を解除する必要があります。 
+---
+= Elementクラスタからフェイルオーバーを実行する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element クラスターからフェイルオーバーを実行して、宛先ボリュームを読み取り/書き込み可能にし、宛先側のホストからアクセスできるようにすることができます。  Element クラスタからフェイルオーバーを実行する前に、 SnapMirror関係を解除する必要があります。
+
+NetApp Element UI を使用してフェイルオーバーを実行します。  Element UI が使用できない場合は、 ONTAP System Manager またはONTAP CLI を使用して関係解除コマンドを発行することもできます。
+
+.要件
+* SnapMirror関係が存在し、宛先ボリュームに少なくとも 1 つの有効なスナップショットがあります。
+* プライマリ サイトでの予期しない停止または計画されたイベントのため、宛先ボリュームにフェールオーバーする必要があります。
+
+
+.手順
+. Element UI で、*データ保護* > * SnapMirror関係* をクリックします。
+. フェイルオーバーするソース ボリュームとの関係を見つけます。
+. *アクション*アイコンをクリックします。
+. *[中断]*をクリックします。
+. 操作を確定します。
++
+宛先クラスターのボリュームに読み取り/書き込みアクセスが可能になり、アプリケーション ホストにマウントして実稼働ワークロードを再開できるようになりました。このアクションの結果、すべてのSnapMirrorレプリケーションが停止されます。関係が断絶した状態を示しています。
+
+

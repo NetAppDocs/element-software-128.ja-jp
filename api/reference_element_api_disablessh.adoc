@@ -1,0 +1,67 @@
+---
+permalink: api/reference_element_api_disablessh.html 
+sidebar: sidebar 
+keywords: SSH,disable,disabling,node,DisableSsh 
+summary: DisableSsh メソッドを使用して、単一のストレージ ノードの SSH サービスを無効にすることができます。この方法は、クラスター全体の SSH サービスのタイムアウト期間には影響しません。 
+---
+= SSHを無効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `DisableSsh`単一のストレージノードの SSH サービスを無効にする方法。この方法は、クラスター全体の SSH サービスのタイムアウト期間には影響しません。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータがありません。
+
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+有効
+ a| 
+このノードの SSH サービスのステータス。
+ a| 
+ブーリアン
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "DisableSsh",
+  "params": {
+      },
+  "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {"enabled": false}
+}
+----

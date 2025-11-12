@@ -1,0 +1,152 @@
+---
+permalink: api/reference_element_api_listclusterfaults.html 
+sidebar: sidebar 
+keywords: cluster,list,listing,fault,faults,listclusterfaults,error,errors 
+summary: ListClusterFaults メソッドを使用して、クラスターで検出された障害に関する情報を一覧表示できます。この方法を使用すると、現在の障害と解決された障害の両方をリストできます。システムは 30 秒ごとに障害をキャッシュします。 
+---
+= クラスタ障害のリスト
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ListClusterFaults`クラスター上で検出された障害に関する情報を一覧表示するメソッド。この方法を使用すると、現在の障害と解決された障害の両方をリストできます。システムは 30 秒ごとに障害をキャッシュします。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+ベストプラクティス
+ a| 
+最適ではないシステム構成によって引き起こされる障害を含めます。有効な値は次のとおりです。
+
+* true
+* false
+
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+障害の種類
+ a| 
+返される障害の種類を決定します。有効な値は次のとおりです。
+
+* current: アクティブで未解決の障害を一覧表示します。
+* 解決済み: 以前に検出され解決された障害を一覧表示します。
+* all: 現在の障害と解決済みの障害の両方を一覧表示します。障害オブジェクトの「`resolved`」メンバーで障害ステータスを確認できます。
+
+ a| 
+string
+ a| 
+全て
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+欠点
+ a| 
+要求されたクラスター障害を記述するオブジェクト。
+ a| 
+xref:reference_element_api_fault.adoc[故障]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "ListClusterFaults",
+    "params": {
+      "faultTypes": "current",
+      "bestPractices": true
+    },
+    "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "faults": [
+      {
+        "blocksUpgrade": false,
+        "clusterFaultID": 3,
+        "code": "driveAvailable",
+        "data": null,
+        "date": "2024-04-03T22:22:56.660275Z",
+        "details": "Node ID 1 has 6 available drive(s).",
+        "driveID": 0,
+        "driveIDs": [],
+        "externalSource": "",
+        "networkInterface": "",
+        "nodeHardwareFaultID": 0,
+        "nodeID": 1,
+        "resolved": true,
+        "resolvedDate": "2024-04-03T22:24:54.598693Z",
+        "serviceID": 0,
+        "severity": "warning",
+        "type": "drive"
+      },
+      {
+        "clusterFaultID": 9,
+        "code": "disconnectedClusterPair",
+        "data": null,
+        "date": "2016-04-26T20:40:08.736597Z",
+        "details": "One of the clusters in a pair may have become misconfigured or disconnected.  Remove the local pairing and retry pairing the clusters. Disconnected Cluster Pairs: []. Misconfigured Cluster Pairs: [3]",
+        "driveID": 0,
+        "driveIDs": [],
+        "nodeHardwareFaultID": 0,
+        "nodeID": 0,
+        "resolved": false,
+        "resolvedDate": "",
+        "serviceID": 0,
+        "severity": "warning",
+        "type": "cluster"
+      }
+    ]
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

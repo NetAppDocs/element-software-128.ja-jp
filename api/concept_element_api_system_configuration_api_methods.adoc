@@ -1,0 +1,61 @@
+---
+permalink: api/concept_element_api_system_configuration_api_methods.html 
+sidebar: sidebar 
+keywords: system,config,configuration,methods,api 
+summary: システム構成 API メソッドを使用すると、クラスター内のすべてのノードに適用される構成値を取得および設定できます。 
+---
+= システム構成APIメソッド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+システム構成 API メソッドを使用すると、クラスター内のすべてのノードに適用される構成値を取得および設定できます。
+
+* xref:reference_element_api_disablebmccoldreset.adoc[DisableBmcColdReset]
+* xref:reference_element_api_disableclusterssh.adoc[クラスタSshを無効にする]
+* xref:reference_element_api_disablesnmp.adoc[Snmpを無効にする]
+* xref:reference_element_api_enablebmccoldreset.adoc[BmcColdReset を有効にする]
+* xref:reference_element_api_enableclusterssh.adoc[クラスタSshを有効にする]
+* xref:reference_element_api_enablesnmp.adoc[Snmpを有効にする]
+* xref:reference_element_api_getbinassignmentproperties.adoc[ビン割り当てプロパティの取得]
+* xref:reference_element_api_getclustersshinfo.adoc[クラスタSsh情報を取得する]
+* xref:reference_element_api_getclusterstructure.adoc[クラスター構造を取得する]
+* xref:reference_element_api_getfipsreport.adoc[GetFipsレポート]
+* xref:reference_element_api_getlldpconfig.adoc[GetLldpConfig]
+* xref:reference_element_api_getlldpinfo.adoc[GetLldpInfo]
+* xref:reference_element_api_system_configuration_getnodefipsdrivesreport.adoc[GetNodeFipsDrivesReport]
+* xref:reference_element_api_getntpinfo.adoc[GetNtpInfo]
+* xref:reference_element_api_getnvraminfo.adoc[NVRAM情報を取得する]
+* xref:reference_element_api_getprotectiondomainlayout.adoc[保護ドメインレイアウトの取得]
+* xref:reference_element_api_getremotelogginghosts.adoc[リモートログホストの取得]
+* xref:reference_element_api_getsnmpacl.adoc[GetSnmpACL]
+* xref:reference_element_api_getsnmpinfo.adoc[SnmpInfo の取得]
+* xref:reference_element_api_getsnmpstate.adoc[GetSnmpState]
+* xref:reference_element_api_getsnmptrapinfo.adoc[SnmpTrapInfo を取得する]
+* xref:reference_element_api_getsslcertificate.adoc[SSL証明書を取得する]
+* xref:reference_element_api_listprotectiondomainlevels.adoc[リスト保護ドメインレベル]
+* xref:reference_element_api_removesslcertificate.adoc[SSL証明書の削除]
+* xref:reference_element_api_resetnetworkconfig.adoc[ネットワーク設定をリセット]
+* xref:reference_element_api_resetsupplementaltlsciphers.adoc[補足Tls暗号をリセットする]
+* xref:reference_element_api_setclusterstructure.adoc[クラスター構造の設定]
+* xref:reference_element_api_setlldpconfig.adoc[LldpConfig の設定]
+* xref:reference_element_api_setntpinfo.adoc[NtpInfo の設定]
+* xref:reference_element_api_setprotectiondomainlayout.adoc[保護ドメインレイアウトの設定]
+* xref:reference_element_api_setremotelogginghosts.adoc[リモートログホストの設定]
+* xref:reference_element_api_setsnmpacl.adoc[SnmpACLの設定]
+* xref:reference_element_api_setsnmpinfo.adoc[SnmpInfo の設定]
+* xref:reference_element_api_setsnmptrapinfo.adoc[SnmpTrapInfo の設定]
+* xref:reference_element_api_setsslcertificate.adoc[SSL証明書の設定]
+* xref:reference_element_api_snmpsendtesttraps.adoc[SnmpSendTestTraps]
+* xref:reference_element_api_testaddressavailability.adoc[テストアドレスの可用性]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

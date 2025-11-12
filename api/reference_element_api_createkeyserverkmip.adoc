@@ -1,0 +1,161 @@
+---
+permalink: api/reference_element_api_createkeyserverkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,creating,create 
+summary: 'CreateKeyServerKmip メソッドを使用して、指定された属性を持つ Key Management Interoperability Protocol (KMIP) キー サーバーを作成できます。作成中はサーバーに接続されません。このメソッドを使用する前にサーバーが存在している必要はありません。クラスター化されたキー サーバー構成の場合、kmipKeyServerHostnames パラメーターにすべてのサーバー ノードのホスト名または IP アドレスを指定する必要があります。  TestKeyServerKmip メソッドを使用してキー サーバーをテストできます。' 
+---
+= キーサーバーKmipの作成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `CreateKeyServerKmip`指定された属性を持つキー管理相互運用性プロトコル (KMIP) キー サーバーを作成する方法。作成中はサーバーに接続されません。このメソッドを使用する前にサーバーが存在している必要はありません。クラスター化されたキー サーバー構成の場合、kmipKeyServerHostnames パラメーターにすべてのサーバー ノードのホスト名または IP アドレスを指定する必要があります。使用することができます `TestKeyServerKmip`キー サーバーをテストする方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+kmipCa証明書
+ a| 
+外部キー サーバーのルート CA の公開キー証明書。これは、TLS 通信で外部キー サーバーによって提示される証明書を検証するために使用されます。個々のサーバーが異なる CA を使用するキー サーバー クラスターの場合は、すべての CA のルート証明書を含む連結文字列を提供します。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+kmipクライアント証明書
+ a| 
+Solidfire KMIP クライアントで使用される PEM 形式の Base64 エンコードされた PKCS#10 X.509 証明書。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+kmipキーサーバーホスト名
+ a| 
+この KMIP キー サーバーに関連付けられているホスト名または IP アドレスの配列。キー サーバーがクラスター構成になっている場合にのみ、複数のホスト名または IP アドレスを指定する必要があります。
+ a| 
+文字列配列
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+kmipキーサーバー名
+ a| 
+KMIP キー サーバーの名前。この名前は表示目的でのみ使用され、一意である必要はありません。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+kmipキーサーバーポート
+ a| 
+この KMIP キー サーバーに関連付けられたポート番号 (通常は 5696)。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+kmipキーサーバー
+ a| 
+新しく作成されたキー サーバーの詳細を含むオブジェクト。
+ a| 
+link:reference_element_api_keyserverkmip.html["キーサーバーKmip"]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "CreateKeyServerKmip",
+  "params": {
+    "kmipCaCertificate": "MIICPDCCAaUCEDyRMcsf9tAbDpq40ES/E...",
+    "kmipClientCertificate": "dKkkirWmnWXbj9T/UWZYB2oK0z5...",
+    "kmipKeyServerHostnames" : ["server1.hostname.com", "server2.hostname.com"],
+    "kmipKeyServerName" : "keyserverName",
+    "kmipKeyServerPort" : 5696
+  },
+"id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "kmipKeyServer": {
+            "kmipCaCertificate":"MIICPDCCAaUCEDyRMcsf9tAbDpq40ES/E...",
+            "kmipKeyServerHostnames":[
+                "server1.hostname.com", "server2.hostname.com"
+            ],
+            "keyProviderID":1,
+            "kmipKeyServerName":"keyserverName",
+            "keyServerID":1
+            "kmipKeyServerPort":1,
+            "kmipClientCertificate":"dKkkirWmnWXbj9T/UWZYB2oK0z5...",
+            "kmipAssignedProviderIsActive":true
+        }
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+11.7

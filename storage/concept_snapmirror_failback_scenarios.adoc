@@ -1,0 +1,35 @@
+---
+permalink: storage/concept_snapmirror_failback_scenarios.html 
+sidebar: sidebar 
+keywords: failback scenarios, snapmirror, dr, disaster recovery 
+summary: SnapMirror の災害復旧機能は、2 つのフェイルバック シナリオで説明されています。これらは、元の関係がフェイルオーバーされた（壊れた）ことを前提としています。 
+---
+= SnapMirrorフェイルバックシナリオ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapMirror の災害復旧機能は、2 つのフェイルバック シナリオで説明されています。これらは、元の関係がフェイルオーバーされた（切断された）ことを前提としています。
+
+対応する手順のステップが参考用に追加されています。
+
+
+NOTE: ここでの例では、R1 は、 NetApp Elementソフトウェアを実行しているクラスタが元のソース ボリューム (Element) であり、 ONTAP が元の宛先ボリューム (ONTAP) である元の関係です。  R2 と R3 は、逆再同期操作によって作成された逆の関係を表します。
+
+次の図は、ソース ボリュームがまだ存在する場合のフェイルバック シナリオを示しています。
+
+image::../media/snapmirror_element_failback1.gif[スナップミラー要素フェイルバック1]
+
+次の図は、ソース ボリュームが存在しなくなった場合のフェイルバック シナリオを示しています。
+
+image::../media/snapmirror_element_failback2.png[スナップミラー要素フェイルバック2]
+
+
+
+== 詳細情報の参照
+
+* xref:task_snapmirror_perform_failback_when_source_volume_exists.adoc[ソースボリュームがまだ存在する場合にフェイルバックを実行する]
+* xref:task_snapmirror_performing_failback_when_source_volume_no_longer_exists.adoc[ソースボリュームが存在しなくなった場合にフェイルバックを実行する]
+

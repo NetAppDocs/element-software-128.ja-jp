@@ -1,0 +1,95 @@
+---
+sidebar: sidebar 
+permalink: upgrade/concept_element_upgrade_overview.html 
+summary: すべてのNetAppストレージ コンポーネントをアップグレードすることにより、導入後にSolidFire Element ストレージ システムを最新の状態に保つことができます。 
+keywords: netapp, solidfire upgrade, vcp upgrade, element upgrade, vsphere upgrade 
+---
+= アップグレードシーケンスの概要
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+すべてのNetAppストレージ コンポーネントを順番にアップグレードすることで、導入後にSolidFire Element ストレージ システムを最新の状態に保つことができます。
+
+これらのコンポーネントには、管理サービス、 NetApp Hybrid Cloud Control、Element ソフトウェア、管理ノード、および (インストールに応じて) vCenter Server 用の Element プラグインが含まれます。
+
+[NOTE]
+====
+* 署名キー証明書 (プライベートおよびパブリック) の有効期限が 2023 年 11 月 5 日に切れたため、2023 年 11 月以降、 NetApp Hybrid Cloud Control または REST API を使用してコンポーネントのアップグレードを開始することはできません。この問題を回避するには、link:task_hcc_upgrade_management_node.html["管理ノードのインプレースアップグレードを実行する"] NetApp Hybrid Cloud Control または REST API を使用して管理サービス、Element ソフトウェア、およびストレージ ファームウェアをアップグレードする前に、バージョン 12.8 にアップグレードしてください。
++
+バージョン12.8の新しい管理ノードを導入する場合は、 NetApp Hybrid Cloud ControlまたはREST APIを使用して、以下の順序でコンポーネントのアップグレードを実行できます。<<sys_upgrade,システムアップグレードシーケンス>> 。
+
+* 次のノードはサポートされていません。これらのノードのいずれかをサポートされていない Element バージョンにアップグレードしようとすると、ノードが Element 12.x でサポートされていないことを示すエラーが表示されます。
++
+** Element 12.8、SF4805、SF9605、SF19210、および SF38410 ストレージ ノード以降。
+** エレメント 12.7 以降、SF2405 および SF9608 ストレージ ノードと FC0025 および SF-FCN-01 FC ノード。
+
+
+* Element 12.5 以降、 NetApp HealthTools は Element ソフトウェア アップグレードではサポートされなくなりました。  Element 11.0または11.1を実行している場合は、まず https://docs.netapp.com/us-en/element-software-123/upgrade/task_hcc_upgrade_element_software.html#upgrade-element-software-at-connected-sites-using-healthtools["HealthToolsを使用してElement 12.3にアップグレードする"^]その後、 NetApp Hybrid Cloud Control を使用して Element 12.5 以降にアップグレードします。
+
+
+====
+その<<sys_upgrade,システムアップグレードシーケンス>>このコンテンツでは、 SolidFireオールフラッシュ ストレージ システムのアップグレードを完了するために必要なタスクについて説明します。理想的には、これらの手順は、単独で実行するのではなく、より大きなアップグレード シーケンスの一部として実行されます。コンポーネントベースのアップグレードまたは更新が必要な場合は、手順の前提条件を参照して、追加の複雑さに対処していることを確認してください。
+
+そのlink:task_sf_upgrade_all_vsphere.html["vSphere アップグレード シーケンス"]vCenter Server 用 Element プラグインのコンテンツを含む、vCenter Server 用 Element プラグインを再インストールするために必要な、アップグレード前およびアップグレード後の追加の手順について説明します。
+
+.開始する前に
+* 管理ノード 11.3 以降を実行しています。新しいバージョンの管理ノードには、個別のサービスを提供するモジュール式アーキテクチャが採用されています。
++
+
+TIP: バージョンを確認するには、管理ノードにログインし、ログイン バナーで Element のバージョン番号を表示します。  11.3をお持ちでない場合は、link:task_hcc_upgrade_management_node.html["管理ノードをアップグレードする"] 。
+
+* 管理サービスをバージョン 2.1.326 以上にアップグレードしました。
++
+NetApp Hybrid Cloud Control を使用したアップグレードは、以前のサービス バンドル バージョンでは利用できません。
+
+* すべてのノードのシステム時刻が同期され、ストレージ クラスターとノードに対して NTP が正しく構成されていることを確認しました。各ノードは、ノードごとのWeb UIでDNSネームサーバーを設定する必要があります。(`https://[IP address]:442` ) 時間のずれに関連する未解決のクラスター障害はありません。
+* 十分な時間をスケジュールし、link:task_hcc_upgrade_element_software.html#element-upgrade-time["エレメントソフトウェア"]そしてlink:task_hcc_upgrade_storage_firmware.html#storage-firmware-upgrade["ストレージファームウェア"]アップグレード。  Element ソフトウェア 12.5 以降にアップグレードする場合、アップグレード プロセスの時間は、Element ソフトウェアのバージョンとファームウェアの更新によって異なります。
+
+
+
+
+== [[sys_upgrade]]システムアップグレードシーケンス
+
+次の手順に従って、 NetApp SolidFireオールフラッシュ ストレージ システムを Element 12.5 以降にアップグレードできます。
+
+.手順
+. link:task_hcc_upgrade_element_prechecks.html["ストレージをアップグレードする前に、Element ストレージのヘルスチェックを実行します。"]。
+. link:task_hcc_upgrade_management_node.html["（オプション）管理ノードをアップグレードする"]。
++
+
+NOTE: ストレージ クラスター上の Element ソフトウェアをアップグレードするために、管理ノードのオペレーティング システムをアップグレードする必要がなくなりました。管理ノードがバージョン 11.3 以降の場合は、管理サービスを最新バージョンにアップグレードするだけで、 NetApp Hybrid Cloud Control を使用して Element のアップグレードを実行できます。セキュリティ修復などの他の理由で管理ノードのオペレーティング システムをアップグレードする必要がある場合は、シナリオの管理ノードのアップグレード手順に従ってください。
+
+. link:task_hcc_update_management_services.html["ハイブリッドクラウドコントロールからの管理サービスの更新"]。
++
+[IMPORTANT]
+====
+** 管理サービス 2.27 バンドルには、管理ノード 12.8 とのみ互換性のある vCenter Server 5.5 用の Element プラグインが含まれています。管理サービス 2.27 に更新する場合は、管理ノードと管理サービス間の互換性を確保するために、アップグレード シーケンスを変更し、Element 12.8 にアップグレードした後に管理サービス バンドルを更新する必要があります。
+** 管理サービス 2.21.61 から 2.26.40 に更新する場合は、Element 12.8 にアップグレードする前に、管理サービス バンドルを更新する必要があります。
+
+
+====
++
+
+IMPORTANT: 管理サービスをバージョン 2.16 以降に更新していて、管理ノード 11.3 ～ 11.8 を実行している場合は、管理サービスを更新する前に、管理ノード VM の RAM を増やす必要があります。
+
+. link:task_hcc_upgrade_element_software.html["Elementソフトウェアとストレージファームウェアをアップグレードする"]。
+. link:task_hcc_upgrade_storage_firmware.html["（オプション）Elementストレージファームウェアのみをアップグレードする"]。
++
+
+NOTE: メジャー リリース以外で新しいストレージ ファームウェア アップグレードが利用可能になったときに、このタスクを実行する場合があります。
+
+. link:task_vcp_upgrade_plugin.html["vCenter Server の Element プラグインをアップグレードする"]。
+
+
+[discrete]
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

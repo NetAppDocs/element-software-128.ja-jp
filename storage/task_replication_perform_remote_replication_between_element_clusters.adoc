@@ -1,0 +1,26 @@
+---
+permalink: storage/task_replication_perform_remote_replication_between_element_clusters.html 
+sidebar: sidebar 
+keywords: remote replication, clusters, Element software, failover, failback 
+summary: Element ソフトウェアを実行しているクラスターでは、リアルタイム レプリケーションにより、ボリューム データのリモート コピーをすばやく作成できます。ストレージ クラスターを最大 4 つの他のストレージ クラスターとペアリングできます。フェイルオーバーおよびフェイルバックのシナリオでは、クラスター ペアのいずれかのクラスターからボリューム データを同期的または非同期的に複製できます。 
+---
+= NetApp Elementソフトウェアを実行しているクラスタ間でリモート レプリケーションを実行します。
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element ソフトウェアを実行しているクラスターでは、リアルタイム レプリケーションにより、ボリューム データのリモート コピーをすばやく作成できます。ストレージ クラスターを最大 4 つの他のストレージ クラスターとペアリングできます。フェイルオーバーおよびフェイルバックのシナリオでは、クラスター ペアのいずれかのクラスターからボリューム データを同期的または非同期的に複製できます。
+
+レプリケーション プロセスには次の手順が含まれます。
+
+image::../media/replication_element_clusters_workflow.gif[レプリケーションワークフロー図]
+
+* link:task_replication_plan_cluster_and_volume_pairing.html["リアルタイムレプリケーションのためのクラスタとボリュームのペアリングを計画する"]
+* link:task_replication_pair_clusters.html["レプリケーション用のクラスタをペアリングする"]
+* link:task_replication_pair_volumes.html["ペアボリューム"]
+* link:task_replication_validate_volume_replication.html["ボリュームレプリケーションの検証"]
+* link:task_replication_delete_volume_relationship_after_replication.html["レプリケーション後にボリューム関係を削除する"]
+* link:task_replication_manage_volume_relationships.html["ボリューム関係を管理する"]
+

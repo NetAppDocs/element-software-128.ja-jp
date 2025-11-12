@@ -1,0 +1,37 @@
+---
+permalink: storage/task-element-replication-resynchronize-data-protection-relationship.html 
+sidebar: sidebar 
+keywords: ontap, cli, update, replication, relationship, manually 
+summary: ネットワーク エラーが原因で更新に失敗した場合、レプリケーション関係を手動で更新する必要があります。 
+---
+= レプリケーション関係の再同期
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+デスティネーション ボリュームを書き込み可能にしたあと、ソース ボリュームとデスティネーション ボリュームに共通のSnapshotコピーが存在しないために更新が失敗したあと、または関係のレプリケーション ポリシーを変更した場合には、レプリケーション関係の再同期が必要です。
+
+.タスク概要
+再同期の際にベースライン転送は不要ですが、再同期には時間がかかる場合があります。再同期はオフピークの時間帯に実行することを推奨します。
+
+要素のソースパスを次の形式で指定する必要があります。 `<hostip:>/lun/<name>`ここで「`lun`」は実際の文字列「`lun`」であり、 `name`要素ボリュームの名前です。
+
+.手順
+. ソース ボリュームとデスティネーション ボリュームを再同期します。
++
+`snapmirror resync -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume> -type XDP -policy <policy>`
+
++
+コマンド構文全体については、マニュアル ページを参照してください。
+
++
+次の例では、ソースボリューム間の関係を再同期します。 `0005` IPアドレス10.0.0.11と宛先ボリューム `volA_dst`の上 `svm_backup`:
+
++
+[listing]
+----
+cluster_dst::> snapmirror resync -source-path 10.0.0.11:/lun/0005 -policy MirrorLatest -destination-path svm_backup:volA_dst
+----
+

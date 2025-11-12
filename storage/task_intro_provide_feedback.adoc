@@ -1,0 +1,30 @@
+---
+permalink: storage/task_intro_provide_feedback.html 
+sidebar: sidebar 
+keywords: feedback, web user interface, UI issues, feedback form, relevant information, screenshots 
+summary: UI 全体でアクセス可能なフィードバック フォームを使用すると、Element ソフトウェアの Web ユーザー インターフェイスの改善や UI の問題の解決に協力できます。 
+---
+= フィードバック
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+UI 全体でアクセス可能なフィードバック フォームを使用すると、Element ソフトウェアの Web ユーザー インターフェイスの改善や UI の問題の解決に協力できます。
+
+. Element UI の任意のページから、[*フィードバック*] ボタンをクリックします。
+. 「概要」フィールドと「説明」フィールドに関連情報を入力します。
+. 役に立つスクリーンショットがあれば添付してください。
+. 名前とメールアドレスを入力してください。
+. 現在の環境に関するデータを含めるには、チェックボックスを選択します。
+. *送信*をクリックします。
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

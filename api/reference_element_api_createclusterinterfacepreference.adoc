@@ -1,0 +1,91 @@
+---
+permalink: api/reference_element_api_createclusterinterfacepreference.html 
+sidebar: sidebar 
+keywords: cluster,interface,preferences,create,creating,CreateClusterInterfacePreference 
+summary: CreateClusterInterfacePreference メソッドを使用すると、Element ソフトウェアを実行しているストレージ クラスターと統合されたシステムは、ストレージ クラスター上に任意の情報を作成して保存できるようになります。このメソッドは内部使用用です。 
+---
+= クラスターインターフェース設定の作成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+その `CreateClusterInterfacePreference`この方法により、Element ソフトウェアを実行するストレージ クラスターと統合されたシステムは、ストレージ クラスター上に任意の情報を作成して保存できるようになります。このメソッドは内部使用用です。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+名前
+ a| 
+クラスター インターフェース設定の名前。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+価値
+ a| 
+クラスター インターフェース設定の値。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+		"method": "CreateClusterInterfacePreference",
+		"params": {
+			"name": "prefname",
+			"value": "testvalue"
+		},
+	"id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {}
+}
+----
+
+
+== バージョン以降の新機能
+
+11.0

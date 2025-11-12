@@ -1,0 +1,93 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_api_find_mgmt_svcs_version.html 
+summary: REST API を使用して、管理ノードで使用されている管理ノード OS と管理サービス バージョンを確認できます。 
+keywords: netapp, Element, management node, management services, version, bundle version, what is 
+---
+= 管理ノードのOSとサービスのバージョンを確認する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+管理ノード内の REST API を使用して、管理ノード OS、管理サービス バンドル、および管理ノード上で実行されている個々のサービスのバージョン番号を確認できます。
+
+.要件
+* クラスターはNetApp Elementソフトウェア 11.3 以降を実行しています。
+* バージョン 11.3 以降を実行している管理ノードをデプロイしました。
+
+
+.オプション
+* <<APIコマンドを使用します。>>
+* <<REST API UI の手順>>
+
+
+
+
+== APIコマンドを使用します。
+
+* 管理ノード上で実行されている管理ノード OS、管理サービス バンドル、および管理ノード API (mnode-api) サービスのバージョン情報を取得します。
++
+[listing]
+----
+curl -X GET "https://<ManagementNodeIP>/mnode/about" -H  "accept: application/json"
+----
+* 管理ノードで実行されている個々のサービスのバージョン情報を取得します。
++
+[listing]
+----
+curl -X GET "https://<ManagementNodeIP>/mnode/services?status=running" -H  "accept: */*" -H  "Authorization: ${TOKEN}"
+----
++
+
+NOTE: 持ち主を見つけることができます `${TOKEN}`APIコマンドで使用されるlink:task_mnode_api_get_authorizationtouse.html["許可する"]。持ち主 `${TOKEN}`curl レスポンスにあります。
+
+
+
+
+
+== REST API UI の手順
+
+. 管理ノードのIPアドレスに続いて、サービスのREST API UIにアクセスします。 `/mnode/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. 次のいずれかを実行します。
++
+** 管理ノード上で実行されている管理ノード OS、管理サービス バンドル、および管理ノード API (mnode-api) サービスのバージョン情報を取得します。
++
+... *GET /about*を選択します。
+... *試してみる*を選択します。
+... *実行*を選択します。
++
+管理サービスバンドルバージョン(`"mnode_bundle_version"`）、管理ノードOSバージョン(`"os_version"`）、および管理ノードAPIバージョン(`"version"`) がレスポンス本文に示されます。
+
+
+
+** 管理ノードで実行されている個々のサービスのバージョン情報を取得します。
++
+... *GET /services*を選択します。
+... *試してみる*を選択します。
+... ステータスとして「実行中」を選択します。
+... *実行*を選択します。
++
+管理ノードで実行されているサービスは、応答本文に示されます。
+
+
+
+
+
+
+
+[discrete]
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

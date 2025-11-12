@@ -1,0 +1,120 @@
+---
+permalink: api/reference_element_api_listallnodes.html 
+sidebar: sidebar 
+keywords: cluster,list,listing,node,nodes,all,listallnodes 
+summary: ListAllNodes メソッドを使用して、クラスター内のアクティブなノードと保留中のノードを一覧表示できます。 
+---
+= すべてのノードをリスト
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ListAllNodes`クラスター内のアクティブなノードと保留中のノードを一覧表示するメソッド。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+ノード
+ a| 
+クラスター内のアクティブなノードを記述するオブジェクトのリスト。
+ a| 
+xref:reference_element_api_node.adoc[ノード]
+
+
+
+ a| 
+保留中のアクティブノード
+ a| 
+クラスターの保留中のアクティブ ノードを記述するオブジェクトのリスト。
+ a| 
+xref:reference_element_api_pendingactivenode.adoc[保留中のアクティブノード]配列
+
+
+
+ a| 
+保留中のノード
+ a| 
+クラスターの保留中のノードを記述するオブジェクトのリスト。
+ a| 
+xref:reference_element_api_pendingnode.adoc[保留中のノード]配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "ListAllNodes",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"nodes": [
+			{
+				"associatedFServiceID": 0,
+				"associatedMasterServiceID": 1,
+				"attributes": {},
+				"chassisName": "CT5TV12",
+				"cip": "10.1.1.1",
+				"cipi": "Bond10G",
+				"fibreChannelTargetPortGroup": null,
+				"mip": "10.1.1.1",
+				"mipi": "Bond1G",
+				"name": "NLABP0704",
+				"nodeID": 1,
+				"nodeSlot": "",
+				"platformInfo": {
+					"chassisType": "R620",
+					"cpuModel": "Intel",
+					"nodeMemoryGB": 72,
+					"nodeType": "SF3010",
+					"platformConfigVersion": "0.0.0.0"
+				},
+				"sip": "10.1.1.1",
+				"sipi": "Bond10G",
+				"softwareVersion": "11.0",
+				"uuid": "4C4C4544-0054",
+				"virtualNetworks": []
+			}
+		],
+		"pendingActiveNodes": [],
+		"pendingNodes": []
+	}
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

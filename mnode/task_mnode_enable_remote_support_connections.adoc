@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_enable_remote_support_connections.html 
+summary: 管理ノードを使用して、トラブルシューティングのためのNetAppサポート アクセスを有効にすることができます。 
+keywords: netapp, mnode, management node, connect to support, support tunnel, rst 
+---
+= リモートNetAppサポートセッションを開始する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFireオールフラッシュ ストレージ システムのテクニカル サポートが必要な場合は、 NetAppサポートがシステムにリモートで接続します。セッションを開始してリモート アクセスを取得するために、 NetAppサポートは、お客様の環境へのリバース Secure Shell (SSH) 接続を開くことができます。
+
+NetAppサポートとのSSHリバース トンネル接続用のTCPポートを開くことができます。この接続により、 NetAppサポートは管理ノードにログインできるようになります。
+
+.開始する前に
+* 管理サービス 2.18 以降では、管理ノード上のリモート アクセス機能はデフォルトで無効になっています。リモートアクセス機能を有効にするには、 https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["管理ノードでSSH機能を管理する"] 。
+* 管理ノードがプロキシ サーバーの背後にある場合は、sshd.config ファイルに次の TCP ポートが必要です。
++
+[cols="15,25,60"]
+|===
+| TCP ポート | 説明 | 接続方向 
+
+
+| 443 | オープン サポート トンネル経由で Web UI へのリバース ポート転送を行う API 呼び出し/HTTPS | 管理ノードからストレージノードへ 
+
+
+| 22 | SSHログインアクセス | 管理ノードからストレージノードへ、またはストレージノードから管理ノードへ 
+|===
+
+
+.手順
+* 管理ノードにログインし、ターミナル セッションを開きます。
+* プロンプトで次のように入力します。
++
+`rst -r  sfsupport.solidfire.com -u element -p <port_number>`
+
+* リモート サポート トンネルを閉じるには、次のように入力します。
++
+`rst --killall`
+
+* （オプション）無効にする https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["リモートアクセス機能"]また。
++
+
+NOTE: SSH は、無効にしない限り、管理ノード上で有効なままになります。  SSH 対応構成は、手動で無効にされるまで、更新やアップグレードを通じて管理ノード上で保持されます。
+
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

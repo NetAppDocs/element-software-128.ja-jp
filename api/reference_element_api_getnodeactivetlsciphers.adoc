@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_getnodeactivetlsciphers.html 
+sidebar: sidebar 
+keywords: tls,cipher,ciphers,get,getting,getnodeactivetlsciphers,accepted 
+summary: 単一ノードで GetNodeActiveTlsCiphers メソッドを使用して、このノードで現在受け入れられている TLS 暗号のリストを取得できます。この方法は、管理ノードとストレージノードで使用できます。 
+---
+= GetNodeActiveTlsCiphers
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetNodeActiveTlsCiphers`単一ノードでメソッドを実行して、このノードで現在受け入れられている TLS 暗号のリストを取得します。この方法は、管理ノードとストレージノードで使用できます。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+必須暗号
+ a| 
+ノードの必須 TLS 暗号スイートのリスト。これらはノード上で常にアクティブな暗号です。
+ a| 
+string
+
+
+
+ a| 
+補足暗号
+ a| 
+ノードの補足 TLS 暗号スイートのリスト。
+ a| 
+string
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "GetNodeActiveTlsCiphers",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+      "id" : 1,
+      "result" : {
+        "mandatoryCiphers": [
+            "DHE-RSA-AES256-SHA256",
+            "DHE-RSA-AES256-GCM-SHA384",
+            "ECDHE-RSA-AES256-SHA384",
+            "ECDHE-RSA-AES256-GCM-SHA384"
+        ],
+        "supplementalCiphers": [
+            "DHE-RSA-AES128-SHA256",
+            "DHE-RSA-AES128-GCM-SHA256",
+            "ECDHE-RSA-AES128-SHA256",
+            "ECDHE-RSA-AES128-GCM-SHA256"
+        ]
+    }
+}
+----

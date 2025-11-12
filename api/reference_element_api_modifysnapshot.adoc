@@ -1,0 +1,169 @@
+---
+permalink: api/reference_element_api_modifysnapshot.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapshot,attributes,attribute 
+summary: 'ModifySnapshot を使用すると、スナップショットに現在割り当てられている属性を変更できます。この方法を使用すると、読み取り/書き込み \(ソース\) ボリューム上に作成されたスナップショットを、Element ソフトウェアを実行しているターゲット ストレージ クラスターにリモートで複製することもできます。' 
+---
+= スナップショットの変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用できます `ModifySnapshot`スナップショットに現在割り当てられている属性を変更します。この方法を使用すると、読み取り/書き込み (ソース) ボリューム上に作成されたスナップショットを、Element ソフトウェアを実行しているターゲット ストレージ クラスターにリモートで複製することもできます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+
+
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+リモートレプリケーションを有効にする
+ a| 
+作成されたスナップショットをリモート ストレージ クラスターに複製できるようにする場合に使用します。有効な値は次のとおりです。
+
+* `true`: スナップショットはリモート ストレージに複製されます。
+* `false`:スナップショットはリモート ストレージに複製されません。
+
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+
+
+ a| 
+有効期限
+ a| 
+スナップショットを削除できるまでの時間を指定します。保持と併用することはできません。元のスナップショットの有効期限または保持期間が指定されていない場合、スナップショットは期限切れになりません。時間形式は、時間ベースの有効期限の場合は ISO 8601 日付文字列です。それ以外の場合は、有効期限は切れません。値が null の場合、スナップショットは永続的に保持されます。  fifo の値を指定すると、ボリューム上の他の FIFO スナップショットと比較して、スナップショットは先入れ先出し (FIFO) ベースで保存されます。  FIFO スペースが利用できない場合、API は失敗します。
+ a| 
+ISO 8601日付文字列
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+名前
+ a| 
+スナップショットの名前。名前を入力しない場合は、スナップショットが作成された日時が使用されます。許可される名前の最大長は 255 文字です。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+スナップミラーラベル
+ a| 
+SnapMirrorエンドポイントのスナップショット保持ポリシーを指定するためにSnapMirrorソフトウェアによって使用されるラベル。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+スナップショットID
+ a| 
+スナップショットの識別子。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+Snapshot
+ a| 
+新しく変更されたスナップショットに関する情報を含むオブジェクト。
+ a| 
+xref:reference_element_api_snapshot.adoc[Snapshot]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "ModifySnapshot",
+  "params": {
+    "snapshotID": 3114,
+    "enableRemoteReplication": "true",
+    "name" : "Chicago"
+  },
+  "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "snapshot": {
+      "attributes": {},
+      "checksum": "0x0",
+      "createTime": "2016-04-04T17:26:20Z",
+      "enableRemoteReplication": true,
+      "expirationReason": "None",
+      "expirationTime": null,
+      "groupID": 0,
+      "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+      "name": "test1",
+      "snapshotID": 3114,
+      "snapshotUUID": "5809a671-4ad0-4a76-9bf6-01cccf1e65eb",
+      "status": "done",
+      "totalSize": 5000658944,
+      "virtualVolumeID": null,
+      "volumeID": 1
+    }
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

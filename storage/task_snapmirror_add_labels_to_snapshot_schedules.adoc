@@ -1,0 +1,55 @@
+---
+permalink: storage/task_snapmirror_add_labels_to_snapshot_schedules.html 
+sidebar: sidebar 
+keywords: element, ui, snapmirror, labels, schedules, policies 
+summary: SnapMirrorポリシーが適用されるように、スナップショット スケジュールにSnapMirrorラベルを追加できます。既存のSnapMirror関係ダイアログ ボックスまたは NetAppONTAP システム マネージャから使用可能なラベルを表示できます。 
+---
+= スナップショットスケジュールにSnapMirrorラベルを追加する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapMirrorポリシーが適用されるように、スナップショット スケジュールにSnapMirrorラベルを追加できます。既存のSnapMirror関係ダイアログ ボックスまたは NetAppONTAP システム マネージャから使用可能なラベルを表示できます。
+
+.要件
+* SnapMirror はクラスタ レベルで有効にする必要があります。
+* 追加するラベルはすでにONTAPに存在します。
+
+
+.手順
+. *データ保護* > *スケジュール*をクリックします。
+. 次のいずれかの方法で、スケジュールにSnapMirrorラベルを追加します。
++
+[cols="25,75"]
+|===
+| オプション | 手順 
+
+
+ a| 
+新しいスケジュールを作成する
+ a| 
+.. *スケジュールの作成*を選択します。
+.. その他の関連する詳細をすべて入力します。
+.. *スケジュールの作成*を選択します。
+
+
+
+
+ a| 
+既存のスケジュールの変更
+ a| 
+.. ラベルを追加するスケジュールの*アクション*アイコンをクリックし、*編集*を選択します。
+.. 表示されるダイアログ ボックスで、* SnapMirrorラベル* フィールドにテキストを入力します。
+.. *変更を保存*を選択します。
+
+
+|===
+
+
+
+
+== 詳細情報の参照
+
+xref:task_data_protection_create_a_snapshot_schedule.adoc[スナップショットスケジュールを作成する]

@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/index.html 
+summary: NetApp SolidFireオールフラッシュ ストレージでは、 NetApp Hybrid Cloud Control を使用してストレージ資産を管理および監視できます。 
+keywords: netapp, element, cluster, element, account, user, volume, hybrid cloud control, hcc 
+---
+= NetApp Hybrid Cloud Control でストレージを管理および監視
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp SolidFireオールフラッシュ ストレージを使用すると、 NetApp Hybrid Cloud Control を使用してストレージ資産を管理および監視し、ストレージ システム内のコンポーネントを構成できます。
+
+* link:task-hcc-manage-storage-clusters.html["ストレージクラスターの追加と管理"]
+* link:task-setup-configure-fqdn-web-ui-access.html["完全修飾ドメイン名のWeb UIアクセスを構成する"]
+* link:task-hcc-manage-accounts.html["ユーザーアカウントの作成と管理"]
+* link:task-hcc-manage-vol-management.html["ボリュームの作成と管理"]
+* link:task-hcc-manage-vol-access-groups.html["ボリューム アクセス グループの作成と管理"]
+* link:task-hcc-manage-initiators.html["イニシエーターの作成と管理"]
+* link:task-hcc-qos-policies.html["ボリュームQoSポリシーの作成と管理"]
+* link:task-hcc-dashboard.html["NetApp Hybrid Cloud ControlでSolidFireシステムを監視"]
+
+
+[discrete]
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

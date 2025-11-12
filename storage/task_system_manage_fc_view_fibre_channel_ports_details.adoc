@@ -1,0 +1,49 @@
+---
+permalink: storage/task_system_manage_fc_view_fibre_channel_ports_details.html 
+sidebar: sidebar 
+keywords: fibre channel ports, details, view, fc ports, hba, wwnn, wwpn 
+summary: FC ポート ページでは、ファイバー チャネル ポートのステータス、名前、ポート アドレスなどの詳細情報を表示できます。 
+---
+= ファイバーチャネルポートの詳細を表示
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+FC ポート ページでは、ファイバー チャネル ポートのステータス、名前、ポート アドレスなどの詳細情報を表示できます。
+
+クラスターに接続されているファイバー チャネル ポートに関する情報を表示します。
+
+.手順
+. *クラスター* > *FC ポート* をクリックします。
+. このページの情報をフィルタリングするには、[*フィルタ*] をクリックします。
+. 詳細を確認します。
++
+** *ノード ID*: 接続のセッションをホストするノード。
+** *ノード名*: システムによって生成されたノード名。
+** *スロット*: ファイバー チャネル ポートが配置されているスロット番号。
+** *HBA ポート*: ファイバー チャネル ホスト バス アダプタ (HBA) 上の物理ポート。
+** *WWNN*: ワールドワイドノード名。
+** *WWPN*: ターゲットのワールドワイドポート名。
+** *スイッチ WWN*: ファイバー チャネル スイッチのワールド ワイド ネーム。
+** *ポート状態*: ポートの現在の状態。
+** *nPort ID*: ファイバー チャネル ファブリック上のノード ポート ID。
+** *速度*: ネゴシエートされたファイバー チャネル速度。有効な値は次のとおりです。
++
+*** 4Gbps
+*** 8Gbps
+*** 16Gbps
+
+
+
+
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

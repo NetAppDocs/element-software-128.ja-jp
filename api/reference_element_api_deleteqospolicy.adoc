@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_deleteqospolicy.html 
+sidebar: sidebar 
+keywords: QoS,policy,policies,delete,deleting,DeleteQoSPolicy 
+summary: DeleteQoSPolicy メソッドを使用して、システムから QoS ポリシーを削除できます。このポリシーで作成または変更されたすべてのボリュームの QoS 設定は影響を受けません。 
+---
+= QoSポリシーの削除
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `DeleteQoSPolicy`システムから QoS ポリシーを削除する方法。このポリシーで作成または変更されたすべてのボリュームの QoS 設定は影響を受けません。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+qosポリシーID
+ a| 
+削除する QoS ポリシーの ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "id": 663,
+  "method": "DeleteQoSPolicy",
+  "params": {
+    "qosPolicyID": 4
+  }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 663,
+  "result": {}
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

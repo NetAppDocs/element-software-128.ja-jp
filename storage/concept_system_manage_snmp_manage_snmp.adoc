@@ -1,0 +1,19 @@
+---
+permalink: storage/concept_system_manage_snmp_manage_snmp.html 
+sidebar: sidebar 
+keywords: snmp, manage, config, cluster, requestor, usm, traps, monitor 
+summary: 'クラスターで簡易ネットワーク管理プロトコル (SNMP) を構成できます。' 
+---
+= SNMPの管理
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスターで簡易ネットワーク管理プロトコル (SNMP) を構成できます。
+
+SNMP リクエスタを選択し、使用する SNMP のバージョンを選択し、SNMP ユーザーベース セキュリティ モデル (USM) ユーザーを識別し、 SolidFireクラスターを監視するためのトラップを設定できます。管理情報ベース ファイルを表示したりアクセスしたりすることもできます。
+
+
+NOTE: IPv4 アドレスと IPv6 アドレスの両方を使用できます。

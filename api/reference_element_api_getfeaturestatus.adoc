@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_getfeaturestatus.html 
+sidebar: sidebar 
+keywords: feature,status,cluster,get,getting,getfeaturestatus 
+summary: GetFeatureStatus メソッドを使用して、クラスター機能のステータスを取得できます。 
+---
+= フィーチャステータスの取得
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetFeatureStatus`クラスター機能のステータスを取得するメソッド。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+機能
+ a| 
+クラスター機能のステータス。値が指定されていない場合、システムはすべての機能のステータスを返します。有効な値は次のとおりです。
+
+* `Vvols`: VVols クラスター機能のステータスを取得します。
+* `SnapMirror`: SnapMirrorレプリケーション クラスタ機能のステータスを取得します。
+* `Fips`: HTTPS 通信機能の FIPS 140-2 暗号化のステータスを取得します。
+* `FipsDrives`: FIPS 140-2 ドライブ暗号化機能のステータスを取得します。
+* `VolumeLoadBalanceOnActualIOPS`: 最小 IOPS 機能ではなく実際の IOPS に基づいてスライス バランスのステータスを取得します。  Element 12.8 以降で使用可能です。
+
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+特徴
+ a| 
+機能名とそのステータスを示す機能オブジェクトの配列。オブジェクトメンバー:
+
+* feature: (文字列) 機能の名前。
+* enabled: (ブール値) 機能が有効かどうか。
+
+ a| 
+JSONオブジェクト配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "GetFeatureStatus",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "features": [
+            {
+                "enabled": true,
+                "feature": "Vvols"
+            },
+            {
+                "enabled": true,
+                "feature": "SnapMirror"
+            },
+            {
+                "enabled": true,
+                "feature": "Fips"
+            },
+            {
+                "enabled": true,
+                "feature": "FipsDrives"
+            },
+            {
+                "enabled": true,
+                "feature": "VolumeLoadBalanceOnActualIOPS"
+            }
+        ]
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

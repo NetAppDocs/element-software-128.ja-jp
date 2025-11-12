@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_networkinterface.html 
+sidebar: sidebar 
+keywords: object,objects,networkInterface 
+summary: networkInterface オブジェクトには、ストレージ ノード上の個々のネットワーク インターフェイスの構成情報が含まれています。 
+---
+= ネットワークインターフェース
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+networkInterface オブジェクトには、ストレージ ノード上の個々のネットワーク インターフェイスの構成情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+address
+ a| 
+インターフェースの IPv4 管理アドレス。
+ a| 
+string
+
+
+
+ a| 
+アドレスV6
+ a| 
+インターフェースの IPv6 管理アドレス。
+ a| 
+string
+
+
+
+ a| 
+放送
+ a| 
+インターフェースのブロードキャスト アドレス。
+ a| 
+string
+
+
+
+ a| 
+macアドレス
+ a| 
+インターフェースの MAC アドレス。
+ a| 
+string
+
+
+
+ a| 
+mtu
+ a| 
+インターフェイスの最大転送単位（バイト単位）。
+ a| 
+integer
+
+
+
+ a| 
+名前
+ a| 
+インターフェースの名前。
+ a| 
+string
+
+
+
+ a| 
+namespace
+ a| 
+このインターフェースに仮想ネットワーク名前空間が割り当てられているかどうか。
+ a| 
+ブーリアン
+
+
+
+ a| 
+netmask
+ a| 
+インターフェースのサブネット マスク。
+ a| 
+string
+
+
+
+ a| 
+ステータス
+ a| 
+インターフェースの動作ステータス。
+ a| 
+string
+
+
+
+ a| 
+type
+ a| 
+インターフェースのタイプ (ボンド マスター、ボンド スレーブなど)。
+ a| 
+string
+
+
+
+ a| 
+仮想ネットワークタグ
+ a| 
+仮想ネットワーク上のインターフェースに割り当てられた VLAN ID。
+ a| 
+integer
+
+|===

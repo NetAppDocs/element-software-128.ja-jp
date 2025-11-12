@@ -1,0 +1,69 @@
+---
+permalink: api/reference_element_api_network_all_interfaces.html 
+sidebar: sidebar 
+keywords: object,objects,network 
+summary: 'ネットワーク \(すべてのインターフェース\) オブジェクトは、ストレージ ノードのネットワーク インターフェース構成に関する情報を収集します。  GetConfig メソッドと GetNetworkConfig メソッドを使用して、ストレージ ノードに関するこの情報を取得できます。' 
+---
+= ネットワーク（すべてのインターフェース）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ネットワーク (すべてのインターフェース) オブジェクトは、ストレージ ノードのネットワーク インターフェース構成に関する情報を収集します。使用することができます `GetConfig`そして `GetNetworkConfig`ストレージ ノードに関するこの情報を取得する方法。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+ボンド10G
+ a| 
+Bond10G ボンディング インターフェイスの構成情報。
+ a| 
+xref:reference_element_api_network_bonded_interfaces.adoc[ネットワーク（結合インターフェース）]
+
+
+
+ a| 
+ボンド1G
+ a| 
+Bond1G ボンディング インターフェースの構成情報。
+ a| 
+xref:reference_element_api_network_bonded_interfaces.adoc[ネットワーク（結合インターフェース）]
+
+
+
+ a| 
+eth0-5
+ a| 
+ストレージ ノード内のイーサネット インターフェイスごとに 1 つのオブジェクトがあり、インターフェイスの構成情報を記述します。これらのオブジェクトには、インターフェース名に合わせて 0 ～ 5 の番号が付けられます。
+ a| 
+xref:reference_element_api_network_ethernet_interfaces.adoc[ネットワーク（イーサネットインターフェース）]
+
+
+
+ a| 
+lo
+ a| 
+ループバック インターフェイスの構成情報。
+ a| 
+xref:reference_element_api_network_local_interfaces.adoc[ネットワーク（ローカルインターフェース）]
+
+|===
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_getconfig.adoc[ゲットコンフィグ]
+* xref:reference_element_api_getnetworkconfig.adoc[ネットワーク構成の取得]
+

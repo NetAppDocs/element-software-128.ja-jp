@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_snapmirrorvserveraggregateinfo.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVserverAggregateInfo 
+summary: 'snapMirrorVserverAggregateInfo オブジェクトには、宛先ONTAPクラスタで使用可能なデータ ストレージ仮想マシン (Vserver とも呼ばれます) に関する情報が含まれています。' 
+---
+= スナップミラーVサーバー集約情報
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorVserverAggregateInfo オブジェクトには、宛先ONTAPクラスタで使用可能なデータ ストレージ仮想マシン (Vserver とも呼ばれます) に関する情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+集約名
+ a| 
+Vserver に割り当てられたアグリゲートの名前。
+ a| 
+string
+
+
+
+ a| 
+集約可能サイズ
+ a| 
+割り当てられたアグリゲートの使用可能なサイズ。
+ a| 
+integer
+
+|===

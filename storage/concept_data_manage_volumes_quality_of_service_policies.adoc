@@ -1,0 +1,83 @@
+---
+permalink: storage/concept_data_manage_volumes_quality_of_service_policies.html 
+sidebar: sidebar 
+keywords: qos policies, manage, volumes, create, edit, delete 
+summary: 'サービス品質 (QoS) ポリシーを使用すると、多くのボリュームに適用できる標準化されたサービス品質設定を作成して保存できます。管理タブの QoS ポリシー ページから QoS ポリシーを作成、編集、削除できます。' 
+---
+= サービス品質ポリシーの管理
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+サービス品質 (QoS) ポリシーを使用すると、多くのボリュームに適用できる標準化されたサービス品質設定を作成して保存できます。管理タブの QoS ポリシー ページから QoS ポリシーを作成、編集、削除できます。
+
+
+NOTE: QoS ポリシーを使用している場合は、ボリューム上でカスタム QoS を使用しないでください。カスタム QoS は、ボリューム QoS 設定の QoS ポリシー値を上書きして調整します。
+
+https://www.youtube.com/embed/q9VCBRDtrnI?rel=0["NetAppのビデオ: SolidFire Quality of Service Policies"]
+
+見るlink:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html["パフォーマンスとサービス品質"]。
+
+* QoSポリシーを作成する
+* QoSポリシーを編集する
+* QoSポリシーを削除する
+
+
+
+
+== QoSポリシーを作成する
+
+QoS ポリシーを作成し、ボリュームの作成時に適用できます。
+
+. *管理* > *QoS ポリシー* を選択します。
+. *QoS ポリシーの作成*をクリックします。
+. *ポリシー名*を入力します。
+. **最小 IOPS**、*最大 IOPS*、*バースト IOPS* の値を入力します。
+. *QoS ポリシーの作成*をクリックします。
+
+
+
+
+== QoSポリシーを編集する
+
+既存の QoS ポリシーの名前を変更したり、ポリシーに関連付けられている値を編集したりできます。  QoS ポリシーを変更すると、そのポリシーに関連付けられているすべてのボリュームに影響します。
+
+. *管理* > *QoS ポリシー* を選択します。
+. 編集する QoS ポリシーの [アクション] アイコンをクリックします。
+. 表示されたメニューで、[**編集**] を選択します。
+. *QoS ポリシーの編集* ダイアログ ボックスで、必要に応じて次のプロパティを変更します。
++
+** ポリシー名
+** 最小 IOPS
+** 最大 IOPS
+** バースト IOPS
+
+
+. *変更を保存*をクリックします。
+
+
+
+
+== QoSポリシーを削除する
+
+不要になった QoS ポリシーは削除できます。  QoS ポリシーを削除すると、そのポリシーに関連付けられているすべてのボリュームでは QoS 設定が維持されますが、ポリシーとの関連付けは解除されます。
+
+
+NOTE: 代わりにボリュームを QoS ポリシーから切り離そうとしている場合は、そのボリュームの QoS 設定をカスタムに変更できます。
+
+. *管理* > *QoS ポリシー* を選択します。
+. 削除する QoS ポリシーの [アクション] アイコンをクリックします。
+. 表示されるメニューで、[削除] を選択します。
+. 操作を確定します。
+
+
+
+
+== 詳細情報の参照
+
+* link:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html["ボリュームのQoSポリシーの関連付けを削除します"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_copyvolume.html 
+sidebar: sidebar 
+keywords: volume,volumes,CopyVolume,overwrite,overwriting,data 
+summary: 'CopyVolume メソッドを使用すると、既存のボリュームのデータ コンテンツを別のボリューム (またはスナップショット) のデータ コンテンツで上書きできます。 IQN、QoS 設定、サイズ、アカウント、ボリューム アクセス グループのメンバーシップなどの宛先ボリュームの属性は変更されません。宛先ボリュームは既に存在し、ソース ボリュームと同じサイズである必要があります。' 
+---
+= コピーボリューム
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `CopyVolume`既存のボリュームのデータ内容を別のボリューム (またはスナップショット) のデータ内容で上書きする方法。 IQN、QoS 設定、サイズ、アカウント、ボリューム アクセス グループのメンバーシップなどの宛先ボリュームの属性は変更されません。宛先ボリュームは既に存在し、ソース ボリュームと同じサイズである必要があります。
+
+操作を開始する前に、クライアントが宛先ボリュームをアンマウントしておくことが最適です。操作中に宛先ボリュームが変更された場合、変更は失われます。この操作が完了するまでにかかる時間はさまざまです。使用することができますxref:reference_element_api_getasyncresult.adoc[非同期結果を取得する]プロセスが終了したかどうかを判断する方法、およびxref:reference_element_api_listsyncjobs.adoc[リスト同期ジョブ]コピーの進行状況を確認します。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+dstボリュームID
+ a| 
+上書きするボリュームのボリュームID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+volumeID
+ a| 
+読み取り元のボリュームのボリュームID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+スナップショットID
+ a| 
+クローンのソースとして使用されるスナップショットの ID。  ID が指定されていない場合は、現在アクティブなボリュームが使用されます。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+非同期ハンドル
+ a| 
+操作結果を取得するために使用されるハンドル値。
+ a| 
+integer
+
+
+
+ a| 
+クローンID
+ a| 
+新しく複製されたボリュームの CloneID。
+ a| 
+integer
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "CopyVolume",
+   "params": {
+      "volumeID" : 3,
+      "dstVolumeID" : 2
+   },
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "asyncHandle": 9,
+    "cloneID": 5
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_getasyncresult.adoc[非同期結果を取得する]
+* xref:reference_element_api_listsyncjobs.adoc[リスト同期ジョブ]
+

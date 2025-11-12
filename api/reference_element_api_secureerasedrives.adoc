@@ -1,0 +1,99 @@
+---
+permalink: api/reference_element_api_secureerasedrives.html 
+sidebar: sidebar 
+keywords: drive,drives,secure,erase,reset,resetting,encryption,key,secureerasedrives 
+summary: SecureEraseDrives メソッドを使用すると、ステータスが「使用可能」のドライブから残留データを削除できます。機密データが含まれている、耐用年数が近づいているドライブを交換するときに、この方法を使用できます。この方法では、Security Erase Unit コマンドを使用して、事前に定義されたパターンをドライブに書き込み、ドライブ上の暗号化キーをリセットします。この非同期メソッドは完了するまでに数分かかる場合があります。 
+---
+= SecureEraseDrives
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `SecureEraseDrives`「利用可能」ステータスのドライブから残留データを削除する方法。機密データが含まれている、耐用年数が近づいているドライブを交換するときに、この方法を使用できます。この方法では、Security Erase Unit コマンドを使用して、事前に定義されたパターンをドライブに書き込み、ドライブ上の暗号化キーをリセットします。この非同期メソッドは完了するまでに数分かかる場合があります。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+ドライブ
+ a| 
+安全に消去するドライブ ID のリスト。
+ a| 
+整数配列
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+非同期ハンドル
+ a| 
+操作結果を取得するために使用されるハンドル値。
+ a| 
+integer
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "SecureEraseDrives",
+   "params": {
+     "drives"  : [3, 4, 5]
+   },
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id" : 1
+   "result" : {
+     "asyncHandle" : 1
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_getasyncresult.adoc[非同期結果を取得する]
+* xref:reference_element_api_listdrives.adoc[リストドライブ]
+

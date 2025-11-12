@@ -1,0 +1,54 @@
+---
+permalink: api/concept_element_api_multitenant_networking_api_methods.html 
+sidebar: sidebar 
+keywords: multitenant,network,networking,api,prerequisites,requirements,virtual,tenant 
+summary: Element ストレージ クラスターのマルチテナント ネットワーキングにより、別々の論理ネットワーク上にある複数のクライアント間のトラフィックを、レイヤー 3 ルーティングなしで 1 つの Element ストレージ クラスターに接続できるようになります。 
+---
+= マルチテナントネットワークAPIメソッド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element ストレージ クラスターのマルチテナント ネットワーキングにより、別々の論理ネットワーク上にある複数のクライアント間のトラフィックを、レイヤー 3 ルーティングなしで 1 つの Element ストレージ クラスターに接続できるようになります。
+
+ストレージ クラスターへの接続は、VLAN タグ付けを使用してネットワーク スタック内で分離されます。
+
+
+
+== マルチテナント仮想ネットワークを設定するための前提条件
+
+* ストレージ ノード上の仮想ネットワークに割り当てるクライアント ネットワーク IP アドレスのブロックを特定しておく必要があります。
+* すべてのストレージ トラフィックのエンドポイントとして使用するクライアント ストレージ ネットワーク IP (SVIP) アドレスを特定する必要があります。
+
+
+
+
+== 仮想ネットワークの操作順序
+
+. 入力した IP アドレスを一括プロビジョニングするには、AddVirtualNetwork メソッドを使用します。
++
+仮想ネットワークを追加すると、クラスターは次の手順を自動的に実行します。
+
++
+** 各ストレージ ノードは仮想ネットワーク インターフェイスを作成します。
+** 各ストレージ ノードには、仮想 SVIP を使用してルーティングできる VLAN アドレスが割り当てられます。
+** ノードを再起動しても、VLAN IP アドレスは各ノード上で保持されます。
+
+
+. 仮想ネットワーク インターフェイスと VLAN アドレスが割り当てられたら、クライアント ネットワーク トラフィックを仮想 SVIP に割り当てることができます。
+
+
+
+
+== 詳細情報の参照
+
+* xref:concept_element_api_virtual_network_naming_conventions.adoc[仮想ネットワークの命名規則]
+* xref:reference_element_api_addvirtualnetwork.adoc[仮想ネットワークの追加]
+* xref:reference_element_api_modifyvirtualnetwork.adoc[仮想ネットワークの変更]
+* xref:reference_element_api_listvirtualnetworks.adoc[ListVirtualNetworks]
+* xref:reference_element_api_removevirtualnetwork.adoc[仮想ネットワークの削除]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

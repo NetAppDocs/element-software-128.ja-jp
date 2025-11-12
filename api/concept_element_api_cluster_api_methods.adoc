@@ -1,0 +1,59 @@
+---
+permalink: api/concept_element_api_cluster_api_methods.html 
+sidebar: sidebar 
+keywords: cluster,API,methods,method,manage 
+summary: Element ソフトウェア クラスター API メソッドを使用すると、ストレージ クラスターおよびストレージ クラスターに属するノードの構成とトポロジを管理できます。 
+---
+= クラスターAPIメソッド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element ソフトウェア クラスター API メソッドを使用すると、ストレージ クラスターおよびストレージ クラスターに属するノードの構成とトポロジを管理できます。
+
+一部のクラスター API メソッドは、クラスターの一部であるノード、またはクラスターに参加するように構成されているノードで動作します。新しいクラスターまたは既存のクラスターにノードを追加できます。クラスターに追加する準備ができているノードは「保留中」状態です。つまり、構成はされているものの、まだクラスターに追加されていないことを意味します。
+
+* xref:reference_element_api_addnodes.adoc[AddNodes]
+* xref:reference_element_api_clearclusterfaults.adoc[ClearClusterFaults]
+* xref:reference_element_api_createclusterinterfacepreference.adoc[クラスターインターフェース設定の作成]
+* xref:reference_element_api_deleteclusterinterfacepreference.adoc[クラスタインターフェース設定の削除]
+* xref:reference_element_api_disablefeature.adoc[機能を無効にする]
+* xref:reference_element_api_enablefeature.adoc[機能を有効にする]
+* xref:reference_element_api_getclustercapacity.adoc[クラスタ容量の取得]
+* xref:reference_element_api_getclusterfullthreshold.adoc[クラスターフルしきい値の取得]
+* xref:reference_element_api_getclusterhardwareinfo.adoc[クラスタハードウェア情報を取得する]
+* xref:reference_element_api_getclusterinfo.adoc[クラスター情報を取得]
+* xref:reference_element_api_getclusterinterfacepreference.adoc[クラスタインターフェース設定の取得]
+* xref:reference_element_api_getclustermasternodeid.adoc[クラスターマスターノードIDを取得する]
+* xref:reference_element_api_getclusterstats.adoc[クラスター統計情報を取得する]
+* xref:reference_element_api_getclusterversioninfo.adoc[クラスタバージョン情報を取得する]
+* xref:reference_element_api_getfeaturestatus.adoc[フィーチャステータスの取得]
+* xref:reference_element_api_getloginsessioninfo.adoc[ログインセッション情報を取得する]
+* xref:reference_element_api_getnodehardwareinfo.adoc[ノードハードウェア情報を取得する]
+* xref:reference_element_api_getnodestats.adoc[ノード統計情報を取得する]
+* xref:reference_element_api_listactivenodes.adoc[ListActiveNodes]
+* xref:reference_element_api_listallnodes.adoc[すべてのノードをリスト]
+* xref:reference_element_api_listclusterfaults.adoc[クラスタ障害のリスト]
+* xref:reference_element_api_listclusterinterfacepreferences.adoc[クラスターインターフェース設定の一覧]
+* xref:reference_element_api_listevents.adoc[リストイベント]
+* xref:reference_element_api_listnodestats.adoc[リストノード統計]
+* xref:reference_element_api_listiscsisessions.adoc[ISCSIセッションのリスト]
+* xref:reference_element_api_listservices.adoc[リストサービス]
+* xref:reference_element_api_listpendingnodes.adoc[保留中のノードのリスト]
+* xref:reference_element_api_listpendingactivenodes.adoc[保留中のアクティブノードのリスト]
+* xref:reference_element_api_modifyclusterfullthreshold.adoc[クラスタフルしきい値の変更]
+* xref:reference_element_api_modifyclusterinterfacepreference.adoc[クラスタインターフェースの設定変更]
+* xref:reference_element_api_removenodes.adoc[RemoveNodes]
+* xref:reference_element_api_setloginsessioninfo.adoc[ログインセッション情報の設定]
+* xref:reference_element_api_cluster_shutdown.adoc[シャットダウン]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

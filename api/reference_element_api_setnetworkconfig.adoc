@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_setnetworkconfig.html 
+sidebar: sidebar 
+keywords: network,config,configuration,set,setting,node,setnetworkconfig 
+summary: SetNetworkConfig メソッドを使用して、ノードのネットワーク構成を設定できます。ノードの現在のネットワーク設定を表示するには、GetNetworkConfig API メソッドを実行します。 
+---
+= ネットワーク設定の設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `SetNetworkConfig`ノードのネットワーク構成を設定する方法。ノードの現在のネットワーク設定を表示するには、 `GetNetworkConfig` API メソッド。
+
+
+
+== パラメータ
+
+警告：
+
+ノードのボンド モードを変更すると、ネットワーク接続が一時的に失われる可能性があります。
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+network
+ a| 
+変更するノード ネットワーク設定を含むオブジェクト。このメソッドに変更するフィールドを、このパラメータの属性として追加するだけです。
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[ネットワーク（すべてのインターフェース）]
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+network
+ a| 
+ノードの新しい現在のネットワーク構成。
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[ネットワーク（すべてのインターフェース）]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+	"method": "SetNetworkConfig",
+		"params": {
+			"network": {
+				"Bond10G": {
+					"bond-mode": "ALB"
+				},
+				"Bond1G": {
+					"netmask": "255.255.224.0"
+				},
+				"eth0": {
+					"method": "bond"
+				},
+				"lo": {
+					"method": "loopback"
+				}
+			}
+		}
+}
+----
+
+
+== 応答例
+
+このメソッドからの応答は、GetNetworkConfig メソッドからの応答と同じです。このメソッドは、各オブジェクトのすべてのメンバーを表示し、変更されたメンバーの新しい値を含めます。
+
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_getnetworkconfig.adoc[ネットワーク構成の取得]
+* xref:reference_element_api_response_example_getnetworkconfig.adoc[ネットワーク構成の取得]
+

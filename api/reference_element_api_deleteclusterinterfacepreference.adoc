@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_deleteclusterinterfacepreference.html 
+sidebar: sidebar 
+keywords: cluster,interface,preferences,delete,deleting,DeleteClusterInterfacePreference 
+summary: DeleteClusterInterfacePreference メソッドを使用すると、Element ソフトウェアを実行しているストレージ クラスターと統合されたシステムが既存のクラスター インターフェイス設定を削除できます。このメソッドは内部使用用です。 
+---
+= クラスタインターフェース設定の削除
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+その `DeleteClusterInterfacePreference`この方法により、Element ソフトウェアを実行しているストレージ クラスターと統合されたシステムは、既存のクラスター インターフェイス設定を削除できます。このメソッドは内部使用用です。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+名前
+ a| 
+削除するクラスター インターフェース設定の名前。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+	"method": "DeleteClusterInterfacePreference",
+	"params": {
+		"name": "prefname"
+		},
+	"id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {}
+}
+----
+
+
+== バージョン以降の新機能
+
+11.0

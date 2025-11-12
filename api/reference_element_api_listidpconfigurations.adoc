@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_listidpconfigurations.html 
+sidebar: sidebar 
+keywords: configs configurations,idp configs,list 
+summary: ListIdpConfigurations メソッドを使用して、サードパーティの IdP の構成を一覧表示できます。オプションで、enabledOnly フラグを指定して現在有効になっている IdP 構成を取得するか、IdP メタデータ UUID または IdP 名を指定して特定の IdP 構成の情報を照会することができます。 
+---
+= ListIdpConfigurations
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ListIdpConfigurations`サードパーティの IdP の構成を一覧表示するメソッド。オプションとして、 `enabledOnly`現在有効になっている IdP 構成を取得するフラグ、または特定の IdP 構成の情報を照会するための IdP メタデータ UUID または IdP 名。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+有効のみ
+ a| 
+結果をフィルタリングして、現在有効になっている IdP 構成を返します。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+idp構成ID
+ a| 
+サードパーティの IdP 構成の UUID。
+ a| 
+UUID
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+idp名
+ a| 
+特定の IdP 名の IdP 構成情報を取得します。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+idpConfigInfos
+ a| 
+サードパーティの IdP 構成に関する情報。
+ a| 
+link:reference_element_api_idpconfiginfo.html["idpConfigInfo"]配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "ListIdpConfigurations",
+  "params": {}
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "result": {
+        "idpConfigInfo": {
+        "enabled": true,
+        "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+        "idpMetadata": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n
+        <EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\"\r\n
+        xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"\r\n
+        xmlns:shibmd=\"urn:mace:shibboleth:metadata:1.0\"\r\n
+        xmlns:xml=\"http://www.w3.org/XML/1998/namespace\"\r\n
+        ...</Organization>\r\n
+        </EntityDescriptor>",
+        "idpName": "https://privider.name.url.com",
+        "serviceProviderCertificate": "-----BEGIN CERTIFICATE-----\n
+        MI...BHi\n
+        -----END CERTIFICATE-----\n",
+        "spMetadataUrl": "https://10.193.100.100/auth/ui/saml2"
+        }
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+12.0

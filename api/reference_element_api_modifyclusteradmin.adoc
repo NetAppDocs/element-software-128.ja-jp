@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_modifyclusteradmin.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,cluster,admin,settings,modifyclusteradmin 
+summary: 'ModifyClusterAdmin メソッドを使用して、クラスター管理者、LDAP クラスター管理者、またはサードパーティの ID プロバイダー (IdP) クラスター管理者の設定を変更できます。管理者クラスター管理者アカウントのアクセスを変更することはできません。' 
+---
+= クラスタ管理者の変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ModifyClusterAdmin`クラスター管理者、LDAP クラスター管理者、またはサードパーティの ID プロバイダー (IdP) クラスター管理者の設定を変更する方法。管理者クラスター管理者アカウントのアクセスを変更することはできません。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+アクセス
+ a| 
+このクラスター管理者が使用できる方法を制御します。
+ a| 
+文字列配列
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+attributes
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+クラスター管理者ID
+ a| 
+変更するクラスター管理者、LDAP クラスター管理者、または IdP クラスター管理者の ClusterAdminID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+パスワード
+ a| 
+このクラスター管理者を認証するために使用されるパスワード。このパラメータは、LDAP または IdP クラスタ管理者には適用されません。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "ModifyClusterAdmin",
+   "params": {
+     "clusterAdminID"  : 2,
+     "password"   : "7925Brc429a"
+   },
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+ "id" : 1
+ "result" : { }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_app_b_access_control.adoc[アクセス制御]

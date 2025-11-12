@@ -1,0 +1,112 @@
+---
+permalink: api/reference_element_api_snapmirrornetworkinterface.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorNetworkInterface 
+summary: 'snapMirrorNetworkInterface オブジェクトには、クラスタ間論理インターフェイス (LIF) に関する情報が含まれています。' 
+---
+= スナップミラーネットワークインターフェース
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorNetworkInterface オブジェクトには、クラスタ間論理インターフェイス (LIF) に関する情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+管理ステータス
+ a| 
+論理インターフェイス (LIF) が管理上有効か無効かを示します。有効な値は次のとおりです。
+
+* 上
+* 下
+
+ a| 
+string
+
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+宛先ONTAPシステムの ID。
+ a| 
+integer
+
+
+
+ a| 
+インターフェース名
+ a| 
+LIF 名。
+ a| 
+string
+
+
+
+ a| 
+ネットワークアドレス
+ a| 
+LIF の IP アドレス。
+ a| 
+string
+
+
+
+ a| 
+ネットワークマスク
+ a| 
+LIF のネットワーク マスク。
+ a| 
+string
+
+
+
+ a| 
+インターフェースロール
+ a| 
+LIFのロール。有効な値は次のとおりです。
+
+* 未定義
+* cluster
+* data
+* ノード管理
+* intercluster
+* クラスター管理
+
+ a| 
+string
+
+
+
+ a| 
+運用ステータス
+ a| 
+LIF の動作状態（接続が正常に確立されているかどうか）。インターフェイスが機能しない原因となるネットワークの問題がある場合、このステータスは管理ステータスと異なる場合があります。有効な値は次のとおりです。
+
+* 上
+* 下
+
+ a| 
+string
+
+
+
+ a| 
+vserverName
+ a| 
+SVMの名前。
+ a| 
+string
+
+|===

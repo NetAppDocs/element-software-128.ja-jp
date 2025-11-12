@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_setclusterconfig.html 
+sidebar: sidebar 
+keywords: cluster,configuration,set,setting,node,setclusterconfig 
+summary: SetClusterConfig メソッドを使用すると、ノードが関連付けられているクラスターと通信するために使用する構成を設定できます。ノードの現在のクラスター インターフェイス設定を表示するには、GetClusterConfig API メソッドを実行します。 
+---
+= クラスタ構成の設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `SetClusterConfig`ノードが関連付けられているクラスターと通信するために使用する構成を設定する方法。ノードの現在のクラスタインターフェース設定を表示するには、 `GetClusterConfig` API メソッド。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+cluster
+ a| 
+このメソッド呼び出し中に変更する必要がある構成属性。変更するフィールドのみを、このパラメータのメンバーとしてこのメソッドに追加する必要があります。
+ a| 
+xref:reference_element_api_cluster.adoc[cluster]
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+cluster
+ a| 
+ノードがクラスターと通信するために使用する構成情報。
+ a| 
+xref:reference_element_api_cluster.adoc[cluster]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "SetClusterConfig",
+   "params": {
+      "cluster": {
+         "name": "myhost",
+         "mipi": "Bond10G"
+      },
+    "id" : 1
+   }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "cluster" : {
+         "cipi" : "Bond10G",
+         "cluster" : "QoS",
+         "ensemble" : [
+            "1:10.10.5.42",
+            "2:10.10.5.43",
+            "3:10.10.5.44",
+            "4:10.10.5.46",
+            "5:10.10.5.47"
+         ],
+          "hostname" : "myhost",
+          "mipi" : "Bond10G",
+          "nodeID" : 1,
+          "sipi" : "Bond10G",
+          "state" : "Active"
+      }
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

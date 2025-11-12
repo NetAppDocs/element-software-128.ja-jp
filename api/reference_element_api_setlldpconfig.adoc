@@ -1,0 +1,118 @@
+---
+permalink: api/reference_element_api_setlldpconfig.html 
+sidebar: sidebar 
+keywords: lldp,config,configure,set,setting,setlldpconfig 
+summary: 'SetLldpConfig メソッドを使用して、ストレージ クラスターのリンク層検出プロトコル (LLDP) 設定を構成できます。' 
+---
+= LldpConfig の設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `SetLldpConfig`ストレージ クラスターのリンク層検出プロトコル (LLDP) 設定を構成する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+その他のプロトコルを有効にする
+ a| 
+他の検出プロトコル（CDP、FDP、EDP、SONMP）の自動使用を有効にします。
+ a| 
+ブーリアン
+ a| 
+true
+ a| 
+いいえ
+
+
+
+ a| 
+有効にする
+ a| 
+メディア エンドポイント検出 (LLDP-MED) を有効にします。
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+
+
+ a| 
+Lldpを有効にする
+ a| 
+LLDP を有効または無効にします。
+ a| 
+ブーリアン
+ a| 
+true
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+lldpConfig
+ a| 
+新しく変更された設定を含む、現在のストレージ クラスター LLDP 構成に関する情報。
+ a| 
+JSONオブジェクト
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "id": 3920,
+  "method":"SetLldpConfig",
+    "params": {
+        "lldpConfig": {
+            "enableMed": true
+        }
+    }
+  }
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 3920,
+  "result": {
+    "lldpConfig": {
+        "enableLldp": true,
+        "enableMed": true,
+        "enableOtherProtocols": true
+     }
+  }
+}
+----

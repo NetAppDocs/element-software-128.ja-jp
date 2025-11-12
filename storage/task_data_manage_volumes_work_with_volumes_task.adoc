@@ -1,0 +1,31 @@
+---
+permalink: storage/task_data_manage_volumes_work_with_volumes_task.html 
+sidebar: sidebar 
+keywords: volumes, work, storage, iscsi, fc, cluster data management, overview of functions 
+summary: 'SolidFireシステムはボリュームを使用してストレージをプロビジョニングします。ボリュームは、iSCSI またはファイバー チャネル クライアントによってネットワーク経由でアクセスされるブロック デバイスです。 [管理] タブの [ボリューム] ページから、ノード上のボリュームを作成、変更、複製、および削除できます。ボリューム帯域幅と I/O 使用量に関する統計も表示できます。' 
+---
+= ボリュームの操作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFireシステムはボリュームを使用してストレージをプロビジョニングします。ボリュームは、iSCSI またはファイバー チャネル クライアントによってネットワーク経由でアクセスされるブロック デバイスです。 [管理] タブの [ボリューム] ページから、ノード上のボリュームを作成、変更、複製、および削除できます。ボリューム帯域幅と I/O 使用量に関する統計も表示できます。
+
+
+
+== 詳細情報の参照
+
+* link:concept_data_manage_volumes_quality_of_service_policies.html["サービス品質ポリシーの管理"]
+* link:task_data_manage_volumes.html#create-a-volume["ボリュームの作成"]
+* link:task_data_manage_volumes.html#view-volume-details["個々のボリュームのパフォーマンスの詳細を表示する"]
+* link:task_data_manage_volumes.html#edit-active-volumes["アクティブボリュームを編集する"]
+* link:task_data_manage_volumes.html#delete-a-volume["ボリュームを削除する"]
+* link:task_data_manage_volumes.html#restore-a-deleted-volume["削除されたボリュームを復元する"]
+* link:task_data_manage_volumes.html#purge-a-volume["ボリュームをパージする"]
+* link:task_data_manage_volumes.html#clone-a-volume["ボリュームをクローニングする"]
+* link:task_data_manage_volumes_assign_luns_to_fibre_channel_volumes.html["LUNをファイバーチャネルボリュームに割り当てる"]
+* link:task_data_manage_volumes_apply_a_qos_policy.html["ボリュームにQoSポリシーを適用する"]
+* link:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html["ボリュームのQoSポリシーの関連付けを削除します"]
+

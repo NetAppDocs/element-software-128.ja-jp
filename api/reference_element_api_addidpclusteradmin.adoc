@@ -1,0 +1,132 @@
+---
+permalink: api/reference_element_api_addidpclusteradmin.html 
+sidebar: sidebar 
+keywords: IdP,idp,cluster,admin,add,adding,addIdpclusteradmin 
+summary: 'AddIpdClusterAdmin メソッドを使用して、サードパーティの ID プロバイダー (IdP) によって認証されたクラスター管理者ユーザーを追加できます。 IdP クラスター管理者アカウントは、ユーザーに関連付けられた IdP の SAML アサーション内で提供される SAML 属性値情報に基づいて構成されます。ユーザーが IdP で正常に認証され、SAML アサーション内に複数の IdP クラスタ管理者アカウントと一致する SAML 属性ステートメントがある場合、そのユーザーには、一致する IdP クラスタ管理者アカウントの結合されたアクセス レベルが付与されます。' 
+---
+= IdpClusterAdmin の追加
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `AddIpdClusterAdmin`サードパーティのアイデンティティプロバイダー (IdP) によって認証されたクラスター管理者ユーザーを追加する方法。 IdP クラスター管理者アカウントは、ユーザーに関連付けられた IdP の SAML アサーション内で提供される SAML 属性値情報に基づいて構成されます。ユーザーが IdP で正常に認証され、SAML アサーション内に複数の IdP クラスタ管理者アカウントと一致する SAML 属性ステートメントがある場合、そのユーザーには、一致する IdP クラスタ管理者アカウントの結合されたアクセス レベルが付与されます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+アクセス
+ a| 
+この IdP クラスター管理者が使用できるメソッドを制御します。
+ a| 
+文字列配列
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+EULAを受け入れる
+ a| 
+エンド ユーザ ライセンス契約に同意します。クラスター管理者アカウントをシステムに追加するには、true に設定します。省略または false に設定された場合、メソッド呼び出しは失敗します。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+attributes
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+ユーザ名
+ a| 
+IdP クラスター管理者への SAML 属性値マッピング (例: email=test@example.com)。これは、特定のSAMLサブジェクトを使用して定義できます。 `NameID`またはSAML属性ステートメントのエントリとして、例えば `eduPersonAffiliation`。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+クラスター管理者ID
+ a| 
+新しく作成されたクラスター管理者の一意の識別子。
+ a| 
+integer
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+    "method": "AddIdpClusterAdmin",
+    "params": {
+        "username": "email=test@example.com",
+        "acceptEula": true,
+        "access": ["administrator"]
+    }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "result": {
+        "clusterAdminID": 13
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+12.0

@@ -1,0 +1,29 @@
+---
+permalink: storage/task_system_manage_cluster_set_the_cluster_full_threshold.html 
+sidebar: sidebar 
+keywords: cluster fullness, setting threshold, metadata, warning 
+summary: 以下の手順を使用して、システムがブロック クラスターの満杯警告を生成するレベルを変更できます。さらに、ModifyClusterFullThreshold API メソッドを使用して、システムがブロックまたはメタデータの警告を生成するレベルを変更することもできます。 
+---
+= クラスターのフルしきい値を設定する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+以下の手順を使用して、システムがブロック クラスターの満杯警告を生成するレベルを変更できます。さらに、ModifyClusterFullThreshold API メソッドを使用して、システムがブロックまたはメタデータの警告を生成するレベルを変更することもできます。
+
+.要件
+クラスタ管理者の権限が必要です。
+
+.手順
+. *クラスター* > *設定*をクリックします。
+. [クラスター フル設定] セクションで、[*Helix がノード障害から回復できなくなる前に、残りの容量が _% の場合に警告アラートを生成する*] にパーセンテージを入力します。
+. *変更を保存*をクリックします。
+
+
+
+
+== 詳細情報の参照
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/How_are_the_blockSpace_thresholds_calculated_for_Element["要素のブロックスペースしきい値はどのように計算されるか"^]

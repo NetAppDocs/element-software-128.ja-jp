@@ -1,0 +1,146 @@
+---
+permalink: api/reference_element_api_testconnectmvip.html 
+sidebar: sidebar 
+keywords: management,connection,test,testing,mvip,testconnectmvip 
+summary: TestConnectMvip メソッドを使用して、ストレージ クラスターへの管理接続をテストできます。テストは MVIP に ping を送信し、接続を確認するための簡単な API メソッドを実行します。 
+---
+= テストコネクトMvip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `TestConnectMvip`ストレージ クラスターへの管理接続をテストする方法。テストは MVIP に ping を送信し、接続を確認するための簡単な API メソッドを実行します。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+| mvip | この値を渡すと、別の MVIP の管理接続をテストできます。ターゲット クラスターへの接続をテストするときは、この値を使用する必要はありません。 | string | なし | いいえ 
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+| 詳細  a| 
+テスト操作に関する情報 (JSON オブジェクト):
+
+* `connected`: テストがMVIPに接続できたかどうかを示します（ブール値）
+* `mvip`: テスト対象のMVIP（文字列）
+* `pingBytes`: 56バイトと1500バイトのpingテストの詳細（オブジェクト）
++
+** `56`: 56 バイトの ping テストの結果 (JSON オブジェクト):
++
+*** `individualResponseTimes`: 各アンサンブルノードからの応答時間のリスト（文字列配列）
+*** `individualStatus`: 各アンサンブルノードからのpingステータスのリスト（ブール配列）
+*** `responseTime`: 平均ping応答時間（文字列）
+*** `successful`: pingテストが成功したかどうかを示します（ブール値）
+
+
+** `1500`: 1500 バイトの ping テストの結果 (JSON オブジェクト):
++
+*** `individualResponseTimes`: 各アンサンブルノードからの応答時間のリスト（文字列配列）
+*** `individualStatus`: 各アンサンブルノードからのpingステータスのリスト（ブール配列）
+*** `responseTime`: 平均ping応答時間（文字列）
+*** `successful`: pingテストが成功したかどうか（ブール値）
+
+
+** `duration`: テストの実行に必要な時間の長さ（文字列）
+** `result`: テスト全体の結果（文字列）
+
+
+
+| JSONオブジェクト 
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "TestConnectMvip",
+   "params": {
+       "mvip" : "172.27.62.50"
+       },
+    "id":1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "details": {
+      "connected": true,
+      "mvip": "172.27.62.50",
+      "pingBytes": {
+        "1500": {
+          "individualResponseTimes": [
+            "00:00:00.000250",
+            "00:00:00.000206",
+            "00:00:00.000200",
+            "00:00:00.000199",
+            "00:00:00.000199"
+         ],
+          "individualStatus": [
+             true,
+             true,
+             true,
+             true,
+             true
+         ],
+         "responseTime": "00:00:00.000211",
+         "successful": true
+       },
+       "56": {
+          "individualResponseTimes": [
+            "00:00:00.000217",
+            "00:00:00.000122",
+            "00:00:00.000117",
+            "00:00:00.000119",
+            "00:00:00.000121"
+         ],
+         "individualStatus": [
+            true,
+            true,
+            true,
+            true,
+            true
+         ],
+         "responseTime": "00:00:00.000139",
+         "successful": true
+        }
+      }
+    },
+    "duration": "00:00:00.271244",
+    "result": "Passed"
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

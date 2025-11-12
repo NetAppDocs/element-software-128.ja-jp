@@ -1,0 +1,36 @@
+---
+section: setup
+title: ストレージを設定する
+entries:
+- title: ストレージの設定について学ぶ
+  url: "/setup/concept_setup_overview.html"
+- title: ストレージノードを使用してクラスターをセットアップする
+  entries:
+  - title: ストレージノードを構成する
+    url: "/setup/concept_setup_configure_a_storage_node.html"
+  - title: ストレージ クラスタを作成
+    url: "/setup/task_setup_create_a_storage_cluster.html"
+  - title: Elementソフトウェアのユーザーインターフェースにログインする
+    url: "/setup/task_post_deploy_access_the_element_software_user_interface.html"
+  - title: クラスタにドライブを追加
+    url: "/setup/task_setup_add_drives_to_a_cluster.html"
+- title: ファイバーチャネルノードでクラスターをセットアップする
+  entries:
+  - title: ファイバーチャネルノードを構成する
+    url: "/setup/concept_setup_fc_configure_a_fibre_channel_node.html"
+  - title: ファイバーチャネルノードで新しいクラスターを作成する
+    url: "/setup/task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.html"
+  - title: ファイバーチャネルノードをクラスターに追加する
+    url: "/setup/task_setup_fc_add_fibre_channel_nodes_to_a_cluster.html"
+  - title: ファイバーチャネルノードのゾーンを設定する
+    url: "/setup/concept_setup_fc_set_up_zones_for_fibre_channel_nodes.html"
+  - title: ファイバーチャネルクライアントのボリュームアクセスグループを作成する
+    url: "/setup/task_setup_create_a_volume_access_group_for_fibre_channel_clients.html"
+- title: インストールするSolidFireコンポーネントを決定する
+  url: "/setup/task_setup_determine_which_solidfire_components_to_install.html"
+- title: 管理ノードを設定する
+  url: "/setup/task_setup_gh_redirect_set_up_a_management_node.html"
+- title: 完全修飾ドメイン名のWeb UIアクセスを構成する
+  url: "/setup/task_setup_configure_fqdn_web_ui_access.html"
+- title: 次の手順
+  url: "/setup/concept_setup_whats_next.html"

@@ -1,0 +1,284 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_create_netapp_hcc_role_vcenter.html 
+summary: vCenter アセットを管理ノードに追加する前に、vCenter でNetApp HCC ロールを作成する必要があります。 
+keywords: netapp, mnode, management node, vcenter, hcc, esxi 
+---
+= vCenterでNetApp HCCロールを作成する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+インストール後に管理ノードに vCenter アセット (コントローラ) を手動で追加したり、既存のコントローラを変更したりするには、vCenter でNetApp HCC ロールを作成する必要があります。
+
+このNetApp HCC ロールは、管理ノード サービスのビューをNetAppのみの資産に制限します。
+
+.タスク概要
+* この手順では、vSphere バージョン 6.7 で使用できる手順について説明します。インストールされている vSphere のバージョンによっては、vSphere ユーザー インターフェイスが説明されている内容と若干異なる場合があります。追加のヘルプについては、VMware vCenter のドキュメントを参照してください。
+* にlink:task_mnode_create_netapp_hcc_role_vcenter.html#create-a-new-netapp-hcc-role["新しいNetApp HCCロールを作成する"]まず、vCenter で新しいユーザー アカウントを設定し、 NetApp HCC ロールを作成してから、ユーザー権限を割り当てます。
+* NetApp ESXi ホスト構成の場合、NDE によって作成されたユーザー アカウントを新しいNetApp HCC ロールに更新する必要があります。
++
+** 使用link:task_mnode_create_netapp_hcc_role_vcenter.html#netapp-esxi-host-does-not-exist-in-a-vcenter-host-cluster["このオプション"]NetApp ESXiホストがvCenterホストクラスタ内に存在しない場合
+** 使用link:task_mnode_create_netapp_hcc_role_vcenter.html#netapp-esxi-host-exists-in-a-vcenter-host-cluster["このオプション"]NetApp ESXiホストがvCenterホストクラスタ内に存在する場合
+
+
+* あなたはできるlink:task_mnode_create_netapp_hcc_role_vcenter.html#controller-asset-already-exists-on-the-management-node["コントローラーアセットを構成する"]管理ノードにすでに存在します。
+* 新しいNetApp HCCロールを使用してlink:task_mnode_create_netapp_hcc_role_vcenter.html#add-an-asset-to-the-management-node["資産を追加する"]管理ノードへ。
+
+
+
+
+== 新しいNetApp HCCロールを作成する
+
+vCenter で新しいユーザー アカウントを設定し、 NetApp HCC ロールを作成して、ユーザー権限を割り当てます。
+
+
+
+=== vCenterで新しいユーザーアカウントを設定する
+
+vCenter で新しいユーザー アカウントを設定するには、次の手順を実行します。
+
+.手順
+. vSphere Web Clientにログインするには `\administrator@vsphere.local`または同等のもの。
+. メニューから*管理*を選択します。
+. *シングル サインオン* セクションで、*ユーザー* と *グループ* を選択します。
+. *ドメイン*リストで、 `vsphere.local`または LDAP ドメイン。
+. *ユーザーの追加*を選択します。
+. *ユーザーの追加*フォームに入力します。
+
+
+
+
+=== vCenterで新しいNetApp HCCロールを作成する
+
+vCenter で新しいNetApp HCC ロールを作成するには、次の手順を実行します。
+
+.手順
+. *ロールの編集*を選択し、必要な権限を割り当てます。
+. 左側のナビゲーション ペインで、[*グローバル*] を選択します。
+. *診断*と*ライセンス*を選択します。
+. 左側のナビゲーション ペインで、[*ホスト*] を選択します。
+. *メンテナンス*、*電源*、*ストレージパーティション構成*、*ファームウェア*を選択します。
+. 名前を付けて保存 `NetApp Role`。
+
+
+
+
+=== vCenterにユーザー権限を割り当てる
+
+vCenter の新しいNetApp HCC ロールにユーザー権限を割り当てるには、次の手順を実行します。
+
+.手順
+. メニューから、*ホスト*と*クラスター*を選択します。
+. 左側のナビゲーション ペインで、次のいずれかのオプションを選択します。
++
+** 最上位レベルの vCenter。
+** リンク モードの場合、必要な vCenter。
++
+[NOTE]
+====
+*** NetApp Element Plug-in for vCenter Server 5.0以降では、 https://docs.netapp.com/us-en/vcp/vcp_concept_linkedmode.html["vCenterリンク モード"^] NetApp SolidFireストレージ クラスタを管理する vCenter Server ごとに、個別の管理ノードから Element プラグインを登録します (推奨)。
+*** vCenter Server 4.10以前のNetApp Elementプラグインを使用して、他のvCenter Serverからクラスタリソースを管理する https://docs.netapp.com/us-en/vcp/vcp_concept_linkedmode.html["vCenterリンク モード"^]ローカル ストレージ クラスターにのみ制限されます。
+
+
+====
+
+
+. 右側のナビゲーション ペインで、[*権限*] を選択します。
+. 新しいユーザーを追加するには、*+* アイコンを選択します。
++
+*権限の追加* ウィンドウで次の詳細を追加します。
+
++
+.. 選択 `vsphere.local`またはLDAPドメイン
+.. 検索を使用して、作成した新しいユーザーを見つけます。<<vCenterで新しいユーザーアカウントを設定する>> 。
+.. 選択 `NetApp Role`。
++
+
+IMPORTANT: *子に伝達*は選択しないでください。
+
++
+image::mnode_new_HCC_role_vcenter.PNG[権限の追加ウィンドウを示します]
+
+
+
+
+
+
+
+=== データセンターへのユーザー権限の割り当て
+
+vCenter のデータセンターにユーザー権限を割り当てるには、次の手順を実行します。
+
+.手順
+. 左側のペインで、[*データセンター*] を選択します。
+. 右側のナビゲーション ペインで、[*権限*] を選択します。
+. 新しいユーザーを追加するには、*+* アイコンを選択します。
++
+*権限の追加* ウィンドウで次の詳細を追加します。
+
++
+.. 選択 `vsphere.local`または LDAP ドメイン。
+.. 検索を使用して、作成した新しいHCCユーザーを見つけます。<<vCenterで新しいユーザーアカウントを設定する>> 。
+.. 選択 `ReadOnly role`。
++
+
+IMPORTANT: *子に伝達*は選択しないでください。
+
+
+
+
+
+
+
+=== NetApp HCIデータストアにユーザー権限を割り当てる
+
+vCenter 内のNetApp HCIデータストアにユーザー権限を割り当てるには、次の手順を実行します。
+
+.手順
+. 左側のペインで、[*データセンター*] を選択します。
+. 新しいストレージ フォルダーを作成します。  *データセンター*を右クリックし、*ストレージ フォルダーの作成*を選択します。
+. すべてのNetApp HCIデータストアをストレージ クラスターから、またコンピューティング ノードのローカルから新しいストレージ フォルダーに転送します。
+. 新しい保存フォルダを選択します。
+. 右側のナビゲーション ペインで、[*権限*] を選択します。
+. 新しいユーザーを追加するには、*+* アイコンを選択します。
++
+*権限の追加* ウィンドウで次の詳細を追加します。
+
++
+.. 選択 `vsphere.local`または LDAP ドメイン。
+.. 検索を使用して、作成した新しいHCCユーザーを見つけます。<<vCenterで新しいユーザーアカウントを設定する>> 。
+.. 選択 `Administrator role`
+.. *子に伝播*を選択します。
+
+
+
+
+
+
+=== NetAppホストクラスタにユーザー権限を割り当てる
+
+vCenter のNetAppホスト クラスターにユーザー権限を割り当てるには、次の手順を実行します。
+
+.手順
+. 左側のナビゲーション ペインで、 NetAppホスト クラスターを選択します。
+. 右側のナビゲーション ペインで、[*権限*] を選択します。
+. 新しいユーザーを追加するには、*+* アイコンを選択します。
++
+*権限の追加* ウィンドウで次の詳細を追加します。
+
++
+.. 選択 `vsphere.local`または LDAP ドメイン。
+.. 検索を使用して、作成した新しいHCCユーザーを見つけます。<<vCenterで新しいユーザーアカウントを設定する>> 。
+.. 選択 `NetApp Role`または `Administrator`。
+.. *子に伝播*を選択します。
+
+
+
+
+
+
+== NetApp ESXiホスト構成
+
+NetApp ESXi ホスト構成の場合、NDE によって作成されたユーザー アカウントを新しいNetApp HCC ロールに更新する必要があります。
+
+
+
+=== NetApp ESXiホストがvCenterホストクラスタに存在しません
+
+NetApp ESXi ホストが vCenter ホスト クラスター内に存在しない場合は、次の手順に従って、vCenter でNetApp HCC のロールとユーザー権限を割り当てることができます。
+
+.手順
+. メニューから、*ホスト*と*クラスター*を選択します。
+. 左側のナビゲーション ペインで、 NetApp ESXi ホストを選択します。
+. 右側のナビゲーション ペインで、[*権限*] を選択します。
+. 新しいユーザーを追加するには、*+* アイコンを選択します。
++
+*権限の追加* ウィンドウで次の詳細を追加します。
+
++
+.. 選択 `vsphere.local`または LDAP ドメイン。
+.. 検索を使用して、作成した新しいユーザーを見つけます。<<vCenterで新しいユーザーアカウントを設定する>> 。
+.. 選択 `NetApp Role`または `Administrator`。
+
+
+. *子に伝播*を選択します。
+
+
+
+
+=== NetApp ESXiホストはvCenterホストクラスタ内に存在する
+
+NetApp ESXi ホストが他のベンダーの ESXi ホストとともに vCenter ホスト クラスタ内に存在する場合は、次の手順に従って、vCenter でNetApp HCC のロールとユーザー権限を割り当てることができます。
+
+. メニューから、*ホスト*と*クラスター*を選択します。
+. 左側のナビゲーション ペインで、目的のホスト クラスターを展開します。
+. 右側のナビゲーション ペインで、[*権限*] を選択します。
+. 新しいユーザーを追加するには、*+* アイコンを選択します。
++
+*権限の追加* ウィンドウで次の詳細を追加します。
+
++
+.. 選択 `vsphere.local`または LDAP ドメイン。
+.. 検索を使用して、作成した新しいユーザーを見つけます。<<vCenterで新しいユーザーアカウントを設定する>> 。
+.. 選択 `NetApp Role`。
++
+
+IMPORTANT: *子に伝達*は選択しないでください。
+
+
+
+. 左側のナビゲーション ペインで、 NetApp ESXi ホストを選択します。
+. 右側のナビゲーション ペインで、[*権限*] を選択します。
+. 新しいユーザーを追加するには、*+* アイコンを選択します。
++
+*権限の追加* ウィンドウで次の詳細を追加します。
+
++
+.. 選択 `vsphere.local`または LDAP ドメイン。
+.. 検索を使用して、作成した新しいユーザーを見つけます。<<vCenterで新しいユーザーアカウントを設定する>> 。
+.. 選択 `NetApp Role`または `Administrator`。
+.. *子に伝播*を選択します。
+
+
+. ホスト クラスター内の残りのNetApp ESXi ホストに対してこの手順を繰り返します。
+
+
+
+
+== コントローラアセットは管理ノードにすでに存在します
+
+管理ノードにコントローラアセットがすでに存在する場合は、以下の手順に従ってコントローラを構成します。 `PUT /assets /{asset_id} /controllers /{controller_id}` 。
+
+.手順
+. 管理ノード上の mnode サービス API UI にアクセスします。
++
+`https://<ManagementNodeIP>/mnode`
+
+. *承認*を選択し、API 呼び出しにアクセスするための資格情報を入力します。
+. 選択 `GET /assets`親IDを取得します。
+. 選択 `PUT /assets /{asset_id} /controllers /{controller_id}`。
++
+.. リクエスト本文に、アカウント設定で作成した資格情報を入力します。
+
+
+
+
+
+
+== 管理ノードに資産を追加する
+
+インストール後に手動で新しいアセットを追加する必要がある場合は、作成した新しいHCCユーザーアカウントを使用してください。<<vCenterで新しいユーザーアカウントを設定する>> 。詳細については、 link:task_mnode_add_assets.html["管理ノードにコントローラアセットを追加する"]。
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

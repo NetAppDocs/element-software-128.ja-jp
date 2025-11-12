@@ -1,0 +1,48 @@
+---
+permalink: storage/task_system_manage_mfa_set_up_multi_factor_authentication.html 
+sidebar: sidebar 
+keywords: idp, json, mfa, cluster, metadata, saml 
+summary: Element API 経由でこれらの基本的な手順を使用して、多要素認証を使用するようにクラスターを設定できます。各 API メソッドの詳細については、Element API リファレンス ドキュメントを参照してください。 
+---
+= 多要素認証を設定する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+多要素認証 (MFA) は、セキュリティアサーションマークアップ言語 (SAML) を介してサードパーティの ID プロバイダー (IdP) を使用してユーザーセッションを管理します。  MFA を使用すると、管理者は必要に応じて、パスワードとテキスト メッセージ、パスワードと電子メール メッセージなどの追加の認証要素を構成できます。
+
+Element API 経由でこれらの基本的な手順を使用して、多要素認証を使用するようにクラスターを設定できます。
+
+各APIメソッドの詳細については、 link:../api/concept_element_api_about_the_api.html["要素APIリファレンス"]。
+
+. 次の API メソッドを呼び出して、IdP メタデータを JSON 形式で渡すことで、クラスターの新しいサードパーティ ID プロバイダー (IdP) 構成を作成します。 `CreateIdpConfiguration`
++
+IdP メタデータはプレーンテキスト形式でサードパーティの IdP から取得されます。このメタデータは、JSON で正しくフォーマットされていることを確認するために検証する必要があります。使用できるJSONフォーマッタアプリケーションは数多くあります。例えば、次のとおりです。https://freeformatter.com/json-escape.html.
+
+. 次の API メソッドを呼び出して、spMetadataUrl を介してクラスター メタデータを取得し、サードパーティの IdP にコピーします。 `ListIdpConfigurations`
++
+spMetadataUrl は、信頼関係を確立するために IdP のクラスターからサービス プロバイダー メタデータを取得するために使用される URL です。
+
+. 監査ログとシングル ログアウトが適切に機能するために、ユーザーを一意に識別するための "`NameID`" 属性を含めるようにサードパーティの IdP で SAML アサーションを構成します。
+. 次の API メソッドを呼び出して、承認のためにサードパーティの IdP によって認証された 1 つ以上のクラスター管理者ユーザー アカウントを作成します。``AddIdpClusterAdmin``
++
+
+NOTE: 次の例に示すように、目的の効果を得るには、IdP クラスタ管理者のユーザー名が SAML 属性の名前/値のマッピングと一致する必要があります。
+
++
+** email=bob@company.com - ここで、IdP は SAML 属性で電子メール アドレスを解放するように構成されています。
+** group=cluster-administrator - ここで、IdP は、すべてのユーザーがアクセスできるグループ プロパティを解放するように構成されます。セキュリティ上の理由から、SAML 属性の名前と値のペアでは大文字と小文字が区別されることに注意してください。
+
+
+. 次の API メソッドを呼び出して、クラスターの MFA を有効にします。 `EnableIdpAuthentication`
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

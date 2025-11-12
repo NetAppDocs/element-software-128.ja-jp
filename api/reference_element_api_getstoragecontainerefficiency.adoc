@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getstoragecontainerefficiency.html 
+sidebar: sidebar 
+keywords: volume,virtual,container,volumes,get,getting,efficiency,vvol,GetStorageContainerEfficiency 
+summary: GetStorageContainerEfficiency メソッドを使用して、仮想ボリューム ストレージ コンテナーに関する効率情報を取得できます。 
+---
+= ストレージコンテナ効率の取得
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetStorageContainerEfficiency`仮想ボリューム ストレージ コンテナーに関する効率情報を取得する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+ストレージコンテナID
+ a| 
+効率情報を取得するストレージ コンテナーの ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+圧縮
+ a| 
+ストレージ コンテナー内のすべての仮想ボリュームのデータ圧縮によって節約されるスペースの量。比率として表され、値 1 はデータが圧縮されずに保存されていることを意味します。
+ a| 
+float
+
+
+
+ a| 
+重複排除
+ a| 
+ストレージ コンテナー内のすべての仮想ボリュームのデータを複製しないことで節約されるスペースの量。比率で表します。
+ a| 
+float
+
+
+
+ a| 
+不足しているボリューム
+ a| 
+効率データのクエリができなかった仮想ボリューム。ボリュームの欠落は、ガベージ コレクション (GC) サイクルが 1 時間未満であること、ネットワーク接続が一時的に失われていること、または GC サイクル以降にサービスが再起動されたことが原因で発生することがあります。
+ a| 
+整数配列
+
+
+
+ a| 
+シンプロビジョニング
+ a| 
+データの保存に割り当てられたスペースの量に対する使用済みスペースの比率。比率で表します。
+ a| 
+float
+
+
+
+ a| 
+タイムスタンプ
+ a| 
+GC 後に効率データが最後に収集されたとき。
+ a| 
+ISO 8601データ文字列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "GetStorageContainerEfficiency",
+  "params": {
+    "storageContainerID" : "6c95e24f-9f0b-4793-affb-5a4bc6c3d7e1"
+  },
+  "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "compression": 1,
+    "deduplication": 1,
+    "missingVolumes": [],
+    "thinProvisioning": 1,
+    "timestamp": "2016-04-12T15:39:49Z"
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

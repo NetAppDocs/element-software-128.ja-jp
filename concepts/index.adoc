@@ -1,0 +1,25 @@
+---
+permalink: concepts/index.html 
+sidebar: sidebar 
+keywords: element, security, clusters, protection, qos 
+summary: Element ソフトウェアに関連する基本的な概念を学びます。 
+---
+= 概念
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element ソフトウェアに関連する基本的な概念を学びます。
+
+* link:concept_intro_product_overview.html["製品概要"]
+* xref:concept_solidfire_concepts_solidfire_architecture_overview.adoc[SolidFireアーキテクチャの概要]
+* xref:concept_solidfire_concepts_nodes.adoc[ノード]
+* xref:concept_intro_clusters.adoc[クラスタ]
+* link:concept_solidfire_concepts_security.html["セキュリティ"]
+* xref:concept_solidfire_concepts_accounts_and_permissions.adoc[アカウントと権限]
+* link:concept_solidfire_concepts_volumes.html["ボリューム"]
+* xref:concept_solidfire_concepts_data_protection.adoc[データ保護]
+* xref:concept_data_manage_volumes_solidfire_quality_of_service.adoc[パフォーマンスとサービス品質]
+

@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_snapmirrorclusteridentity.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorClusterIdentity 
+summary: snapMirrorClusterIdentity オブジェクトには、 SnapMirror関係にあるリモートONTAPクラスタの識別情報が含まれています。 
+---
+= snapMirrorClusterIdentity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorClusterIdentity オブジェクトには、 SnapMirror関係にあるリモートONTAPクラスタの識別情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+宛先ONTAPシステムの ID。
+ a| 
+integer
+
+
+
+ a| 
+クラスター名
+ a| 
+デスティネーションONTAPクラスタの名前。
+ a| 
+string
+
+
+
+ a| 
+クラスターUUID
+ a| 
+宛先ONTAPクラスタの 128 ビットのユニバーサル一意識別子。
+ a| 
+string
+
+
+
+ a| 
+クラスターシリアル番号
+ a| 
+宛先ONTAPクラスタのシリアル番号。
+ a| 
+string
+
+|===

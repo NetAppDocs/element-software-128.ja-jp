@@ -1,0 +1,126 @@
+---
+permalink: api/reference_element_api_adddrives.html 
+sidebar: sidebar 
+keywords: drives,adding,cluster,drive,add,adddrives 
+summary: AddDrives メソッドを使用すると、1 つ以上の使用可能なドライブをクラスターに追加し、ドライブがクラスターのデータの一部をホストできるようにすることができます。 
+---
+= AddDrives
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `AddDrives`1 つ以上の使用可能なドライブをクラスターに追加し、ドライブがクラスターのデータの一部をホストできるようにする方法です。
+
+クラスターにストレージ ノードを追加したり、既存のノードに新しいドライブをインストールしたりすると、新しいドライブは使用可能としてマークされ、使用するには AddDrives 経由で追加する必要があります。使用xref:reference_element_api_listdrives.adoc[リストドライブ]追加可能なドライブを表示する方法。ドライブを追加すると、システムによってドライブの種類が自動的に決定されます。
+
+このメソッドは非同期であり、クラスター内のドライブの再バランス調整のプロセスが開始されるとすぐに戻ります。ただし、新しく追加されたドライブを使用してクラスター内のデータの再バランス調整を行うには、さらに時間がかかる可能性があります。AddDrives メソッドの呼び出しが完了した後も、再バランス調整は続行されます。使用することができますxref:reference_element_api_getasyncresult.adoc[非同期結果を取得する]メソッドが返した asyncHandle を照会するメソッド。  AddDrivesメソッドが返された後、xref:reference_element_api_listsyncjobs.adoc[リスト同期ジョブ]新しいドライブによるデータの再バランス調整の進行状況を確認する方法。
+
+
+NOTE: 複数のドライブを追加する場合は、それぞれ 1 つのドライブに対して複数の個別のメソッドを実行するよりも、1 回の AddDrives メソッド呼び出しでドライブを追加する方が効率的です。これにより、クラスター上のストレージ負荷を安定させるために実行する必要があるデータバランス調整の量が削減されます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+ドライブ
+ a| 
+クラスターに追加される各ドライブに関する情報。有効な値は次のとおりです。
+
+* driveID: 追加するドライブの ID (整数)。
+* type: 追加するドライブのタイプ (文字列)。有効な値は、「slice」、「block」、または「volume」です。省略した場合、システムが正しいタイプを割り当てます。
+
+ a| 
+JSONオブジェクト配列
+ a| 
+なし
+ a| 
+はい（タイプは任意）
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+非同期ハンドル
+ a| 
+操作結果を取得するために使用されるハンドル値。
+ a| 
+integer
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "id": 1,
+  "method": "AddDrives",
+  "params": {
+    "drives": [
+      {
+        "driveID": 1,
+        "type": "slice"
+      },
+      {
+        "driveID": 2,
+        "type": "block"
+      },
+      {
+        "driveID": 3,
+        "type": "block"
+      }
+    ]
+  }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result" : {
+    "asyncHandle": 1
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_getasyncresult.adoc[非同期結果を取得する]
+* xref:reference_element_api_listdrives.adoc[リストドライブ]
+* xref:reference_element_api_listsyncjobs.adoc[リスト同期ジョブ]
+

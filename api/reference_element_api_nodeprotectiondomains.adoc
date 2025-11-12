@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_nodeprotectiondomains.html 
+sidebar: sidebar 
+keywords: object,objects,node,protection domains 
+summary: nodeProtectionDomains オブジェクトには、ノードの ID とそのノードに関連付けられた保護ドメインに関する情報が含まれています。 
+---
+= ノード保護ドメイン
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+nodeProtectionDomains オブジェクトには、ノードの ID とそのノードに関連付けられた保護ドメインに関する情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+nodeID
+ a| 
+ノードの一意の識別子。
+ a| 
+integer
+
+
+
+ a| 
+保護ドメイン
+ a| 
+ノードがメンバーである保護ドメインのリスト。
+ a| 
+link:reference_element_api_protectiondomain.html["保護ドメイン"]
+
+|===

@@ -1,0 +1,110 @@
+---
+permalink: api/reference_element_api_authsessioninfo.html 
+sidebar: sidebar 
+keywords: objects,object,authSessionInfo 
+summary: authSessionInfo オブジェクトには、認証セッションに関する情報が含まれています。 
+---
+= 認証セッション情報
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+その `authSessionInfo`オブジェクトには認証セッションに関する情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+`accessGroupList`
+ a| 
+ユーザーのアクセス グループのリスト。
+ a| 
+文字列配列
+
+
+
+ a| 
+`authMethod`
+ a| 
+クラスター管理ユーザーが持つ承認のタイプ。有効な値は次のとおりです。
+
+* LDAP - LDAP 経由で認証されます。
+* クラスター - クラスター データベースに保存されているユーザー名とパスワードを使用して認証されます。
+* IdP - サードパーティの ID プロバイダーを介して認証されます。
+
+ a| 
+string
+
+
+
+ a| 
+`clusterAdminIDs`
+ a| 
+このセッションに関連付けられているクラスター AdminID のリスト。  LDAP またはサードパーティの ID プロバイダー (IdP) に関連するセッションの場合、これはこのセッションに関連付けられている一致する Cluster AdminID の集約リストになります。
+ a| 
+整数配列
+
+
+
+ a| 
+`finalTimeout`
+ a| 
+セッションが無効になる時間。これはセッションの作成時に設定され、変更できません。
+ a| 
+string
+
+
+
+ a| 
+`idpConfigVersion`
+ a| 
+セッションが作成されたときの IdP 構成バージョン。
+ a| 
+integer
+
+
+
+ a| 
+`lastAccessTimeout`
+ a| 
+非アクティブのためにセッションが無効になる時間。セッションが使用のためにアクセスされたときに新しい値に設定され、finalTimeout に達したためにセッションが無効になる時間まで設定されます。
+ a| 
+string
+
+
+
+ a| 
+`sessionCreationTime`
+ a| 
+セッションが作成された時刻。
+ a| 
+string
+
+
+
+ a| 
+`sessionID`
+ a| 
+このセッションの UUID。
+ a| 
+UUID
+
+
+
+ a| 
+`username`
+ a| 
+このセッションに関連付けられたユーザー名。 LDAP に関連するセッションの場合、これはユーザーの LDAP DN になります。サードパーティの IdP に関連するセッションの場合、これはセッション内の操作の監査に使用される任意の名前と値のペアになります。必ずしもクラスター上のクラスター管理者名と一致するとは限りません。たとえば、SAML サブジェクト NameID ですが、これは IdP の構成と SAML アサーションの結果のコンテンツによって決定されます。
+ a| 
+string
+
+|===

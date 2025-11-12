@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_listasyncresults.html 
+sidebar: sidebar 
+keywords: async,asynchronous,result,results,get,list,listing,listasyncresults 
+summary: ListAsyncResults を使用すると、システム上で現在実行中および完了したすべての非同期メソッドの結果を一覧表示できます。  ListAsyncResults を使用して非同期結果をクエリしても、完了した asyncHandles の有効期限が切れることはありません。GetAsyncResult を使用して、ListAsyncResults によって返された任意の asyncHandles をクエリできます。 
+---
+= リスト非同期結果
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用できます `ListAsyncResults`システム上で現在実行中および完了したすべての非同期メソッドの結果を一覧表示します。非同期結果のクエリ `ListAsyncResults`完了したasyncHandlesの有効期限が切れることはありません。 `GetAsyncResult`返されるasyncHandlesのいずれかを照会するには `ListAsyncResults`。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+非同期結果タイプ
+ a| 
+結果の種類のオプションのリスト。このリストを使用すると、結果をこれらの種類の操作のみに制限できます。有効な値は次のとおりです。
+
+* DriveAdd: システムがクラスターにドライブを追加する操作。
+* BulkVolume: バックアップや復元などのボリューム間のコピー操作。
+* クローン: ボリュームのクローン作成操作。
+* DriveRemoval: クラスターからドライブを削除する準備として、システムがドライブからデータをコピーする操作。
+* RtfiPendingNode: ノードをクラスターに追加する前に、システムがノードに互換性のあるソフトウェアをインストールする操作。
+
+ a| 
+文字列配列
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+非同期ハンドル
+ a| 
+シリアル化された非同期メソッドの結果の配列。
+ a| 
+JSONオブジェクト配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "ListAsyncResults",
+   "params": {
+   },
+   "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "asyncHandles": [
+       {
+         "asyncResultID": 47,
+         "completed": true,
+         "createTime": "2016-01-01T22:29:19Z",
+         "data": {
+           "cloneID": 26,
+           "message": "Clone complete.",
+           "volumeID": 48
+         },
+         "lastUpdateTime": "2016-01-01T22:45:43Z",
+         "resultType": "Clone",
+         "success": true
+      },
+      ...]
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_getasyncresult.adoc[非同期結果を取得する]

@@ -1,0 +1,53 @@
+---
+permalink: api/concept_element_api_snapmirror_api_methods.html 
+sidebar: sidebar 
+keywords: SnapMirror,API,method 
+summary: SnapMirror API メソッドは、リモートONTAPシステムでミラーリングされたスナップショットを管理するために Element Web UI によって使用されます。これらのメソッドは、Element Web UI でのみ使用することを目的としています。  SnapMirror機能への API アクセスが必要な場合は、 ONTAP API を使用します。  SnapMirror API メソッドでは、要求と戻りの例は提供されません。 
+---
+= SnapMirror APIメソッド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapMirror API メソッドは、リモートONTAPシステムでミラーリングされたスナップショットを管理するために Element Web UI によって使用されます。これらのメソッドは、Element Web UI でのみ使用することを目的としています。  SnapMirror機能への API アクセスが必要な場合は、 ONTAP API を使用します。  SnapMirror API メソッドでは、要求と戻りの例は提供されません。
+
+* xref:reference_element_api_abortsnapmirrorrelationship.adoc[スナップミラー関係の中止]
+* xref:reference_element_api_breaksnapmirrorrelationship.adoc[スナップミラー関係を解除する]
+* xref:reference_element_api_breaksnapmirrorvolume.adoc[ブレークスナップミラーボリューム]
+* xref:reference_element_api_createsnapmirrorendpoint.adoc[スナップミラーエンドポイントの作成]
+* xref:reference_element_api_createsnapmirrorendpoint_unmanaged.adoc[CreateSnapMirrorEndpointUnmanaged]
+* xref:reference_element_api_createsnapmirrorrelationship.adoc[スナップミラー関係の作成]
+* xref:reference_element_api_createsnapmirrorvolume.adoc[スナップミラーボリュームの作成]
+* xref:reference_element_api_deletesnapmirrorendpoints.adoc[SnapMirrorエンドポイントの削除]
+* xref:reference_element_api_deletesnapmirrorrelationships.adoc[スナップミラー関係の削除]
+* xref:reference_element_api_getontapversioninfo.adoc[GetOntapVersionInfo]
+* xref:reference_element_api_getsnapmirrorclusteridentity.adoc[スナップミラークラスタアイデンティティの取得]
+* xref:reference_element_api_initializesnapmirrorrelationship.adoc[SnapMirror関係の初期化]
+* xref:reference_element_api_listsnapmirroraggregates.adoc[ListSnapMirrorAggregates]
+* xref:reference_element_api_listsnapmirrorendpoints.adoc[SnapMirrorエンドポイントの一覧]
+* xref:reference_element_api_listsnapmirrorluns.adoc[スナップミラーLUNのリスト]
+* xref:reference_element_api_listsnapmirrornetworkinterfaces.adoc[スナップミラーネットワークインターフェースの一覧]
+* xref:reference_element_api_listsnapmirrornodes.adoc[スナップミラーノードのリスト]
+* xref:reference_element_api_listsnapmirrorpolicies.adoc[スナップミラーポリシーの一覧]
+* xref:reference_element_api_listsnapmirrorschedules.adoc[スナップミラースケジュールのリスト]
+* xref:reference_element_api_listsnapmirrorrelationships.adoc[スナップミラー関係のリスト]
+* xref:reference_element_api_listsnapmirrorvolumes.adoc[スナップミラーボリュームのリスト]
+* xref:reference_element_api_listsnapmirrorvservers.adoc[SnapMirrorVサーバーのリスト]
+* xref:reference_element_api_modifysnapmirrorendpoint.adoc[SnapMirrorエンドポイントの変更]
+* xref:reference_element_api_modifysnapmirrorendpoint_unmanaged.adoc[ModifySnapMirrorEndpoint（管理対象外）]
+* xref:reference_element_api_modifysnapmirrorrelationship.adoc[スナップミラー関係の変更]
+* xref:reference_element_api_updatesnapmirrorrelationship.adoc[スナップミラー関係の更新]
+* xref:reference_element_api_quiescesnapmirrorrelationship.adoc[静止スナップミラー関係]
+* xref:reference_element_api_resumesnapmirrorrelationship.adoc[ResumeSnapMirror関係]
+* xref:reference_element_api_resyncsnapmirrorrelationship.adoc[スナップミラー関係の再同期]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

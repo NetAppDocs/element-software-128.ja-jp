@@ -1,0 +1,19 @@
+---
+permalink: storage/task_replication_validate_the_cluster_pair_connection.html 
+sidebar: sidebar 
+keywords: cluster pair connection, validate 
+summary: クラスターのペアリングが完了したら、レプリケーションが成功したことを確認するためにクラスター ペアの接続を確認することをお勧めします。 
+---
+= クラスタペアの接続を検証する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスターのペアリングが完了したら、レプリケーションが成功したことを確認するためにクラスター ペアの接続を確認することをお勧めします。
+
+. ローカル クラスターで、[*データ保護*] > [*クラスター ペア*] を選択します。
+. *クラスター ペア* ウィンドウで、クラスター ペアが接続されていることを確認します。
+. *オプション:* ローカル クラスターと *クラスター ペア* ウィンドウに戻り、クラスター ペアが接続されていることを確認します。
+

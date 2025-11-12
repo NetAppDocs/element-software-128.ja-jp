@@ -1,0 +1,74 @@
+---
+permalink: api/reference_element_api_qos.html 
+sidebar: sidebar 
+keywords: object,objects,QoS 
+summary: 'QoS オブジェクトには、ボリュームの Quality of Service (QoS) 設定に関する情報が含まれています。  QoS 値を指定せずに作成されたボリュームは、デフォルト値を使用して作成されます。  GetDefaultQoS メソッドを使用してデフォルト値を見つけることができます。' 
+---
+= QoS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+QoS オブジェクトには、ボリュームの Quality of Service (QoS) 設定に関する情報が含まれています。 QoS 値を指定せずに作成されたボリュームは、デフォルト値を使用して作成されます。デフォルト値は、 `GetDefaultQoS`方法。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+バーストIOPS
+ a| 
+短時間に許可される最大の「ピーク」4KB IOPS。通常の maxIOPS 値を超える I/O アクティビティのバーストを許可します。
+ a| 
+integer
+
+
+
+ a| 
+バーストタイム
+ a| 
+burstIOPS が許可される時間の長さ。返される値は秒単位で表されます。この値は、QoS に設定された IOPS に基づいてシステムによって計算されます。
+ a| 
+integer
+
+
+
+ a| 
+曲線
+ a| 
+曲線はキーと値のペアのセットです。キーはバイト単位の I/O サイズです。値は、特定の I/O サイズで 1 つの IOP を実行するコストを表します。曲線は、100 IOPS に設定された 4096 バイトの操作を基準として計算されます。
+ a| 
+JSONオブジェクト
+
+
+
+ a| 
+最大IOPS
+ a| 
+長期間にわたって許可される望ましい最大 4KB IOPS。
+ a| 
+integer
+
+
+
+ a| 
+最小IOPS
+ a| 
+保証する最小 4KB IOPS が必要です。許可される IOPS がこのレベルを下回るのは、すべてのボリュームが minIOPS 値で制限され、パフォーマンス容量がまだ不十分な場合のみです。
+ a| 
+integer
+
+|===
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_getdefaultqos.adoc[デフォルトQoSを取得する]

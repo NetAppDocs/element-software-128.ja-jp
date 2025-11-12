@@ -1,0 +1,33 @@
+---
+permalink: storage/task_snapmirror_enable_on_the_volume.html 
+sidebar: sidebar 
+keywords: element, snapmirror, enable, volume, ui, manually 
+summary: Element UI でボリューム上でSnapMirror を有効にする必要があります。これにより、指定されたONTAPボリュームへのデータのレプリケーションが可能になります。これは、 SnapMirror がボリュームを制御するための、 NetApp Elementソフトウェアを実行しているクラスタの管理者からの許可です。 
+---
+= ボリュームでSnapMirrorを有効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element UI でボリューム上でSnapMirror を有効にする必要があります。これにより、指定されたONTAPボリュームへのデータのレプリケーションが可能になります。これは、 SnapMirror がボリュームを制御するための、 NetApp Elementソフトウェアを実行しているクラスタの管理者からの許可です。
+
+.要件
+* クラスターの Element UI でSnapMirror を有効にしました。
+* SnapMirrorエンドポイントが利用可能です。
+* ボリュームは 512e ブロック サイズである必要があります。
+* ボリュームはリモート レプリケーションに参加していません。
+* ボリューム アクセス タイプはレプリケーション ターゲットではありません。
+
+
+
+NOTE: ボリュームを作成または複製するときにもこのプロパティを設定できます。
+
+.手順
+. *管理* > *ボリューム*をクリックします。
+. SnapMirror を有効にするボリュームの *アクション* アイコンをクリックします。
+. 表示されたメニューで、[*編集*] を選択します。
+. *ボリュームの編集* ダイアログボックスで、* SnapMirror を有効にする* チェックボックスをオンにします。
+. *変更を保存*をクリックします。
+

@@ -1,0 +1,31 @@
+---
+permalink: api/concept_element_api_common_methods.html 
+sidebar: sidebar 
+keywords: common,methods 
+summary: 一般的なメソッドは、ストレージ クラスター、API 自体、または進行中の API 操作に関する情報を取得するために使用されるメソッドです。 
+---
+= 一般的な方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+一般的なメソッドは、ストレージ クラスター、API 自体、または進行中の API 操作に関する情報を取得するために使用されるメソッドです。
+
+* xref:reference_element_api_getapi.adoc[ゲットAPI]
+* xref:reference_element_api_getasyncresult.adoc[非同期結果を取得する]
+* xref:reference_element_api_getcompletestats.adoc[完全な統計情報を取得する]
+* xref:reference_element_api_getlimits.adoc[制限を取得]
+* xref:reference_element_api_getorigin.adoc[ゲットオリジン]
+* xref:reference_element_api_getrawstats.adoc[生の統計情報を取得]
+* xref:reference_element_api_listasyncresults.adoc[リスト非同期結果]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

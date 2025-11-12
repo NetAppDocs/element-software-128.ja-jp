@@ -1,0 +1,223 @@
+---
+permalink: api/reference_element_api_getasyncresult.html 
+sidebar: sidebar 
+keywords: async,asynchronous,results,result,get,getting,GetAsyncResult 
+summary: GetAsyncResult を使用して、非同期メソッド呼び出しの結果を取得できます。一部のメソッド呼び出しは実行に時間がかかるため、システムが最初の応答を送信したときに完了していない可能性があります。メソッド呼び出しのステータスまたは結果を取得するには、GetAsyncResult を使用して、メソッドによって返される asyncHandle 値をポーリングします。 
+---
+= 非同期結果を取得する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用できます `GetAsyncResult`非同期メソッド呼び出しの結果を取得します。一部のメソッド呼び出しは実行に時間がかかるため、システムが最初の応答を送信したときに完了していない可能性があります。メソッド呼び出しのステータスまたは結果を取得するには、 `GetAsyncResult`メソッドによって返される asyncHandle 値をポーリングします。
+
+`GetAsyncResult`操作の全体的なステータス (進行中、完了、またはエラー) を標準的な方法で返しますが、操作に対して返される実際のデータは元のメソッド呼び出しによって異なり、返されるデータは各メソッドで文書化されます。
+
+keepResult パラメータが指定されていないか false の場合、結果が返されたときに asyncHandle は非アクティブになり、その後 asyncHandle をクエリしようとするとエラーが返されます。  keepResult パラメータを true に設定することで、将来のクエリに対して asyncHandle をアクティブなままにすることができます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+非同期ハンドル
+ a| 
+元の非同期メソッド呼び出しから返された値。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+結果を保持
+ a| 
+true の場合、GetAsyncResult は非同期結果を返すときにそれを削除せず、その asyncHandle への将来のクエリを有効にします。
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+ステータス
+ a| 
+非同期メソッド呼び出しのステータス。有効な値は次のとおりです。
+
+* 実行中: メソッドはまだ実行中です。
+* 完了: メソッドが完了し、結果またはエラーが利用可能です。
+
+ a| 
+string
+
+
+
+ a| 
+結果
+ a| 
+非同期メソッドが正常に完了した場合、これは非同期操作の結果です。非同期操作が失敗した場合、このメンバーは存在しません。
+ a| 
+string
+
+
+
+ a| 
+エラー
+ a| 
+ステータスが完了し、非同期メソッドが失敗した場合、このメンバーにはエラーの詳細が含まれます。非同期操作が成功した場合、このメンバーは存在しません。
+ a| 
+string
+
+
+
+ a| 
+結果タイプ
+ a| 
+非同期メソッド呼び出しが実行している、または実行していた操作の種類。
+ a| 
+string
+
+
+
+ a| 
+詳細
+ a| 
+ステータスが実行中の場合、このメンバーにはメソッドの現在の操作に関連する情報が含まれます。非同期メソッドが実行されていない場合、このメンバーは存在しません。
+ a| 
+JSON オブジェクト
+
+
+
+ a| 
+作成時間
+ a| 
+非同期メソッドが呼び出された時刻（UTC+0 形式）。
+ a| 
+ISO 8601日付文字列
+
+
+
+ a| 
+最終更新時間
+ a| 
+非同期メソッドのステータスが最後に更新された時刻 (UTC+0 形式)。
+ a| 
+ISO 8601日付文字列
+
+|===
+*注:* GetAsyncResult の戻り値は、基本的には追加のステータス フィールドを持つ標準 JSON 応答のネストされたバージョンです。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "GetAsyncResult",
+  "params": {
+      "asyncHandle" : 389
+},
+"id" : 1
+}
+----
+
+
+== レスポンス例: メソッドエラー
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "error": {
+      "code": 500,
+      "message": "DBClient operation requested on a non-existent path at [/asyncresults/1]",
+      "name": "xDBNoSuchPath"
+   },
+   "id": 1
+}
+----
+「response」が GetAsyncResult 呼び出しからの JSON 応答オブジェクトである場合、「response.error」は GetAsyncResult メソッド自体のエラー (存在しない asyncHandle のクエリなど) に対応します。
+
+
+
+== 応答例: 非同期タスクエラー
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "createTime": "2016-01-01T02:05:53Z",
+     "error": {
+       "bvID": 1,
+       "message": "Bulk volume job failed",
+       "name": "xBulkVolumeScriptFailure",
+       "volumeID": 34
+     },
+     "lastUpdateTime": "2016-01-21T02:06:56Z",
+     "resultType": "BulkVolume",
+     "status": "complete"
+   }
+}
+----
+「`response.result.error`」は、元のメソッド呼び出しからのエラー結果に対応します。
+
+
+
+== レスポンスの例: 非同期タスクの成功
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "createTime": "2016-01-01T22:29:18Z",
+     "lastUpdateTime": "2016-01-01T22:45:51Z",
+     "result": {
+       "cloneID": 25,
+       "message": "Clone complete.",
+       "volumeID": 47
+     },
+     "resultType": "Clone",
+     "status": "complete"
+   }
+}
+----
+「`response.result.result`」は、呼び出しが正常に完了した場合の元のメソッド呼び出しの戻り値です。
+
+
+
+== バージョン以降の新機能
+
+9.6

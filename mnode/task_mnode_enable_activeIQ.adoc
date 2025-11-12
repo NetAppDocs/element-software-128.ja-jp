@@ -1,0 +1,144 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_enable_activeIQ.html 
+summary: '管理ノード (mNode) を使用して、 SolidFireオールフラッシュ ストレージのActive IQ を有効にすることができます。' 
+keywords: netapp, Element, api, enable, active iq, activeiq 
+---
+= Active IQとNetAppの監視を有効にする
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+インストールまたはアップグレード中にまだ有効にしていない場合は、 Active IQストレージ監視を有効にすることができます。  SolidFireオールフラッシュ ストレージ システムのインストール中にSolidFire Active IQ を設定しなかった場合は、この手順を使用する必要がある場合があります。
+
+Active IQコレクター サービスは、構成データと Element ソフトウェア ベースのクラスター パフォーマンス メトリックをSolidFire Active IQに転送し、履歴レポートとほぼリアルタイムのパフォーマンス監視を実現します。  NetApp監視サービスを使用すると、ストレージ クラスターの障害を vCenter に転送してアラート通知を受け取ることができます。
+
+.開始する前に
+* Active IQの一部の機能 (サービス品質 (QoS) など) が正しく動作するには、Element 11.3 以降が必要です。すべてのActive IQ機能を使用できることを確認するために、 NetApp次のことを推奨します。
++
+** ストレージ クラスターはNetApp Elementソフトウェア 11.3 以降を実行しています。
+** バージョン 11.3 以降を実行している管理ノードをデプロイしました。
+
+
+* インターネットにアクセスできます。  Active IQコレクター サービスは、外部接続のないダーク サイトからは使用できません。
+
+
+.手順
+. インストールの基本アセット ID を取得します。
++
+.. 管理ノードでインベントリ サービス REST API UI を開きます。
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. *承認*を選択し、以下を完了します。
++
+... クラスターのユーザー名とパスワードを入力します。
+... クライアントIDを入力してください `mnode-client`。
+... セッションを開始するには、[承認] を選択します。
+... ウィンドウを閉じます。
+
+
+.. REST API UI から、*GET ​/installations* を選択します。
+.. *試してみる*を選択します。
+.. *実行*を選択します。
+.. コード200のレスポンス本文から、 `id`インストール用。
++
+[listing, subs="+quotes"]
+----
+{
+  "installations": [
+    {
+      "_links": {
+        "collection": "https://10.111.211.111/inventory/1/installations",
+        "self": "https://10.111.217.111/inventory/1/installations/abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x"
+      },
+      *"id": "abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x",*
+----
++
+
+NOTE: インストールには、インストールまたはアップグレード中に作成された基本アセット構成があります。
+
+
+
+. テレメトリを有効にする:
++
+.. 管理ノードのIPアドレスに続けて入力して、管理ノードのmnodeサービスAPI UIにアクセスします。 `/mnode` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. *承認*または任意のロックアイコンを選択し、次の手順に従います。
++
+... クラスターのユーザー名とパスワードを入力します。
+... クライアントIDを入力してください `mnode-client`。
+... セッションを開始するには、[承認] を選択します。
+... ウィンドウを閉じます。
+
+
+.. 基本アセットを構成します。
++
+... *PUT /assets/{asset_id}*を選択します。
+... *試してみる*を選択します。
+... JSON ペイロードに以下を入力します。
++
+[listing]
+----
+{
+"telemetry_active": true
+"config": {}
+}
+----
+... *asset_ID* に前の手順のベース ID を入力します。
+... *実行*を選択します。
++
+資産が変更されるたびに、 Active IQサービスが自動的に再起動されます。アセットを変更すると、設定が適用されるまで少し時間がかかります。
+
+
+
+
+
+. まだ行っていない場合は、 NetApp Hybrid Cloud Control の vCenter コントローラ アセットを管理ノードの既知のアセットに追加します。
++
+
+NOTE: NetApp監視サービスにはコントローラ アセットが必要です。
+
++
+.. コントローラー サブアセットを追加するには、*POST /assets/{asset_id}/controllers* を選択します。
+.. *試してみる*を選択します。
+.. *asset_id* フィールドに、クリップボードにコピーした親ベースアセット ID を入力します。
+.. 必要なペイロード値を入力します。 `type`として `vCenter`および vCenter 資格情報。
++
+[listing]
+----
+{
+"username": "string",
+"password": "string",
+"ip": "string",
+"type": "vCenter",
+"host_name": "string",
+"config": {}
+}
+----
++
+
+NOTE: `ip`vCenter の IP アドレスです。
+
+.. *実行*を選択します。
+
+
+
+
+[discrete]
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

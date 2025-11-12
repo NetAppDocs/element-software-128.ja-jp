@@ -1,0 +1,25 @@
+---
+permalink: storage/task-element-replication-create-snapmirror-endpoint.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, snapmirror, endpoint 
+summary: レプリケーション関係を作成する前に、SnapMirrorエンドポイントを作成する必要があります。このタスクは、Element ソフトウェアの Web UI または API メソッドを使用してのみ実行できます。 
+---
+= SnapMirrorエンドポイントを作成する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+レプリケーション関係を作成する前に、SnapMirrorエンドポイントを作成する必要があります。このタスクは、ElementソフトウェアのWeb UIまたは link:../api/reference_element_api_abortsnapmirrorrelationship.html["SnapMirror APIメソッド"]。
+
+.開始する前に
+ElementクラスタでSnapMirrorを有効にしておく必要があります。
+
+.手順
+. *データ保護* > * SnapMirrorエンドポイント*をクリックします。
+. *エンドポイントの作成*をクリックします。
+. *新しいエンドポイントの作成*ダイアログで、 ONTAPクラスタ管理 IP アドレスを入力します。
+. ONTAPクラスタ管理者のユーザIDとパスワードを入力します。
+. *エンドポイントの作成*をクリックします。
+

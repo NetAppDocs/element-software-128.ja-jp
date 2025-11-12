@@ -1,0 +1,85 @@
+---
+permalink: api/reference_element_api_getclusterstate.html 
+sidebar: sidebar 
+keywords: cluster,state,getting,get,getclusterstate 
+summary: GetClusterState API メソッドを使用して、ノードがクラスターの一部であるかどうかを示すことができます。 
+---
+= クラスター状態を取得する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetClusterState`ノードがクラスターの一部であるかどうかを示す API メソッド。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+cluster
+ a| 
+クラスタの名前。
+ a| 
+string
+
+
+
+ a| 
+状態
+ a| 
+* 使用可能: ノードにクラスター名が設定されていません。
+* 保留中: ノードは特定の名前付きクラスターに対して保留中であり、追加できます。
+* アクティブ: ノードはクラスターのアクティブ メンバーであり、別のクラスターに追加することはできません。
+
+ a| 
+string
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "GetClusterState",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" :
+      "cluster" :  "Cluster101"
+      "state" : "Active"
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

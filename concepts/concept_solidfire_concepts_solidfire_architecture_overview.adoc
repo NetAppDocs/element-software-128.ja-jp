@@ -1,0 +1,77 @@
+---
+permalink: concepts/concept_solidfire_concepts_solidfire_architecture_overview.html 
+sidebar: sidebar 
+keywords: solidfire, element, aiq, cluster, active iq, vcenter plugin, vcp, storage, what is, activeiq 
+summary: 'SolidFireオールフラッシュ ストレージ システムは、個別のハードウェア コンポーネント (ドライブとノード) で構成され、各ノードで独立して実行されるNetApp Elementソフトウェアを通じて単一のストレージ リソース プールに結合されます。この統合クラスターは、外部クライアントが使用するための単一のストレージ システムとして提供され、Element ソフトウェア UI、API、およびその他の管理ツールを通じて単一のエンティティとして管理されます。' 
+---
+= SolidFireアーキテクチャについて学ぶ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFireオールフラッシュ ストレージ システムは、個別のハードウェア コンポーネント (ドライブとノード) で構成され、各ノードで独立して実行されるNetApp Elementソフトウェアを使用してストレージ リソースのプールに結合されます。この単一のストレージ システムは、Element ソフトウェア UI、API、およびその他の管理ツールを使用して単一のエンティティとして管理されます。
+
+SolidFireストレージ システムには、次のハードウェア コンポーネントが含まれています。
+
+* *クラスター*: ノードの集合であるSolidFireストレージ システムのハブ。
+* *ノード*: クラスターにグループ化されたハードウェア コンポーネント。ノードには次の2つのタイプがあります。
++
+** ストレージノードは、ドライブの集合を含むサーバーです。
+** FCクライアントへの接続に使用するファイバーチャネル（FC）ノード
+
+
+* *ドライブ*: クラスターのデータを保存するためにストレージ ノードで使用されます。ストレージ ノードには 2 種類のドライブが含まれます。
++
+** ボリューム メタデータ ドライブには、クラスター内のボリュームやその他のオブジェクトを定義する情報が保存されます。
+** ブロック ドライブはボリュームのデータ ブロックを保存します。
+
+
+
+
+image::../media/solidfire_concepts_guide_architecture_image.gif[Element Software のアーキテクチャ図]
+
+Element Web UI やその他の互換性のあるツールを使用して、システムを管理、監視、更新できます。
+
+* link:../concepts/concept_intro_solidfire_software_interfaces.html["SolidFireソフトウェアインターフェース"]
+* link:../concepts/concept_intro_solidfire_active_iq.html["SolidFireActive IQ"]
+* link:../concepts/concept_intro_management_node.html["Elementソフトウェアの管理ノード"]
+* link:../concepts/concept_intro_management_services_for_afa.html["管理サービス"]
+
+
+
+
+== 一般的なURL
+
+SolidFireオールフラッシュ ストレージ システムで使用される一般的な URL は次のとおりです。
+
+[cols="2*"]
+|===
+| URL | 説明 
+
+
+| `https://[storage cluster MVIP address]` | NetApp Elementソフトウェア UI にアクセスします。 
+
+
+| `https://activeiq.solidfire.com` | データを監視し、パフォーマンスのボトルネックや潜在的なシステムの問題に関するアラートを受信します。 
+
+
+| `https://[management node IP address]` | NetApp Hybrid Cloud Control にアクセスして、ストレージのインストールをアップグレードし、管理サービスを更新します。 
+
+
+| `https://[IP address]:442` | ノードごとの UI から、ネットワークとクラスターの設定にアクセスし、システム テストとユーティリティを利用します。link:../storage/task_per_node_access_settings.html["詳細情報"] 
+
+
+| `https://[management node IP address]/mnode` | 管理ノードから管理サービス REST API およびその他の機能を使用します。link:../mnode/task_mnode_work_overview.html["詳細情報"] 
+
+
+| `https://[management node IP address]:9443` | vSphere Web Client に vCenter プラグイン パッケージを登録します。link:https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html["詳細情報"^] 
+|===
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

@@ -1,0 +1,107 @@
+---
+permalink: api/concept_element_api_common_objects.html 
+sidebar: sidebar 
+keywords: common,objects 
+summary: Element ソフトウェア API は、JSON オブジェクトを使用して整理されたデータ概念を表します。これらの API メソッドの多くは、データの入出力にこれらのオブジェクトを使用します。このセクションでは、これらのよく使用されるオブジェクトについて説明します。単一のメソッド内でのみ使用されるオブジェクトについては、このセクションではなく、そのメソッドで説明します。 
+---
+= 一般的なオブジェクト
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element ソフトウェア API は、JSON オブジェクトを使用して整理されたデータ概念を表します。これらの API メソッドの多くは、データの入出力にこれらのオブジェクトを使用します。このセクションでは、これらのよく使用されるオブジェクトについて説明します。単一のメソッド内でのみ使用されるオブジェクトについては、このセクションではなく、そのメソッドで説明します。
+
+* xref:reference_element_api_account.adoc[アカウント]
+* xref:reference_element_api_authsessioninfo.adoc[認証セッション情報]
+* xref:reference_element_api_bulkvolumejob.adoc[バルクボリュームジョブ]
+* xref:reference_element_api_binding_vvols.adoc[バインディング（仮想ボリューム）]
+* xref:reference_element_api_certificatedetails.adoc[証明書の詳細]
+* xref:reference_element_api_cluster.adoc[cluster]
+* xref:reference_element_api_clusteradmin.adoc[クラスター管理者]
+* xref:reference_element_api_clustercapacity.adoc[クラスター容量]
+* xref:reference_element_api_clusterconfig.adoc[クラスター構成]
+* xref:reference_element_api_clusterinfo.adoc[クラスター情報]
+* xref:reference_element_api_clusterpair.adoc[クラスターペア]
+* xref:reference_element_api_clusterstats.adoc[クラスター統計]
+* xref:reference_element_api_clusterstructure.adoc[クラスター構造]
+* xref:reference_element_api_drive.adoc[ドライブ]
+* xref:reference_element_api_drivestats.adoc[ドライブ統計]
+* xref:reference_element_api_error.adoc[エラー]
+* xref:reference_element_api_event.adoc[event]
+* xref:reference_element_api_fault.adoc[故障]
+* xref:reference_element_api_fibrechannelport.adoc[ファイバーチャネルポート]
+* xref:reference_element_api_fipserrornodereport.adoc[fipsエラーノードレポート]
+* xref:reference_element_api_fipsnodereport.adoc[fipsノードレポート]
+* xref:reference_element_api_fipsreport.adoc[fipsレポート]
+* xref:reference_element_api_groupsnapshot.adoc[グループスナップショット]
+* xref:reference_element_api_hardwareinfo.adoc[ハードウェア情報]
+* xref:reference_element_api_host.adoc[ホスト（仮想ボリューム）]
+* xref:reference_element_api_idpconfiginfo.adoc[idpConfigInfo]
+* xref:reference_element_api_initiator.adoc[イニシエータ]
+* xref:reference_element_api_iscsiauthentication.adoc[iSCSI認証]
+* xref:reference_element_api_keyproviderkmip.adoc[キープロバイダーKmip]
+* xref:reference_element_api_keyserverkmip.adoc[キーサーバーKmip]
+* xref:reference_element_api_ldapconfiguration.adoc[ldap構成]
+* xref:reference_element_api_loggingserver.adoc[ログサーバー]
+* xref:reference_element_api_network_bonded_interfaces.adoc[ネットワーク（結合インターフェース）]
+* xref:reference_element_api_network_all_interfaces.adoc[ネットワーク（すべてのインターフェース）]
+* xref:reference_element_api_network_ethernet_interfaces.adoc[ネットワーク（イーサネットインターフェース）]
+* xref:reference_element_api_network_local_interfaces.adoc[ネットワーク（ローカルインターフェース）]
+* xref:reference_element_api_network_snmp.adoc[ネットワーク（SNMP）]
+* xref:reference_element_api_networkinterface.adoc[ネットワークインターフェース]
+* xref:reference_element_api_node.adoc[ノード]
+* xref:reference_element_api_nodeprotectiondomains.adoc[ノード保護ドメイン]
+* xref:reference_element_api_nodestats.adoc[nodeStats]
+* xref:reference_element_api_ontapversioninfo.adoc[ontapバージョン情報]
+* xref:reference_element_api_pendingactivenode.adoc[保留中のアクティブノード]
+* xref:reference_element_api_pendingnode.adoc[保留中のノード]
+* xref:reference_element_api_protectiondomain.adoc[保護ドメイン]
+* xref:reference_element_api_protectiondomainlevel.adoc[保護ドメインレベル]
+* xref:reference_element_api_protectiondomainresiliency.adoc[保護ドメイン回復力]
+* xref:reference_element_api_protectiondomaintolerance.adoc[保護ドメイン許容度]
+* xref:reference_element_api_protectionschemeresiliency.adoc[保護スキーム回復力]
+* xref:reference_element_api_protectionschemetolerance.adoc[保護スキーム許容度]
+* xref:reference_element_api_protocolendpoint.adoc[プロトコルエンドポイント]
+* xref:reference_element_api_qos.adoc[QoS]
+* xref:reference_element_api_qospolicy.adoc[QoSポリシー]
+* xref:reference_element_api_remoteclustersnapshotstatus.adoc[リモートクラスタスナップショットステータス]
+* xref:reference_element_api_schedule.adoc[スケジュール]
+* xref:reference_element_api_session_fibre_channel.adoc[セッション（ファイバーチャネル）]
+* xref:reference_element_api_session_iscsi.adoc[セッション（iSCSI）]
+* xref:reference_element_api_snapmirroraggregate.adoc[スナップミラーアグリゲート]
+* xref:reference_element_api_snapmirrorclusteridentity.adoc[snapMirrorClusterIdentity]
+* xref:reference_element_api_snapmirrorendpoint.adoc[スナップミラーエンドポイント]
+* xref:reference_element_api_snapmirrorjobschedulecroninfo.adoc[スナップミラージョブスケジュールCron情報]
+* xref:reference_element_api_snapmirrorluninfo.adoc[スナップミラーLun情報]
+* xref:reference_element_api_snapmirrornetworkinterface.adoc[スナップミラーネットワークインターフェース]
+* xref:reference_element_api_snapmirrornode.adoc[スナップミラーノード]
+* xref:reference_element_api_snapmirrorpolicy.adoc[スナップミラーポリシー]
+* xref:reference_element_api_snapmirrorpolicyrule.adoc[スナップミラーポリシールール]
+* xref:reference_element_api_snapmirrorrelationship.adoc[スナップミラー関係]
+* xref:reference_element_api_snapmirrorvolume.adoc[スナップミラーボリューム]
+* xref:reference_element_api_snapmirrorvolumeinfo.adoc[スナップミラーボリューム情報]
+* xref:reference_element_api_snapmirrorvserver.adoc[スナップミラーVサーバー]
+* xref:reference_element_api_snapmirrorvserveraggregateinfo.adoc[スナップミラーVサーバー集約情報]
+* xref:reference_element_api_snapshot.adoc[Snapshot]
+* xref:reference_element_api_snmptraprecipient.adoc[snmpトラップ受信者]
+* xref:reference_element_api_storagecontainer.adoc[ストレージコンテナ]
+* xref:reference_element_api_syncjob.adoc[同期ジョブ]
+* xref:reference_element_api_task_virtual_volumes.adoc[タスク（仮想ボリューム）]
+* xref:reference_element_api_usmuser.adoc[usmユーザー]
+* xref:reference_element_api_virtualnetwork.adoc[仮想ネットワーク]
+* xref:reference_element_api_virtualvolume.adoc[仮想ボリューム]
+* xref:reference_element_api_volume.adoc[音量]
+* xref:reference_element_api_volumeaccessgroup.adoc[ボリュームアクセスグループ]
+* xref:reference_element_api_volumepair.adoc[ボリュームペア]
+* xref:reference_element_api_volumestats.adoc[ボリューム統計]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

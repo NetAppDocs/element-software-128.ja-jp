@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_listdrivehardware.html 
+sidebar: sidebar 
+keywords: drive,hardware,list,listing,listdrivehardware,drives 
+summary: ListDriveHardware メソッドを使用して、ノードに接続されているすべてのドライブを一覧表示できます。個々のノードで使用すると、このメソッドはドライブのハードウェア情報を返します。クラスター マスター ノード MVIP で使用すると、このメソッドはすべてのノード上のすべてのドライブの情報を返します。 
+---
+= ドライブハードウェアのリスト
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ListDriveHardware`ノードに接続されているすべてのドライブを一覧表示するメソッド。個々のノードで使用すると、このメソッドはドライブのハードウェア情報を返します。クラスター マスター ノード MVIP で使用すると、このメソッドはすべてのノード上のすべてのドライブの情報を返します。
+
+
+
+== パラメータ
+
+
+NOTE: メソッド応答の「securitySupported」: true 行は、ドライブが暗号化可能であることを意味するのではなく、セキュリティ ステータスを照会できることだけを意味します。モデル番号が「-NE」で終わるノード タイプがある場合、これらのドライブのセキュリティ機能を有効にするコマンドは失敗します。
+
+このメソッドには次のパラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+力
+ a| 
+このメソッドをすべてのノードで実行するには、true に設定します。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+ドライブハードウェア
+ a| 
+ノードのドライブ ハードウェア情報が返されました。
+ a| 
+JSONオブジェクト配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+"method": "ListDriveHardware",
+"params": {},
+"id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "driveHardware": [
+      {
+        "canonicalName": "sda",
+        "connected": true,
+        "dev": 2048,
+        "devPath": "/dev/slot0",
+        "driveEncryptionCapability": "fips",
+        "driveType": "Slice",
+        "lifeRemainingPercent": 98,
+        "lifetimeReadBytes": 0,
+        "lifetimeWriteBytes": 14012129542144,
+        "name": "scsi-SATA_SAMSUNG_MZ7GE24S1M9NWAG501251",
+        "path": "/dev/sda",
+        "pathLink": "/dev/slot0",
+        "powerOnHours": 15489,
+        "product": "SAMSUNG MZ7GE240HMGR-00003",
+        "reallocatedSectors": 0,
+        "reserveCapacityPercent": 100,
+        "scsiCompatId": "scsi-SATA_SAMSUNG_MZ7GE24S1M9NWAG501251",
+        "scsiState": "Running",
+        "securityAtMaximum": false,
+        "securityEnabled": true,
+        "securityFrozen": false,
+        "securityLocked": false,
+        "securitySupported": true,
+        "serial": "S1M9NWAG501251",
+        "size": 240057409536,
+        "slot": 0,
+        "uncorrectableErrors": 0,
+        "uuid": "789aa05d-e49b-ff4f-f821-f60eed8e43bd",
+        "vendor": "Samsung",
+        "version": "EXT1303Q"
+      }
+   ]
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_enableencryptionatrest.adoc[保存時の暗号化を有効にする]

@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_getclientcertificatesignrequest.html 
+sidebar: sidebar 
+keywords: client certificate,certificate signing request,creating certificate signing request,CSR,CA 
+summary: GetClientCertificateSignRequest メソッドを使用すると、証明機関が署名できる証明書署名要求を生成し、クラスターのクライアント証明書を生成できます。外部サービスと対話するための信頼関係を確立するには、署名された証明書が必要です。 
+---
+= GetClientCertificateSignRequest
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetClientCertificateSignRequest`クラスターのクライアント証明書を生成するために、証明機関によって署名できる証明書署名要求を生成する方法。外部サービスと対話するための信頼関係を確立するには、署名された証明書が必要です。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+クライアント証明書署名リクエスト
+ a| 
+PEM 形式の Base64 エンコードされた PKCS#10 X.509 クライアント証明書署名要求。
+ a| 
+string
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "GetClientCertificateSignRequest",
+  "params": {
+  },
+"id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "clientCertificateSignRequest": "MIIByjCCATMCAQAwgYkxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybm..."
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+11.7

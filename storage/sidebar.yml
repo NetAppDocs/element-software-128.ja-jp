@@ -1,0 +1,502 @@
+---
+section: storage
+title: Elementソフトウェアでストレージを管理する
+entries:
+- title: ストレージの管理について学ぶ
+  url: "/storage/index.html"
+- title: Elementソフトウェアのユーザーインターフェースにアクセスする
+  url: "/storage/task_post_deploy_access_the_element_software_user_interface.html"
+- title: 導入後にSolidFireシステムオプションを構成する
+  entries:
+  - title: 展開後のオプションの設定について学ぶ
+    url: "/storage/task_post_deploy_configure_system_options.html"
+  - title: NetApp HCIおよびNetApp SolidFireの資格情報を変更する
+    url: "/storage/task_post_deploy_credentials.html"
+  - title: ElementソフトウェアのデフォルトのSSL証明書を変更する
+    url: "/storage/reference_post_deploy_change_default_ssl_certificate.html"
+  - title: ノードのIPMIパスワードを変更する
+    url: "/storage/task_post_deploy_credential_change_ipmi_password.html"
+- title: ElementソフトウェアUIの基本オプションを使用する
+  entries:
+  - title: 基本オプションの使い方を学ぶ
+    url: "/storage/task_intro_use_basic_options_in_the_element_software_ui.html"
+  - title: APIアクティビティ
+    entries:
+    - title: APIアクティビティを表示
+      url: "/storage/task_intro_view_api_activity_in_real_time.html"
+    - title: インターフェースの更新レートはクラスタ負荷の影響を受けます
+      url: "/storage/concept_basic_interface_refresh_rate_impacted_by_cluster_load.html"
+  - title: 要素インターフェースのアイコン
+    url: "/storage/reference_intro_icon_reference.html"
+  - title: フィードバック
+    url: "/storage/task_intro_provide_feedback.html"
+- title: アカウントを管理する
+  entries:
+  - title: アカウント管理について学ぶ
+    url: "/storage/concept_system_manage_accounts_overview.html"
+  - title: CHAP を使用してアカウントを操作する
+    url: "/storage/task_data_manage_accounts_work_with_accounts_task.html"
+  - title: クラスタ管理者のユーザーアカウントを管理する
+    url: "/storage/concept_system_manage_manage_cluster_administrator_users.html"
+  - title: LDAPの管理
+    url: "/storage/concept_system_manage_manage_ldap.html"
+- title: システムを管理する
+  entries:
+  - title: システムの管理について学ぶ
+    url: "/storage/concept_system_manage_system_management.html"
+  - title: 多要素認証を有効にする
+    entries:
+    - title: 多要素認証を設定する
+      url: "/storage/task_system_manage_mfa_set_up_multi_factor_authentication.html"
+    - title: 多要素認証に関する追加情報
+      url: "/storage/concept_system_manage_mfa_additional_information_for_multi_factor_authentication.html"
+  - title: クラスター設定を構成する
+    entries:
+    - title: クラスターの暗号化を有効または無効にする
+      url: "/storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html"
+    - title: クラスターのフルしきい値を設定する
+      url: "/storage/task_system_manage_cluster_set_the_cluster_full_threshold.html"
+    - title: ボリューム負荷分散の有効化と無効化
+      url: "/storage/task_system_manage_cluster_volume_load_balancing.html"
+    - title: サポートアクセスを有効または無効にする
+      url: "/storage/task_system_manage_cluster_enable_and_disable_support_access.html"
+    - title: 利用規約バナーを管理する
+      url: "/storage/concept_system_manage_cluster_terms_manage_the_terms_of_use_banner.html"
+    - title: ネットワークタイムプロトコルを設定する
+      entries:
+      - title: クラスタがクエリを実行するネットワークタイムプロトコルサーバを構成する
+        url: "/storage/task_system_manage_cluster_ntp_configure.html"
+      - title: NTPブロードキャストをリッスンするようにクラスタを構成する
+        url: "/storage/task_system_manage_cluster_ntp_configure_to_listen_for_ntp_broadcasts.html"
+    - title: SNMPの管理
+      entries:
+      - title: SNMPの詳細
+        url: "/storage/reference_system_manage_snmp_snmp_details.html"
+      - title: SNMPリクエスタを構成する
+        url: "/storage/task_system_manage_snmp_configure_an_snmp_requestor.html"
+      - title: SNMP USMユーザーを構成する
+        url: "/storage/task_system_manage_snmp_configure_an_snmp_usm_user.html"
+      - title: SNMPトラップを設定する
+        url: "/storage/task_system_manage_snmp_configure_snmp_traps.html"
+      - title: 管理情報ベースファイルを使用して管理対象オブジェクトデータを表示する
+        url: "/storage/task_system_manage_snmp_view_managed_object_data.html"
+    - title: ドライブの管理
+      url: "/storage/concept_system_manage_drives_managing_drives.html"
+    - title: ノードの管理
+      entries:
+      - title: ノードの管理について学ぶ
+        url: "/storage/concept_system_manage_nodes_manage_nodes.html"
+      - title: クラスターにノードを追加する
+        url: "/storage/task_system_manage_nodes_adding_a_node_to_a_cluster.html"
+      - title: ノードのバージョン管理と互換性
+        url: "/storage/concept_system_manage_nodes_node_versioning_and_compatibility.html"
+      - title: 混合ノード環境におけるクラスタ容量
+        url: "/storage/concept_system_manage_nodes_cluster_capacity_in_a_mixed_node_environment.html"
+      - title: 個々のノードの詳細を表示する
+        url: "/storage/task_system_manage_nodes_view_individual_node_details.html"
+    - title: ファイバーチャネルポートの詳細を表示
+      url: "/storage/task_system_manage_fc_view_fibre_channel_ports_details.html"
+    - title: 仮想ネットワークを管理する
+      entries:
+      - title: 仮想ネットワークの管理について学ぶ
+        url: "/storage/concept_system_manage_virtual_manage_virtual_networks.html"
+      - title: 仮想ネットワークを追加する
+        url: "/storage/task_system_manage_virtual_add_a_virtual_network.html"
+      - title: 仮想ルーティングと転送を有効にする
+        url: "/storage/task_system_manage_virtual_enable_virtual_routing_and_forwarding.html"
+      - title: 仮想ネットワークを編集する
+        url: "/storage/task_system_manage_virtual_edit_a_virtual_network.html"
+      - title: VRF VLANの編集
+        url: "/storage/task_system_manage_virtual_edit_vrf_vlans.html"
+      - title: 仮想ネットワークを削除する
+        url: "/storage/task_system_manage_virtual_delete_a_virtual_network.html"
+  - title: FIPSドライブをサポートするクラスタを作成する
+    entries:
+    - title: クラスターを準備する
+      url: "/storage/task_system_manage_fips_create_a_cluster_supporting_fips_drives.html"
+    - title: 保存時の暗号化を有効にする
+      url: "/storage/task_system_manage_fips_enable_encryption_at_rest.html"
+    - title: ノードが FIPS ドライブ機能に対応しているかどうかを確認する
+      url: "/storage/task_system_manage_fips_identify_nodes_ready_for_fips_drives.html"
+    - title: FIPSドライブ機能を有効にする
+      url: "/storage/task_system_manage_fips_enable_the_fips_drives_feature.html"
+    - title: FIPSドライブのステータスを確認する
+      url: "/storage/task_system_manage_fips_check_the_fips_drive_status.html"
+    - title: FIPSドライブ機能のトラブルシューティング
+      url: "/storage/task_system_manage_fips_troubleshoot_the_fips_drive_feature.html"
+  - title: 安全な通信を確立する
+    entries:
+    - title: クラスターでHTTPSにFIPS 140-2を有効にする
+      url: "/storage/task_system_manage_fips_enable_fips_140_2_for_https.html"
+    - title: SSL暗号
+      url: "/storage/reference_system_manage_fips_ssl_cipher_changes.html"
+  - title: 外部キー管理を始める
+    entries:
+    - title: 外部キー管理について学ぶ
+      url: "/storage/concept_system_manage_key_get_started_with_external_key_management.html"
+    - title: 外部キー管理を設定する
+      url: "/storage/task_system_manage_key_set_up_external_key_management.html"
+    - title: 保存時のソフトウェア暗号化マスターキーの再キー化
+      url: "/storage/task_system_manage_rekey_software_ear_master_key.html"
+    - title: アクセスできない、または無効な認証キーを回復する
+      url: "/storage/concept_system_manage_key_recover_inaccessible_or_invalid_authentication_keys.html"
+    - title: 外部キー管理APIコマンド
+      url: "/storage/concept_system_manage_key_external_key_management_api_commands.html"
+- title: ボリュームと仮想ボリュームを管理する
+  entries:
+  - title: ボリュームと仮想ボリュームの管理について学ぶ
+    url: "/storage/concept_data_manage_data_management.html"
+  - title: ボリュームの操作
+    entries:
+    - title: サービス品質ポリシーの管理
+      url: "/storage/concept_data_manage_volumes_quality_of_service_policies.html"
+    - title: ボリュームを管理する
+      url: "/storage/task_data_manage_volumes.html"
+    - title: LUNをファイバーチャネルボリュームに割り当てる
+      url: "/storage/task_data_manage_volumes_assign_luns_to_fibre_channel_volumes.html"
+    - title: ボリュームにQoSポリシーを適用する
+      url: "/storage/task_data_manage_volumes_apply_a_qos_policy.html"
+    - title: ボリュームのQoSポリシーの関連付けを削除します
+      url: "/storage/task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html"
+  - title: 仮想ボリュームの操作
+    entries:
+    - title: 仮想ボリュームを有効にする
+      url: "/storage/task_data_manage_vvol_enable_virtual_volumes.html"
+    - title: 仮想ボリュームの詳細を表示する
+      url: "/storage/task_data_manage_vvol_view_virtual_volume_details.html"
+    - title: 仮想ボリュームを削除する
+      url: "/storage/task_data_manage_vvol_delete_a_virtual_volume.html"
+    - title: ストレージコンテナの管理
+      url: "/storage/concept_data_manage_vvol_manage_storage_containers.html"
+    - title: プロトコルエンドポイント
+      entries:
+      - title: プロトコルエンドポイントについて学ぶ
+        url: "/storage/concept_data_manage_vvol_protocol_endpoints.html"
+      - title: プロトコルエンドポイントの詳細
+        url: "/storage/reference_data_manage_vvol_protocol_endpoints_details.html"
+    - title: バインディング
+      entries:
+      - title: バインディングについて学ぶ
+        url: "/storage/concept_data_manage_vvol_bindings.html"
+      - title: バインディングの詳細
+        url: "/storage/reference_data_manage_vvol_bindings_details.html"
+    - title: ホストの詳細
+      url: "/storage/reference_data_manage_vvol_host_details.html"
+  - title: ボリューム アクセス グループとイニシエーターの操作
+    entries:
+    - title: ボリュームアクセスグループを作成する
+      url: "/storage/task_data_manage_vol_access_group_create_a_volume_access_group.html"
+    - title: 個々のアクセス グループの詳細を表示する
+      url: "/storage/task_data_manage_vol_access_group_view_individual_access_group_details.html"
+    - title: アクセスグループにボリュームを追加する
+      url: "/storage/task_data_manage_vol_access_group_add_volumes.html"
+    - title: アクセスグループからボリュームを削除する
+      url: "/storage/task_data_manage_vol_access_group_remove_volumes.html"
+    - title: イニシエーターを作成する
+      url: "/storage/task_data_manage_vol_access_group_create_an_initiator.html"
+    - title: イニシエーターを編集する
+      url: "/storage/task_data_manage_vol_access_group_edit_an_initiator.html"
+    - title: ボリューム アクセス グループに単一のイニシエーターを追加する
+      url: "/storage/task_data_manage_vol_access_group_add_a_single_initiator.html"
+    - title: ボリューム アクセス グループに複数のイニシエーターを追加する
+      url: "/storage/task_data_manage_vol_access_group_add_multiple_initiators.html"
+    - title: アクセス グループからイニシエーターを削除する
+      url: "/storage/task_data_manage_vol_access_group_remove_initiators_from_an_access_group.html"
+    - title: アクセスグループを削除する
+      url: "/storage/task_data_manage_vol_access_group_delete.html"
+    - title: イニシエーターを削除する
+      url: "/storage/task_data_manage_vol_access_group_delete_an_initiator.html"
+- title: データの保護
+  entries:
+  - title: データの保護について学ぶ
+    url: "/storage/concept_data_protection.html"
+  - title: データ保護のためにボリュームスナップショットを使用する
+    entries:
+    - title: ボリュームスナップショットの使用について学ぶ
+      url: "/storage/task_data_protection_using_volume_snapshots.html"
+    - title: データ保護のために個別のボリュームスナップショットを使用する
+      entries:
+      - title: 個々のボリュームスナップショットの使用について学ぶ
+        url: "/storage/task_data_protection_use_individual_volume_snapshots.html"
+      - title: ボリュームスナップショットを作成する
+        url: "/storage/task_data_protection_create_a_volume_snapshot.html"
+      - title: スナップショットの保持を編集する
+        url: "/storage/task_data_protection_edit_snapshot_retention.html"
+      - title: スナップショットを削除する
+        url: "/storage/task_data_protection_delete_a_snapshot.html"
+      - title: スナップショットからボリュームを複製する
+        url: "/storage/task_data_protection_clone_a_volume_from_a_snapshot.html"
+      - title: ボリュームをスナップショットにロールバックする
+        url: "/storage/task_data_protection_roll_back_a_volume_to_a_snapshot.html"
+      - title: ボリュームスナップショットをバックアップする
+        entries:
+        - title: ボリュームスナップショットのバックアップについて学ぶ
+          url: "/storage/concept_data_protection_volume_snapshot_backup_operations.html"
+        - title: ボリュームスナップショットを Amazon S3 オブジェクトストアにバックアップする
+          url: "/storage/task_data_protection_back_up_a_volume_snapshot_to_an_amazon_s3_object_store.html"
+        - title: ボリュームスナップショットをOpenStack Swiftオブジェクトストアにバックアップする
+          url: "/storage/task_data_protection_back_up_a_volume_snapshot_to_openstack_swift.html"
+        - title: ボリュームスナップショットをSolidFireクラスタにバックアップする
+          url: "/storage/task_data_protection_back_up_volume_snapshot_to_solidfire.html"
+    - title: データ保護のためにグループスナップショットを使用する
+      entries:
+      - title: グループスナップショットの使用について学ぶ
+        url: "/storage/task_data_protection_use_group_snapshots_for_data_protection.html"
+      - title: グループスナップショットの詳細
+        url: "/storage/reference_data_protection_group_snapshot_details.html"
+      - title: グループスナップショットを作成する
+        url: "/storage/task_data_protection_create_a_group_snapshot.html"
+      - title: グループスナップショットを編集する
+        url: "/storage/task_data_protection_edit_group_snapshots.html"
+      - title: グループスナップショットを削除する
+        url: "/storage/task_data_protection_delete_a_group_snapshot.html"
+      - title: ボリュームをグループスナップショットにロールバックする
+        url: "/storage/task_data_protection_roll_back_volumes_to_a_group_snapshot.html"
+      - title: グループスナップショットのメンバーを編集する
+        url: "/storage/task_data_protection_edit_members_of_group_snapshot.html"
+      - title: 複数のボリュームのクローン
+        url: "/storage/task_data_protection_clone_multiple_volumes.html"
+      - title: グループスナップショットから複数のボリュームをクローンする
+        url: "/storage/task_data_protection_clone_multiple_volumes_from_a_group_snapshot.html"
+    - title: スナップショットをスケジュールする
+      entries:
+      - title: スナップショットのスケジュール設定について学ぶ
+        url: "/storage/task_data_protection_schedule_a_snapshot_task.html"
+      - title: スナップショットスケジュールの詳細
+        url: "/storage/reference_data_protection_snapshot_schedule_details.html"
+      - title: スナップショットスケジュールを作成する
+        url: "/storage/task_data_protection_create_a_snapshot_schedule.html"
+      - title: スナップショットスケジュールを編集する
+        url: "/storage/task_data_protection_edit_a_snapshot_schedule.html"
+      - title: スナップショットスケジュールをコピーする
+        url: "/storage/task_data_protection_copy_a_snapshot_schedule.html"
+      - title: スナップショットスケジュールを削除する
+        url: "/storage/task_data_protection_delete_a_snapshot_schedule.html"
+  - title: NetApp Elementソフトウェアを実行しているクラスタ間でリモート レプリケーションを実行します。
+    entries:
+    - title: リモートレプリケーションの実行について学ぶ
+      url: "/storage/task_replication_perform_remote_replication_between_element_clusters.html"
+    - title: リアルタイムレプリケーションのためのクラスタとボリュームのペアリングを計画する
+      url: "/storage/task_replication_plan_cluster_and_volume_pairing.html"
+    - title: レプリケーション用のクラスタをペアリングする
+      entries:
+      - title: クラスターのペアリングについて学ぶ
+        url: "/storage/task_replication_pair_clusters.html"
+      - title: MVIPを使用してクラスターをペアリングする
+        url: "/storage/task_replication_pair_cluster_using_mvip.html"
+      - title: ペアリングキーを使用してクラスターをペアリングする
+        url: "/storage/task_replication_pair_cluster_using_pairing_key.html"
+      - title: クラスタペアの接続を検証する
+        url: "/storage/task_replication_validate_the_cluster_pair_connection.html"
+    - title: ペアボリューム
+      entries:
+      - title: ボリュームのペアリングについて学ぶ
+        url: "/storage/task_replication_pair_volumes.html"
+      - title: 読み取りまたは書き込みアクセスを持つターゲットボリュームを作成する
+        url: "/storage/task_replication_create_a_target_volume_with_read_write_access.html"
+      - title: ボリュームIDまたはペアリングキーを使用してボリュームをペアリングする
+        entries:
+        - title: ボリュームIDを使用してボリュームをペアリングする
+          url: "/storage/task_replication_pair_volumes_using_a_volume_id.html"
+        - title: ペアリングキーを使用してボリュームをペアリングする
+          url: "/storage/task_replication_pair_volumes_using_a_pairing_key.html"
+      - title: ペアボリュームにレプリケーションソースとターゲットを割り当てる
+        url: "/storage/task_replication_assign_replication_source_and_target_to_paired_volumes.html"
+    - title: ボリュームレプリケーションの検証
+      url: "/storage/task_replication_validate_volume_replication.html"
+    - title: レプリケーション後にボリューム関係を削除する
+      url: "/storage/task_replication_delete_volume_relationship_after_replication.html"
+    - title: ボリューム関係を管理する
+      entries:
+      - title: レプリケーションを一時停止
+        url: "/storage/task_replication_pause_replication.html"
+      - title: レプリケーションモードを変更する
+        url: "/storage/task_replication_change_the_mode.html"
+      - title: ボリュームペアを削除する
+        url: "/storage/task_replication_delete_volume_pairs.html"
+      - title: クラスターペアを削除する
+        url: "/storage/task_replication_delete_cluster_pair.html"
+      - title: クラスターペアの詳細
+        url: "/storage/reference_replication_cluster_pair_details.html"
+      - title: ボリュームペア
+        entries:
+        - title: ボリュームペアの詳細
+          url: "/storage/reference_replication_volume_pair_details.html"
+        - title: ボリュームペアリングメッセージ
+          url: "/storage/reference_replication_volume_pairing_messages.html"
+        - title: ボリュームペアリングの警告
+          url: "/storage/reference_replication_volume_pairing_warnings.html"
+  - title: Element とONTAPクラスタ間のSnapMirrorレプリケーションを使用する (Element UI)
+    entries:
+    - title: SnapMirrorレプリケーションの使用について学ぶ
+      url: "/storage/task_snapmirror_use_replication_between_element_and_ontap_clusters.html"
+    - title: SnapMirrorの概要
+      url: "/storage/concept_snapmirror_overview.html"
+    - title: クラスタでSnapMirrorを有効にする
+      url: "/storage/task_snapmirror_enable_on_the_cluster.html"
+    - title: ボリュームでSnapMirrorを有効にする
+      url: "/storage/task_snapmirror_enable_on_the_volume.html"
+    - title: SnapMirrorエンドポイントを作成する
+      url: "/storage/task_snapmirror_create_an_endpoint.html"
+    - title: SnapMirror関係の作成
+      url: "/storage/task_snapmirror_create_snapmirror_relationship.html"
+    - title: SnapMirror関係アクション
+      url: "/storage/reference_snapmirror_relationship_actions.html"
+    - title: SnapMirrorラベル
+      entries:
+      - title: SnapMirrorラベルについて学ぶ
+        url: "/storage/concept_snapmirror_labels.html"
+      - title: スナップショットにSnapMirrorラベルを追加する
+        url: "/storage/task_snapmirror_add_labels_to_snapshots.html"
+      - title: スナップショットスケジュールにSnapMirrorラベルを追加する
+        url: "/storage/task_snapmirror_add_labels_to_snapshot_schedules.html"
+    - title: SnapMirrorを使用した災害復旧
+      entries:
+      - title: 災害復旧について学ぶ
+        url: "/storage/concept_snapmirror_disaster_recovery.html"
+      - title: Elementクラスタからフェイルオーバーを実行する
+        url: "/storage/task_snapmirror_perform_failover_from_element_cluster.html"
+      - title: Elementへのフェイルバックを実行する
+        entries:
+        - title: フェイルバックの実行について学ぶ
+          url: "/storage/task_snapmirror_perform_failback_to_element.html"
+        - title: ソースボリュームがまだ存在する場合にフェイルバックを実行する
+          url: "/storage/task_snapmirror_perform_failback_when_source_volume_exists.html"
+        - title: ソースボリュームが存在しなくなった場合にフェイルバックを実行する
+          url: "/storage/task_snapmirror_performing_failback_when_source_volume_no_longer_exists.html"
+      - title: ONTAPからElementへの転送または1回限りの移行を実行します
+        url: "/storage/task_snapmirror_transfer_or_one_time_migration_from_ontap_to_element.html"
+  - title: NetApp ElementソフトウェアとONTAP間のレプリケーション (ONTAP CLI)
+    entries:
+    - title: ONTAP CLIを使用したレプリケーションについて学ぶ
+      url: "/storage/element-replication-index.html"
+    - title: ワークフロー
+      url: "/storage/concept-element-replication-workflow.html"
+    - title: ElementソフトウェアでのSnapMirrorの有効化
+      entries:
+      - title: ElementクラスタでのSnapMirrorの有効化
+        url: "/storage/task-element-replication-enable-snapmirror-cluster.html"
+      - title: Elementソース ボリュームでのSnapMirrorの有効化
+        url: "/storage/task-element-replication-enable-snapmirror-source-volume.html"
+      - title: SnapMirrorエンドポイントを作成する
+        url: "/storage/task-element-replication-create-snapmirror-endpoint.html"
+    - title: レプリケーション関係の設定
+      entries:
+      - title: レプリケーションジョブスケジュールを作成する
+        url: "/storage/task-element-replication-create-replication-job-schedule.html"
+      - title: レプリケーション ポリシーのカスタマイズ
+        entries:
+        - title: カスタム レプリケーション ポリシーの作成
+          url: "/storage/concept-element-replication-create-custom-replication-policy.html"
+        - title: ポリシーのルールの定義
+          url: "/storage/task-element-replication-define-rule-policy.html"
+      - title: レプリケーション関係の作成
+        entries:
+        - title: ElementソースからONTAPデスティネーションへのレプリケーションの作成
+          url: "/storage/task-element-replication-create-replication-relationship.html"
+        - title: ONTAPソースからElementデスティネーションへのレプリケーションの作成
+          url: "/storage/task-element-replication-create-relationship-element-destination.html"
+      - title: レプリケーション関係の初期化
+        url: "/storage/task-element-replication-initialize-replication-relationship.html"
+    - title: SnapMirror DRデスティネーション ボリュームからのデータの提供
+      entries:
+      - title: デスティネーション ボリュームを書き込み可能にする
+        url: "/storage/task-element-replication-make-destination-volume-writeable.html"
+      - title: データ アクセスのためのデスティネーション ボリュームの設定
+        url: "/storage/concept-element-replication-configure-destination-volume-data-access.html"
+      - title: 元のソース ボリュームの再有効化
+        url: "/storage/task-element-replication-reactivate-original-source-volume.html"
+    - title: レプリケーション関係の手動更新
+      url: "/storage/task-element-replication-update-replication-relationship-manually.html"
+    - title: レプリケーション関係の再同期
+      url: "/storage/task-element-replication-resynchronize-data-protection-relationship.html"
+  - title: ボリュームのバックアップと復元
+    entries:
+    - title: ボリュームのバックアップと復元について学ぶ
+      url: "/storage/task_data_protection_back_up_and_restore_volumes.html"
+    - title: ボリュームを Amazon S3 オブジェクトストアにバックアップする
+      url: "/storage/task_data_protection_back_up_volume_to_amazon_s3.html"
+    - title: ボリュームを OpenStack Swift オブジェクト ストアにバックアップする
+      url: "/storage/task_data_protection_back_up_volume_to_openstack_swift.html"
+    - title: SolidFireストレージクラスターにボリュームをバックアップする
+      url: "/storage/task_data_protection_back_up_volume_to_solidfire.html"
+    - title: Amazon S3 オブジェクトストアのバックアップからボリュームを復元する
+      url: "/storage/task_data_protection_restore_volume_from_backup_on_amazon_s3.html"
+    - title: OpenStack Swift オブジェクト ストアのバックアップからボリュームを復元する
+      url: "/storage/task_data_protection_restore_volume_from_backup_on_openstack_swift.html"
+    - title: SolidFireストレージクラスター上のバックアップからボリュームを復元する
+      url: "/storage/task_data_protection_restore_volume_from_backup_on_solidfire.html"
+  - title: カスタム保護ドメインを構成する
+    url: "/storage/task_data_protection_configure_custom_protection_domains.html"
+- title: システムのトラブルシューティング
+  entries:
+  - title: システムイベント
+    entries:
+    - title: システムイベントに関する情報を表示する
+      url: "/storage/task_monitor_information_about_system_events.html"
+    - title: イベントの種類
+      url: "/storage/reference_monitor_event_types.html"
+  - title: 実行中のタスクのステータスを表示する
+    url: "/storage/reference_monitor_status_of_running_tasks.html"
+  - title: システム アラート
+    entries:
+    - title: システムアラートを表示する
+      url: "/storage/task_monitor_system_alerts.html"
+    - title: クラスター障害コード
+      url: "/storage/reference_monitor_cluster_fault_codes.html"
+  - title: ノードのパフォーマンスアクティビティを表示する
+    url: "/storage/task_monitor_node_performance_activity.html"
+  - title: ボリュームパフォーマンス
+    entries:
+    - title: ボリュームパフォーマンスを表示
+      url: "/storage/task_monitor_volume_performance.html"
+    - title: ボリュームパフォーマンスの詳細
+      url: "/storage/reference_monitor_volume_performance_details.html"
+  - title: iSCSIセッション
+    entries:
+    - title: iSCSIセッションの表示
+      url: "/storage/task_monitor_iscsi_sessions.html"
+    - title: iSCSIセッションの詳細
+      url: "/storage/reference_monitor_iscsi_session_details.html"
+  - title: ファイバーチャネルセッション
+    entries:
+    - title: ファイバーチャネルセッションを表示する
+      url: "/storage/task_monitor_fibre_channel_sessions.html"
+    - title: ファイバーチャネルセッションの詳細
+      url: "/storage/reference_monitor_fibre_channel_session_details.html"
+  - title: ドライブのトラブルシューティング
+    entries:
+    - title: ドライブのトラブルシューティングについて学ぶ
+      url: "/storage/concept_troubleshoot_drives.html"
+    - title: 故障したドライブをクラスターから削除する
+      url: "/storage/task_troubleshoot_remove_failed_drives.html"
+    - title: MDSSドライブの基本的なトラブルシューティング
+      url: "/storage/concept_troubleshoot_basic_mdss_drive_troubleshooting.html"
+    - title: MDSSドライブを追加する
+      url: "/storage/task_troubleshoot_add_mdss_drives.html"
+    - title: MDSSドライブを削除する
+      url: "/storage/task_troubleshoot_remove_mdss_drives.html"
+  - title: ノードのトラブルシューティング
+    entries:
+    - title: クラスターからノードを削除する
+      url: "/storage/concept_remove_nodes_from_cluster.html"
+    - title: クラスターの電源を切る
+      url: "/storage/task_troubleshoot_power_down_a_cluster.html"
+  - title: ストレージノードのノードごとのユーティリティを操作する
+    entries:
+    - title: ノードごとのユーティリティの操作方法を学ぶ
+      url: "/storage/concept_per_node_work_with_utilities.html"
+    - title: ノードごとのUIを使用してノードごとの設定にアクセスする
+      url: "/storage/task_per_node_access_settings.html"
+    - title: ノードごとのUIからのネットワーク設定の詳細
+      url: "/storage/reference_per_node_network_settings_details.html"
+    - title: ノードごとのUIからのクラスタ設定の詳細
+      url: "/storage/reference_per_node_cluster_settings_details.html"
+    - title: ノードごとのUIを使用してシステムテストを実行する
+      url: "/storage/task_per_node_run_system_tests.html"
+    - title: ノードごとのUIを使用してシステムユーティリティを実行する
+      url: "/storage/task_per_node_run_system_utilities.html"
+    - title: 管理ノードを操作する
+      url: "/storage/concept_mnode_work_with_the_management_node.html"
+  - title: クラスターの満杯度レベルを理解する
+    url: "/storage/concept_monitor_understand_cluster_fullness_levels.html"

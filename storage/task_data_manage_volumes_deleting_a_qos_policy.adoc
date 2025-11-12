@@ -1,0 +1,29 @@
+---
+permalink: storage/task_data_manage_volumes_deleting_a_qos_policy.html 
+sidebar: sidebar 
+keywords: qos policy, delete, volumes 
+summary: 不要になった QoS ポリシーは削除できます。  QoS ポリシーを削除すると、そのポリシーに関連付けられているすべてのボリュームでは QoS 設定が維持されますが、ポリシーとの関連付けは解除されます。 
+---
+= QoSポリシーを削除する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+不要になった QoS ポリシーは削除できます。  QoS ポリシーを削除すると、そのポリシーに関連付けられているすべてのボリュームでは QoS 設定が維持されますが、ポリシーとの関連付けは解除されます。
+
+
+NOTE: 代わりにボリュームを QoS ポリシーから切り離そうとしている場合は、そのボリュームの QoS 設定をカスタムに変更できます。
+
+. *管理* > *QoS ポリシー* を選択します。
+. 削除する QoS ポリシーの [アクション] アイコンをクリックします。
+. 表示されるメニューで、[削除] を選択します。
+. 操作を確定します。
+
+
+
+
+== 詳細情報の参照
+
+xref:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.adoc[ボリュームのQoSポリシーの関連付けを削除します]

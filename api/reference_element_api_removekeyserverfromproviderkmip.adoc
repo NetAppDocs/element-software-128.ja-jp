@@ -1,0 +1,79 @@
+---
+permalink: api/reference_element_api_removekeyserverfromproviderkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,unassigning,removing,remove,unassign,removekeyserverfromproviderkmip 
+summary: 'RemoveKeyServerFromProviderKmip メソッドを使用すると、指定された Key Management Interoperability Protocol (KMIP) キー サーバーを、割り当て先のプロバイダーから割り当て解除できます。キー サーバーが最後のキー サーバーで、そのプロバイダーがアクティブ (現在使用中のキーを提供している) でない限り、キー サーバーの割り当てをプロバイダーから解除できます。指定されたキー サーバーがプロバイダーに割り当てられていない場合、アクションは実行されず、エラーも返されません。' 
+---
+= プロバイダーKmipからキーサーバーを削除
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `RemoveKeyServerFromProviderKmip`指定されたキー管理相互運用プロトコル (KMIP) キー サーバーを、割り当て先のプロバイダーから割り当て解除する方法。キー サーバーが最後のもので、そのプロバイダーがアクティブ (現在使用中のキーを提供している) でない限り、キー サーバーの割り当てをプロバイダーから解除できます。指定されたキー サーバーがプロバイダーに割り当てられていない場合、アクションは実行されず、エラーも返されません。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+キーサーバーID
+ a| 
+割り当てを解除する KMIP キー サーバーの ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。エラーが返されない限り、削除は成功したとみなされます。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "RemoveKeyServerFromProviderKmip",
+  "params": {
+    "keyServerID": 1
+   },
+"id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+11.7

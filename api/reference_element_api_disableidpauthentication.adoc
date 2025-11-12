@@ -1,0 +1,57 @@
+---
+permalink: api/reference_element_api_disableidpauthentication.html 
+sidebar: sidebar 
+keywords: IdP,idp,authentication,disable 
+summary: DisableIdpAuthentication メソッドを使用して、クラスターのサードパーティ IdP を使用した認証のサポートを無効にすることができます。無効にすると、サードパーティの IdP によって認証されたユーザーはクラスターにアクセスできなくなり、アクティブな認証済みセッションはすべて無効化/切断されます。  LDAP およびクラスター管理者は、サポートされている UI を介してクラスターにアクセスできます。 
+---
+= Idp認証を無効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `DisableIdpAuthentication`クラスターのサードパーティ IdP を使用した認証のサポートを無効にする方法。無効にすると、サードパーティの IdP によって認証されたユーザーはクラスターにアクセスできなくなり、アクティブな認証済みセッションはすべて無効化/切断されます。  LDAP およびクラスター管理者は、サポートされている UI を介してクラスターにアクセスできます。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "DisableIdpAuthentication",
+  "params": {}
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+"result": {}
+}
+----
+
+
+== バージョン以降の新機能
+
+12.0

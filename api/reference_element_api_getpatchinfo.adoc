@@ -1,0 +1,95 @@
+---
+permalink: api/reference_element_api_getpatchinfo.html 
+sidebar: sidebar 
+keywords: get,patch,info,patches,getpatchinfo 
+summary: GetPatchInfo メソッドを使用して、ノードにインストールされているパッチに関する情報を取得できます。 
+---
+= パッチ情報を取得
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetPatchInfo`ストレージ ノードにインストールされている Element ソフトウェア パッチに関する情報を取得する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+| `force`  a| 
+ストレージ クラスター内のすべてのノードでメソッドを強制的に実行します。これは、単一のノードではなくクラスター IP アドレスに API を発行する場合にのみ必要です。有効な値は次のとおりです。
+
+* `true`
+* `false`
+
+| ブーリアン | `false` | いいえ 
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+| パッチ | このノードにインストールされているパッチに関する情報を含むオブジェクト。 | JSONオブジェクト 
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "GetPatchInfo",
+   "params": {
+      "force": false,
+      },
+   "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "patches": {
+          "SUST936": {
+          "date": "Wed 09 Dec 2020 10:41:59 PM UTC",
+          "description": "BMC fixes",
+          "newFiles": [
+              "None"
+          ],
+          "patchedFiles": [
+              "Patched_file_1.bin",
+              "Patched_file_2.dat",
+              "Patched_file_3.tgz"
+          ]
+          }
+        }
+    }
+}
+
+----
+
+
+== バージョン以降の新機能
+
+12.3

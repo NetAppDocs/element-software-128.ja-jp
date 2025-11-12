@@ -1,0 +1,185 @@
+---
+permalink: api/reference_element_api_getclusterversioninfo.html 
+sidebar: sidebar 
+keywords: cluster,version,info,get,getting,getclusterversioninfo 
+summary: GetClusterVersionInfo メソッドを使用して、クラスター内の各ノードで実行されている Element ソフトウェアのバージョンに関する情報を取得できます。このメソッドは、現在ソフトウェアのアップグレードが進行中のノードに関する情報も返します。 
+---
+= クラスタバージョン情報を取得する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetClusterVersionInfo`クラスター内の各ノードで実行されている Element ソフトウェアのバージョンに関する情報を取得する方法。このメソッドは、現在ソフトウェアのアップグレードが進行中のノードに関する情報も返します。
+
+
+
+== クラスターバージョン情報オブジェクトのメンバー
+
+このメソッドには次のオブジェクト メンバーがあります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+nodeID
+ a| 
+ノードのID。
+ a| 
+integer
+
+
+
+ a| 
+ノード内部リビジョン
+ a| 
+ノードの内部ソフトウェア バージョン。
+ a| 
+string
+
+
+
+ a| 
+ノードバージョン
+ a| 
+ノードのソフトウェア バージョン。
+ a| 
+string
+
+|===
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+クラスターAPIバージョン
+ a| 
+クラスター上の現在の API バージョン。
+ a| 
+string
+
+
+
+ a| 
+クラスターバージョン
+ a| 
+クラスター上で現在実行されている Element ソフトウェアのバージョン。
+ a| 
+string
+
+
+
+ a| 
+クラスターバージョン情報
+ a| 
+クラスター内のノードのリストと各ノードのバージョン情報。
+ a| 
+JSONオブジェクト配列
+
+
+
+ a| 
+保留中のクラスターバージョン
+ a| 
+存在する場合、これはクラスター ソフトウェアが現在アップグレード中または元に戻されているバージョンです。
+ a| 
+string
+
+
+
+ a| 
+ソフトウェアバージョン情報
+ a| 
+アップグレードの状態。オブジェクトメンバー:
+
+* 現在のバージョン:
++
+ノード上の現在のソフトウェア バージョン。
+
+* nodeID: currentVersion から pendingVersion にアップグレードされるノードの ID。進行中のアップグレードがない場合、このフィールドは 0 (ゼロ) になります。
+* packageName: インストールするソフトウェア パッケージの名前。
+* pendingVersion: インストール中のソフトウェアのバージョン。
+* startTime: インストールが開始された日時 (UTC+0 形式)。
+
+ a| 
+JSONオブジェクト
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "GetClusterVersionInfo",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+ "id": 1,
+ "result": {
+   "clusterAPIVersion": "6.0",
+   "clusterVersion": "6.1382",
+   "clusterVersionInfo": [
+   {
+      "nodeID": 1,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   },
+   {
+      "nodeID": 2,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   },
+   {
+      "nodeID": 3,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   },
+   {
+      "nodeID": 4,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   }
+ ],
+   "softwareVersionInfo": {
+      "currentVersion": "6.1382",
+      "nodeID": 0,
+      "packageName": "",
+      "pendingVersion": "6.1382",
+      "startTime": ""
+    }
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

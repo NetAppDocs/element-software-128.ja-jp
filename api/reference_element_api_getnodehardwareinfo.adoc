@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_getnodehardwareinfo.html 
+sidebar: sidebar 
+keywords: node,hardware,info,get,getting,getnodehardwareinfo 
+summary: GetNodeHardwareInfo メソッドを使用すると、指定されたノードのすべてのハードウェア情報とステータスを返すことができます。これには通常、製造元、ベンダー、バージョン、およびその他の関連するハードウェア識別情報が含まれます。 
+---
+= ノードハードウェア情報を取得する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetNodeHardwareInfo`指定されたノードのすべてのハードウェア情報とステータスを返すメソッド。これには通常、製造元、ベンダー、バージョン、およびその他の関連するハードウェア識別情報が含まれます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+nodeID
+ a| 
+ハードウェア情報が要求されているノードの ID。ファイバー チャネル ノードが指定されている場合は、ファイバー チャネル ノードに関する情報が返されます。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+ノードハードウェア情報
+ a| 
+指定されたノードIDのハードウェア情報。この出力内の各オブジェクトには、指定されたノードのノード ID がラベル付けされます。
+ a| 
+xref:reference_element_api_hardwareinfo.adoc[ハードウェア情報]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "GetNodeHardwareInfo",
+   "params": {
+     "nodeID": 1
+   },
+"id" : 1
+}
+----
+
+
+== 応答例
+
+この応答例は長いため、補足トピックに記載されています。
+
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_response_example_getnodehardwareinfo_fibre_channel.adoc[GetNodeHardwareInfo (ファイバーチャネルノードの出力)]
+
+xref:reference_element_api_response_example_getnodehardwareinfo.adoc[GetNodeHardwareInfo (iSCSI の出力)]

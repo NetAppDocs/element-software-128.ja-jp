@@ -1,0 +1,59 @@
+---
+permalink: storage/task_system_manage_key_set_up_external_key_management.html 
+sidebar: sidebar 
+keywords: sign request, certificate authority, software encryption at rest, ear, eks, csr 
+summary: 以下の手順に従い、リストされている Element API メソッドを使用して、外部キー管理機能を設定できます。 
+---
+= 外部キー管理を設定する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+以下の手順に従い、リストされている Element API メソッドを使用して、外部キー管理機能を設定できます。
+
+.要件
+* 保存時のソフトウェア暗号化と組み合わせて外部キー管理を設定する場合は、保存時のソフトウェア暗号化を次のように有効にする必要があります。link:../api/reference_element_api_createcluster.html["CreateCluster"]ボリュームを含まない新しいクラスター上のメソッド。
+
+
+.手順
+. 外部キー サーバー (EKS) との信頼関係を確立します。
++
+.. 次の API メソッドを呼び出して、キー サーバーとの信頼関係を確立するために使用される Element クラスターの公開キー/秘密キー ペアを作成します。link:../api/reference_element_api_createpublicprivatekeypair.html["公開鍵ペアの作成"]
+.. 認証局が署名する必要がある証明書署名要求 (CSR) を取得します。 CSR により、キー サーバーは、キーにアクセスする Element クラスターが Element クラスターとして認証されていることを確認できます。次の API メソッドを呼び出します。link:../api/reference_element_api_getclientcertificatesignrequest.html["GetClientCertificateSignRequest"]
+.. EKS/証明機関を使用して、取得した CSR に署名します。詳細については、サードパーティのドキュメントを参照してください。
+
+
+. EKS と通信するために、クラスター上にサーバーとプロバイダーを作成します。キープロバイダーはキーを取得する場所を定義し、サーバーは通信する EKS の特定の属性を定義します。
++
+.. 次の API メソッドを呼び出して、キー サーバーの詳細が保存されるキー プロバイダーを作成します。link:../api/reference_element_api_createkeyproviderkmip.html["キープロバイダーKmipの作成"]
+.. 次の API メソッドを呼び出して、署名付き証明書と証明機関の公開鍵証明書を提供するキー サーバーを作成します。link:../api/reference_element_api_createkeyserverkmip.html["キーサーバーKmipの作成"] link:../api/reference_element_api_testkeyserverkmip.html["テストキーサーバーKmip"]
++
+テストが失敗した場合は、サーバーの接続と構成を確認してください。その後、テストを繰り返します。
+
+.. 次の API メソッドを呼び出して、キー サーバーをキー プロバイダー コンテナーに追加します。link:../api/reference_element_api_addkeyservertoproviderkmip.html["プロバイダーKmipにキーサーバーを追加"] link:../api/reference_element_api_testkeyproviderkmip.html["テストキープロバイダーKmip"]
++
+テストが失敗した場合は、サーバーの接続と構成を確認してください。その後、テストを繰り返します。
+
+
+
+. 保存時の暗号化の次のステップとして、次のいずれかを実行します。
++
+.. （保存時のハードウェア暗号化の場合）有効にするlink:../concepts/concept_solidfire_concepts_security.html["保存時のハードウェア暗号化"]鍵を保存するために使用する鍵サーバーを含む鍵プロバイダーのIDを指定して、link:../api/reference_element_api_enableencryptionatrest.html["保存時の暗号化を有効にする"] API メソッド。
++
+
+NOTE: 保存時の暗号化を有効にするには、link:../api/reference_element_api_enableencryptionatrest.html["API"] 。既存の Element UI ボタンを使用して保存時の暗号化を有効にすると、機能は内部で生成されたキーを使用するようになります。
+
+.. （保存時のソフトウェア暗号化の場合）link:../concepts/concept_solidfire_concepts_security.html["保存時のソフトウェア暗号化"]新しく作成されたキープロバイダーを利用するには、キープロバイダーIDをlink:../api/reference_element_api_rekeysoftwareencryptionatrestmasterkey.html["再鍵ソフトウェア暗号化保存マスターキー"]API メソッド。
+
+
+
+
+[discrete]
+== 詳細情報の参照
+
+* link:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["クラスターの暗号化を有効または無効にする"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

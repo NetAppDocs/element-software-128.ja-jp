@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_multi_vcenter_config.html 
+summary: REST API UI を使用して、複数の vCenter を使用するようにNetApp Hybrid Cloud Control を構成できます。 
+keywords: netapp, mnode, management node, multi-vcenter, Element 
+---
+= 複数の vCenter 用にNetApp Hybrid Cloud Control を構成する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+リンク モードを使用していない 2 つ以上の vCenter からの資産を管理するようにNetApp Hybrid Cloud Control を構成できます。
+
+最近拡張されたインストールにアセットを追加する必要がある場合、または新しいアセットが構成に自動的に追加されなかった場合、最初のインストール後にこのプロセスを使用する必要があります。これらの API を使用して、インストールに最近追加されたアセットを追加します。
+
+.要件
+* クラスタ バージョンでは、 NetApp Elementソフトウェア 11.3 以降が実行されています。
+* バージョン 11.3 以降を実行している管理ノードをデプロイしました。
+
+
+.手順
+. link:task_mnode_add_assets.html["新しいvCenterをコントローラアセットとして追加する"]管理ノード構成へ。
+. 管理ノード上のインベントリ サービス API を更新します。
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
++
+
+NOTE: 代わりに、 NetApp Hybrid Cloud Control UI でインベントリが更新されるまで 2 分間待つこともできます。
+
++
+.. *承認*を選択し、以下を完了します。
++
+... クラスターのユーザー名とパスワードを入力します。
+... クライアントIDを入力してください `mnode-client`。
+... セッションを開始するには、[承認] を選択します。
+... ウィンドウを閉じます。
+
+
+.. REST API UI から、*GET ​/installations* を選択します。
+.. *試してみる*を選択します。
+.. *実行*を選択します。
+.. レスポンスからインストールアセットIDをコピーします(`"id"`）。
+.. REST API UI から、*GET /installations/{id}* を選択します。
+.. *試してみる*を選択します。
+.. 更新を設定 `True`。
+.. インストール アセット ID を *id* フィールドに貼り付けます。
+.. *実行*を選択します。
+
+
+. 変更を確認するには、 NetApp Hybrid Cloud Control ブラウザを更新します。
+
+
+[discrete]
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

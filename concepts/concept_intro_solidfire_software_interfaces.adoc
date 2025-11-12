@@ -1,0 +1,122 @@
+---
+permalink: concepts/concept_intro_solidfire_software_interfaces.html 
+sidebar: sidebar 
+keywords: interfaces, integration, user interface, Plug-in, vCenter, API, node UIs, command line, snapshots, shadow copies, Element software, Element, Element UI, UI, manage storage, utilities, integration utilities 
+summary: NetApp Elementソフトウェア インターフェイスと統合ユーティリティを使用して、 SolidFireストレージ システムを管理できます。 
+---
+= SolidFireソフトウェアインターフェース
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+さまざまなNetApp Elementソフトウェア インターフェイスと統合ユーティリティを使用して、 SolidFireストレージ システムを管理できます。
+
+.オプション
+* <<NetApp Elementソフトウェア ユーザー インターフェース>>
+* <<NetApp Elementソフトウェア API>>
+* <<vCenter Server 用NetApp Elementプラグイン>>
+* <<NetApp Hybrid Cloud Control>>
+* <<管理ノードUI>>
+* <<追加の統合ユーティリティとツール>>
+
+
+
+
+== NetApp Elementソフトウェア ユーザー インターフェース
+
+Element ストレージを設定し、クラスターの容量とパフォーマンスを監視し、マルチテナント インフラストラクチャ全体でストレージ アクティビティを管理できます。  Element は、 SolidFireクラスターの中核となるストレージ オペレーティング システムです。  Element ソフトウェアはクラスター内のすべてのノードで独立して実行され、クラスターのノードが外部クライアントに単一のストレージ システムとして提示されるリソースを組み合わせることを可能にします。 Element ソフトウェアは、システム全体のすべてのクラスター調整、スケール、および管理を担当します。ソフトウェア インターフェイスは Element API 上に構築されています。
+
+link:../storage/index.html["Elementソフトウェアでストレージを管理する"]
+
+
+
+== NetApp Elementソフトウェア API
+
+オブジェクト、メソッド、ルーチンのセットを使用して要素のストレージを管理できるようになります。  Element API は、HTTPS 経由の JSON-RPC プロトコルに基づいています。 API ログを有効にすると、Element UI で API 操作を監視できます。これにより、システムに発行されているメソッドを確認できます。リクエストとレスポンスの両方を有効にして、発行されたメソッドに対してシステムがどのように応答するかを確認できます。
+
+link:../api/concept_element_api_about_the_api.html["Element APIでストレージを管理する"]
+
+
+
+== vCenter Server 用NetApp Elementプラグイン
+
+VMware vSphere 内の Element UI の代替インターフェイスを使用して、Element ソフトウェアを実行するストレージ クラスターを構成および管理できます。
+
+https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+
+
+
+== NetApp Hybrid Cloud Control
+
+NetApp Hybrid Cloud Control インターフェイスを使用して、Element ストレージおよび管理サービスをアップグレードし、ストレージ資産を管理できるようになります。
+
+link:../hccstorage/task-hcc-manage-storage-clusters.html["NetApp Hybrid Cloud Control でストレージを管理および監視"]
+
+
+
+== 管理ノードUI
+
+管理ノードには、REST ベースのサービスを管理するための UI と、ネットワークとクラスターの設定、オペレーティング システムのテストとユーティリティを管理するためのノードごとの UI の 2 つの UI が含まれています。  REST API UI からは、管理ノードからサービスベースのシステム機能を制御するサービス関連 API のメニューにアクセスできます。
+
+
+
+== 追加の統合ユーティリティとツール
+
+通常、ストレージはNetApp Element、 NetApp Element API、およびNetApp Element Plug-in for vCenter Server を使用して管理しますが、追加の統合ユーティリティおよびツールを使用してストレージにアクセスすることもできます。
+
+
+
+=== Element CLI
+
+https://mysupport.netapp.com/site/tools/tool-eula/elem-cli["Element CLI"^]Element API を使用せずに、コマンドライン インターフェイスを使用してSolidFireストレージ システムを制御できます。
+
+
+
+=== 要素 PowerShell ツール
+
+https://mysupport.netapp.com/site/tools/tool-eula/elem-powershell-tools["要素 PowerShell ツール"^]Element API を使用してSolidFireストレージ システムを管理する Microsoft Windows PowerShell 関数のコレクションを使用できるようになります。
+
+
+
+=== 要素SDK
+
+https://mysupport.netapp.com/site/products/all/details/netapphci-solidfire-elementsoftware/tools-tab["要素SDK"^]以下のツールを使用してSolidFireクラスターを管理できます。
+
+* Element Java SDK: プログラマーが Element API を Java プログラミング言語に統合できるようにします。
+* Element .NET SDK: プログラマーが Element API を .NET プログラミング プラットフォームに統合できるようにします。
+* Element Python SDK: プログラマーが Element API を Python プログラミング言語に統合できるようにします。
+
+
+
+
+=== SolidFire Postman API テストスイート
+
+プログラマーがコレクションを利用できるようにするlink:https://github.com/solidfire/postman["郵便配達員"^]Element API 呼び出しをテストする関数。
+
+
+
+=== SolidFireストレージ レプリケーション アダプタ
+
+https://mysupport.netapp.com/site/products/all/details/elementsra/downloads-tab["SolidFireストレージ レプリケーション アダプタ"^]VMware Site Recovery Manager (SRM) と統合して、複製されたSolidFireストレージ クラスターとの通信を可能にし、サポートされているワークフローを実行します。
+
+
+
+=== SolidFirevRO
+
+https://mysupport.netapp.com/site/products/all/details/solidfire-vro/downloads-tab["SolidFirevRO"^]Element API を使用して、VMware vRealize Orchestrator でSolidFireストレージ システムを管理する便利な方法を提供します。
+
+
+
+=== SolidFire VSSプロバイダー
+
+https://mysupport.netapp.com/site/products/all/details/solidfire-vss-provider/downloads-tab["SolidFire VSSプロバイダー"^]VSS シャドウ コピーを Element スナップショットおよびクローンと統合します。
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

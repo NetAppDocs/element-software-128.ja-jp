@@ -1,0 +1,73 @@
+---
+permalink: storage/concept-element-replication-create-custom-replication-policy.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, custom, replication, policy, relationship, 
+summary: 関係のデフォルト ポリシーが適切でない場合は、カスタム レプリケーション ポリシーを作成できます。 
+---
+= カスタム レプリケーション ポリシーの作成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+レプリケーション関係の作成時には、デフォルトまたはカスタムのポリシーを使用できます。カスタム統合レプリケーション ポリシーの場合、初期化および更新中にどのスナップショット コピーを転送するかを決定する 1 つ以上の _ルール_ を定義する必要があります。
+
+関係のデフォルト ポリシーが適切でない場合は、カスタム レプリケーション ポリシーを作成できます。たとえば、ネットワーク転送でデータを圧縮したり、 SnapMirror がスナップショット コピーを転送する試行回数を変更したりする必要がある場合があります。
+
+.タスク概要
+レプリケーション ポリシーの _ポリシー タイプ_ によって、サポートされる関係のタイプが決まります。次の表は、使用可能なポリシー タイプを示しています。
+
+[cols="2*"]
+|===
+
+
+| ポリシー タイプ | 関係タイプ 
+
+
+ a| 
+async-mirror
+ a| 
+SnapMirror DR
+
+
+
+ a| 
+mirror-vault
+ a| 
+ユニファイド レプリケーション
+
+|===
+.手順
+. カスタム レプリケーション ポリシーを作成します。
++
+`snapmirror policy create -vserver _SVM_ -policy policy -type async-mirror|mirror-vault -comment _comment_ -tries _transfer_tries_ -transfer-priority low|normal -is-network-compression-enabled true|false`
+
++
+コマンド構文全体については、マニュアル ページを参照してください。
+
++
+ONTAP 9.5以降では、 SnapMirror Synchronous関係の共通スナップショットコピースケジュールを作成するためのスケジュールを、 `-common-snapshot-schedule`パラメータ。デフォルトでは、 SnapMirror同期関係の共通スナップショット コピー スケジュールは 1 時間です。  SnapMirror同期関係のスナップショット コピー スケジュールには、30 分から 2 時間までの値を指定できます。
+
++
+次の例は、データ転送のためにネットワーク圧縮を有効にする、SnapMirror DR用のカスタム レプリケーション ポリシーを作成します。
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy create -vserver svm1 -policy DR_compressed -type async-mirror -comment “DR with network compression enabled” -is-network-compression-enabled true
+----
++
+次の例は、ユニファイド レプリケーション用のカスタム レプリケーション ポリシーを作成します。
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy create -vserver svm1 -policy my_unified -type mirror-vault
+----
+
+
+.終了後の操作
+「`mirror-vault`」ポリシー タイプの場合、初期化および更新中に転送されるスナップショット コピーを決定するルールを定義する必要があります。
+
+使用 `snapmirror policy show`SnapMirrorポリシーが作成されたことを確認するコマンド。コマンド構文全体については、マニュアル ページを参照してください。

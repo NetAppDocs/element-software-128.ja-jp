@@ -1,0 +1,36 @@
+---
+permalink: api/concept_element_api_multi_factor_authentication_api_methods.html 
+sidebar: sidebar 
+keywords: multi-factor,MFA,idp,authentication,methods 
+summary: '多要素認証 (MFA) を使用すると、セキュリティ アサーション マークアップ言語 (SAML) を介してサードパーティの ID プロバイダー (IdP) を使用してユーザー セッションを管理できます。' 
+---
+= 多要素認証APIメソッド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+多要素認証 (MFA) を使用すると、セキュリティアサーションマークアップ言語 (SAML) を介してサードパーティの ID プロバイダー (IdP) を使用してユーザーセッションを管理できます。
+
+* xref:reference_element_api_addidpclusteradmin.adoc[IdpClusterAdmin の追加]
+* xref:reference_element_api_createidpconfiguration.adoc[IdpConfigurationの作成]
+* xref:reference_element_api_deleteauthsession.adoc[認証セッションの削除]
+* xref:reference_element_api_deleteauthsessionsbyclusteradmin.adoc[クラスタ管理者による認証セッションの削除]
+* xref:reference_element_api_deleteauthsessionsbyusername.adoc[ユーザー名による認証セッションの削除]
+* xref:reference_element_api_deleteidpconfiguration.adoc[IdpConfiguration の削除]
+* xref:reference_element_api_disableidpauthentication.adoc[Idp認証を無効にする]
+* xref:reference_element_api_enableidpauthentication.adoc[Idp認証を有効にする]
+* xref:reference_element_api_getidpauthenticationstate.adoc[GetIdpAuthenticationState]
+* xref:reference_element_api_listactiveauthsessions.adoc[アクティブ認証セッションのリスト]
+* xref:reference_element_api_listidpconfigurations.adoc[ListIdpConfigurations]
+* xref:reference_element_api_updateidpconfiguration.adoc[IdpConfiguration の更新]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

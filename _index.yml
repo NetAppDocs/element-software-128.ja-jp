@@ -1,0 +1,93 @@
+---
+indexpage:
+  title: SolidFireおよびElementソフトウェアのドキュメント
+  summary: SolidFireオールフラッシュ ストレージ システムは、ストレージ リソースのプールに結合されたドライブやノードなどのハードウェア コンポーネントで構成されています。この統合クラスタは単一のストレージ
+    システムとして、 NetApp Elementソフトウェアで管理されます。
+  keywords: solidfire, all-flash, storage, hardware, install, maintain, element software,
+    esos, element cli
+  lead: SolidFireオールフラッシュ ストレージ システムは、ストレージ リソースのプールに結合されたドライブやノードなどのハードウェア コンポーネントで構成されています。
+    Element インターフェイス、API、またはその他の管理ツールを使用して、 NetApp Elementソフトウェアでこれらのストレージ リソース クラスターを管理できます。このサイトには、Element
+    ソフトウェア 12.8 のドキュメントが含まれています。
+  tiles:
+  - title: 始めましょう
+    links:
+    - title: 製品概要
+      url: "/concepts/concept_intro_product_overview.html"
+    - title: リリース ノート
+      url: "/concepts/concept_rn_relatedrn_element.html"
+    - title: 新機能
+      url: "/concepts/concept_rn_whats_new_element.html"
+    - title: 要件
+      url: "/storage/concept_prereq_networking.html"
+    - title: セットアップの概要
+      url: "/setup/concept_setup_overview.html"
+  - title: ハードウェアのインストールと保守
+    links:
+    - title: H410SおよびH610Sのハードウェア情報
+      url: "/hardware/task_h410s_h610s_install.html"
+    - title: SFシリーズのハードウェア情報
+      url: "/hardware/task_sfseries_chassisrepl.html"
+    - title: 工場出荷時の画像情報
+      url: "/hardware/concept_rtfi_configure.html"
+    - title: NetApp Hシリーズストレージノードでサポートされているファームウェアリビジョン
+      url: "/hardware/fw_storage_nodes.html"
+  - title: ストレージの管理
+    links:
+    - title: ElementソフトウェアUIを使用する
+      url: "/storage/index.html"
+    - title: NetAppハイブリッドクラウドコントロールを使用する
+      url: "/hccstorage/task-hcc-manage-storage-clusters.html"
+    - title: ElementソフトウェアAPIを使用する
+      url: "/api/concept_element_api_about_the_api.html"
+    - title: vCenter Server の Element プラグインを使用する
+      url: https://docs.netapp.com/us-en/vcp/
+    - title: NetApp SolidFire Active IQを使用する
+      url: https://docs.netapp.com/us-en/solidfire-active-iq/
+    - title: 管理ノードを操作する
+      url: "/mnode/task_mnode_work_overview.html"
+  - title: 統合ツールを使用する（ログインが必要です）
+    links:
+    - title: Element CLI
+      url: https://mysupport.netapp.com/site/tools/tool-eula/elem-cli
+    - title: 要素 PowerShell ツール
+      url: https://mysupport.netapp.com/site/tools/tool-eula/elem-powershell-tools
+    - title: 要素 SDK (Java、.NET、Python)
+      url: https://mysupport.netapp.com/site/products/all/details/netapphci-solidfire-elementsoftware/tools-tab
+    - title: SolidFire Postman API テストスイート
+      url: https://github.com/solidfire/postman
+    - title: SolidFireストレージ レプリケーション アダプタ
+      url: https://mysupport.netapp.com/site/products/all/details/elementsra/downloads-tab
+    - title: SolidFirevRO
+      url: https://mysupport.netapp.com/site/products/all/details/solidfire-vro/downloads-tab
+    - title: SolidFire VSSプロバイダー
+      url: https://mysupport.netapp.com/site/products/all/details/solidfire-vss-provider/downloads-tab
+  - title: ソリューション
+    links:
+    - title: NetAppソリューション
+      url: https://docs.netapp.com/us-en/netapp-solutions/index.html
+  - title: デモとチュートリアル
+    links:
+    - title: NetApp University SolidFireトレーニング (ログインが必要です)
+      url: https://netapp.sabacloud.com/Saba/Web_spf/NA1PRD0047/common/searchresults/solidfire/LEARNINGEVENT%2COFFERINGTEMPLATE%2CCERTIFICATION%2CCURRICULUM%2COFFERING%2CPACKAGE
+    - title: NetApp Solidfire クラスタのインストールと拡張方法（ビデオ）
+      url: https://www.youtube.com/watch?v=JOe-zwxIZR4
+    - title: NetApp SolidFireのインストール (ビデオ)
+      url: https://youtu.be/YKGK5nNSL68
+  - title: ブログとコミュニティ
+    links:
+    - title: NetAppコミュニティ
+      url: https://community.netapp.com/t5/AFF-NVMe-EF-Series-and-SolidFire-Discussions/bd-p/flash-storage-systems-discussions
+    - title: どこで助けを得られるか
+      url: https://mysupport.netapp.com/site/products/all/details/element-software/guideme-tab
+  - title: 以前のバージョン
+    links:
+    - title: Element 12.2.1 ドキュメント
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=63945&language=en-US
+    - title: Element 12.2 ドキュメント
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=63593&language=en-US
+    - title: Element 12.0.1 ドキュメント
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=63946&language=en-US
+    - title: Element 12.0 ドキュメント
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=63368&language=en-US
+    - title: Element 11.8.2 以前のドキュメント
+      url: "/element-earlierversions.html"

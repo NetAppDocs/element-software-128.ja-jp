@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_sf_upgrade_all_vsphere.html 
+summary: SolidFireストレージ システムの VMware コンポーネントをアップグレードし、追加の手順を実行して vCenter プラグインを再インストールできます。 
+keywords: netapp, solidfire, vsphere components, upgrade, vCenter, ESXi 
+---
+= vCenter Server 用の Element プラグインを使用して、 NetApp SolidFireストレージ システムの vSphere コンポーネントをアップグレードします。
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+VMware vSphere コンポーネントをアップグレードする場合は、追加の手順を実行する必要があります。これらの手順は、vCenter Server 用の Element プラグインを備えたシステムに必要です。
+
+.手順
+. vCSAのアップグレードについては、 https://docs.netapp.com/us-en/vcp/vcp_task_qossioc.html#clear-qossioc-settings["クリア"^]プラグイン内の QoSSIOC 設定 (* NetApp Element構成 > QoSSIOC 設定*)。  *QoSSIOCステータス*フィールドには、 `Not Configured`プロセスが完了したら。
+. vCSAおよびWindowsのアップグレードの場合、 https://docs.netapp.com/us-en/vcp/task_vcp_unregister.html["登録解除"^]登録ユーティリティを使用して、関連付けられている vCenter Server からプラグインを削除します。
+. https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vcenter.upgrade.doc/GUID-7AFB6672-0B0B-4902-B254-EE6AE81993B2.html["vCenter Server、ESXi、VM、その他のVMwareコンポーネントを含むvSphereをアップグレードします"^]。
++
+[IMPORTANT]
+====
+回避策を適用せずに VMware vCenter 7.0 Update 3 でプラグインを展開できるようにするには、 NetApp Element Plug-in for vCenter Server 5.0 以降にアップグレードする必要があります。
+
+VMware vCenter Server 7.0 Update 3 にアップグレードすると、vCenter Server 4.x の Element プラグインのデプロイに失敗します。Spring Framework 4を使用してこの問題を解決するには、 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/vCenter_plug-in_deployment_fails_after_upgrading_vCenter_to_version_7.0_U3["このKB記事"^]。
+
+====
+. https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html#register-the-plug-in-with-vcenter["登録"^]vCenter Server 用の Element プラグインを vCenter で再度実行します。
+. https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html#add-storage-clusters-for-use-with-the-plug-in["クラスターを追加する"^]プラグインを使用します。
+. https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html#configure-qossioc-settings-using-the-plug-in["QoSSIOC設定を構成する"^]プラグインを使用します。
+. https://docs.netapp.com/us-en/vcp/vcp_task_qossioc.html#enabling-qossioc-automation-on-datastores["QoSSIOCを有効にする"^]プラグインによって制御されるすべてのデータストアに対して。
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

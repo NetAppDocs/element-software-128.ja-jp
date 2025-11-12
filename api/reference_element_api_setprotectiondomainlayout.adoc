@@ -1,0 +1,193 @@
+---
+permalink: api/reference_element_api_setprotectiondomainlayout.html 
+sidebar: sidebar 
+keywords: layout,custom,protection domain,protection domains,setting protection domains 
+summary: SetProtectionDomainLayout メソッドを使用して、ノードをカスタム保護ドメインに割り当てることができます。 
+---
+= 保護ドメインレイアウトの設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `SetProtectionDomainLayout`ノードをカスタム保護ドメインに割り当てる方法。
+
+クラスター内のすべてのアクティブ ノードに関する情報を提供する必要があり、非アクティブ ノードに関する情報は提供できません。特定のシャーシ内のすべてのノードは、同じカスタム保護ドメインに割り当てる必要があります。すべてのノードに同じ protectionDomainType を指定する必要があります。ノードやシャーシなどのカスタムではない protectionDomainType は含めないでください。これらのいずれかが指定されている場合、カスタム保護ドメインは無視され、適切なエラーが返されます。
+
+
+NOTE: 次の構成ではカスタム保護ドメインはサポートされません。
+
+* 共有シャーシを含むストレージクラスター
+* 2ノードストレージクラスター
+
+
+このメソッドは、これらの構成のストレージ クラスターで使用するとエラーを返します。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+保護ドメインレイアウト
+ a| 
+各ノードの保護ドメイン情報。
+ a| 
+JSONリストlink:reference_element_api_nodeprotectiondomains.html["ノード保護ドメイン"]オブジェクト。
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+保護ドメインレイアウト
+ a| 
+各ノードとそれに関連付けられた保護ドメインのリスト。
+ a| 
+JSONリストlink:reference_element_api_nodeprotectiondomains.html["ノード保護ドメイン"]オブジェクト。
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "id": 1,
+  "method": "SetProtectionDomainLayout",
+  "params": {
+    "protectionDomainLayout": [
+      {
+        "nodeID": 1,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "Rack-1",
+            "protectionDomainType": "custom"
+          }
+        ]
+      },
+      {
+        "nodeID": 2,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "Rack-1",
+            "protectionDomainType": "custom"
+          }
+        ]
+      },
+      {
+        "nodeID": 3,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "Rack-2",
+            "protectionDomainType": "custom"
+          }
+        ]
+      },
+      {
+        "nodeID": 4,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "Rack-2",
+            "protectionDomainType": "custom"
+          }
+        ]
+      }
+    ]
+  }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+
+{
+  "id": 1,
+  "result": {
+    "protectionDomainLayout": [
+      {
+        "nodeID": 1,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "QTFCR2914008D",
+            "protectionDomainType": "chassis"
+          },
+          {
+            "protectionDomainName": "Rack-1",
+            "protectionDomainType": "custom"
+          }
+        ]
+      },
+      {
+        "nodeID": 2,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "QTFCR291500EA",
+            "protectionDomainType": "chassis"
+          },
+          {
+            "protectionDomainName": "Rack-1",
+            "protectionDomainType": "custom"
+          }
+        ]
+      },
+      {
+        "nodeID": 3,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "QTFCR291500C3",
+            "protectionDomainType": "chassis"
+          },
+          {
+            "protectionDomainName": "Rack-2",
+            "protectionDomainType": "custom"
+          }
+        ]
+      },
+      {
+        "nodeID": 4,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "QTFCR291400E6",
+            "protectionDomainType": "chassis"
+          },
+          {
+            "protectionDomainName": "Rack-2",
+            "protectionDomainType": "custom"
+          }
+        ]
+      }
+    ]
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+12.0

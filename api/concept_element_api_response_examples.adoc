@@ -1,0 +1,34 @@
+---
+permalink: api/concept_element_api_response_examples.html 
+sidebar: sidebar 
+keywords: response,example 
+summary: 完全な応答例をここに示します。 
+---
+= 応答例
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+完全な応答例をここに示します。
+
+* xref:reference_element_api_response_example_getconfig.adoc[ゲットコンフィグ]
+* xref:reference_element_api_response_example_getclusterhardwareinfo.adoc[クラスタハードウェア情報を取得する]
+* xref:reference_element_api_response_example_getlldpinfo.adoc[GetLldpInfo]
+* xref:reference_element_api_response_example_getnetworkconfig.adoc[ネットワーク構成の取得]
+* xref:reference_element_api_response_example_getnodehardwareinfo.adoc[GetNodeHardwareInfo (iSCSI の出力)]
+* xref:reference_element_api_response_example_getnodehardwareinfo_fibre_channel.adoc[GetNodeHardwareInfo (ファイバーチャネルノードの出力)]
+* xref:reference_element_api_response_example_getnvraminfo.adoc[NVRAM情報を取得する]
+* xref:reference_element_api_response_example_listactivenodes.adoc[ListActiveNodes]
+* xref:reference_element_api_response_example_listactivevolumes.adoc[アクティブボリュームの一覧]
+* xref:reference_element_api_response_example_testhardwareconfig.adoc[テストハードウェア構成]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

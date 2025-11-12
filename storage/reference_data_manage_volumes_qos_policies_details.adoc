@@ -1,0 +1,40 @@
+---
+permalink: storage/reference_data_manage_volumes_qos_policies_details.html 
+sidebar: sidebar 
+keywords: qos policies 
+summary: 管理タブから QoS ポリシーの詳細を表示できます。 
+---
+= QoSポリシーの詳細
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+管理タブから QoS ポリシーの詳細を表示できます。
+
+* *ID*
++
+QoS ポリシーのシステム生成 ID。
+
+* *名前*
++
+QoS ポリシーのユーザー定義名。
+
+* *最小IOPS*
++
+ボリュームに保証される IOPS の最小数。
+
+* *最大IOPS*
++
+ボリュームに許可される IOPS の最大数。
+
+* *バーストIOPS*
++
+ボリュームに対して短期間に許可される IOPS の最大数。デフォルト = 15,000。
+
+* *巻*
++
+ポリシーを使用しているボリュームの数を表示します。この番号は、ポリシーが適用されているボリュームのテーブルにリンクします。
+
+

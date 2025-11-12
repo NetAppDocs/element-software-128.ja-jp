@@ -1,0 +1,78 @@
+---
+permalink: storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html 
+sidebar: sidebar 
+keywords: enable, disable, encryption at rest, cluster, sed, hardware-based, encryption settings, software-based 
+summary: SolidFireクラスターを使用すると、保存時にソフトウェアまたはハードウェアベースの暗号化を使用して、クラスターに保存されているすべてのデータを暗号化できます。 
+---
+= クラスタの保存時の暗号化を有効または無効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFireクラスターを使用すると、クラスター ドライブに保存されているすべての保存データを暗号化できます。自己暗号化ドライブ（SED）のクラスタ全体の保護を有効にするには、次のいずれかを使用します。link:../concepts/concept_solidfire_concepts_security.html["保存時のハードウェアまたはソフトウェアベースの暗号化"] 。
+
+Element UI または API を使用して、保存時のハードウェア暗号化を有効にすることができます。保存時のハードウェア暗号化機能を有効にしても、クラスターのパフォーマンスや効率には影響しません。保存時のソフトウェア暗号化は、Element API のみを使用して有効にできます。
+
+保存時のハードウェアベースの暗号化は、クラスターの作成時にはデフォルトでは有効になっていませんが、Element UI から有効または無効にすることができます。
+
+
+WARNING: SolidFireオールフラッシュ ストレージ クラスターの場合、保存時のソフトウェア暗号化はクラスターの作成中に有効にする必要があり、クラスターの作成後は無効にすることはできません。
+
+.要件
+* 暗号化設定を有効化または変更するためのクラスタ管理者権限があります。
+* 保存時のハードウェアベースの暗号化の場合、暗号化設定を変更する前に、クラスターが正常な状態であることを確認しておきます。
+* 暗号化を無効にする場合、ドライブ上の暗号化を無効にするキーにアクセスするために、2 つのノードがクラスターに参加している必要があります。
+
+
+
+
+== 保存時の暗号化ステータスを確認する
+
+クラスタ上の保存時の暗号化および/または保存時のソフトウェア暗号化の現在の状態を確認するには、link:../api/reference_element_api_getclusterinfo.html["クラスター情報を取得"^]方法。使用することができますlink:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["ソフトウェア暗号化情報を取得する"^]クラスターが保存データの暗号化に使用する情報を取得する方法。
+
+
+NOTE: ElementソフトウェアUIダッシュボード `https://<MVIP>/`現在、ハードウェアベースの暗号化の保存時の暗号化ステータスのみが表示されます。
+
+.オプション
+* <<保存時にハードウェアベースの暗号化を有効にする>>
+* <<保存時のソフトウェアベースの暗号化を有効にする>>
+* <<保存時のハードウェアベースの暗号化を無効にする>>
+
+
+
+
+== 保存時にハードウェアベースの暗号化を有効にする
+
+
+NOTE: 外部キー管理設定を使用して保存時の暗号化を有効にするには、link:../api/reference_element_api_enableencryptionatrest.html["API"] 。既存の Element UI ボタンを使用して有効にすると、内部で生成されたキーの使用に戻ります。
+
+. Element UI から、*クラスター* > *設定* を選択します。
+. *保存時の暗号化を有効にする*を選択します。
+
+
+
+
+== 保存時のソフトウェアベースの暗号化を有効にする
+
+
+NOTE: 保存時のソフトウェア暗号化は、クラスターで有効にした後は無効にできません。
+
+. クラスターの作成中に、link:../api/reference_element_api_createcluster.html["クラスター作成方法"]と `enableSoftwareEncryptionAtRest`に設定 `true`。
+
+
+
+
+== 保存時のハードウェアベースの暗号化を無効にする
+
+. Element UI から、*クラスター* > *設定* を選択します。
+. *保存時の暗号化を無効にする*を選択します。
+
+
+[discrete]
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

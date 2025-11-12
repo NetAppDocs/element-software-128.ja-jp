@@ -1,0 +1,30 @@
+---
+permalink: setup/task_setup_cluster_with_storage_nodes.html 
+sidebar: sidebar 
+keywords: element, solidfire, install, setup, node, cluster 
+summary: ストレージ ノードを使用してクラスターをセットアップする手順を理解します。 
+---
+= Elementストレージノードを使用したクラスターの設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ラック ユニットにノードをインストールしてケーブル接続し、電源をオンにした後、ストレージ ノードを含むクラスターをセットアップし、Element ソフトウェアを使用して管理できます。その後、ストレージ システムに追加のコンポーネントをインストールして構成できます。
+
+.手順
+. link:concept_setup_configure_a_storage_node.html["ストレージノードを構成する"]
+. link:task_setup_create_a_storage_cluster.html["ストレージ クラスタを作成"]
+. link:task_post_deploy_access_the_element_software_user_interface.html["Elementソフトウェアのユーザーインターフェースにログインする"]
+. link:task_setup_add_drives_to_a_cluster.html["クラスタにドライブを追加"]
+. link:task_setup_determine_which_solidfire_components_to_install.html["インストールするSolidFireコンポーネントを決定する"]
+. link:task_setup_gh_redirect_set_up_a_management_node.html["管理ノードを設定する"]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

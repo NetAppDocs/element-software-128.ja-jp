@@ -1,0 +1,14 @@
+---
+permalink: setup/task_setup_set_up_an_element_storage_system.html 
+sidebar: sidebar 
+keywords:  
+summary: NetApp Elementソフトウェア ストレージ システムをセットアップするには、ストレージ ノードの構成、ストレージ クラスターの作成、クラスターへのドライブの追加が必要です。ファイバー チャネル ネットワークを使用する場合は、ファイバー チャネル ノードを構成できます。 
+---
+= エレメントストレージシステムをセットアップする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Elementソフトウェア ストレージ システムをセットアップするには、ストレージ ノードの構成、ストレージ クラスターの作成、クラスターへのドライブの追加が必要です。ファイバー チャネル ネットワークを使用する場合は、ファイバー チャネル ノードを構成できます。

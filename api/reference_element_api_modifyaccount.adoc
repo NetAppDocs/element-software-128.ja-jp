@@ -1,0 +1,188 @@
+---
+permalink: api/reference_element_api_modifyaccount.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,accounts,settings,modifyaccount 
+summary: 既存のアカウントを変更するには、ModifyAccount メソッドを使用できます。 
+---
+= アカウントの変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ModifyAccount`既存のアカウントを変更する方法。
+
+アカウントをロックすると、そのアカウントからの既存の接続はすべて直ちに終了します。アカウントの CHAP 設定を変更すると、既存の接続はアクティブなままになり、以降の接続または再接続では新しい CHAP 設定が使用されます。アカウントの属性をクリアするには、attributes パラメータに {} を指定します。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+accountID
+ a| 
+変更するアカウントの AccountID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+attributes
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+enableChap
+ a| 
+イニシエーターがボリュームにアクセスするために CHAP アカウント資格情報を使用できるかどうかを指定します。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+イニシエーターシークレット
+ a| 
+イニシエーターに使用する CHAP シークレット。この秘密は 12 〜 16 文字の長さで、解読不可能なものでなければなりません。イニシエーターの CHAP シークレットは一意である必要があり、ターゲットの CHAP シークレットと同じにすることはできません。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+ステータス
+ a| 
+アカウントのステータス。有効な値は次のとおりです。
+
+* アクティブ: アカウントはアクティブであり、接続が許可されています。
+* ロック: アカウントがロックされており、接続が拒否されます。
+
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+ターゲットシークレット
+ a| 
+ターゲットに使用する CHAP シークレット (相互 CHAP 認証)。この秘密は 12 〜 16 文字の長さで、侵入不可能なものでなければなりません。ターゲット CHAP シークレットは一意である必要があり、イニシエーター CHAP シークレットと同じにすることはできません。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+ユーザ名
+ a| 
+アカウントに関連付けられたユーザー名を変更するために使用されます。  (長さは 1 ～ 64 文字にする必要があります)。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+アカウント
+ a| 
+変更されたアカウントに関する情報を含むオブジェクト。
+ a| 
+xref:reference_element_api_account.adoc[アカウント]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。この例では、{} を指定して属性をクリアします。
+
+[listing]
+----
+{
+   "method": "ModifyAccount",
+   "params": {
+     "accountID"  : 25,
+     "status"   : "locked",
+     "attributes" : {}
+   },
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "account": {
+        "storageContainerID": "abcdef01-1234-5678-90ab-cdef01234567",
+        "username": "user1",
+        "accountID": 1,
+        "volumes": [
+        ],
+        "enableChap": true,
+        "initiatorSecret": "txz123456q890",
+        "attributes": {
+        },
+        "status": active",
+        "targetSecret": "rxe123b567890"
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

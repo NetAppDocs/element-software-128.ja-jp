@@ -1,0 +1,217 @@
+---
+permalink: api/reference_element_api_clusterinfo.html 
+sidebar: sidebar 
+keywords: element, api, object, objects, clusterInfo 
+summary: clusterInfo オブジェクトには、ノードがクラスターと通信するために使用する情報が含まれています。この情報は、GetClusterInfo API メソッドを使用して取得できます。 
+---
+= クラスター情報
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+clusterInfo オブジェクトには、ノードがクラスターと通信するために使用する情報が含まれています。この情報は、GetClusterInfo API メソッドを使用して取得できます。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+attributes
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+
+
+
+ a| 
+デフォルト保護スキーム
+ a| 
+新規ボリュームにデフォルトで使用される保護スキーム（保護スキームがボリュームに提供されていない場合）xref:reference_element_api_createvolume.adoc[ボリュームの作成]メソッド呼び出し。この保護スキームは、有効な保護スキームのセット内に常に含まれていなければなりません。
+ a| 
+string
+
+
+
+ a| 
+有効な保護スキーム
+ a| 
+このストレージ クラスターで有効になっているすべての保護スキームのリスト。
+ a| 
+文字列配列
+
+
+
+ a| 
+保存時の暗号化
+ a| 
+保存時の暗号化機能の状態。有効な値は次のとおりです。
+
+* 有効化中: 保存時の暗号化が有効になっています。
+* 有効: 保存時の暗号化が有効です。
+* 無効化: 保存時の暗号化が無効になっています。
+* 無効: 保存時の暗号化は無効です。
+
+ a| 
+string
+
+
+
+ a| 
+アンサンブル
+ a| 
+クラスターに参加しているノード。
+ a| 
+文字列配列
+
+
+
+ a| 
+mvip
+ a| 
+管理ネットワーク上のクラスターのフローティング (仮想) IP アドレス。
+ a| 
+string
+
+
+
+ a| 
+mvipインターフェース
+ a| 
+MVIP アドレスに関連付けられた物理インターフェイス。
+ a| 
+string
+
+
+
+ a| 
+mvipノードID
+ a| 
+マスター MVIP アドレスを保持するノード。
+ a| 
+integer
+
+
+
+ a| 
+mvipVlanタグ
+ a| 
+MVIP アドレスの VLAN 識別子。
+ a| 
+string
+
+
+
+ a| 
+名前
+ a| 
+一意のクラスター名。
+ a| 
+string
+
+
+
+ a| 
+繰り返し回数
+ a| 
+クラスターに保存する各データのレプリカの数。有効な値は「2」です。
+ a| 
+integer
+
+
+
+ a| 
+ソフトウェアの暗号化AtRestState
+ a| 
+ソフトウェアベースの保存時の暗号化。
+ a| 
+string
+
+
+
+ a| 
+サポートされている保護スキーム
+ a| 
+このストレージ クラスターでサポートされているすべての保護スキームのリスト。
+ a| 
+文字列配列
+
+
+
+ a| 
+svip
+ a| 
+ストレージ (iSCSI) ネットワーク上のクラスターのフローティング (仮想) IP アドレス。
+ a| 
+string
+
+
+
+ a| 
+svipインターフェース
+ a| 
+マスター SVIP アドレスに関連付けられた物理インターフェイス。
+ a| 
+string
+
+
+
+ a| 
+svipノードID
+ a| 
+マスター SVIP アドレスを保持するノード。
+ a| 
+integer
+
+
+
+ a| 
+svipVlanタグ
+ a| 
+マスター SVIP アドレスの VLAN 識別子。
+ a| 
+string
+
+
+
+ a| 
+ユニークID
+ a| 
+クラスターの一意の ID。
+ a| 
+string
+
+
+
+ a| 
+uuid
+ a| 
+クラスターの一意の識別子。
+ a| 
+UUID
+
+
+
+ a| 
+ボリューム負荷バランスオン実Iops状態
+ a| 
+最小 IOPS 機能ではなく実際の IOPS に基づいたスライス バランスのステータス。  Element 12.8 以降で使用可能です。
+ a| 
+string
+
+|===
+[discrete]
+== 詳細情報の参照
+
+* link:reference_element_api_getclusterinfo.html["クラスター情報を取得"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"^]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

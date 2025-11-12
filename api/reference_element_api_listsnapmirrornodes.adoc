@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_listsnapmirrornodes.html 
+sidebar: sidebar 
+keywords: snapmirror,node,nodes,list,listing,listsnapmirrornodes 
+summary: Element ソフトウェア Web UI は、ListSnapMirrorNodes メソッドを使用して、リモートONTAPクラスタ内のノードのリストを取得します。 
+---
+= スナップミラーノードのリスト
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ElementソフトウェアのWeb UIは、 `ListSnapMirrorNodes`リモートONTAPクラスタ内のノードのリストを取得する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+指定されている場合、システムは指定された snapMirrorEndpointID を持つエンドポイントのノードを一覧表示します。指定しない場合は、システムは既知のすべてのSnapMirrorエンドポイントのノードを一覧表示します。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラーノード
+ a| 
+ONTAPクラスタ上のノードのリスト。
+ a| 
+xref:reference_element_api_snapmirrornode.adoc[スナップミラーノード]配列
+
+|===
+
+
+== バージョン以降の新機能
+
+10.1

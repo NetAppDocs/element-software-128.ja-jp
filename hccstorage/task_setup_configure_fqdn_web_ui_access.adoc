@@ -1,0 +1,219 @@
+---
+permalink: hccstorage/task-setup-configure-fqdn-web-ui-access.html 
+sidebar: sidebar 
+keywords: netapp, element, fqdn, ui, access, web, administration 
+summary: システム FQDN Web UI アクセスを構成、削除、およびトラブルシューティングする方法を学習します。 
+---
+= 完全修飾ドメイン名のWeb UIアクセスを構成する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Elementソフトウェア 12.2 以降を搭載したSolidFireオールフラッシュ ストレージでは、完全修飾ドメイン名 (FQDN) を使用してストレージ クラスター Web インターフェイスにアクセスできます。  FQDN を使用して Element Web UI、ノードごとの UI、管理ノード UI などの Web ユーザー インターフェイスにアクセスする場合は、まず、クラスターで使用される FQDN を識別するためのストレージ クラスター設定を追加する必要があります。
+
+このプロセスにより、クラスターはログイン セッションを適切にリダイレクトできるようになり、多要素認証のためのキー マネージャーや ID プロバイダーなどの外部サービスとの統合が向上します。
+
+.要件
+* この機能には Element 12.2 以降が必要です。
+* NetApp Hybrid Cloud Control REST API を使用してこの機能を構成するには、管理サービス 2.15 以降が必要です。
+* NetApp Hybrid Cloud Control UI を使用してこの機能を構成するには、管理サービス 2.19 以降が必要です。
+* REST API を使用するには、バージョン 11.5 以降を実行している管理ノードをデプロイしておく必要があります。
+* 管理ノードと各ストレージ クラスターには、管理ノードの IP アドレスと各ストレージ クラスターの IP アドレスに正しく解決される完全修飾ドメイン名が必要です。
+
+
+NetApp Hybrid Cloud Control と REST API を使用して、FQDN Web UI アクセスを構成または削除できます。誤って構成された FQDN のトラブルシューティングも行うことができます。
+
+* <<NetApp Hybrid Cloud Control を使用して FQDN Web UI アクセスを構成する>>
+* <<REST API を使用して FQDN Web UI アクセスを構成する>>
+* <<NetApp Hybrid Cloud Control を使用して FQDN Web UI アクセスを削除する>>
+* <<REST API を使用して FQDN Web UI アクセスを削除する>>
+* <<トラブルシューティング>>
+
+
+
+
+== NetApp Hybrid Cloud Control を使用して FQDN Web UI アクセスを構成する
+
+.手順
+. Web ブラウザで管理ノードの IP アドレスを開きます。
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. ストレージ クラスタ管理者の資格情報を入力して、 NetApp Hybrid Cloud Control にログインします。
+. ページの右上にあるメニューアイコンを選択します。
+. *構成*を選択します。
+. *完全修飾ドメイン名* ペインで、*セットアップ* を選択します。
+. 表示されるウィンドウで、管理ノードと各ストレージ クラスターの FQDN を入力します。
+. *保存*を選択します。
++
+*完全修飾ドメイン名* ペインには、各ストレージ クラスターとそれに関連付けられた MVIP および FQDN が一覧表示されます。
+
++
+
+NOTE: FQDN が設定された接続されたストレージ クラスターのみが *完全修飾ドメイン名* ペインに表示されます。
+
+
+
+
+
+== REST API を使用して FQDN Web UI アクセスを構成する
+
+.手順
+. 環境内の FQDN を解決できるように、Element ストレージ ノードと mNode でネットワーク環境用の DNS が正しく構成されていることを確認します。  DNS を設定するには、ストレージ ノードのノードごとの UI と管理ノードに移動し、*ネットワーク設定* > *管理ネットワーク* を選択します。
++
+.. ストレージ ノードのノードごとの UI: `https://<storage_node_management_IP>:442`
+.. 管理ノードのノードごとの UI: `https://<management_node_IP>:442`
+
+
+. Element API を使用してストレージ クラスターの設定を変更します。
++
+.. Element APIにアクセスし、次のクラスタインターフェース設定を作成します。link:../api/reference_element_api_createclusterinterfacepreference.html["クラスターインターフェース設定の作成"] API メソッド、優先値にクラスター MVIP FQDN を挿入します。
++
+*** 名前： `mvip_fqdn`
+*** 価値： `Fully Qualified Domain Name for the Cluster MVIP`
++
+この例では、FQDN=storagecluster.my.org:
+
++
+[listing]
+----
+https://<Cluster_MVIP>/json-rpc/12.2?
+method=CreateClusterInterfacePreference&name=mvip_fqdn&value=storagecluster.my.org
+----
+
+
+
+
+. 管理ノード上の REST API を使用して管理ノードの設定を変更します。
++
+.. 管理ノードのREST API UIにアクセスするには、管理ノードのIPアドレスに続けて `/mnode/2/`
++
+例えば：
+
++
+`https://<management_node_IP>/mnode/2/`
+
+.. *承認*または任意のロックアイコンをクリックし、クラスターのユーザー名とパスワードを入力します。
+.. クライアントIDを入力してください `mnode-client`。
+.. *承認*をクリックしてセッションを開始し、ウィンドウを閉じます。
+.. サーバーリストから選択 `mnode2`。
+.. *GET /settings*をクリックします。
+.. *試してみる*をクリックします。
+.. *実行*をクリックします。
+.. 応答本文で報告されたプロキシ設定を記録します。
+.. *PUT/settings*をクリックします。
+.. *試してみる*をクリックします。
+.. リクエストボディエリアに、管理ノードのFQDNを値として入力します。 `mnode_fqdn`パラメータ。
+.. リクエスト本文の残りのパラメータに、前に記録したプロキシ設定値を入力します。プロキシ パラメータを空のままにするか、リクエスト本文に含めない場合、既存のプロキシ設定は削除されます。
+.. *実行*をクリックします。
+
+
+
+
+
+
+== NetApp Hybrid Cloud Control を使用して FQDN Web UI アクセスを削除する
+
+この手順を使用して、管理ノードおよびストレージ クラスターの FQDN Web アクセスを削除できます。
+
+.手順
+. *完全修飾ドメイン名* ペインで、*編集* を選択します。
+. 表示されたウィンドウで、*FQDN* テキスト フィールドの内容を削除します。
+. *保存*を選択します。
++
+ウィンドウが閉じ、FQDN が *完全修飾ドメイン名* ペインに表示されなくなります。
+
+
+
+
+
+== REST API を使用して FQDN Web UI アクセスを削除する
+
+.手順
+. Element API を使用してストレージ クラスターの設定を変更します。
++
+.. Element APIにアクセスし、次のクラスタインターフェース設定を削除します。 `DeleteClusterInterfacePreference` APIメソッド:
++
+*** 名前： `mvip_fqdn`
++
+例えば：
+
++
+[listing]
+----
+https://<Cluster_MVIP>/json-rpc/12.2?method=DeleteClusterInterfacePreference&name=mvip_fqdn
+----
+
+
+
+
+. 管理ノード上の REST API を使用して管理ノードの設定を変更します。
++
+.. 管理ノードのREST API UIにアクセスするには、管理ノードのIPアドレスに続けて `/mnode/2/`。例えば：
++
+[listing]
+----
+https://<management_node_IP>/mnode/2/
+----
+.. *承認*または任意のロックアイコンを選択し、Element クラスターのユーザー名とパスワードを入力します。
+.. クライアントIDを入力してください `mnode-client`。
+.. セッションを開始するには、[承認] を選択します。
+.. ウィンドウを閉じます。
+.. *PUT /settings*を選択します。
+.. *試してみる*を選択します。
+.. リクエストボディエリアでは、 `mnode_fqdn`パラメータ。プロキシを使用するかどうかも指定します(`true`または `false`）の `use_proxy`パラメータ。
++
+[listing]
+----
+{
+ "mnode_fqdn": "",
+ "use_proxy": false
+}
+----
+.. *実行*を選択します。
+
+
+
+
+
+
+== トラブルシューティング
+
+FQDN が正しく構成されていない場合、管理ノード、ストレージ クラスター、またはその両方にアクセスする際に問題が発生する可能性があります。問題のトラブルシューティングには次の情報を参考にしてください。
+
+[cols="3*"]
+|===
+| 問題 | 原因 | 解決策 
+
+
+ a| 
+* FQDN を使用して管理ノードまたはストレージ クラスターにアクセスしようとすると、ブラウザ エラーが発生します。
+* IP アドレスを使用して管理ノードまたはストレージ クラスターにログインすることはできません。
+
+| 管理ノードの FQDN とストレージ クラスターの FQDN の両方が正しく構成されていません。 | このページの REST API の手順を使用して、管理ノードとストレージ クラスターの FQDN 設定を削除し、再度構成します。 
+
+
+ a| 
+* ストレージ クラスターの FQDN にアクセスしようとすると、ブラウザー エラーが発生します。
+* IP アドレスを使用して管理ノードまたはストレージ クラスターにログインすることはできません。
+
+| 管理ノードの FQDN は正しく構成されていますが、ストレージ クラスターの FQDN が正しく構成されていません。 | このページのREST APIの手順を使用して、ストレージ クラスターのFQDN設定を削除し、再度構成します。 
+
+
+ a| 
+* 管理ノードの FQDN にアクセスしようとすると、ブラウザ エラーが発生します。
+* IP アドレスを使用して管理ノードおよびストレージ クラスターにログインできます。
+
+| 管理ノードの FQDN が正しく構成されていませんが、ストレージ クラスターの FQDN は正しく構成されています。 | NetApp Hybrid Cloud Control にログインして、UI で管理ノードの FQDN 設定を修正するか、このページの REST API の手順を使用して設定を修正します。 
+|===
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

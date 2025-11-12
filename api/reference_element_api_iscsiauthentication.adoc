@@ -1,0 +1,62 @@
+---
+permalink: api/reference_element_api_iscsiauthentication.html 
+sidebar: sidebar 
+keywords: ISCSIAuthentication,iscsi,authentication 
+summary: ISCSIAuthentication オブジェクトには、ISCSI セッションに関する認証情報が含まれています。 
+---
+= iSCSI認証
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ISCSIAuthentication オブジェクトには、ISCSI セッションに関する認証情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+認証方法
+ a| 
+iSCSI セッション ログイン時に使用される認証方法 (例: CHAP または None)。
+ a| 
+string
+
+
+
+ a| 
+chapアルゴリズム
+ a| 
+使用されているCHAPアルゴリズム（例：MD5、SHA1*、SHA-256*、SHA3-256*）
+ a| 
+string
+
+
+
+ a| 
+chapユーザー名
+ a| 
+iSCSI セッションのログイン時にイニシエーターによって指定された CHAP ユーザー名。
+ a| 
+string
+
+
+
+ a| 
+方向
+ a| 
+認証の方向。たとえば、一方向 (イニシエーターのみ) または双方向 (イニシエーターとターゲットの両方)。
+ a| 
+string
+
+|===
+* Element 12.7 以降で使用可能です。
+

@@ -1,0 +1,104 @@
+---
+permalink: api/reference_element_api_node_shutdown.html 
+sidebar: sidebar 
+keywords: cluster,shutdown,node,shutting,down,shut,restart 
+summary: Shutdown メソッドを使用して、クラスター内のノードを再起動またはシャットダウンできます。この方法を使用すると、クラスター内の単一のノード、複数のノード、またはすべてのノードをシャットダウンできます。 
+---
+= シャットダウン
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `Shutdown`クラスター内のノードを再起動またはシャットダウンする方法。この方法を使用すると、クラスター内の単一のノード、複数のノード、またはすべてのノードをシャットダウンできます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+ノード
+ a| 
+再起動またはシャットダウンするノードの NodeID のリスト。
+ a| 
+整数配列
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+option
+ a| 
+クラスターに対して実行するアクション。有効な値は次のとおりです。
+
+* restart: クラスターを再起動します。
+* halt: 完全な電源オフを実行します。
+
+ a| 
+string
+ a| 
+restart
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "Shutdown",
+   "params": {
+     "nodes": [
+       2,
+       3,
+       4
+     ],
+     "option": "halt"
+   },
+   "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+     "failed": [],
+     "successful": [
+          6
+      [
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

@@ -1,0 +1,80 @@
+---
+permalink: api/reference_element_api_restartnetworking.html 
+sidebar: sidebar 
+keywords: node,restarting,restart,networking,network,service,services,restartnetworking 
+summary: RestartNetworking メソッドを使用して、ノード上のネットワーク サービスを再起動できます。 
+---
+= 再起動ネットワーク
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `RestartNetworking`ノード上のネットワーク サービスを再起動する方法。
+
+警告：
+
+この方法では、ノード上のすべてのネットワーク サービスが再起動されるため、ネットワーク接続が一時的に失われます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+力
+ a| 
+ノード上のネットワーク サービスを再起動するには true に設定します。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "RestartNetworking",
+   "params": {
+              "force" : true
+             },
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{ "id" : 1,
+  "result" : {}
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

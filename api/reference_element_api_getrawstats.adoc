@@ -1,0 +1,28 @@
+---
+permalink: api/reference_element_api_getrawstats.html 
+sidebar: sidebar 
+keywords:  
+summary: NetAppエンジニアリングは、GetRawStats API メソッドを使用して新しい機能をテストします。 GetRawStats から返されるデータは文書化されておらず、頻繁に変更され、正確であることが保証されません。パフォーマンス データの収集や、Element ソフトウェアを実行しているストレージ クラスターとのその他の管理統合には、GetRawStats を使用しないでください。 
+---
+= 生の統計情報を取得
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetAppのエンジニアリングは `GetRawStats`新しい機能をテストするための API メソッド。返されたデータは `GetRawStats`文書化されておらず、頻繁に変更され、正確であることが保証されていません。使用しないでください `GetRawStats`パフォーマンス データを収集したり、Element ソフトウェアを実行するストレージ クラスターとその他の管理統合を行うために使用します。
+
+統計情報を取得するには、サポートされている次の API メソッドを使用します。
+
+* xref:reference_element_api_getvolumestats.adoc[ボリューム統計情報を取得する]
+* xref:reference_element_api_getclusterstats.adoc[クラスター統計情報を取得する]
+* xref:reference_element_api_getnodestats.adoc[ノード統計情報を取得する]
+* xref:reference_element_api_getdrivestats.adoc[ドライブ統計を取得]
+
+
+
+
+== バージョン以降の新機能
+
+9.6

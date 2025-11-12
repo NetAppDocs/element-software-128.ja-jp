@@ -1,0 +1,139 @@
+---
+permalink: api/reference_element_api_listkeyserverskmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,key,server,listing,list,listkeyserverskmip 
+summary: 'ListKeyServersKmip メソッドを使用して、作成されたすべての Key Management Interoperability Protocol (KMIP) キー サーバーを一覧表示できます。追加のパラメータを指定して結果をフィルタリングできます。' 
+---
+= リストキーサーバーKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ListKeyServersKmip`作成されたすべてのキー管理相互運用性プロトコル (KMIP) キー サーバーを一覧表示するメソッド。追加のパラメータを指定して結果をフィルタリングできます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+キープロバイダーID
+ a| 
+指定すると、このメソッドは指定された KMIP キー プロバイダーに割り当てられている KMIP キー サーバーのみを返します。省略した場合、返される KMIP キー サーバーは、指定された KMIP キー プロバイダーに割り当てられているかどうかに基づいてフィルター処理されません。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+kmip割り当てプロバイダーがアクティブ
+ a| 
+返された KMIP キー サーバー オブジェクトを、アクティブかどうかに基づいてフィルターします。有効な値は次のとおりです。
+
+* true: アクティブな KMIP キー サーバーのみを返します (現在使用中のキーを提供します)。
+* false: 非アクティブな (キーを提供しておらず、削除可能な) KMIP キー サーバーのみを返します。
+
+
+省略した場合、返される KMIP キー サーバーはアクティブかどうかに基づいてフィルター処理されません。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+kmipプロバイダー割り当て済み
+ a| 
+返された KMIP キー サーバーを、KMIP キー プロバイダーが割り当てられているかどうかに基づいてフィルターします。有効な値は次のとおりです。
+
+* true: KMIP キー プロバイダーが割り当てられている KMIP キー サーバーのみを返します。
+* false: KMIP キー プロバイダーが割り当てられていない KMIP キー サーバーのみを返します。
+
+
+省略した場合、返される KMIP キー サーバーは、KMIP キー プロバイダーが割り当てられているかどうかに基づいてフィルター処理されません。
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+kmipキーサーバー
+ a| 
+作成された KMIP キー サーバーの完全なリスト。
+ a| 
+link:reference_element_api_keyserverkmip.html["キーサーバーKmip"]配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "ListKeyServersKmip",
+  "params": {},
+"id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "kmipKeyServers": [
+        {
+            "kmipKeyServerName": "keyserverName",
+            "kmipClientCertificate": "dKkkirWmnWXbj9T/UWZYB2oK0z5...",
+            "keyServerID": 15,
+            "kmipAssignedProviderIsActive": true,
+            "kmipKeyServerPort": 5696,
+            "kmipCaCertificate": "MIICPDCCAaUCEDyRMcsf9tAbDpq40ES/E...",
+            "kmipKeyServerHostnames": [
+                "server1.hostname.com", "server2.hostname.com"
+            ],
+            "keyProviderID": 1
+        }
+    ]
+}
+----
+
+
+== バージョン以降の新機能
+
+11.7

@@ -1,0 +1,138 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-dashboard.html 
+summary: NetApp Hybrid Cloud Control ダッシュボードでストレージ リソースを表示できます。さらに、ストレージ容量とストレージ パフォーマンスを監視することもできます。 
+keywords: netapp, element, hcc, hybrid cloud control, storage, storage performance, capacity 
+---
+= ハイブリッド クラウド コントロール ダッシュボードでストレージ リソースを監視する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Hybrid Cloud Control ダッシュボードを使用すると、すべてのストレージ リソースを一目で確認できます。さらに、ストレージ容量とストレージ パフォーマンスを監視することもできます。
+
+
+NOTE: 新しいNetApp Hybrid Cloud Control セッションを初めて起動すると、管理ノードが多数のクラスターを管理している場合、 NetApp Hybrid Cloud Control ダッシュボード ビューの読み込みに遅延が発生する可能性があります。読み込み時間は、管理ノードによってアクティブに管理されているクラスターの数によって異なります。次回の起動では、読み込み時間が短縮されます。
+
+* <<NetApp HCCダッシュボードにアクセスする>>
+* <<ストレージリソースを監視する>>
+* <<ストレージ容量を監視する>>
+* <<ストレージパフォーマンスを監視する>>
+
+
+
+
+== NetApp HCCダッシュボードにアクセスする
+
+. 管理ノードの IP アドレスを Web ブラウザで開きます。例えば：
++
+[listing]
+----
+https://[management node IP address]
+----
+. SolidFireオールフラッシュ ストレージ クラスタ管理者の資格情報を入力して、 NetApp Hybrid Cloud Control にログインします。
+. ハイブリッド クラウド コントロール ダッシュボードを表示します。
+
+
+image::hcc_dashboard_all.PNG[HCCダッシュボード]
+
+
+
+== ストレージリソースを監視する
+
+*ストレージ* ペインを使用して、全体的なストレージ環境を確認します。ストレージ クラスター、ストレージ ノード、および合計ボリュームの数を監視できます。
+
+詳細を表示するには、[ストレージ] ペインで [詳細を表示] を選択します。
+
+image::hcc_dashboard_storage_node_number.PNG[ストレージビュー]
+
+
+NOTE: ストレージ ノードの合計数には、2 ノード ストレージ クラスターの Witness ノードは含まれません。監視ノードは、そのクラスターの詳細セクションのノード数に含まれます。
+
+
+TIP: 最新のストレージ クラスター データを表示するには、ダッシュボードよりも頻繁にポーリングが行われる [ストレージ クラスター] ページを使用します。
+
+
+
+== ストレージ容量を監視する
+
+環境のストレージ容量を監視することは重要です。  [ストレージ容量] ペインを使用すると、圧縮、重複排除、シン プロビジョニング機能の有効/無効に応じて、ストレージ容量の効率向上を判断できます。
+
+クラスターで使用可能な物理ストレージ容量の合計は *RAW* タブで確認でき、プロビジョニングされたストレージに関する情報は *EFFECTIVE* タブで確認できます。
+
+image::hcc_dashboard_storage_capacity_effective.png[HCCダッシュボード > ストレージ容量ペイン]
+
+.手順
+. クラスターで使用中および使用可能な物理ストレージ容量の合計を確認するには、[*RAW*] タブを選択します。
++
+垂直線を見て、使用済み容量が合計より少ないか、警告、エラー、または重大しきい値より少ないかを判断します。線の上にマウスを移動すると詳細が表示されます。
+
++
+
+NOTE: 警告のしきい値を設定できます。デフォルトでは、エラーしきい値より 3% 低くなります。エラーおよびクリティカルしきい値は事前に設定されており、設計上は構成できません。エラーしきい値は、クラスター内に残っているノードの容量が 1 つ未満であることを示します。しきい値を設定する手順については、link:../storage/task_system_manage_cluster_set_the_cluster_full_threshold.html["クラスターフルしきい値の設定"] 。
+
++
+
+TIP: 関連するクラスタしきい値要素APIの詳細については、以下を参照してください。link:../api/reference_element_api_getclusterfullthreshold.html["「getClusterFullThreshold」"] _Element ソフトウェア API ドキュメント_ に記載されています。ブロックとメタデータの容量の詳細については、以下を参照してください。link:../storage/concept_monitor_understand_cluster_fullness_levels.html["クラスターの満杯度レベルを理解する"] _Element ソフトウェア ドキュメント_ に記載されています。
+
+. *EFFECTIVE* タブを選択すると、接続されたホストにプロビジョニングされたストレージの合計に関する情報と効率評価が表示されます。
++
+.. オプションで、「*シン プロビジョニングを含める*」をチェックして、実効容量の棒グラフでシン プロビジョニングの効率率を確認します。
+.. *有効容量棒グラフ*: 垂直線を見て、使用済み容量が合計より少ないか、警告、エラー、またはクリティカルしきい値より少ないかを判断します。  「Raw」タブと同様に、垂直線の上にマウスを置くと詳細が表示されます。
+.. *効率*: これらの評価を確認して、圧縮、重複排除、シン プロビジョニング機能を有効にした場合のストレージ容量の効率向上を判断します。たとえば、圧縮が「1.3 倍」と表示されている場合、圧縮を有効にした場合のストレージ効率は、圧縮を有効にしない場合よりも 1.3 倍効率的であることを意味します。
++
+
+NOTE: 合計効率は (maxUsedSpace * 効率係数) / 2 に等しくなります。ここで、efficiencyFactor は (thinProvisioningFactor * deDuplicationFactor * compressionFactor) です。シン プロビジョニングのチェックがオフになっている場合、合計効率には含まれません。
+
+.. 有効なストレージ容量がエラーまたはクリティカルしきい値に近づいた場合は、システム上のデータを消去することを検討してください。
+
+
+. さらなる分析と歴史的背景については、 https://activeiq.solidfire.com/["NetApp SolidFire Active IQの詳細"^] 。
+
+
+
+
+== ストレージパフォーマンスを監視する
+
+ストレージ パフォーマンス ペインを使用すると、そのリソースの有効なパフォーマンスを超えることなく、クラスターからどれだけの IOPS またはスループットを取得できるかを確認できます。ストレージ パフォーマンスとは、レイテンシが問題になる前に最大限の利用率を得られるポイントです。
+
+ストレージ パフォーマンス ペインは、ワークロードの増加によってパフォーマンスが低下する可能性があるポイントに達しているかどうかを識別するのに役立ちます。
+
+このペインの情報は 10 秒ごとに更新され、グラフ上のすべてのポイントの平均が表示されます。
+
+関連するElement APIメソッドの詳細については、link:../api/reference_element_api_getclusterstats.html["クラスター統計情報を取得する"] _Element ソフトウェア API ドキュメント_ のメソッド。
+
+.手順
+. ストレージ パフォーマンス ペインを表示します。詳細については、グラフ内のポイントにマウスを移動してください。
++
+.. *IOPS* タブ: 1 秒あたりの現在の操作数を確認します。データの傾向や急増を探します。たとえば、最大 IOPS が 160K で、そのうち 100K が空きまたは使用可能な IOPS である場合は、このクラスターにさらにワークロードを追加することを検討できます。一方、140K しか使用できない場合は、ワークロードのオフロードやシステムの拡張を検討してください。
++
+image::hcc_dashboard_storage_perform_iops.png[ストレージパフォーマンス > IOPSタブ]
+
+.. *スループット* タブ: スループットのパターンまたは急増を監視します。また、継続的に高いスループット値がないか監視します。これは、リソースの最大有効パフォーマンスに近づいていることを示している可能性があります。
++
+image::hcc_dashboard_storage_perform_throughput.png[ストレージパフォーマンス > スループットタブ]
+
+.. *使用率* タブ: クラスター レベルで合計された利用可能な合計 IOPS に対する IOPS の使用率を監視します。
++
+image::hcc_dashboard_storage_perform_utlization.png[ストレージパフォーマンス > 使用率タブ]
+
+
+
+. さらに詳しく分析するには、vCenter Server 用のNetApp Elementプラグインを使用してストレージ パフォーマンスを確認します。
++
+https://docs.netapp.com/us-en/vcp/vcp_task_reports_volume_performance.html["NetApp Element Plug-in for vCenter Server で表示されるパフォーマンス"^]。
+
+
+
+[discrete]
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

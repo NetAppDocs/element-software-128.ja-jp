@@ -1,0 +1,29 @@
+---
+permalink: storage/task_data_protection_using_volume_snapshots.html 
+sidebar: sidebar 
+keywords: data protection, volume snapshots, roll back volume, replicate snapshots 
+summary: ボリューム スナップショットは、ボリュームの特定時点のコピーです。ボリュームのスナップショットを作成し、後でボリュームをスナップショット作成時の状態にロールバックする必要がある場合に、そのスナップショットを使用することができます。 
+---
+= データ保護のためにボリュームスナップショットを使用する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ボリューム スナップショットは、ボリュームの特定時点のコピーです。ボリュームのスナップショットを作成し、後でボリュームをスナップショット作成時の状態にロールバックする必要がある場合に、そのスナップショットを使用することができます。
+
+スナップショットはボリュームクローンと似ています。ただし、スナップショットはボリューム メタデータの単なるレプリカであるため、マウントしたり書き込んだりすることはできません。ボリューム スナップショットの作成には少量のシステム リソースとスペースしか必要ないため、クローン作成よりもスナップショットの作成が高速になります。
+
+個々のボリュームまたはボリューム セットのスナップショットを作成できます。
+
+必要に応じて、スナップショットをリモート クラスターに複製し、ボリュームのバックアップ コピーとして使用します。これにより、複製されたスナップショットを使用して、ボリュームを特定の時点にロールバックできるようになります。あるいは、複製されたスナップショットからボリュームのクローンを作成することもできます。
+
+
+
+== 詳細情報の参照
+
+* xref:task_data_protection_use_individual_volume_snapshots.adoc[データ保護のために個別のボリュームスナップショットを使用する]
+* xref:task_data_protection_use_group_snapshots_for_data_protection.adoc[データ保護タスクにグループスナップショットを使用する]
+* xref:task_data_protection_schedule_a_snapshot_task.adoc[スナップショットのスケジュール設定]
+

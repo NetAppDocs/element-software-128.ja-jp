@@ -1,0 +1,30 @@
+---
+permalink: storage/task_data_manage_volumes_apply_a_qos_policy.html 
+sidebar: sidebar 
+keywords: qos policy, apply to volumes 
+summary: 既存の QoS ポリシーを 1 つ以上のボリュームに一括適用できます。 
+---
+= ボリュームにQoSポリシーを適用する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+既存の QoS ポリシーを 1 つ以上のボリュームに一括適用できます。
+
+一括適用する QoS ポリシーが存在している必要があります。
+
+. *管理* > *ボリューム*を選択します。
+. ボリュームのリストで、QoS ポリシーを適用するボリュームの横にあるチェックボックスをオンにします。
+. *一括操作*をクリックします。
+. 表示されるメニューで、[*QoS ポリシーの適用*] をクリックします。
+. ドロップダウン リストからQoSポリシーを選択します。
+. *適用*をクリックします。
+
+
+
+
+== 詳細情報の参照
+
+xref:concept_data_manage_volumes_quality_of_service_policies.adoc[サービス品質ポリシー]

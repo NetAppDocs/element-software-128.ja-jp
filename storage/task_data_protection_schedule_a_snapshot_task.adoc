@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_protection_schedule_a_snapshot_task.html 
+sidebar: sidebar 
+keywords: snapshot, schedule, volume snapshots, group snapshots 
+summary: ボリューム スナップショットが指定された間隔で実行されるようにスケジュールすることで、ボリュームまたはボリューム グループ上のデータを保護できます。単一ボリュームのスナップショットまたはグループ スナップショットのいずれかを自動的に実行するようにスケジュールできます。 
+---
+= スナップショットをスケジュールする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ボリューム スナップショットが指定された間隔で実行されるようにスケジュールすることで、ボリュームまたはボリューム グループ上のデータを保護できます。単一ボリュームのスナップショットまたはグループ スナップショットのいずれかを自動的に実行するようにスケジュールできます。
+
+スナップショット スケジュールを構成するときに、曜日または日付に基づいて時間間隔を選択できます。次のスナップショットが発生するまでの日数、時間、分も指定できます。ボリュームが複製されている場合は、結果のスナップショットをリモート ストレージ システムに保存できます。
+
+
+
+== 詳細情報の参照
+
+* xref:task_data_protection_create_a_snapshot_schedule.adoc[スナップショットスケジュールを作成する]
+* xref:task_data_protection_edit_a_snapshot_schedule.adoc[スナップショットスケジュールを編集する]
+* xref:task_data_protection_delete_a_snapshot_schedule.adoc[スナップショットスケジュールを削除する]
+* xref:task_data_protection_copy_a_snapshot_schedule.adoc[スナップショットスケジュールをコピーする]
+

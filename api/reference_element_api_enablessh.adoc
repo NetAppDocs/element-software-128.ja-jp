@@ -1,0 +1,67 @@
+---
+permalink: api/reference_element_api_enablessh.html 
+sidebar: sidebar 
+keywords: SSH,enable,enabling,single,node,EnableSSH 
+summary: EnableSsh メソッドを使用して、単一ノードに対して SSH サービスを有効にすることができます。この方法は、クラスター全体の SSH タイムアウト期間には影響せず、グローバル SSH タイムアウトによってノードの SSH が無効になることを免除しません。 
+---
+= SSHを有効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `EnableSsh`単一ノードに対してセキュア シェル (SSH) サービスを有効にする方法。この方法は、クラスター全体の SSH タイムアウト期間には影響せず、グローバル SSH タイムアウトによってノードの SSH が無効になることを免除しません。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータがありません。
+
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+有効
+ a| 
+このノードの SSH サービスのステータス。
+ a| 
+ブーリアン
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "EnableSsh",
+  "params": {
+     },
+  "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {"enabled": true}
+}
+----

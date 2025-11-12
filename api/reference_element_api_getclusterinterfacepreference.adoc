@@ -1,0 +1,96 @@
+---
+permalink: api/reference_element_api_getclusterinterfacepreference.html 
+sidebar: sidebar 
+keywords: cluster,interface,preferences,preference,get,getting,getclusterinterfacepreference 
+summary: GetClusterInterfacePreference メソッドを使用すると、Element ソフトウェアを実行しているストレージ クラスターと統合されたシステムは、既存のクラスター インターフェイス設定に関する情報を取得できます。このメソッドは内部使用用です。 
+---
+= クラスタインターフェース設定の取得
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+その `GetClusterInterfacePreference`この方法により、Element ソフトウェアを実行しているストレージ クラスターと統合されたシステムは、既存のクラスター インターフェイスの設定に関する情報を取得できるようになります。このメソッドは内部使用用です。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+名前
+ a| 
+クラスター インターフェース設定の名前。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+好み
+ a| 
+要求されたクラスター インターフェース設定の名前と値。
+ a| 
+JSONオブジェクト
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+	"method": "GetClusterInterfacePreference",
+	"params": {
+		"name": "prefname"
+		},
+	"id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"preference": {
+			"name": "prefname",
+			"value": "testvalue"
+		}
+	}
+}
+----
+
+
+== バージョン以降の新機能
+
+11.0

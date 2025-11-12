@@ -1,0 +1,247 @@
+---
+permalink: api/reference_element_api_createvolume.html 
+sidebar: sidebar 
+keywords: create,volume,volumes,creating,CreateVolume 
+summary: CreateVolume メソッドを使用して、クラスター上に新しい空のボリュームを作成できます。ボリュームの作成が完了すると、ボリュームは iSCSI 経由で接続できるようになります。 
+---
+= ボリュームの作成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `CreateVolume`クラスター上に新しい空のボリュームを作成する方法。ボリュームが作成されるとすぐに、ボリュームは iSCSI 経由で接続できるようになります。
+
+QoS 値を指定せずに作成されたボリュームでは、デフォルト値が使用されます。ボリュームのデフォルト値を表示するには、 `GetDefaultQoS`方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+| `access` | ボリュームのアクセス モード。このパラメータが含まれている場合、サポートされる値は `snapMirrorTarget`。 | string | なし | いいえ 
+
+
+| `accountID` | このボリュームを所有するアカウントの ID。 | integer | なし | はい 
+
+
+| `associateWithQoSPolicy`  a| 
+指定された QoS ポリシーにボリュームを関連付けます。有効な値は次のとおりです。
+
+* `true`: ボリュームを QoSPolicyID パラメータで指定された QoS ポリシーに関連付けます。
+* `false`: ボリュームを QoSPolicyID パラメータで指定された QoS ポリシーに関連付けないでください。  false の場合、QoSPolicy パラメータで QoS ポリシーを指定したかどうかに関係なく、既存のポリシー関連付けは削除されます。
+
+| ブーリアン | true | いいえ 
+
+
+| `attributes` | JSON オブジェクト形式の名前と値のペアのリスト。属性の合計サイズは、JSON 形式文字を含めて 1000B (1KB) 未満である必要があります。 | JSONオブジェクト | なし | いいえ 
+
+
+| `dontMoveforIopsRebalance`  a| 
+実際の IOPS で負荷分散するときにボリュームが移動しないようにします。この設定はElement 12.8以降で利用可能で、link:reference_element_api_enablefeature.html["実際のIOPSでのボリューム負荷バランス"]が有効になります。有効な値は次のとおりです。
+
+* `true`: ボリュームは実際の IOPS に基づいて負荷分散されません。
+* `false`: ボリュームは実際の IOPS に基づいて負荷分散を行います。
+
+
+*注*: 高可用性（ノード障害）のバランス調整は、 `VolumeLoadBalanceOnActualIOPS`そして `dontMoveforIopsRebalance`。
+| ブーリアン | false | いいえ 
+
+
+| `enable512e`  a| 
+512 バイト セクター エミュレーションを有効にします。有効な値は次のとおりです。
+
+* `true`: ボリュームは 512 バイトのセクター エミュレーションを提供します。
+* `false`: 512e エミュレーションが有効になっていません。
+
+| ブーリアン | なし | はい 
+
+
+| `enableSnapMirrorReplication`  a| 
+ボリュームをSnapMirrorエンドポイントでのレプリケーションに使用できるかどうかを決定します。有効な値は次のとおりです。
+
+* `true`
+* `false`
+
+| ブーリアン | false | いいえ 
+
+
+| `fifoSize` | ボリュームでサポートされる先入れ先出し (FIFO) スナップショットの最大数を指定します。 FIFO スナップショットと非 FIFO スナップショットはどちらも、ボリューム上の使用可能なスナップショット スロットの同じプールを使用することに注意してください。このオプションを使用して、使用可能なスナップショット スロットの FIFO スナップショットの消費を制限します。省略した場合、値はデフォルトで 24 になります。 | integer | 24 | いいえ 
+
+
+| `minFifoSize` | ボリュームによって予約される先入れ先出し (FIFO) スナップショット スロットの最小数を指定します。これにより、ボリューム上で FIFO スナップショットと非 FIFO スナップショットの両方を使用している場合に、非 FIFO スナップショットが意図せず FIFO スロットを過剰に消費することがなくなります。また、少なくともこれだけの数の FIFO スナップショットが常に利用可能であることも保証します。 FIFOスナップショットと非FIFOスナップショットは同じプールを共有するため、 `minFifoSize`可能な非 FIFO スナップショットの合計数も同じ量だけ減ります。省略した場合、値はデフォルトで 0 になります。 | integer | 0 | いいえ 
+
+
+| `name` | ボリューム アクセス グループの名前 (ユーザーが指定できます)。一意である必要はありませんが、一意であることが推奨されます。長さは 1 ～ 64 文字にする必要があります。 | string | なし | はい 
+
+
+| `qos`  a| 
+このボリュームの初期のサービス品質設定。何も指定されていない場合はデフォルト値が使用されます。有効な値は次のとおりです。
+
+* `minIOPS`
+* `maxIOPS`
+* `burstIOPS`
+
+| QoSオブジェクト | なし | いいえ 
+
+
+| `qosPolicyID` | 指定されたボリュームに QoS 設定を適用するポリシーの ID。このパラメータは、 `qos`パラメータ。 | integer | なし | いいえ 
+
+
+| `totalSize` | ボリュームの合計サイズ（バイト単位）。サイズは最も近いメガバイトに切り上げられます。 | integer | なし | はい 
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+音量
+ a| 
+新しく作成されたボリュームに関する情報を含むオブジェクト。
+ a| 
+xref:reference_element_api_volume.adoc[音量]
+
+
+
+ a| 
+volumeID
+ a| 
+新しく作成されたボリュームのボリュームID。
+ a| 
+integer
+
+
+
+ a| 
+曲線
+ a| 
+曲線はキーと値のペアのセットです。キーはバイト単位の I/O サイズです。値は、特定の I/O サイズで IOP を実行するコストを表します。曲線は、100 IOPS に設定された 4096 バイトの操作を基準として計算されます。
+ a| 
+JSONオブジェクト
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "CreateVolume",
+   "params": {
+      "name": "testit",
+      "accountID": 22,
+      "dontMoveForIopsRebalance": true,
+      "totalSize": 100000000000,
+      "enable512e": false,
+      "attributes": {},
+      "qos": {
+         "minIOPS": 500,
+         "maxIOPS": 27000,
+         "burstIOPS": 27000,
+         "burstTime": 60
+      }
+   },
+   "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "curve": {
+            "1048576": 15000,
+            "131072": 1950,
+            "16384": 270,
+            "262144": 3900,
+            "32768": 500,
+            "4096": 100,
+            "524288": 7600,
+            "65536": 1000,
+            "8192": 160
+        },
+        "volume": {
+            "access": "readWrite",
+            "accountID": 22,
+            "attributes": {},
+            "blockSize": 4096,
+            "createTime": "2024-04-02T13:03:02Z",
+            "currentProtectionScheme": "doubleHelix",
+            "deleteTime": "",
+            "dontMoveForIopsRebalance": true,
+            "enable512e": false,
+            "enableSnapMirrorReplication": false,
+            "fifoSize": 24,
+            "iqn": "iqn.2010-01.com.solidfire:mysqldata.677",
+            "lastAccessTime": null,
+            "lastAccessTimeIO": null,
+            "minFifoSize": 0,
+            "name": "testit",
+            "previousProtectionScheme": null,
+            "purgeTime": "",
+            "qos": {
+                "burstIOPS": 27000,
+                "burstTime": 60,
+                "curve": {
+                    "1048576": 15000,
+                    "131072": 1950,
+                    "16384": 270,
+                    "262144": 3900,
+                    "32768": 500,
+                    "4096": 100,
+                    "524288": 7600,
+                    "65536": 1000,
+                    "8192": 160
+                },
+                "maxIOPS": 27000,
+                "minIOPS": 500
+            },
+            "qosPolicyID": null,
+            "scsiEUIDeviceID": "3365657500000140f47acc0100000000",
+            "scsiNAADeviceID": "6f47acc1000000003365657500000140",
+            "sliceCount": 0,
+            "status": "active",
+            "totalSize": 1000000716800,
+            "virtualVolumeID": null,
+            "volumeAccessGroups": [],
+            "volumeConsistencyGroupUUID": "8ed68e57-13ee-47df-8381-29b125142718",
+            "volumeID": 320,
+            "volumePairs": [],
+            "volumeUUID": "e0e2c938-4ecd-4de9-a1be-f6b17c93ce5d"
+        },
+        "volumeID": 320
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_getdefaultqos.adoc[デフォルトQoSを取得する]

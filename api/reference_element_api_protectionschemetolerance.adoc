@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectionschemetolerance.html 
+sidebar: sidebar 
+keywords: object,objects,protectionSchemeTolerance 
+summary: protectionSchemeTolerance オブジェクトには、特定の保護スキームのストレージ クラスターが障害発生後もデータの読み取りと書き込みを続行できるかどうかに関する情報が含まれています。 
+---
+= 保護スキーム許容度
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionSchemeTolerance オブジェクトには、特定の保護スキームのストレージ クラスターが障害発生後もデータの読み取りと書き込みを続行できるかどうかに関する情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+保護スキーム
+ a| 
+このストレージ クラスターの現在の保護スキーム。可能な値は doubleHelix のみです。
+ a| 
+string
+
+
+
+ a| 
+ブロックデータの持続可能な障害
+ a| 
+関連する保護スキームのブロック データの可用性を失うことなく発生できる同時障害の現在の数。
+ a| 
+integer
+
+
+
+ a| 
+メタデータの持続可能な障害
+ a| 
+関連する保護スキームのメタデータの可用性を失うことなく発生できる同時障害の現在の数。
+ a| 
+integer
+
+|===

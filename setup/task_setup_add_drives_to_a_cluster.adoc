@@ -1,0 +1,37 @@
+---
+permalink: setup/task_setup_add_drives_to_a_cluster.html 
+sidebar: sidebar 
+keywords:  
+summary: クラスターにノードを追加したり、既存のノードに新しいドライブをインストールしたりすると、ドライブは自動的に使用可能として登録されます。ドライブをクラスターに参加させるには、まず Element UI または API を使用してドライブをクラスターに追加する必要があります。 
+---
+= クラスターにドライブを追加する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスターにノードを追加したり、既存のノードに新しいドライブをインストールしたりすると、ドライブは自動的に使用可能として登録されます。ドライブをクラスターに参加させるには、まず Element UI または API を使用してドライブをクラスターに追加する必要があります。
+
+次の条件が存在する場合、ドライブは「使用可能なドライブ」リストに表示されません。
+
+* ドライブはアクティブ、削除中、消去中、または障害状態です。
+* ドライブが含まれるノードは保留状態です。
+
+
+.手順
+. Element ユーザー インターフェイスから、*クラスター* > *ドライブ* を選択します。
+. 利用可能なドライブのリストを表示するには、「*利用可能*」をクリックします。
+. 次のいずれかを実行します。
++
+** 個々のドライブを追加するには、追加するドライブの *アクション* アイコンをクリックし、*追加* をクリックします。
+** 複数のドライブを追加するには、追加するドライブのチェックボックスをオンにし、「*一括操作*」をクリックして、「*追加*」をクリックします。
++
+....
+== Find more information
+* https://docs.netapp.com/us-en/element-software/index.html[SolidFire and Element Software Documentation]
+* https://docs.netapp.com/us-en/vcp/index.html[NetApp Element Plug-in for vCenter Server^]
+....
+
+
+

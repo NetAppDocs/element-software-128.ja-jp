@@ -1,0 +1,52 @@
+---
+permalink: storage/concept_data_protection.html 
+sidebar: sidebar 
+keywords: data protection, protect your data, snapshots, replication, back up 
+summary: NetApp Elementソフトウェアを使用すると、個々のボリュームまたはボリューム グループのスナップショット、Element 上で実行されているクラスタとボリューム間のレプリケーション、 ONTAPシステムへのレプリケーションなどの機能を使用して、さまざまな方法でデータを保護できます。 
+---
+= データの保護
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Elementソフトウェアを使用すると、個々のボリュームまたはボリューム グループのスナップショット、Element 上で実行されているクラスタとボリューム間のレプリケーション、 ONTAPシステムへのレプリケーションなどの機能を使用して、さまざまな方法でデータを保護できます。
+
+* *スナップショット*
++
+スナップショットのみのデータ保護では、特定の時点で変更されたデータをリモート クラスターに複製します。ソース クラスターで作成されたスナップショットのみが複製されます。ソースボリュームからのアクティブな書き込みは行われません。
+
++
+xref:task_data_protection_using_volume_snapshots.adoc[データ保護のためにボリュームスナップショットを使用する]
+
+* *Element上で実行されているクラスターとボリューム間のリモートレプリケーション*
++
+フェイルオーバーおよびフェイルバックのシナリオでは、Element 上で実行されているクラスター ペアのいずれかのクラスターから、ボリューム データを同期的または非同期的に複製できます。
+
++
+xref:task_replication_perform_remote_replication_between_element_clusters.adoc[NetApp Elementソフトウェアを実行しているクラスタ間でリモート レプリケーションを実行します。]
+
+* * SnapMirrorテクノロジーを使用したElementクラスタとONTAPクラスタ間のレプリケーション*
++
+NetApp SnapMirrorテクノロジーを使用すると、災害復旧の目的で Element を使用して作成されたスナップショットをONTAPに複製できます。  SnapMirror関係では、Element が一方のエンドポイントであり、 ONTAP がもう一方のエンドポイントです。
+
++
+xref:task_snapmirror_use_replication_between_element_and_ontap_clusters.adoc[ElementとONTAPクラスタ間のSnapMirrorレプリケーションを使用する]
+
+* * SolidFire、S3、Swift オブジェクト ストアへのボリュームのバックアップと復元*
++
+ボリュームを他のSolidFireストレージや、Amazon S3 または OpenStack Swift と互換性のあるセカンダリ オブジェクト ストアにバックアップおよび復元できます。
+
++
+xref:task_data_protection_back_up_and_restore_volumes.adoc[SolidFire、S3、Swift オブジェクト ストアにボリュームをバックアップおよび復元します]
+
+
+
+
+
+== 詳細情報
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

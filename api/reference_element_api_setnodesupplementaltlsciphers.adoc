@@ -1,0 +1,118 @@
+---
+permalink: api/reference_element_api_setnodesupplementaltlsciphers.html 
+sidebar: sidebar 
+keywords: tls,cipher,set,setting,list,supplemental,setnodesupplementaltlsciphers,node 
+summary: SetNodeSupplementalTlsCiphers メソッドを使用して、補足 TLS 暗号のリストを指定できます。このコマンドは管理ノードで使用できます。 
+---
+= ノード補足Tls暗号の設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `SetNodeSupplementalTlsCiphers`補足 TLS 暗号のリストを指定する方法。このコマンドは管理ノードで使用できます。
+
+
+
+== パラメータ
+
+
+NOTE: このメソッドは管理ノードに対して呼び出す必要があります。例えば：
+
+[listing]
+----
+https://<management node IP>:442/json-rpc/10.0
+----
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+補足暗号
+ a| 
+OpenSSL 命名スキームを使用した補足暗号スイート名。暗号スイート名の使用では大文字と小文字は区別されません。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+必須暗号
+ a| 
+ノードの必須 TLS 暗号スイートのリスト。これらはノード上で常にアクティブな暗号です。
+ a| 
+string
+
+
+
+ a| 
+補足暗号
+ a| 
+ノードの補足 TLS 暗号スイートのリスト。
+ a| 
+string
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "SetNodeSupplementalTlsCiphers",
+   "params": {
+        "supplementalCiphers": [
+            "DHE-RSA-AES128-SHA256",
+            "DHE-RSA-AES128-GCM-SHA256",
+            "ECDHE-RSA-AES128-SHA256",
+            "ECDHE-RSA-AES128-GCM-SHA256"
+        ]
+   },
+   "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+        "mandatoryCiphers": [
+            "DHE-RSA-AES256-SHA256",
+            "DHE-RSA-AES256-GCM-SHA384",
+            "ECDHE-RSA-AES256-SHA384",
+            "ECDHE-RSA-AES256-GCM-SHA384"
+        ],
+        "supplementalCiphers": [
+            "DHE-RSA-AES128-SHA256",
+            "DHE-RSA-AES128-GCM-SHA256",
+            "ECDHE-RSA-AES128-SHA256",
+            "ECDHE-RSA-AES128-GCM-SHA256"
+        ]
+    }
+}
+----

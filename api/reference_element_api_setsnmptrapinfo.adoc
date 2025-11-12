@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_setsnmptrapinfo.html 
+sidebar: sidebar 
+keywords: snmp,trap,information,info,setting,set,setsnmptrapinfo 
+summary: 'SetSnmpTrapInfo メソッドを使用すると、クラスターの SNMP 通知 (トラップ) の生成を有効または無効にしたり、通知を受信するホストのセットを指定したりできます。各 SetSnmpTrapInfo メソッド呼び出しで渡される値は、以前の呼び出しで設定されたすべての値を置き換えます。' 
+---
+= SnmpTrapInfo の設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `SetSnmpTrapInfo`クラスターの SNMP 通知 (トラップ) の生成を有効または無効にし、通知を受信するホストのセットを指定する方法。それぞれに渡す値は `SetSnmpTrapInfo`メソッド呼び出しは、以前の呼び出しで設定されたすべての値を置き換えます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+トラップ受信者
+ a| 
+ストレージ クラスターによって生成されたトラップを受信するホストのリスト。トラップ タイプのいずれかが有効になっている場合は、少なくとも 1 つのオブジェクトが必要です。このパラメータは、ブールパラメータが true に設定されている場合にのみ必要です。 (デフォルト値はありません。必須ではありません。
+ a| 
+xref:reference_element_api_snmptraprecipient.adoc[snmpトラップ受信者]配列
+
+
+
+ a| 
+クラスター障害トラップが有効
+ a| 
+true に設定すると、クラスター障害がログに記録されたときに、対応するクラスター障害通知が設定されたトラップ受信者リストに送信されます。 (デフォルト値: false。必須ではありません。
+ a| 
+ブーリアン
+
+
+
+ a| 
+クラスター障害解決トラップが有効
+ a| 
+true に設定すると、クラスター障害が解決されたときに、対応するクラスター障害解決通知が、構成されたトラップ受信者のリストに送信されます。 (デフォルト値: false。必須ではありません。
+ a| 
+ブーリアン
+
+
+
+ a| 
+クラスターイベントトラップが有効
+ a| 
+true に設定すると、クラスター イベントがログに記録されたときに、対応するクラスター イベント通知が構成されたトラップ受信者のリストに送信されます。 (デフォルト値: false。必須ではありません。
+ a| 
+ブーリアン
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+"method":"SetSnmpTrapInfo",
+"params":{
+    "clusterFaultTrapsEnabled":true,
+    "clusterFaultResolvedTrapsEnabled":true,
+    "clusterEventTrapsEnabled":true,
+    "trapRecipients":[
+    {
+      "host":"192.30.0.10",
+      "port":162,
+      "community":"public"
+    }
+   ]
+  },
+  "id":1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "id" : 1,
+    "result" : {}
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

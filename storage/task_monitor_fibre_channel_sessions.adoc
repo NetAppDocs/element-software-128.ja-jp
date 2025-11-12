@@ -1,0 +1,24 @@
+---
+permalink: storage/task_monitor_fibre_channel_sessions.html 
+sidebar: sidebar 
+keywords: fibre channel sessions, fc, FC, sessions 
+summary: 'クラスターに接続されているファイバー チャネル (FC) セッションを表示できます。ウィンドウに表示する接続のみを含めるように情報をフィルタリングできます。' 
+---
+= ファイバーチャネルセッションを表示する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスターに接続されているファイバー チャネル (FC) セッションを表示できます。ウィンドウに表示する接続のみを含めるように情報をフィルタリングできます。
+
+. Element UI で、*レポート* > *FC セッション* を選択します。
+. フィルター条件フィールドを表示するには、[*フィルター*] をクリックします。
+
+
+
+
+== 詳細情報の参照
+
+xref:reference_monitor_fibre_channel_session_details.adoc[ファイバーチャネルセッションの詳細]

@@ -1,0 +1,103 @@
+---
+permalink: api/reference_element_api_modifysnapmirrorendpoint.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapmirror,endpoint,modifysnapmirrorendpoint 
+summary: Element ソフトウェア Web UI は、ModifySnapMirrorEndpoint メソッドを使用して、 SnapMirrorエンドポイントの名前と管理属性を変更します。 
+---
+= SnapMirrorエンドポイントの変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ElementソフトウェアのWeb UIは、 `ModifySnapMirrorEndpoint` SnapMirrorエンドポイントの名前と管理属性を変更する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+
+
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+変更するSnapMirrorエンドポイント。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+管理IP
+ a| 
+ONTAPシステムの新しい管理 IP アドレス。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+ユーザ名
+ a| 
+ONTAPシステムの新しい管理ユーザー名。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+パスワード
+ a| 
+ONTAPシステムの新しい管理パスワード。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラーエンドポイント
+ a| 
+変更されたSnapMirrorエンドポイントに関する情報。
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[スナップミラーエンドポイント]
+
+|===
+
+
+== バージョン以降の新機能
+
+10.0

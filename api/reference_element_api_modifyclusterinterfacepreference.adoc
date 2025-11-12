@@ -1,0 +1,93 @@
+---
+permalink: api/reference_element_api_modifyclusterinterfacepreference.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,cluster,interface,preference,modifyclusterinterfacepreference 
+summary: ModifyClusterInterfacePreference メソッドを使用すると、Element ソフトウェアを実行しているストレージ クラスターと統合されたシステムで、既存のクラスター インターフェイスの設定を変更できます。このメソッドは内部使用用です。 
+---
+= クラスタインターフェースの設定変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+その `ModifyClusterInterfacePreference`この方法により、Element ソフトウェアを実行するストレージ クラスターと統合されたシステムは、既存のクラスター インターフェイスの設定を変更できるようになります。このメソッドは内部使用用です。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+
+
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+名前
+ a| 
+変更するクラスター インターフェース設定の名前。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+価値
+ a| 
+クラスター インターフェイス設定の新しい値。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+	"method": "ModifyClusterInterfacePreference",
+	"params": {
+	"name": "testname",
+	"value": "newvalue"
+},
+	"id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {}
+}
+----
+
+
+== バージョン以降の新機能
+
+11.0

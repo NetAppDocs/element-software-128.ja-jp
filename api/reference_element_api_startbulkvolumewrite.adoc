@@ -1,0 +1,172 @@
+---
+permalink: api/reference_element_api_startbulkvolumewrite.html 
+sidebar: sidebar 
+keywords: volume,bulk,start,starting,write,session,startbulkvolumewrite 
+summary: StartBulkVolumeWrite メソッドを使用して、指定したボリューム上で一括ボリューム書き込みセッションを開始できます。 
+---
+= 一括ボリューム書き込みの開始
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `StartBulkVolumeWrite`指定されたボリューム上で一括ボリューム書き込みセッションを開始する方法。
+
+ボリューム上で同時に実行できるバルク ボリューム プロセスは 2 つだけです。セッションを初期化すると、外部バックアップ ソースから Element ストレージ ボリュームにデータが書き込まれます。外部データは、Element ストレージ ノード上で実行されている Web サーバーによってアクセスされます。外部データ アクセスのためのサーバー相互作用情報は、ストレージ システム上で実行されるスクリプトによって渡されます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+形式
+ a| 
+ボリューム データの形式。次のいずれかを使用できます。
+
+* `uncompressed`: ボリュームのすべてのバイトは圧縮されずに返されます。
+* `native`: 後続の一括ボリューム書き込み時に、より小さく、より効率的に保存および書き込まれる不透明データが返されます。
+
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+volumeID
+ a| 
+書き込むボリュームの ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+スクリプト
+ a| 
+実行可能なスクリプトの名前。スクリプト名が指定されていない場合は、要素ストレージ ノードにアクセスするためにキーと URL が必要です。スクリプトはプライマリ ノードで実行され、キーと URL がスクリプトに返され、ローカル Web サーバーに接続できるようになります。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+スクリプトパラメータ
+ a| 
+スクリプトに渡す JSON パラメータ。
+ a| 
+JSONオブジェクト
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+attributes
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。link:reference_element_api_attributes.html["詳細情報"]。
+ a| 
+JSONオブジェクト
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+非同期ハンドル
+ a| 
+完了を確認する非同期プロセスの ID。
+ a| 
+integer
+
+
+
+ a| 
+キー
+ a| 
+セッションを一意に識別する不透明キー。
+ a| 
+string
+
+
+
+ a| 
+URL
+ a| 
+ノードの Web サーバーにアクセスするための URL。
+ a| 
+string
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "StartBulkVolumeWrite",
+   "params": {
+      "volumeID" : 5,
+      "format"  : "native",
+   },
+   "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "asyncHandle" : 1,
+      "key" : "11eed8f086539205beeaadd981aad130",
+      "url" : "https://127.0.0.1:44000/"
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

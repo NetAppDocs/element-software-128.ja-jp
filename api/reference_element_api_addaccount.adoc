@@ -1,0 +1,172 @@
+---
+permalink: api/reference_element_api_addaccount.html 
+sidebar: sidebar 
+keywords: addaccount,add,adding,account,accounts 
+summary: 'AddAccount を使用して、システムに新しいアカウントを追加できます。この方法を使用して、アカウントの作成時に新しいアカウントの下に新しいボリュームを作成することもできます。アカウントに指定したチャレンジ ハンドシェイク認証プロトコル (CHAP) 設定は、アカウントが所有するすべてのボリュームに適用されます。' 
+---
+= アカウントを追加
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用できます `AddAccount`システムに新しいアカウントを追加します。この方法を使用して、アカウントの作成時に新しいアカウントの下に新しいボリュームを作成することもできます。アカウントに指定したチャレンジ ハンドシェイク認証プロトコル (CHAP) 設定は、アカウントが所有するすべてのボリュームに適用されます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+`attributes`
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+`enableChap`
+ a| 
+イニシエーターがボリュームにアクセスするために CHAP アカウント資格情報を使用できるかどうかを指定します。
+ a| 
+ブーリアン
+ a| 
+true
+ a| 
+いいえ
+
+
+
+ a| 
+`initiatorSecret`
+ a| 
+イニシエーターに使用する CHAP シークレット。この秘密は 12 文字から 16 文字の長さで、解読不可能なものでなければなりません。イニシエーターの CHAP シークレットは一意である必要があり、ターゲットの CHAP シークレットと同じにすることはできません。指定しない場合はランダムなシークレットが作成されます。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+`targetSecret`
+ a| 
+ターゲットに使用する CHAP シークレット (相互 CHAP 認証)。この秘密は 12 文字から 16 文字の長さで、解読不可能なものでなければなりません。ターゲット CHAP シークレットは一意である必要があり、イニシエーター CHAP シークレットと同じにすることはできません。指定しない場合はランダムなシークレットが作成されます。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+`username`
+ a| 
+このアカウントの一意のユーザー名。  (長さは 1 ～ 64 文字にする必要があります)。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+アカウント
+ a| 
+新しく作成されたアカウントに関する情報を含むオブジェクト。
+ a| 
+xref:reference_element_api_account.adoc[アカウント]
+
+
+
+ a| 
+accountID
+ a| 
+新しく作成されたアカウント オブジェクトの ID。
+ a| 
+integer
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+	"method": "AddAccount",
+    "params": {
+     "username"  : "bobsmith",
+     "initiatorSecret" : "168[#5A757ru268)",
+     "targetSecret" : "tlt&lt;,8TUYa7bC",
+     "attributes" : {
+       "billingcode" : 2345
+     }
+   },
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "account": {
+      "accountID": 90,
+      "attributes": {
+        "billingcode": 2345
+      },
+      "initiatorSecret": "168[#5A757ru268)",
+      "status": "active",
+      "storageContainerID": "00000000-0000-0000-0000-000000000000",
+      "targetSecret": "tlt&lt;,8TUYa7bC",
+      "username": "bobsmith",
+      "volumes": [],
+      "enableChap": true
+    },
+    "accountID": 90
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

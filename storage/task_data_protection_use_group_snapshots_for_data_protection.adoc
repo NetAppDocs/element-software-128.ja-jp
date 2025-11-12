@@ -1,0 +1,27 @@
+---
+permalink: storage/task_data_protection_use_group_snapshots_for_data_protection.html 
+sidebar: sidebar 
+keywords: group snapshots, data protection, set of volumes, backup, rollback 
+summary: 関連するボリューム セットのグループ スナップショットを作成して、各ボリュームのメタデータの特定時点のコピーを保存できます。将来、グループ スナップショットをバックアップまたはロールバックとして使用し、ボリューム グループの状態を以前の状態に復元できます。 
+---
+= データ保護タスクにグループスナップショットを使用する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+関連するボリューム セットのグループ スナップショットを作成して、各ボリュームのメタデータの特定時点のコピーを保存できます。将来、グループ スナップショットをバックアップまたはロールバックとして使用し、ボリューム グループの状態を以前の状態に復元できます。
+
+
+
+== 詳細情報の参照
+
+* xref:task_data_protection_create_a_group_snapshot.adoc[グループスナップショットを作成する]
+* xref:task_data_protection_edit_group_snapshots.adoc[グループスナップショットを編集する]
+* xref:task_data_protection_edit_members_of_group_snapshot.adoc[グループスナップショットのメンバーを編集する]
+* xref:task_data_protection_delete_a_group_snapshot.adoc[グループスナップショットを削除する]
+* xref:task_data_protection_roll_back_volumes_to_a_group_snapshot.adoc[ボリュームをグループスナップショットにロールバックする]
+* xref:task_data_protection_clone_multiple_volumes.adoc[複数のボリュームのクローン]
+* xref:task_data_protection_clone_multiple_volumes_from_a_group_snapshot.adoc[グループスナップショットから複数のボリュームをクローンする]
+

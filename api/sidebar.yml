@@ -1,0 +1,908 @@
+---
+section: api
+title: Element APIでストレージを管理する
+entries:
+- title: Element APIソフトウェア
+  entries:
+  - title: ElementソフトウェアAPIについて学ぶ
+    url: "/api/concept_element_api_about_the_api.html"
+  - title: リクエストオブジェクトのメンバー
+    url: "/api/reference_element_api_request_object_members.html"
+  - title: レスポンスオブジェクトのメンバー
+    url: "/api/reference_element_api_response_object_members.html"
+  - title: リクエストエンドポイント
+    url: "/api/concept_element_api_request_endpoints.html"
+  - title: API認証
+    url: "/api/concept_element_api_authentication.html"
+  - title: 非同期メソッド
+    url: "/api/concept_element_api_asynchronous_methods.html"
+  - title: 属性
+    url: "/api/reference_element_api_attributes.html"
+- title: 一般的なオブジェクト
+  entries:
+  - title: アカウント
+    url: "/api/reference_element_api_account.html"
+  - title: 認証セッション情報
+    url: "/api/reference_element_api_authsessioninfo.html"
+  - title: バルクボリュームジョブ
+    url: "/api/reference_element_api_bulkvolumejob.html"
+  - title: バインディング（仮想ボリューム）
+    url: "/api/reference_element_api_binding_vvols.html"
+  - title: 証明書の詳細
+    url: "/api/reference_element_api_certificatedetails.html"
+  - title: cluster
+    url: "/api/reference_element_api_cluster.html"
+  - title: クラスター管理者
+    url: "/api/reference_element_api_clusteradmin.html"
+  - title: クラスター容量
+    url: "/api/reference_element_api_clustercapacity.html"
+  - title: クラスター構成
+    url: "/api/reference_element_api_clusterconfig.html"
+  - title: クラスター情報
+    url: "/api/reference_element_api_clusterinfo.html"
+  - title: クラスターペア
+    url: "/api/reference_element_api_clusterpair.html"
+  - title: クラスター統計
+    url: "/api/reference_element_api_clusterstats.html"
+  - title: クラスター構造
+    url: "/api/reference_element_api_clusterstructure.html"
+  - title: ドライブ
+    url: "/api/reference_element_api_drive.html"
+  - title: ドライブ統計
+    url: "/api/reference_element_api_drivestats.html"
+  - title: エラー
+    url: "/api/reference_element_api_error.html"
+  - title: event
+    url: "/api/reference_element_api_event.html"
+  - title: 故障
+    url: "/api/reference_element_api_fault.html"
+  - title: ファイバーチャネルポート
+    url: "/api/reference_element_api_fibrechannelport.html"
+  - title: fipsエラーノードレポート
+    url: "/api/reference_element_api_fipserrornodereport.html"
+  - title: fipsノードレポート
+    url: "/api/reference_element_api_fipsnodereport.html"
+  - title: fipsレポート
+    url: "/api/reference_element_api_fipsreport.html"
+  - title: グループスナップショット
+    url: "/api/reference_element_api_groupsnapshot.html"
+  - title: ハードウェア情報
+    url: "/api/reference_element_api_hardwareinfo.html"
+  - title: ホスト（仮想ボリューム）
+    url: "/api/reference_element_api_host.html"
+  - title: idpConfigInfo
+    url: "/api/reference_element_api_idpconfiginfo.html"
+  - title: イニシエータ
+    url: "/api/reference_element_api_initiator.html"
+  - title: iSCSI認証
+    url: "/api/reference_element_api_iscsiauthentication.html"
+  - title: キープロバイダーKmip
+    url: "/api/reference_element_api_keyproviderkmip.html"
+  - title: キーサーバーKmip
+    url: "/api/reference_element_api_keyserverkmip.html"
+  - title: ldap構成
+    url: "/api/reference_element_api_ldapconfiguration.html"
+  - title: ログサーバー
+    url: "/api/reference_element_api_loggingserver.html"
+  - title: ネットワーク（結合インターフェース）
+    url: "/api/reference_element_api_network_bonded_interfaces.html"
+  - title: ネットワーク（すべてのインターフェース）
+    url: "/api/reference_element_api_network_all_interfaces.html"
+  - title: ネットワーク（イーサネットインターフェース）
+    url: "/api/reference_element_api_network_ethernet_interfaces.html"
+  - title: ネットワーク（ローカルインターフェース）
+    url: "/api/reference_element_api_network_local_interfaces.html"
+  - title: ネットワーク（SNMP）
+    url: "/api/reference_element_api_network_snmp.html"
+  - title: ネットワークインターフェース
+    url: "/api/reference_element_api_networkinterface.html"
+  - title: ネットワークインターフェース統計
+    url: "/api/reference_element_api_networkinterfacestats.html"
+  - title: ノード
+    url: "/api/reference_element_api_node.html"
+  - title: ノード保護ドメイン
+    url: "/api/reference_element_api_nodeprotectiondomains.html"
+  - title: nodeStats
+    url: "/api/reference_element_api_nodestats.html"
+  - title: ontapバージョン情報
+    url: "/api/reference_element_api_ontapversioninfo.html"
+  - title: 保留中のアクティブノード
+    url: "/api/reference_element_api_pendingactivenode.html"
+  - title: 保留中のノード
+    url: "/api/reference_element_api_pendingnode.html"
+  - title: 保護ドメイン
+    url: "/api/reference_element_api_protectiondomain.html"
+  - title: 保護ドメインレベル
+    url: "/api/reference_element_api_protectiondomainlevel.html"
+  - title: 保護ドメイン回復力
+    url: "/api/reference_element_api_protectiondomainresiliency.html"
+  - title: 保護ドメイン許容度
+    url: "/api/reference_element_api_protectiondomaintolerance.html"
+  - title: 保護スキーム回復力
+    url: "/api/reference_element_api_protectionschemeresiliency.html"
+  - title: 保護スキーム許容度
+    url: "/api/reference_element_api_protectionschemetolerance.html"
+  - title: プロトコルエンドポイント
+    url: "/api/reference_element_api_protocolendpoint.html"
+  - title: QoS
+    url: "/api/reference_element_api_qos.html"
+  - title: QoSポリシー
+    url: "/api/reference_element_api_qospolicy.html"
+  - title: リモートクラスタスナップショットステータス
+    url: "/api/reference_element_api_remoteclustersnapshotstatus.html"
+  - title: スケジュール
+    url: "/api/reference_element_api_schedule.html"
+  - title: セッション（ファイバーチャネル）
+    url: "/api/reference_element_api_session_fibre_channel.html"
+  - title: セッション（iSCSI）
+    url: "/api/reference_element_api_session_iscsi.html"
+  - title: スナップミラーアグリゲート
+    url: "/api/reference_element_api_snapmirroraggregate.html"
+  - title: snapMirrorClusterIdentity
+    url: "/api/reference_element_api_snapmirrorclusteridentity.html"
+  - title: スナップミラーエンドポイント
+    url: "/api/reference_element_api_snapmirrorendpoint.html"
+  - title: スナップミラージョブスケジュールCron情報
+    url: "/api/reference_element_api_snapmirrorjobschedulecroninfo.html"
+  - title: スナップミラーLun情報
+    url: "/api/reference_element_api_snapmirrorluninfo.html"
+  - title: スナップミラーネットワークインターフェース
+    url: "/api/reference_element_api_snapmirrornetworkinterface.html"
+  - title: スナップミラーノード
+    url: "/api/reference_element_api_snapmirrornode.html"
+  - title: スナップミラーポリシー
+    url: "/api/reference_element_api_snapmirrorpolicy.html"
+  - title: スナップミラーポリシールール
+    url: "/api/reference_element_api_snapmirrorpolicyrule.html"
+  - title: スナップミラー関係
+    url: "/api/reference_element_api_snapmirrorrelationship.html"
+  - title: スナップミラーボリューム
+    url: "/api/reference_element_api_snapmirrorvolume.html"
+  - title: スナップミラーボリューム情報
+    url: "/api/reference_element_api_snapmirrorvolumeinfo.html"
+  - title: スナップミラーVサーバー
+    url: "/api/reference_element_api_snapmirrorvserver.html"
+  - title: スナップミラーVサーバー集約情報
+    url: "/api/reference_element_api_snapmirrorvserveraggregateinfo.html"
+  - title: Snapshot
+    url: "/api/reference_element_api_snapshot.html"
+  - title: snmpトラップ受信者
+    url: "/api/reference_element_api_snmptraprecipient.html"
+  - title: ストレージコンテナ
+    url: "/api/reference_element_api_storagecontainer.html"
+  - title: 同期ジョブ
+    url: "/api/reference_element_api_syncjob.html"
+  - title: タスク（仮想ボリューム）
+    url: "/api/reference_element_api_task_virtual_volumes.html"
+  - title: usmユーザー
+    url: "/api/reference_element_api_usmuser.html"
+  - title: 仮想ネットワーク
+    url: "/api/reference_element_api_virtualnetwork.html"
+  - title: 仮想ボリューム
+    url: "/api/reference_element_api_virtualvolume.html"
+  - title: 音量
+    url: "/api/reference_element_api_volume.html"
+  - title: ボリュームアクセスグループ
+    url: "/api/reference_element_api_volumeaccessgroup.html"
+  - title: ボリュームペア
+    url: "/api/reference_element_api_volumepair.html"
+  - title: ボリューム統計
+    url: "/api/reference_element_api_volumestats.html"
+- title: 一般的な方法
+  entries:
+  - title: ゲットAPI
+    url: "/api/reference_element_api_getapi.html"
+  - title: 非同期結果を取得する
+    url: "/api/reference_element_api_getasyncresult.html"
+  - title: 完全な統計情報を取得する
+    url: "/api/reference_element_api_getcompletestats.html"
+  - title: 制限を取得
+    url: "/api/reference_element_api_getlimits.html"
+  - title: ゲットオリジン
+    url: "/api/reference_element_api_getorigin.html"
+  - title: 生の統計情報を取得
+    url: "/api/reference_element_api_getrawstats.html"
+  - title: リスト非同期結果
+    url: "/api/reference_element_api_listasyncresults.html"
+- title: アカウントAPIメソッド
+  entries:
+  - title: アカウントを追加
+    url: "/api/reference_element_api_addaccount.html"
+  - title: アカウントIDを取得
+    url: "/api/reference_element_api_getaccountbyid.html"
+  - title: 名前でアカウントを取得
+    url: "/api/reference_element_api_getaccountbyname.html"
+  - title: アカウント効率化
+    url: "/api/reference_element_api_getaccountefficiency.html"
+  - title: アカウント一覧
+    url: "/api/reference_element_api_listaccounts.html"
+  - title: アカウントの変更
+    url: "/api/reference_element_api_modifyaccount.html"
+  - title: アカウントを削除
+    url: "/api/reference_element_api_removeaccount.html"
+- title: 管理者APIメソッド
+  entries:
+  - title: クラスタ管理者の追加
+    url: "/api/reference_element_api_addclusteradmin.html"
+  - title: 現在のクラスタ管理者を取得
+    url: "/api/reference_element_api_getcurrentclusteradmin.html"
+  - title: ログインバナーを取得する
+    url: "/api/reference_element_api_getloginbanner.html"
+  - title: クラスタ管理者のリスト
+    url: "/api/reference_element_api_listclusteradmins.html"
+  - title: クラスタ管理者の変更
+    url: "/api/reference_element_api_modifyclusteradmin.html"
+  - title: クラスタ管理者の削除
+    url: "/api/reference_element_api_removeclusteradmin.html"
+  - title: ログインバナーの設定
+    url: "/api/reference_element_api_setloginbanner.html"
+- title: クラスターAPIメソッド
+  entries:
+  - title: AddNodes
+    url: "/api/reference_element_api_addnodes.html"
+  - title: ClearClusterFaults
+    url: "/api/reference_element_api_clearclusterfaults.html"
+  - title: クラスターインターフェース設定の作成
+    url: "/api/reference_element_api_createclusterinterfacepreference.html"
+  - title: クラスタインターフェース設定の削除
+    url: "/api/reference_element_api_deleteclusterinterfacepreference.html"
+  - title: 機能を無効にする
+    url: "/api/reference_element_api_disablefeature.html"
+  - title: 機能を有効にする
+    url: "/api/reference_element_api_enablefeature.html"
+  - title: クラスタ容量の取得
+    url: "/api/reference_element_api_getclustercapacity.html"
+  - title: クラスターフルしきい値の取得
+    url: "/api/reference_element_api_getclusterfullthreshold.html"
+  - title: クラスタハードウェア情報を取得する
+    url: "/api/reference_element_api_getclusterhardwareinfo.html"
+  - title: クラスター情報を取得
+    url: "/api/reference_element_api_getclusterinfo.html"
+  - title: クラスタインターフェース設定の取得
+    url: "/api/reference_element_api_getclusterinterfacepreference.html"
+  - title: クラスターマスターノードIDを取得する
+    url: "/api/reference_element_api_getclustermasternodeid.html"
+  - title: クラスター統計情報を取得する
+    url: "/api/reference_element_api_getclusterstats.html"
+  - title: クラスタバージョン情報を取得する
+    url: "/api/reference_element_api_getclusterversioninfo.html"
+  - title: フィーチャステータスの取得
+    url: "/api/reference_element_api_getfeaturestatus.html"
+  - title: ログインセッション情報を取得する
+    url: "/api/reference_element_api_getloginsessioninfo.html"
+  - title: ノードハードウェア情報を取得する
+    url: "/api/reference_element_api_getnodehardwareinfo.html"
+  - title: ノード統計情報を取得する
+    url: "/api/reference_element_api_getnodestats.html"
+  - title: ListActiveNodes
+    url: "/api/reference_element_api_listactivenodes.html"
+  - title: すべてのノードをリスト
+    url: "/api/reference_element_api_listallnodes.html"
+  - title: クラスタ障害のリスト
+    url: "/api/reference_element_api_listclusterfaults.html"
+  - title: クラスターインターフェース設定の一覧
+    url: "/api/reference_element_api_listclusterinterfacepreferences.html"
+  - title: リストイベント
+    url: "/api/reference_element_api_listevents.html"
+  - title: リストノード統計
+    url: "/api/reference_element_api_listnodestats.html"
+  - title: ISCSIセッションのリスト
+    url: "/api/reference_element_api_listiscsisessions.html"
+  - title: リストサービス
+    url: "/api/reference_element_api_listservices.html"
+  - title: 保留中のノードのリスト
+    url: "/api/reference_element_api_listpendingnodes.html"
+  - title: 保留中のアクティブノードのリスト
+    url: "/api/reference_element_api_listpendingactivenodes.html"
+  - title: クラスタフルしきい値の変更
+    url: "/api/reference_element_api_modifyclusterfullthreshold.html"
+  - title: クラスタインターフェースの設定変更
+    url: "/api/reference_element_api_modifyclusterinterfacepreference.html"
+  - title: RemoveNodes
+    url: "/api/reference_element_api_removenodes.html"
+  - title: ログインセッション情報の設定
+    url: "/api/reference_element_api_setloginsessioninfo.html"
+  - title: シャットダウン
+    url: "/api/reference_element_api_cluster_shutdown.html"
+- title: クラスター作成APIメソッド
+  entries:
+  - title: 提案クラスターの確認
+    url: "/api/reference_element_api_checkproposedcluster.html"
+  - title: CreateCluster
+    url: "/api/reference_element_api_createcluster.html"
+  - title: ブートストラップ設定の取得
+    url: "/api/reference_element_api_getbootstrapconfig.html"
+- title: ドライブAPIメソッド
+  entries:
+  - title: AddDrives
+    url: "/api/reference_element_api_adddrives.html"
+  - title: ドライブハードウェア情報を取得する
+    url: "/api/reference_element_api_getdrivehardwareinfo.html"
+  - title: ドライブ統計を取得
+    url: "/api/reference_element_api_getdrivestats.html"
+  - title: リストドライブ
+    url: "/api/reference_element_api_listdrives.html"
+  - title: リストドライブ統計
+    url: "/api/reference_element_api_listdrivestats.html"
+  - title: RemoveDrives
+    url: "/api/reference_element_api_removedrives.html"
+  - title: SecureEraseDrives
+    url: "/api/reference_element_api_secureerasedrives.html"
+- title: ファイバーチャネルAPIメソッド
+  entries:
+  - title: ボリュームアクセスグループのLUN割り当ての取得
+    url: "/api/reference_element_api_getvolumeaccessgrouplunassignments.html"
+  - title: ファイバーチャネルポート情報のリスト
+    url: "/api/reference_element_api_listfibrechannelportinfo.html"
+  - title: ファイバーチャネルセッションのリスト
+    url: "/api/reference_element_api_listfibrechannelsessions.html"
+  - title: リストノードファイバーチャネルポート情報
+    url: "/api/reference_element_api_listnodefibrechannelportinfo.html"
+  - title: ボリュームアクセスグループLUN割り当ての変更
+    url: "/api/reference_element_api_modifyvolumeaccessgrouplunassignments.html"
+- title: イニシエーターAPIメソッド
+  entries:
+  - title: イニシエーターの作成
+    url: "/api/reference_element_api_createinitiators.html"
+  - title: イニシエーターの削除
+    url: "/api/reference_element_api_deleteinitiators.html"
+  - title: リストイニシエーター
+    url: "/api/reference_element_api_listinitiators.html"
+  - title: イニシエーターの変更
+    url: "/api/reference_element_api_modifyinitiators.html"
+- title: LDAP APIメソッド
+  entries:
+  - title: LdapClusterAdmin の追加
+    url: "/api/reference_element_api_addldapclusteradmin.html"
+  - title: LDAP認証を有効にする
+    url: "/api/reference_element_api_enableldapauthentication.html"
+  - title: LDAP認証を無効にする
+    url: "/api/reference_element_api_disableldapauthentication.html"
+  - title: LDAP構成の取得
+    url: "/api/reference_element_api_getldapconfiguration.html"
+  - title: テストLdap認証
+    url: "/api/reference_element_api_testldapauthentication.html"
+- title: 多要素認証APIメソッド
+  entries:
+  - title: IdpClusterAdmin の追加
+    url: "/api/reference_element_api_addidpclusteradmin.html"
+  - title: IdpConfigurationの作成
+    url: "/api/reference_element_api_createidpconfiguration.html"
+  - title: 認証セッションの削除
+    url: "/api/reference_element_api_deleteauthsession.html"
+  - title: クラスタ管理者による認証セッションの削除
+    url: "/api/reference_element_api_deleteauthsessionsbyclusteradmin.html"
+  - title: ユーザー名による認証セッションの削除
+    url: "/api/reference_element_api_deleteauthsessionsbyusername.html"
+  - title: IdpConfiguration の削除
+    url: "/api/reference_element_api_deleteidpconfiguration.html"
+  - title: Idp認証を無効にする
+    url: "/api/reference_element_api_disableidpauthentication.html"
+  - title: Idp認証を有効にする
+    url: "/api/reference_element_api_enableidpauthentication.html"
+  - title: GetIdpAuthenticationState
+    url: "/api/reference_element_api_getidpauthenticationstate.html"
+  - title: アクティブ認証セッションのリスト
+    url: "/api/reference_element_api_listactiveauthsessions.html"
+  - title: ListIdpConfigurations
+    url: "/api/reference_element_api_listidpconfigurations.html"
+  - title: IdpConfiguration の更新
+    url: "/api/reference_element_api_updateidpconfiguration.html"
+- title: セッション認証APIメソッド
+  entries:
+  - title: ListAuthSessionsByClusterAdmin
+    url: "/api/reference_element_api_listauthsessionbyclusteradmin.html"
+  - title: ユーザー名による認証セッションの一覧
+    url: "/api/reference_element_api_listauthsessionbyusername.html"
+- title: ノードAPIメソッド
+  entries:
+  - title: CheckPingOnVlan
+    url: "/api/reference_element_api_checkpingonvlan.html"
+  - title: 提案ノード追加のチェック
+    url: "/api/reference_element_api_checkproposednodeadditions.html"
+  - title: クラスターサポートバンドルの作成
+    url: "/api/reference_element_api_createclustersupportbundle.html"
+  - title: サポートバンドルの作成
+    url: "/api/reference_element_api_createsupportbundle.html"
+  - title: すべてのサポートバンドルを削除
+    url: "/api/reference_element_api_deleteallsupportbundles.html"
+  - title: メンテナンスモードを無効にする
+    url: "/api/reference_element_api_disablemaintenancemode.html"
+  - title: SSHを無効にする
+    url: "/api/reference_element_api_disablessh.html"
+  - title: メンテナンスモードを有効にする
+    url: "/api/reference_element_api_enablemaintenancemode.html"
+  - title: SSHを有効にする
+    url: "/api/reference_element_api_enablessh.html"
+  - title: クラスタ構成の取得
+    url: "/api/reference_element_api_getclusterconfig.html"
+  - title: クラスター状態を取得する
+    url: "/api/reference_element_api_getclusterstate.html"
+  - title: ゲットコンフィグ
+    url: "/api/reference_element_api_getconfig.html"
+  - title: ドライブ構成を取得
+    url: "/api/reference_element_api_getdriveconfig.html"
+  - title: ハードウェア構成の取得
+    url: "/api/reference_element_api_gethardwareconfig.html"
+  - title: ハードウェア情報を取得する
+    url: "/api/reference_element_api_gethardwareinfo.html"
+  - title: GetIpmiConfig
+    url: "/api/reference_element_api_getipmiconfig.html"
+  - title: GetIpmiInfo
+    url: "/api/reference_element_api_getipmiinfo.html"
+  - title: ネットワーク構成の取得
+    url: "/api/reference_element_api_getnetworkconfig.html"
+  - title: ネットワークインターフェースの取得
+    url: "/api/reference_element_api_getnetworkinterface.html"
+  - title: GetNodeActiveTlsCiphers
+    url: "/api/reference_element_api_getnodeactivetlsciphers.html"
+  - title: GetNodeFipsDrivesReport
+    url: "/api/reference_element_api_node_getnodefipsdrivesreport.html"
+  - title: ノードSSL証明書の取得
+    url: "/api/reference_element_api_getnodesslcertificate.html"
+  - title: GetNodeSupportedTlsCiphers
+    url: "/api/reference_element_api_getnodesupportedtlsciphers.html"
+  - title: パッチ情報を取得
+    url: "/api/reference_element_api_getpatchinfo.html"
+  - title: 保留中の操作を取得する
+    url: "/api/reference_element_api_getpendingoperation.html"
+  - title: GetSshInfo
+    url: "/api/reference_element_api_getsshinfo.html"
+  - title: ドライブハードウェアのリスト
+    url: "/api/reference_element_api_listdrivehardware.html"
+  - title: ネットワークインターフェースの一覧
+    url: "/api/reference_element_api_listnetworkinterfaces.html"
+  - title: ネットワークインターフェース統計の一覧
+    url: "/api/reference_element_api_listnetworkinterfacestats.html"
+  - title: リストテスト
+    url: "/api/reference_element_api_listtests.html"
+  - title: リストユーティリティ
+    url: "/api/reference_element_api_listutilities.html"
+  - title: ノードSSL証明書の削除
+    url: "/api/reference_element_api_removenodesslcertificate.html"
+  - title: リセットドライブ
+    url: "/api/reference_element_api_resetdrives.html"
+  - title: リセットノード
+    url: "/api/reference_element_api_resetnode.html"
+  - title: リセットノード補足Tls暗号
+    url: "/api/reference_element_api_resetnodesupplementaltlsciphers.html"
+  - title: 再起動ネットワーク
+    url: "/api/reference_element_api_restartnetworking.html"
+  - title: サービスの再起動
+    url: "/api/reference_element_api_restartservices.html"
+  - title: クラスタ構成の設定
+    url: "/api/reference_element_api_setclusterconfig.html"
+  - title: 設定
+    url: "/api/reference_element_api_setconfig.html"
+  - title: ネットワーク設定の設定
+    url: "/api/reference_element_api_setnetworkconfig.html"
+  - title: ノードSSL証明書の設定
+    url: "/api/reference_element_api_setnodesslcertificate.html"
+  - title: ノード補足Tls暗号の設定
+    url: "/api/reference_element_api_setnodesupplementaltlsciphers.html"
+  - title: シャットダウン
+    url: "/api/reference_element_api_node_shutdown.html"
+  - title: テストコネクトアンサンブル
+    url: "/api/reference_element_api_testconnectensemble.html"
+  - title: テストコネクトMvip
+    url: "/api/reference_element_api_testconnectmvip.html"
+  - title: テスト接続Svip
+    url: "/api/reference_element_api_testconnectsvip.html"
+  - title: テストドライブ
+    url: "/api/reference_element_api_testdrives.html"
+  - title: テストハードウェア構成
+    url: "/api/reference_element_api_testhardwareconfig.html"
+  - title: テスト配置クラスター
+    url: "/api/reference_element_api_testlocatecluster.html"
+  - title: ローカル接続のテスト
+    url: "/api/reference_element_api_testlocalconnectivity.html"
+  - title: テストネットワーク構成
+    url: "/api/reference_element_api_testnetworkconfig.html"
+  - title: テストピング
+    url: "/api/reference_element_api_testping.html"
+  - title: リモート接続のテスト
+    url: "/api/reference_element_api_testremoteconnectivity.html"
+- title: レプリケーションAPIメソッド
+  entries:
+  - title: クラスターペアリング操作の順序
+    url: "/api/reference_element_api_cluster_pairing_order_of_operations.html"
+  - title: ボリュームペアリングの操作順序
+    url: "/api/reference_element_api_volume_pairing_order_of_operations.html"
+  - title: ペアクラスタでサポートされるレプリケーションモード
+    url: "/api/reference_element_api_supported_modes_of_replication.html"
+  - title: 完全なクラスターペアリング
+    url: "/api/reference_element_api_completeclusterpairing.html"
+  - title: 完全な音量ペアリング
+    url: "/api/reference_element_api_completevolumepairing.html"
+  - title: クラスターペアのリスト
+    url: "/api/reference_element_api_listclusterpairs.html"
+  - title: アクティブペアボリュームのリスト
+    url: "/api/reference_element_api_listactivepairedvolumes.html"
+  - title: ボリュームペアの変更
+    url: "/api/reference_element_api_modifyvolumepair.html"
+  - title: クラスターペアの削除
+    url: "/api/reference_element_api_removeclusterpair.html"
+  - title: ボリュームペアの削除
+    url: "/api/reference_element_api_removevolumepair.html"
+  - title: クラスタペアリングの開始
+    url: "/api/reference_element_api_startclusterpairing.html"
+  - title: ボリュームペアリングの開始
+    url: "/api/reference_element_api_startvolumepairing.html"
+- title: セキュリティAPIメソッド
+  entries:
+  - title: プロバイダーKmipにキーサーバーを追加
+    url: "/api/reference_element_api_addkeyservertoproviderkmip.html"
+  - title: キープロバイダーKmipの作成
+    url: "/api/reference_element_api_createkeyproviderkmip.html"
+  - title: キーサーバーKmipの作成
+    url: "/api/reference_element_api_createkeyserverkmip.html"
+  - title: 公開鍵ペアの作成
+    url: "/api/reference_element_api_createpublicprivatekeypair.html"
+  - title: 削除キープロバイダーKmip
+    url: "/api/reference_element_api_deletekeyproviderkmip.html"
+  - title: キーサーバーKmipの削除
+    url: "/api/reference_element_api_deletekeyserverkmip.html"
+  - title: 保存時の暗号化を無効にする
+    url: "/api/reference_element_api_disableencryptionatrest.html"
+  - title: 保存時の暗号化を有効にする
+    url: "/api/reference_element_api_enableencryptionatrest.html"
+  - title: GetClientCertificateSignRequest
+    url: "/api/reference_element_api_getclientcertificatesignrequest.html"
+  - title: GetKeyProviderKmip
+    url: "/api/reference_element_api_getkeyproviderkmip.html"
+  - title: GetKeyServerKmip
+    url: "/api/reference_element_api_getkeyserverkmip.html"
+  - title: GetSoftwareEncryptionatRestInfo
+    url: "/api/reference_element_api_getsoftwareencryptionatrestinfo.html"
+  - title: リストキープロバイダーKmip
+    url: "/api/reference_element_api_listkeyproviderskmip.html"
+  - title: リストキーサーバーKmip
+    url: "/api/reference_element_api_listkeyserverskmip.html"
+  - title: キーサーバーKmipの変更
+    url: "/api/reference_element_api_modifykeyserverkmip.html"
+  - title: 再鍵ソフトウェア暗号化保存マスターキー
+    url: "/api/reference_element_api_rekeysoftwareencryptionatrestmasterkey.html"
+  - title: プロバイダーKmipからキーサーバーを削除
+    url: "/api/reference_element_api_removekeyserverfromproviderkmip.html"
+  - title: 署名Sshキー
+    url: "/api/reference_element_api_signsshkeys.html"
+  - title: テストキープロバイダーKmip
+    url: "/api/reference_element_api_testkeyproviderkmip.html"
+  - title: テストキーサーバーKmip
+    url: "/api/reference_element_api_testkeyserverkmip.html"
+- title: SnapMirror APIメソッド
+  entries:
+  - title: スナップミラー関係の中止
+    url: "/api/reference_element_api_abortsnapmirrorrelationship.html"
+  - title: スナップミラー関係を解除する
+    url: "/api/reference_element_api_breaksnapmirrorrelationship.html"
+  - title: ブレークスナップミラーボリューム
+    url: "/api/reference_element_api_breaksnapmirrorvolume.html"
+  - title: スナップミラーエンドポイントの作成
+    url: "/api/reference_element_api_createsnapmirrorendpoint.html"
+  - title: CreateSnapMirrorEndpointUnmanaged
+    url: "/api/reference_element_api_createsnapmirrorendpoint_unmanaged.html"
+  - title: スナップミラー関係の作成
+    url: "/api/reference_element_api_createsnapmirrorrelationship.html"
+  - title: スナップミラーボリュームの作成
+    url: "/api/reference_element_api_createsnapmirrorvolume.html"
+  - title: SnapMirrorエンドポイントの削除
+    url: "/api/reference_element_api_deletesnapmirrorendpoints.html"
+  - title: スナップミラー関係の削除
+    url: "/api/reference_element_api_deletesnapmirrorrelationships.html"
+  - title: GetOntapVersionInfo
+    url: "/api/reference_element_api_getontapversioninfo.html"
+  - title: スナップミラークラスタアイデンティティの取得
+    url: "/api/reference_element_api_getsnapmirrorclusteridentity.html"
+  - title: SnapMirror関係の初期化
+    url: "/api/reference_element_api_initializesnapmirrorrelationship.html"
+  - title: ListSnapMirrorAggregates
+    url: "/api/reference_element_api_listsnapmirroraggregates.html"
+  - title: SnapMirrorエンドポイントの一覧
+    url: "/api/reference_element_api_listsnapmirrorendpoints.html"
+  - title: スナップミラーLUNのリスト
+    url: "/api/reference_element_api_listsnapmirrorluns.html"
+  - title: スナップミラーネットワークインターフェースの一覧
+    url: "/api/reference_element_api_listsnapmirrornetworkinterfaces.html"
+  - title: スナップミラーノードのリスト
+    url: "/api/reference_element_api_listsnapmirrornodes.html"
+  - title: スナップミラーポリシーの一覧
+    url: "/api/reference_element_api_listsnapmirrorpolicies.html"
+  - title: スナップミラースケジュールのリスト
+    url: "/api/reference_element_api_listsnapmirrorschedules.html"
+  - title: スナップミラー関係のリスト
+    url: "/api/reference_element_api_listsnapmirrorrelationships.html"
+  - title: スナップミラーボリュームのリスト
+    url: "/api/reference_element_api_listsnapmirrorvolumes.html"
+  - title: SnapMirrorVサーバーのリスト
+    url: "/api/reference_element_api_listsnapmirrorvservers.html"
+  - title: SnapMirrorエンドポイントの変更
+    url: "/api/reference_element_api_modifysnapmirrorendpoint.html"
+  - title: ModifySnapMirrorEndpoint（管理対象外）
+    url: "/api/reference_element_api_modifysnapmirrorendpoint_unmanaged.html"
+  - title: スナップミラー関係の変更
+    url: "/api/reference_element_api_modifysnapmirrorrelationship.html"
+  - title: スナップミラー関係の更新
+    url: "/api/reference_element_api_updatesnapmirrorrelationship.html"
+  - title: 静止スナップミラー関係
+    url: "/api/reference_element_api_quiescesnapmirrorrelationship.html"
+  - title: ResumeSnapMirror関係
+    url: "/api/reference_element_api_resumesnapmirrorrelationship.html"
+  - title: スナップミラー関係の再同期
+    url: "/api/reference_element_api_resyncsnapmirrorrelationship.html"
+- title: システム構成APIメソッド
+  entries:
+  - title: DisableBmcColdReset
+    url: "/api/reference_element_api_disablebmccoldreset.html"
+  - title: クラスタSshを無効にする
+    url: "/api/reference_element_api_disableclusterssh.html"
+  - title: Snmpを無効にする
+    url: "/api/reference_element_api_disablesnmp.html"
+  - title: BmcColdReset を有効にする
+    url: "/api/reference_element_api_enablebmccoldreset.html"
+  - title: クラスタSshを有効にする
+    url: "/api/reference_element_api_enableclusterssh.html"
+  - title: Snmpを有効にする
+    url: "/api/reference_element_api_enablesnmp.html"
+  - title: ビン割り当てプロパティの取得
+    url: "/api/reference_element_api_getbinassignmentproperties.html"
+  - title: クラスタSsh情報を取得する
+    url: "/api/reference_element_api_getclustersshinfo.html"
+  - title: クラスター構造を取得する
+    url: "/api/reference_element_api_getclusterstructure.html"
+  - title: GetFipsレポート
+    url: "/api/reference_element_api_getfipsreport.html"
+  - title: GetLldpConfig
+    url: "/api/reference_element_api_getlldpconfig.html"
+  - title: GetLldpInfo
+    url: "/api/reference_element_api_getlldpinfo.html"
+  - title: GetNodeFipsDrivesReport
+    url: "/api/reference_element_api_system_configuration_getnodefipsdrivesreport.html"
+  - title: GetNtpInfo
+    url: "/api/reference_element_api_getntpinfo.html"
+  - title: NVRAM情報を取得する
+    url: "/api/reference_element_api_getnvraminfo.html"
+  - title: 保護ドメインレイアウトの取得
+    url: "/api/reference_element_api_getprotectiondomainlayout.html"
+  - title: リモートログホストの取得
+    url: "/api/reference_element_api_getremotelogginghosts.html"
+  - title: GetSnmpACL
+    url: "/api/reference_element_api_getsnmpacl.html"
+  - title: SnmpInfo の取得
+    url: "/api/reference_element_api_getsnmpinfo.html"
+  - title: GetSnmpState
+    url: "/api/reference_element_api_getsnmpstate.html"
+  - title: SnmpTrapInfo を取得する
+    url: "/api/reference_element_api_getsnmptrapinfo.html"
+  - title: SSL証明書を取得する
+    url: "/api/reference_element_api_getsslcertificate.html"
+  - title: リスト保護ドメインレベル
+    url: "/api/reference_element_api_listprotectiondomainlevels.html"
+  - title: SSL証明書の削除
+    url: "/api/reference_element_api_removesslcertificate.html"
+  - title: ネットワーク設定をリセット
+    url: "/api/reference_element_api_resetnetworkconfig.html"
+  - title: 補足Tls暗号をリセットする
+    url: "/api/reference_element_api_resetsupplementaltlsciphers.html"
+  - title: クラスター構造の設定
+    url: "/api/reference_element_api_setclusterstructure.html"
+  - title: LldpConfig の設定
+    url: "/api/reference_element_api_setlldpconfig.html"
+  - title: NtpInfo の設定
+    url: "/api/reference_element_api_setntpinfo.html"
+  - title: 保護ドメインレイアウトの設定
+    url: "/api/reference_element_api_setprotectiondomainlayout.html"
+  - title: リモートログホストの設定
+    url: "/api/reference_element_api_setremotelogginghosts.html"
+  - title: SnmpACLの設定
+    url: "/api/reference_element_api_setsnmpacl.html"
+  - title: SnmpInfo の設定
+    url: "/api/reference_element_api_setsnmpinfo.html"
+  - title: SnmpTrapInfo の設定
+    url: "/api/reference_element_api_setsnmptrapinfo.html"
+  - title: SSL証明書の設定
+    url: "/api/reference_element_api_setsslcertificate.html"
+  - title: SnmpSendTestTraps
+    url: "/api/reference_element_api_snmpsendtesttraps.html"
+  - title: テストアドレスの可用性
+    url: "/api/reference_element_api_testaddressavailability.html"
+- title: マルチテナントネットワークAPIメソッド
+  entries:
+  - title: 仮想ネットワークの命名規則
+    url: "/api/concept_element_api_virtual_network_naming_conventions.html"
+  - title: 仮想ネットワークの追加
+    url: "/api/reference_element_api_addvirtualnetwork.html"
+  - title: 仮想ネットワークの変更
+    url: "/api/reference_element_api_modifyvirtualnetwork.html"
+  - title: ListVirtualNetworks
+    url: "/api/reference_element_api_listvirtualnetworks.html"
+  - title: 仮想ネットワークの削除
+    url: "/api/reference_element_api_removevirtualnetwork.html"
+- title: ボリュームAPIメソッド
+  entries:
+  - title: キャンセルクローン
+    url: "/api/reference_element_api_cancelclone.html"
+  - title: グループクローンのキャンセル
+    url: "/api/reference_element_api_cancelgroupclone.html"
+  - title: 複数のボリュームのクローン
+    url: "/api/reference_element_api_clonemultiplevolumes.html"
+  - title: CloneVolume
+    url: "/api/reference_element_api_clonevolume.html"
+  - title: コピーボリューム
+    url: "/api/reference_element_api_copyvolume.html"
+  - title: QoSポリシーの作成
+    url: "/api/reference_element_api_createqospolicy.html"
+  - title: ボリュームの作成
+    url: "/api/reference_element_api_createvolume.html"
+  - title: バックアップターゲットの作成
+    url: "/api/reference_element_api_createbackuptarget.html"
+  - title: QoSポリシーの削除
+    url: "/api/reference_element_api_deleteqospolicy.html"
+  - title: ボリュームの削除
+    url: "/api/reference_element_api_deletevolume.html"
+  - title: ボリュームの削除
+    url: "/api/reference_element_api_deletevolumes.html"
+  - title: バックアップターゲットを取得
+    url: "/api/reference_element_api_getbackuptarget.html"
+  - title: ボリューム統計情報を取得する
+    url: "/api/reference_element_api_getvolumestats.html"
+  - title: デフォルトQoSを取得する
+    url: "/api/reference_element_api_getdefaultqos.html"
+  - title: QoSポリシーの取得
+    url: "/api/reference_element_api_getqospolicy.html"
+  - title: ボリュームカウントを取得
+    url: "/api/reference_element_api_getvolumecount.html"
+  - title: ボリューム効率の取得
+    url: "/api/reference_element_api_getvolumeefficiency.html"
+  - title: アクティブボリュームの一覧
+    url: "/api/reference_element_api_listactivevolumes.html"
+  - title: バックアップターゲットのリスト
+    url: "/api/reference_element_api_listbackuptargets.html"
+  - title: バルクボリュームジョブのリスト
+    url: "/api/reference_element_api_listbulkvolumejobs.html"
+  - title: 削除されたボリュームの一覧
+    url: "/api/reference_element_api_listdeletedvolumes.html"
+  - title: QoSポリシーの一覧
+    url: "/api/reference_element_api_listqospolicies.html"
+  - title: リスト同期ジョブ
+    url: "/api/reference_element_api_listsyncjobs.html"
+  - title: リストボリュームQoSヒストグラム
+    url: "/api/reference_element_api_listvolumeqoshistograms.html"
+  - title: リストボリューム
+    url: "/api/reference_element_api_listvolumes.html"
+  - title: リストボリューム統計
+    url: "/api/reference_element_api_listvolumestats.html"
+  - title: アカウントのボリューム一覧
+    url: "/api/reference_element_api_listvolumesforaccount.html"
+  - title: アカウント別ボリューム統計リスト
+    url: "/api/reference_element_api_listvolumestatsbyaccount.html"
+  - title: 仮想ボリュームごとのボリューム統計のリスト
+    url: "/api/reference_element_api_listvolumestatsbyvirtualvolume.html"
+  - title: ボリューム別リストボリューム統計
+    url: "/api/reference_element_api_listvolumestatsbyvolume.html"
+  - title: ボリュームアクセスグループごとのボリューム統計のリスト
+    url: "/api/reference_element_api_listvolumestatsbyvolumeaccessgroup.html"
+  - title: バックアップターゲットの変更
+    url: "/api/reference_element_api_modifybackuptarget.html"
+  - title: QoSポリシーの変更
+    url: "/api/reference_element_api_modifyqospolicy.html"
+  - title: ボリュームの変更
+    url: "/api/reference_element_api_modifyvolume.html"
+  - title: ボリュームの変更
+    url: "/api/reference_element_api_modifyvolumes.html"
+  - title: 削除されたボリュームの消去
+    url: "/api/reference_element_api_purgedeletedvolume.html"
+  - title: 削除されたボリュームの消去
+    url: "/api/reference_element_api_purgedeletedvolumes.html"
+  - title: バックアップターゲットの削除
+    url: "/api/reference_element_api_removebackuptarget.html"
+  - title: 削除されたボリュームの復元
+    url: "/api/reference_element_api_restoredeletedvolume.html"
+  - title: デフォルトQoSの設定
+    url: "/api/reference_element_api_setdefaultqos.html"
+  - title: 一括ボリューム読み取り開始
+    url: "/api/reference_element_api_startbulkvolumeread.html"
+  - title: 一括ボリューム書き込みの開始
+    url: "/api/reference_element_api_startbulkvolumewrite.html"
+  - title: 一括ボリュームステータスの更新
+    url: "/api/reference_element_api_updatebulkvolumestatus.html"
+- title: ボリュームアクセスグループAPIメソッド
+  entries:
+  - title: ボリュームアクセスグループにイニシエーターを追加
+    url: "/api/reference_element_api_addinitiatorstovolumeaccessgroup.html"
+  - title: ボリュームアクセスグループにボリュームを追加
+    url: "/api/reference_element_api_addvolumestovolumeaccessgroup.html"
+  - title: ボリュームアクセスグループの作成
+    url: "/api/reference_element_api_createvolumeaccessgroup.html"
+  - title: ボリュームアクセスグループの削除
+    url: "/api/reference_element_api_deletevolumeaccessgroup.html"
+  - title: ボリュームアクセスグループの一覧
+    url: "/api/reference_element_api_listvolumeaccessgroups.html"
+  - title: ボリュームアクセスグループからボリュームを削除
+    url: "/api/reference_element_api_removevolumesfromvolumeaccessgroup.html"
+  - title: ボリュームアクセスグループからイニシエーターを削除する
+    url: "/api/reference_element_api_removeinitiatorsfromvolumeaccessgroup.html"
+  - title: ボリュームアクセスグループの変更
+    url: "/api/reference_element_api_modifyvolumeaccessgroup.html"
+  - title: ボリュームアクセスグループ効率の取得
+    url: "/api/reference_element_api_getvolumeaccessgroupefficiency.html"
+- title: ボリュームスナップショットAPIメソッド
+  entries:
+  - title: Snapshotの概要
+    url: "/api/concept_element_api_snapshots_overview.html"
+  - title: グループスナップショットの作成
+    url: "/api/reference_element_api_creategroupsnapshot.html"
+  - title: スケジュールの作成
+    url: "/api/reference_element_api_createschedule.html"
+  - title: スナップショットを作成
+    url: "/api/reference_element_api_createsnapshot.html"
+  - title: グループスナップショットの削除
+    url: "/api/reference_element_api_deletegroupsnapshot.html"
+  - title: スナップショットを削除
+    url: "/api/reference_element_api_deletesnapshot.html"
+  - title: スケジュールを取得
+    url: "/api/reference_element_api_getschedule.html"
+  - title: リストグループスナップショット
+    url: "/api/reference_element_api_listgroupsnapshots.html"
+  - title: リストスケジュール
+    url: "/api/reference_element_api_listschedules.html"
+  - title: リストスナップショット
+    url: "/api/reference_element_api_listsnapshots.html"
+  - title: グループスナップショットの変更
+    url: "/api/reference_element_api_modifygroupsnapshot.html"
+  - title: スケジュールの変更
+    url: "/api/reference_element_api_modifyschedule.html"
+  - title: スナップショットの変更
+    url: "/api/reference_element_api_modifysnapshot.html"
+  - title: グループスナップショットへのロールバック
+    url: "/api/reference_element_api_rollbacktogroupsnapshot.html"
+  - title: スナップショットへのロールバック
+    url: "/api/reference_element_api_rollbacktosnapshot.html"
+- title: 仮想ボリュームAPIメソッド
+  entries:
+  - title: ストレージコンテナの作成
+    url: "/api/reference_element_api_createstoragecontainer.html"
+  - title: ストレージコンテナの削除
+    url: "/api/reference_element_api_deletestoragecontainers.html"
+  - title: ストレージコンテナ効率の取得
+    url: "/api/reference_element_api_getstoragecontainerefficiency.html"
+  - title: 仮想ボリュームカウントの取得
+    url: "/api/reference_element_api_getvirtualvolumecount.html"
+  - title: プロトコルエンドポイントのリスト
+    url: "/api/reference_element_api_listprotocolendpoints.html"
+  - title: ストレージコンテナのリスト
+    url: "/api/reference_element_api_liststoragecontainers.html"
+  - title: 仮想ボリュームバインディングのリスト
+    url: "/api/reference_element_api_listvirtualvolumebindings.html"
+  - title: 仮想ボリュームホストの一覧
+    url: "/api/reference_element_api_listvirtualvolumehosts.html"
+  - title: 仮想ボリュームの一覧
+    url: "/api/reference_element_api_listvirtualvolumes.html"
+  - title: 仮想ボリュームタスクの一覧
+    url: "/api/reference_element_api_listvirtualvolumetasks.html"
+  - title: ストレージコンテナの変更
+    url: "/api/reference_element_api_modifystoragecontainer.html"
+- title: アクセス制御
+  url: "/api/reference_element_api_app_b_access_control.html"
+- title: 応答例
+  entries:
+  - title: ゲットコンフィグ
+    url: "/api/reference_element_api_response_example_getconfig.html"
+  - title: クラスタハードウェア情報を取得する
+    url: "/api/reference_element_api_response_example_getclusterhardwareinfo.html"
+  - title: GetLldpInfo
+    url: "/api/reference_element_api_response_example_getlldpinfo.html"
+  - title: ネットワーク構成の取得
+    url: "/api/reference_element_api_response_example_getnetworkconfig.html"
+  - title: GetNodeHardwareInfo (iSCSI の出力)
+    url: "/api/reference_element_api_response_example_getnodehardwareinfo.html"
+  - title: GetNodeHardwareInfo (ファイバーチャネルノードの出力)
+    url: "/api/reference_element_api_response_example_getnodehardwareinfo_fibre_channel.html"
+  - title: NVRAM情報を取得する
+    url: "/api/reference_element_api_response_example_getnvraminfo.html"
+  - title: ListActiveNodes
+    url: "/api/reference_element_api_response_example_listactivenodes.html"
+  - title: アクティブボリュームの一覧
+    url: "/api/reference_element_api_response_example_listactivevolumes.html"
+  - title: テストハードウェア構成
+    url: "/api/reference_element_api_response_example_testhardwareconfig.html"

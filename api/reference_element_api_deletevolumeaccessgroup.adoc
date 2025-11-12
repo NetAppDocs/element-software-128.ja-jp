@@ -1,0 +1,112 @@
+---
+permalink: api/reference_element_api_deletevolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,access,group,groups,delete,deleting,DeleteVolumeAccessGroup 
+summary: DeleteVolumeAccessGroup を使用してボリューム アクセス グループを削除できます。 
+---
+= ボリュームアクセスグループの削除
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用できます `DeleteVolumeAccessGroup`ボリューム アクセス グループを削除します。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+ボリュームアクセスグループID
+ a| 
+削除するボリューム アクセス グループの ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+孤立イニシエーターの削除
+ a| 
+イニシエーター オブジェクトを削除するかどうかを指定します。有効な値は次のとおりです。
+
+* true: ボリューム アクセス グループから削除された後、イニシエーター オブジェクトを削除します。
+* false: ボリューム アクセス グループから削除された後、イニシエーター オブジェクトを削除しません。これがデフォルトです。
+
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+
+
+ a| 
+力
+ a| 
+このフラグを追加すると、仮想ネットワーク ID またはタグがあっても、ボリューム アクセス グループが強制的に削除されます。有効な値は次のとおりです。
+
+* true: ボリューム アクセス グループが削除されます。
+* false: デフォルト。ボリューム アクセス グループに仮想ネットワーク ID またはタグがある場合は、そのボリューム アクセス グループを削除しないでください。
+
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "DeleteVolumeAccessGroup",
+   "params": {
+          "force": true,
+	  "volumeAccessGroupID"  : 3
+   },
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id" : 1,
+   "result": {}
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

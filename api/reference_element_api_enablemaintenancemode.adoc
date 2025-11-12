@@ -1,0 +1,176 @@
+---
+permalink: api/reference_element_api_enablemaintenancemode.html 
+sidebar: sidebar 
+keywords: maintenance,enable,mode 
+summary: EnableMaintenanceMode メソッドを使用して、ストレージ ノードをメンテナンス用に準備できます。メンテナンス シナリオには、ノードの電源をオフにしたり再起動したりする必要があるタスクが含まれます。 
+---
+= メンテナンスモードを有効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `EnableMaintenanceMode`ストレージノードをメンテナンス用に準備する方法。メンテナンス シナリオには、ノードの電源をオフにしたり再起動したりする必要があるタスクが含まれます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+未解決の障害を強制する
+ a| 
+ブロッキング クラスター障害が発生している場合でも、このノードに対して強制的にメンテナンス モードを有効にします。
+ a| 
+ブーリアン
+ a| 
+間違い
+ a| 
+いいえ
+
+
+
+ a| 
+ノード
+ a| 
+メンテナンス モードにするノード ID のリスト。一度にサポートされるノードは 1 つだけです。
+ a| 
+整数配列
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+1分あたりのプライマリスワップ制限
+ a| 
+1 分あたりにスワップするプライマリ スライスの数。指定しない場合は、すべてのプライマリスライスが一度に交換されます。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+timeout
+ a| 
+メンテナンス モードが自動的に無効になるまでの有効期間を指定します。時間文字列としてフォーマットされます (例: HH:mm:ss)。指定しない場合は、明示的に無効にするまでメンテナンス モードは有効のままになります。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+非同期ハンドル
+ a| 
+GetAsyncResult メソッドを使用してこの asyncHandle を取得し、メンテナンス モードの移行がいつ完了したかを判断できます。
+ a| 
+integer
+
+
+
+ a| 
+現在のモード
+ a| 
+ノードの現在のメンテナンス モードの状態。有効な値は次のとおりです。
+
+* 無効: メンテナンスは要求されていません。
+* FailedToRecover: ノードはメンテナンス モードからの回復に失敗しました。
+* RecoveringFromMaintenance: ノードはメンテナンス モードから回復中です。
+* PreparingForMaintenance: ノードのメンテナンスを実行する準備をするためのアクションが実行されています。
+* ReadyForMaintenance: ノードはメンテナンスを実行する準備ができています。
+
+ a| 
+メンテナンスモード（文字列）
+
+
+
+ a| 
+要求モード
+ a| 
+要求されたノードのメンテナンス モードの状態。有効な値は次のとおりです。
+
+* 無効: メンテナンスは要求されていません。
+* FailedToRecover: ノードはメンテナンス モードからの回復に失敗しました。
+* RecoveringFromMaintenance: ノードはメンテナンス モードから回復中です。
+* PreparingForMaintenance: ノードのメンテナンスを実行する準備をするためのアクションが実行されています。
+* ReadyForMaintenance: ノードはメンテナンスを実行する準備ができています。
+
+ a| 
+メンテナンスモード（文字列）
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "EnableMaintenanceMode",
+  "params": {
+    "forceWithUnresolvedFaults": False,
+    "nodes": [6],
+    "perMinutePrimarySwapLimit" : 40,
+    "timeout" : "01:00:05"
+  },
+"id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "requestedMode": "ReadyForMaintenance",
+        "asyncHandle": 1,
+        "currentMode": "Disabled"
+    }
+}
+----
+
+
+== バージョン以降の新機能
+
+12.2
+
+
+
+== 詳細情報の参照
+
+http://docs.netapp.com/us-en/hci/docs/concept_hci_storage_maintenance_mode.html["NetApp HCIストレージメンテナンスモードの概念"^]

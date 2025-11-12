@@ -1,0 +1,87 @@
+---
+permalink: api/reference_element_api_snapmirroraggregate.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorAggregate 
+summary: snapMirrorAggregate オブジェクトには、ボリュームのストレージとして使用できるディスクのコレクションである、使用可能なONTAPアグリゲートに関する情報が含まれています。この情報は、ListSnapMirrorAggregates API メソッドを使用して取得できます。 
+---
+= スナップミラーアグリゲート
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorAggregate オブジェクトには、ボリュームのストレージとして使用できるディスクのコレクションである、使用可能なONTAPアグリゲートに関する情報が含まれています。この情報は、ListSnapMirrorAggregates API メソッドを使用して取得できます。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+宛先ONTAPシステムの ID。
+ a| 
+integer
+
+
+
+ a| 
+集約名
+ a| 
+集計の名前。
+ a| 
+string
+
+
+
+ a| 
+nodeName
+ a| 
+このアグリゲートを所有するONTAPノードの名前。
+ a| 
+string
+
+
+
+ a| 
+サイズ利用可能
+ a| 
+合計で残っている使用可能なバイト数。
+ a| 
+integer
+
+
+
+ a| 
+サイズ合計
+ a| 
+集計の合計サイズ (バイト単位)。
+ a| 
+integer
+
+
+
+ a| 
+使用容量の割合
+ a| 
+現在使用中のディスク領域の割合。
+ a| 
+integer
+
+
+
+ a| 
+ボリューム数
+ a| 
+総計のボリューム数。
+ a| 
+integer
+
+|===

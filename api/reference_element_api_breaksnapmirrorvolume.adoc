@@ -1,0 +1,104 @@
+---
+permalink: api/reference_element_api_breaksnapmirrorvolume.html 
+sidebar: sidebar 
+keywords: SnapMirror,volume,volumes,break,breaking,relationship,ONTAP,source,snapshot 
+summary: Element Web UI は、BreakSnapMirrorVolume メソッドを使用して、 ONTAPソース コンテナと Element ターゲット ボリューム間のSnapMirror関係を解除します。 Element ボリュームにデータを複製しているときにONTAPシステムが使用できなくなった場合は、Element SnapMirrorボリュームを解除すると便利です。この機能により、ストレージ管理者は Element SnapMirrorボリュームを制御し、リモートONTAPシステムとの関係を解除し、ボリュームを以前のスナップショットに戻すことができます。 
+---
+= ブレークスナップミラーボリューム
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ElementウェブUIは `BreakSnapMirrorVolume`ONTAPソース コンテナと Element ターゲット ボリューム間のSnapMirror関係を解除する方法。 Element ボリュームにデータを複製しているときにONTAPシステムが使用できなくなった場合は、Element SnapMirrorボリュームを解除すると便利です。この機能により、ストレージ管理者は Element SnapMirrorボリュームを制御し、リモートONTAPシステムとの関係を解除し、ボリュームを以前のスナップショットに戻すことができます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+volumeID
+ a| 
+ブレーク操作を実行するボリューム。ボリューム アクセス モードは snapMirrorTarget である必要があります。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+スナップショットID
+ a| 
+この ID で識別されるスナップショットにボリュームをロールバックします。デフォルトの動作では、最新のスナップショットにロールバックします。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+保存する
+ a| 
+snapshotID で識別されるスナップショットよりも新しいスナップショットをすべて保存します。有効な値は次のとおりです。
+
+* true: snapshotID より新しいスナップショットを保持します。
+* false: snapshotID より新しいスナップショットを保持しません。
+
+
+false の場合、snapshotID より新しいスナップショットはすべて削除されます。
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+
+
+ a| 
+アクセス
+ a| 
+結果のボリューム アクセス モード。有効な値は次のとおりです。
+
+* 読み書き
+* 読み取り専用
+* ロックされた
+
+ a| 
+string
+ a| 
+読み書き
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== バージョン以降の新機能
+
+10.0
+
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_breaksnapmirrorrelationship.adoc[スナップミラー関係を解除する]

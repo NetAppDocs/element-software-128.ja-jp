@@ -1,0 +1,31 @@
+= 詳細情報の参照
+:allow-uri-read: 
+
+
+NetApp SolidFireストレージ システムは、Return To Factory Image (RTFI) プロセスを使用して、ソフトウェア イメージを新しいノードに書き込んだり、ノードを工場出荷時の状態に復元したりします。  RTFI プロセスでは、既存のデータと構成 (存在する場合) がすべて安全に消去され、未構成のNetApp Elementソフトウェア イメージがインストールされます。  RTFI プロセスは、すべてのSolidFireノードで使用できます。
+
+SolidFireシステムは、すべての Element ソフトウェアのインストールに 1 つの RTFI プロセスを使用します。これには、開発者が実行する内部の手動インストール、自動化されたフレームワーク テストによる自動インストール、サービス エンジニアおよび顧客によるフィールド インストール、さまざまなインテグレーターおよびパートナーが実行するインストールが含まれます。使用されているシャーシやノードの種類に関係なく、すべてのSolidFireノードで同じ RTFI プロセスが使用され、問題が自動的に修正されます。
+
+このガイドの対象読者は、ストレージ関連の問題をインストール、構成、使用、またはトラブルシューティングするインテグレーターです。
+
+* Linux: Linux システムに関する経験が多少あります。
+* ネットワーク: IP アドレス、ネットマスク、ゲートウェイなどのサーバー ネットワークとネットワーク ストレージに関する知識があること。
+
+
+
+WARNING: RTFI プロセスはデータを破壊し、ノードからすべてのデータと構成の詳細を安全に消去し、新しいオペレーティング システムをインストールします。  RTFI プロセスに使用されるノードがクラスターの一部としてアクティブになっていないことを確認します。
+
+RTFI 国際標準化機構 (ISO) イメージを展開およびインストールし、RTFI プロセスを実行します。
+
+* xref:task_rtfi_deployment_and_install_options.adoc[RTFIの展開とインストールのオプション]
+* xref:task_rtfi_process.adoc[RTFIプロセスを実行する]
+* xref:task_rtfi_options_menu.adoc[RTFIオプションメニュー]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

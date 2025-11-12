@@ -1,0 +1,41 @@
+---
+permalink: storage/task-element-replication-update-replication-relationship-manually.html 
+sidebar: sidebar 
+keywords: update, replication, relationship, manually 
+summary: ネットワーク エラーが原因で更新に失敗した場合、レプリケーション関係を手動で更新する必要があります。 
+---
+= レプリケーション関係の手動更新
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ネットワーク エラーが原因で更新に失敗した場合、レプリケーション関係を手動で更新する必要があります。
+
+.タスク概要
+要素のソースパスを次の形式で指定する必要があります。 `<hostip:>/lun/<name>`ここで「`lun`」は実際の文字列「`lun`」であり、 `name`要素ボリュームの名前です。
+
+.手順
+. レプリケーション関係を手動で更新します。
++
+`snapmirror update -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+コマンド構文全体については、マニュアル ページを参照してください。
+
++
+[NOTE]
+====
+ソースとデスティネーションに共通のSnapshotコピーが存在しない場合、このコマンドは失敗します。使用 `snapmirror initialize`関係を再初期化します。
+
+====
++
+次の例では、ソースボリューム間の関係を更新します。 `0005` IPアドレス10.0.0.11と宛先ボリューム `volA_dst`の上 `svm_backup`:
+
++
+[listing]
+----
+cluster_src::> snapmirror update -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+

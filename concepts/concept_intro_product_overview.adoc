@@ -1,0 +1,45 @@
+---
+permalink: concepts/concept_intro_product_overview.html 
+sidebar: sidebar 
+keywords:  
+summary: 'SolidFireオールフラッシュ ストレージ システムは、単一のストレージ リソース プールに結合された個別のハードウェア コンポーネント (ドライブとノード) で構成されています。この統合クラスタは、外部クライアントが使用する単一のストレージ システムとして提供され、 NetApp Elementソフトウェアで管理されます。' 
+---
+= 製品概要
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFireオールフラッシュ ストレージ システムは、単一のストレージ リソース プールに結合された個別のハードウェア コンポーネント (ドライブとノード) で構成されています。この統合クラスタは、外部クライアントが使用する単一のストレージ システムとして提供され、 NetApp Elementソフトウェアで管理されます。
+
+Element インターフェイス、API、またはその他の管理ツールを使用して、 SolidFireクラスターのストレージ容量とパフォーマンスを監視し、マルチテナント インフラストラクチャ全体のストレージ アクティビティを管理できます。
+
+
+
+== SolidFireの機能
+
+Solidfire システムは、次の機能を提供します。
+
+* 大規模なプライベートクラウドインフラストラクチャに高性能ストレージを提供します
+* 変化するストレージニーズに対応できる柔軟なスケールを提供します
+* API駆動型ストレージ管理Elementソフトウェアインターフェースを使用
+* サービス品質ポリシーを使用してパフォーマンスを保証します
+* クラスタ内のすべてのノード間での自動負荷分散が含まれます
+* ノードが追加または削除されると、クラスターのバランスを自動的に再調整します。
+
+
+
+
+== SolidFireの導入
+
+NetAppが提供し、 NetApp Elementソフトウェアと統合されたストレージ ノードを使用します。
+
+link:../concepts/concept_solidfire_concepts_solidfire_architecture_overview.html["SolidFireオールフラッシュストレージアーキテクチャの概要"]
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+

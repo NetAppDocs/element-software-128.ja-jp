@@ -1,0 +1,48 @@
+---
+permalink: api/reference_element_api_deletesnapmirrorendpoints.html 
+sidebar: sidebar 
+keywords: SnapMirror,endpoints,endpoint,delete,deleting,DeleteSnapMirrorEndpoints 
+summary: Element Web UI は、DeleteSnapMirrorEndpoints を使用して、システムから 1 つ以上のSnapMirrorエンドポイントを削除します。 
+---
+= SnapMirrorエンドポイントの削除
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ElementのWeb UIは `DeleteSnapMirrorEndpoints`システムから 1 つ以上のSnapMirrorエンドポイントを削除します。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+snapMirrorエンドポイントID
+ a| 
+削除するSnapMirrorエンドポイントの ID の配列。
+ a| 
+整数配列
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== バージョン以降の新機能
+
+10.0

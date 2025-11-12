@@ -1,0 +1,43 @@
+---
+permalink: storage/task-element-replication-create-replication-job-schedule.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, replication, job, schedule 
+summary: ジョブ スケジュール cron create コマンドを使用して、レプリケーション ジョブ スケジュールを作成できます。ジョブ スケジュールは、スケジュールが割り当てられているデータ保護関係をSnapMirror がいつ自動的に更新するかを決定します。 
+---
+= レプリケーションジョブスケジュールを作成する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+データをElementからONTAPにレプリケートする場合も、ONTAPからElementにレプリケートする場合も、ジョブ スケジュールの設定、ポリシーの指定、および関係の作成と初期化を実行する必要があります。デフォルト ポリシーまたはカスタム ポリシーを使用できます。
+
+使用することができます `job schedule cron create`レプリケーション ジョブ スケジュールを作成するコマンド。ジョブ スケジュールは、スケジュールが割り当てられているデータ保護関係をSnapMirror がいつ自動的に更新するかを決定します。
+
+.タスク概要
+ジョブ スケジュールはデータ保護関係の作成時に割り当てます。ジョブ スケジュールを割り当てない場合は、関係を手動で更新する必要があります。
+
+.手順
+. ジョブ スケジュールを作成します。
++
+`job schedule cron create -name _job_name_ -month _month_ -dayofweek _day_of_week_ -day _day_of_month_ -hour _hour_ -minute _minute_`
+
++
+のために `-month`、 `-dayofweek` 、 そして `-hour`、指定することができます `all`それぞれ毎月、曜日ごとに、時間ごとにジョブを実行します。
+
++
+ONTAP 9.10.1以降では、ジョブ スケジュールにSVMを含めることができます。
+
++
+`job schedule cron create -name _job_name_ -vserver _Vserver_name_ -month _month_ -dayofweek _day_of_week_ -day _day_of_month_ -hour _hour_ -minute _minute_`
+
++
+次の例では、ジョブスケジュールを作成します。 `my_weekly`土曜日の午前3時に運行されます。
+
++
+[listing]
+----
+cluster_dst::> job schedule cron create -name my_weekly -dayofweek "Saturday" -hour 3 -minute 0
+----
+

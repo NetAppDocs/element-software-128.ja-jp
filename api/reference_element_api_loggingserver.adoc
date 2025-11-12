@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_loggingserver.html 
+sidebar: sidebar 
+keywords: object,objects,loggingServer 
+summary: loggingServer オブジェクトには、ストレージ クラスターに構成されているすべてのログ ホストに関する情報が含まれています。  GetRemoteLoggingHosts を使用して現在のログ ホストを確認し、SetRemoteLoggingHosts を使用して現在のログ ホストと新しいログ ホストの必要なリストを設定できます。 
+---
+= ログサーバー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+loggingServer オブジェクトには、ストレージ クラスターに構成されているすべてのログ ホストに関する情報が含まれています。使用できます `GetRemoteLoggingHosts`現在のログホストが何であるかを判断し、 `SetRemoteLoggingHosts`現在のログホストと新しいログホストの必要なリストを設定します。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+ホスト
+ a| 
+ログ サーバーの IP アドレス。
+ a| 
+string
+
+
+
+ a| 
+ポート
+ a| 
+ログ サーバーとの通信に使用されるポート番号。
+ a| 
+integer
+
+|===

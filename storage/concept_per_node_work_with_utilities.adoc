@@ -1,0 +1,25 @@
+---
+permalink: storage/concept_per_node_work_with_utilities.html 
+sidebar: sidebar 
+keywords: troubleshooting network issues, using per-node utilities, storage node UI 
+summary: NetApp Elementソフトウェア UI の標準監視ツールでトラブルシューティングに十分な情報が得られない場合は、ノードごとのユーティリティを使用してネットワークの問題をトラブルシューティングできます。ノードごとのユーティリティは、ノード間または管理ノードでのネットワークの問題のトラブルシューティングに役立つ特定の情報とツールを提供します。 
+---
+= ストレージノードのノードごとのユーティリティを操作する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Elementソフトウェア UI の標準監視ツールでトラブルシューティングに十分な情報が得られない場合は、ノードごとのユーティリティを使用してネットワークの問題をトラブルシューティングできます。ノードごとのユーティリティは、ノード間または管理ノードでのネットワークの問題のトラブルシューティングに役立つ特定の情報とツールを提供します。
+
+
+
+== 詳細情報の参照
+
+* xref:task_per_node_access_settings.adoc[ノードごとのUIを使用してノードごとの設定にアクセスする]
+* xref:reference_per_node_network_settings_details.adoc[ノードごとのUIからのネットワーク設定の詳細]
+* xref:reference_per_node_cluster_settings_details.adoc[ノードごとのUIからのクラスタ設定の詳細]
+* xref:task_per_node_run_system_tests.adoc[ノードごとのUIを使用してシステムテストを実行する]
+* xref:task_per_node_run_system_utilities.adoc[ノードごとのUIを使用してシステムユーティリティを実行する]
+

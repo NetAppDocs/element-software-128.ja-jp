@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_modifystoragecontainer.html 
+sidebar: sidebar 
+keywords: virtual,volume,storage,container,vvol,modify,modifying,change,changing,edit,editing 
+summary: ModifyStorageContainer メソッドを使用して、既存の仮想ボリューム ストレージ コンテナーに変更を加えることができます。 
+---
+= ストレージコンテナの変更
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ModifyStorageContainer`既存の仮想ボリューム ストレージ コンテナーに変更を加える方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+
+
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+ストレージコンテナID
+ a| 
+変更する仮想ボリューム ストレージ コンテナーの一意の ID。
+ a| 
+UUID
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+イニシエーターシークレット
+ a| 
+イニシエーターの CHAP 認証用の新しいシークレット。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+ターゲットシークレット
+ a| 
+ターゲットの CHAP 認証用の新しいシークレット。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+ストレージコンテナ
+ a| 
+新しく作成されたストレージ コンテナーに関する情報。
+ a| 
+xref:reference_element_api_storagecontainer.adoc[ストレージコンテナ]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "ModifyStorageContainer",
+    "params": {
+      "storageContainerID": "6c95e24f-9f0b-4793-affb-5a4bc6c3d7e1",
+      "targetSecret": "O,IM;tOQdn9$JJ*8"
+    },
+    "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "storageContainer": {
+      "accountID": 8,
+      "initiatorSecret": "T$|5TO>2IY5sk4@k",
+      "name": "doctest1",
+      "protocolEndpointType": "SCSI",
+      "status": "active",
+      "storageContainerID": "6c95e24f-9f0b-4793-affb-5a4bc6c3d7e1",
+      "targetSecret": "O,IM;tOQdn9$JJ*8"
+    }
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

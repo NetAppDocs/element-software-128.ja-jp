@@ -1,0 +1,23 @@
+---
+section: upgrade
+title: NetApp SolidFireオールフラッシュストレージシステムをアップグレードする
+entries:
+- title: アップグレードシーケンスの概要
+  url: "/upgrade/concept_element_upgrade_overview.html"
+- title: システムアップグレード手順
+  entries:
+  - title: ストレージをアップグレードする前に、Element ストレージのヘルスチェックを実行します。
+    url: "/upgrade/task_hcc_upgrade_element_prechecks.html"
+  - title: 管理ノードをアップグレードする
+    url: "/upgrade/task_hcc_upgrade_management_node.html"
+  - title: 更新管理サービス
+    url: "/upgrade/task_hcc_update_management_services.html"
+  - title: Elementソフトウェアをアップグレード
+    url: "/upgrade/task_hcc_upgrade_element_software.html"
+  - title: ストレージファームウェアのアップグレード
+    url: "/upgrade/task_hcc_upgrade_storage_firmware.html"
+  - title: vCenter Server の Element プラグインをアップグレードする
+    url: "/upgrade/task_vcp_upgrade_plugin.html"
+- title: vCenter Server 用の Element プラグインを使用して、 NetApp SolidFireストレージ システムの vSphere
+    コンポーネントをアップグレードします。
+  url: "/upgrade/task_sf_upgrade_all_vsphere.html"

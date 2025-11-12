@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_storagecontainer.html 
+sidebar: sidebar 
+keywords: object,objects,storagecontainer 
+summary: storageContainer オブジェクトには、仮想ボリューム ストレージ コンテナーの属性が含まれています。  ListStorageContainers API メソッドを使用して、クラスター内の各ストレージ コンテナーのこの情報を取得できます。 
+---
+= ストレージコンテナ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+storageContainer オブジェクトには、仮想ボリューム ストレージ コンテナーの属性が含まれています。クラスタ内の各ストレージコンテナのこの情報は、 `ListStorageContainers` API メソッド。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+accountID
+ a| 
+ストレージ コンテナーに関連付けられているストレージ システム アカウントの ID。
+ a| 
+integer
+
+
+
+ a| 
+イニシエーターシークレット
+ a| 
+ストレージ コンテナーに関連付けられたイニシエーターの CHAP 認証シークレット。
+ a| 
+string
+
+
+
+ a| 
+名前
+ a| 
+ストレージ コンテナーの名前。
+ a| 
+string
+
+
+
+ a| 
+プロトコルエンドポイントタイプ
+ a| 
+ストレージ コンテナーのプロトコル エンドポイント タイプ。有効な値は SCSI のみです。
+ a| 
+string
+
+
+
+ a| 
+ステータス
+ a| 
+ストレージ コンテナーのステータス。有効な値は次のとおりです。
+
+* アクティブ: ストレージ コンテナーは使用中です。
+* ロック済み: 保管コンテナはロックされています。
+
+ a| 
+string
+
+
+
+ a| 
+ストレージコンテナID
+ a| 
+ストレージ コンテナーの一意の ID。
+ a| 
+UUID
+
+
+
+ a| 
+ターゲットシークレット
+ a| 
+ストレージ コンテナーに関連付けられたターゲットの CHAP 認証シークレット。
+ a| 
+string
+
+
+
+ a| 
+仮想ボリューム
+ a| 
+ストレージ コンテナーに関連付けられている仮想ボリュームの ID のリスト。
+ a| 
+UUID配列
+
+|===
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_liststoragecontainers.adoc[ストレージコンテナのリスト]

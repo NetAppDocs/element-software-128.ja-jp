@@ -1,0 +1,31 @@
+---
+permalink: api/concept_element_api_administrator_api_methods.html 
+sidebar: sidebar 
+keywords: API,administration,method,administrator 
+summary: 管理者 API メソッドを使用して、ストレージ クラスター管理者を作成、変更、表示、削除したり、ストレージ クラスターへのアクセス権を持つ管理者にアクセス レベルと権限を割り当てたりすることができます。 
+---
+= 管理者APIメソッド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+管理者 API メソッドを使用して、ストレージ クラスター管理者を作成、変更、表示、削除したり、ストレージ クラスターへのアクセス権を持つ管理者にアクセス レベルと権限を割り当てたりすることができます。
+
+* xref:reference_element_api_addclusteradmin.adoc[クラスタ管理者の追加]
+* xref:reference_element_api_getcurrentclusteradmin.adoc[現在のクラスタ管理者を取得]
+* xref:reference_element_api_getloginbanner.adoc[ログインバナーを取得する]
+* xref:reference_element_api_listclusteradmins.adoc[クラスタ管理者のリスト]
+* xref:reference_element_api_modifyclusteradmin.adoc[クラスタ管理者の変更]
+* xref:reference_element_api_removeclusteradmin.adoc[クラスタ管理者の削除]
+* xref:reference_element_api_setloginbanner.adoc[ログインバナーの設定]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

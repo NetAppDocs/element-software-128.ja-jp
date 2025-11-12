@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_getsnmpacl.html 
+sidebar: sidebar 
+keywords: snmp,acl,get,getting,getsnmpacl 
+summary: GetSnmpACL メソッドを使用して、クラスター ノードの現在の SNMP アクセス権限を取得できます。 
+---
+= GetSnmpACL
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetSnmpACL`クラスター ノード上の現在の SNMP アクセス権限を取得する方法。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+ネットワーク
+ a| 
+クラスター ノードで実行されている SNMP サーバーに対するネットワークとアクセスの種類のリスト。この値は、SNMP v3 が無効になっている場合に存在します。
+ a| 
+xref:reference_element_api_network_snmp.adoc[network]配列
+
+
+
+ a| 
+usmユーザー
+ a| 
+クラスター ノードで実行されている SNMP サーバーに対するユーザーのアクセスの種類とリスト。この値は、SNMP v3 が有効な場合に存在します。
+ a| 
+xref:reference_element_api_usmuser.adoc[usmユーザー]配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+"method": "GetSnmpACL",
+"params": {},
+"id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+     "usmUsers"  : [
+       {
+          "name": "jdoe",
+          "access": "rouser",
+          "secLevel": "priv",
+          "password": "mypassword",
+          "passphrase": "mypassphrase",
+       }
+     ]
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

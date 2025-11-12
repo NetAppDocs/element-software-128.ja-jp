@@ -1,0 +1,261 @@
+---
+permalink: api/reference_element_api_listevents.html 
+sidebar: sidebar 
+keywords: cluster,list,listing,event,events,listevents 
+summary: ListEvents メソッドを使用すると、クラスターで検出されたイベントを古いものから新しいものの順に一覧表示できます。 
+---
+= リストイベント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ListEvents`クラスター上で検出されたイベントを古いものから新しいものの順にリストするメソッド。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+ドライブID
+ a| 
+このドライブ ID を持つイベントのみが返されるように指定します。
+ a| 
+integer
+ a| 
+0
+ a| 
+いいえ
+
+
+
+ a| 
+終了イベントID
+ a| 
+返されるイベント ID の範囲の終わりを識別します。
+ a| 
+integer
+ a| 
+（無制限）
+ a| 
+いいえ
+
+
+
+ a| 
+公開終了時間
+ a| 
+この時刻より前に公開されたイベントのみが返されるように指定します。
+ a| 
+string
+ a| 
+0
+ a| 
+いいえ
+
+
+
+ a| 
+終了レポート時間
+ a| 
+この時刻より前に報告されたイベントのみが返されるように指定します。
+ a| 
+string
+ a| 
+0
+ a| 
+いいえ
+
+
+
+ a| 
+イベントタイプ
+ a| 
+返されるイベントの種類を指定します。見るxref:reference_element_api_event.adoc[event]可能なイベント タイプ。
+ a| 
+string
+ a| 
+0
+ a| 
+いいえ
+
+
+
+ a| 
+最大イベント
+ a| 
+返されるイベントの最大数を指定します。
+ a| 
+integer
+ a| 
+（無制限）
+ a| 
+いいえ
+
+
+
+ a| 
+nodeID
+ a| 
+このノード ID を持つイベントのみが返されることを指定します。
+ a| 
+integer
+ a| 
+ a| 
+
+
+
+ a| 
+サービスID
+ a| 
+このサービス ID を持つイベントのみが返されることを指定します。
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+開始イベントID
+ a| 
+返されるイベントの範囲の開始を識別します。
+ a| 
+integer
+ a| 
+0
+ a| 
+いいえ
+
+
+
+ a| 
+公開開始時刻
+ a| 
+この時間以降に公開されたイベントのみが返されるように指定します。
+ a| 
+string
+ a| 
+0
+ a| 
+いいえ
+
+
+
+ a| 
+レポート開始時間
+ a| 
+この時間以降に報告されたイベントのみが返されるように指定します。
+ a| 
+string
+ a| 
+0
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+イベント
+ a| 
+イベントのリスト。
+ a| 
+xref:reference_element_api_event.adoc[event]配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "ListEvents",
+   "params": {
+   },
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id":1,
+  "result":{
+    "events":[
+       {
+          "details":
+            {
+              "paramGCGeneration":1431550800,
+              "paramServiceID":2
+            },
+          "driveID":0,
+          "eventID":2131,
+          "eventInfoType":"gcEvent",
+          "message":"GC Cluster Coordination Complete",
+          "nodeID":0,
+          "serviceID":2,
+          "severity":0,
+          "timeOfPublish":"2015-05-13T21:00:02.361354Z",
+          "timeOfReport":"2015-05-13T21:00:02.361269Z"
+       },{
+          "details":
+               {
+                  "eligibleBS":[5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,24,25,26,27,28,29,30,31,40,41,42,43,44,45,46,47,52,53,54,55,56,57,58,59,60],
+                  "generation":1431550800,
+                  "participatingSS":[23,35,39,51]
+               },
+          "driveID":0,
+          "eventID":2130,
+          "eventInfoType":"gcEvent",
+          "message":"GCStarted",
+          "nodeID":0,
+          "serviceID":2,
+          "severity":0,
+          "timeOfPublish":"2015-05-13T21:00:02.354128Z",
+          "timeOfReport":"2015-05-13T21:00:02.353894Z"
+       },{
+          "details":"",
+          "driveID":0,
+          "eventID":2129,
+          "eventInfoType":"tSEvent",
+          "message":"return code:2 t:41286 tt:41286 qcc:1 qd:1 qc:1 vrc:1 tt:2 ct:Write etl:524288",
+          "nodeID":0,
+          "serviceID":0,
+          "severity":0,
+          "timeOfPublish":"2015-05-13T20:45:21.586483Z",
+          "timeOfReport":"2015-05-13T20:45:21.586311Z"
+       }
+     ]
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

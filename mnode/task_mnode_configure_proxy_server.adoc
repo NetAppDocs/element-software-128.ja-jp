@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_configure_proxy_server.html 
+summary: クラスターがプロキシ サーバーの背後にある場合は、パブリック ネットワークにアクセスできるようにプロキシ設定を構成する必要があります。 
+keywords: netapp, Element, mnode, api, management node, add proxy, proxy server 
+---
+= プロキシサーバーを構成する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスターがプロキシ サーバーの背後にある場合は、パブリック ネットワークにアクセスできるようにプロキシ設定を構成する必要があります。
+
+プロキシ サーバーは、テレメトリ コレクターとリバース トンネル接続に使用されます。インストールまたはアップグレード中にプロキシ サーバーをまだ構成していない場合は、REST API UI を使用してプロキシ サーバーを有効にして構成できます。既存のプロキシ サーバー設定を変更したり、プロキシ サーバーを無効にしたりすることもできます。
+
+プロキシ サーバーを構成するコマンドは、管理ノードの現在のプロキシ設定を更新して返します。プロキシ設定は、 Active IQ、 NetApp監視サービス、およびNetAppサポートのリバース サポート トンネルを含む、管理ノードにインストールされているその他の Element ソフトウェア ユーティリティによって使用されます。
+
+.開始する前に
+* 構成するプロキシ サーバーのホストと資格情報の情報を知っておく必要があります。
+* クラスター バージョンでNetApp Elementソフトウェア 11.3 以降が実行されていることを確認します。
+* バージョン 11.3 以降を実行している管理ノードがデプロイされていることを確認します。
+* (管理ノード 12.0 以降) プロキシ サーバーを構成する前に、 NetApp Hybrid Cloud Control を管理サービス バージョン 2.16 に更新しておきます。
+
+
+.手順
+. 管理ノードのREST API UIにアクセスするには、管理ノードのIPアドレスに続けて `/mnode`:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+. *承認*または任意のロックアイコンを選択し、次の手順に従います。
++
+.. クラスターのユーザー名とパスワードを入力します。
+.. クライアントIDを入力してください `mnode-client`。
+.. セッションを開始するには、[承認] を選択します。
+.. ウィンドウを閉じます。
+
+
+. *PUT /settings*を選択します。
+. *試してみる*を選択します。
+. プロキシサーバーを有効にするには、設定する必要があります `use_proxy`真実に。  IP またはホスト名とプロキシ ポートの宛先を入力します。
++
+プロキシ ユーザー名、プロキシ パスワード、および SSH ポートはオプションであり、使用しない場合は省略する必要があります。
+
++
+[listing]
+----
+{
+"proxy_ip_or_hostname": "[IP or name]",
+"use_proxy": [true/false],
+"proxy_username": "[username]",
+"proxy_password": "[password]",
+"proxy_port": [port value],
+"proxy_ssh_port": [port value: default is 443]
+}
+----
+. *実行*を選択します。
+
+
+
+NOTE: 環境によっては管理ノードを再起動する必要がある場合があります。
+
+[discrete]
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

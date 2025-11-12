@@ -1,0 +1,129 @@
+---
+permalink: api/reference_element_api_enableencryptionatrest.html 
+sidebar: sidebar 
+keywords: encryption,enable,enabling,EnableEncryptionAtRest 
+summary: 'EnableEncryptionAtRest メソッドを使用すると、クラスター上で保存時に Advanced Encryption Standard (AES) 256 ビット暗号化を有効にして、クラスターが各ノードのドライブに使用される暗号化キーを管理できるようになります。この機能は、デフォルトでは有効になっていません。' 
+---
+= 保存時の暗号化を有効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `EnableEncryptionAtRest`クラスタ上で保存されている Advanced Encryption Standard (AES) 256 ビット暗号化を有効にして、クラスタが各ノードのドライブに使用される暗号化キーを管理できるようにする方法。この機能は、デフォルトでは有効になっていません。
+
+
+TIP: クラスタ上の保存時の暗号化および/または保存時のソフトウェア暗号化の現在の状態を確認するには、link:../api/reference_element_api_getclusterinfo["クラスター情報を取得する方法"^] 。使用することができます `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["保存データを暗号化するためにクラスターが使用する情報を取得する方法"^]。
+
+
+NOTE: この方法では、保存時のソフトウェア暗号化は有効になりません。これは、link:../api/reference_element_api_createcluster.html["クラスター作成方法"^]と `enableSoftwareEncryptionAtRest`に設定 `true`。
+
+保存時の暗号化を有効にすると、クラスターはクラスター内の各ノードのドライブの暗号化キーを内部的に自動的に管理します。
+
+keyProviderID が指定されている場合は、キープロバイダーの種類に応じてパスワードが生成され、取得されます。これは通常、KMIP キー プロバイダーの場合は、キー管理相互運用性プロトコル (KMIP) キー サーバーを使用して行われます。この操作の後、指定されたプロバイダーはアクティブとみなされ、保存時の暗号化が無効になるまで削除できません。 `DisableEncryptionAtRest`方法。
+
+
+NOTE: モデル番号が「-NE」で終わるノードタイプの場合、 `EnableEncryptionAtRest`メソッド呼び出しは失敗し、「暗号化は許可されていません」という応答が返されます。クラスターは暗号化できないノードを検出しました。
+
+
+NOTE: 暗号化を有効または無効にするのは、クラスターが実行中で正常な状態にある場合のみにしてください。暗号化は、必要に応じていつでも有効または無効にすることができます。
+
+
+NOTE: このプロセスは非同期であり、暗号化が有効になる前に応答を返します。使用することができます `GetClusterInfo`プロセスをいつ完了したかを確認するためにシステムをポーリングするメソッド。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+キープロバイダーID
+ a| 
+使用する KMIP キー プロバイダーの ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "EnableEncryptionAtRest",
+   "params": {},
+   "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、EnableEncryptionAtRest メソッドからの次の例のような応答を返します。報告する結果はありません。
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {}
+}
+----
+クラスターで Encryption at Rest が有効になっている間、GetClusterInfo は Encryption at Rest の状態 ("encryptionAtRestState") を "有効" として記述する結果を返します。保存時の暗号化が完全に有効になると、返される状態は「有効」に変わります。
+
+[listing]
+----
+{
+   "id": 1,
+      "result": {
+         "clusterInfo": {
+            "attributes": { },
+               "encryptionAtRestState": "enabling",
+            "ensemble": [
+               "10.10.5.94",
+               "10.10.5.107",
+               "10.10.5.108"
+            ],
+            "mvip": "192.168.138.209",
+            "mvipNodeID": 1,
+            "name": "Marshall",
+            "repCount": 2,
+            "svip": "10.10.7.209",
+            "svipNodeID": 1,
+            "uniqueID": "91dt"
+      }
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+[discrete]
+== 詳細情報の参照
+
+* link:reference_element_api_secureerasedrives.html["SecureEraseDrives"]
+* link:reference_element_api_getclusterinfo.html["クラスター情報を取得"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

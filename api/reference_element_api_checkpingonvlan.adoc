@@ -1,0 +1,244 @@
+---
+permalink: api/reference_element_api_checkpingonvlan.html 
+sidebar: sidebar 
+keywords: VLAN,pre-deployment,network,validation,validate,validating,check,checking,CheckPingOnVlan 
+summary: 展開前のネットワーク検証を実行するときに、CheckPingOnVlan メソッドを使用して一時的な VLAN 上のネットワーク接続をテストできます。  CheckPingOnVlan は一時的な VLAN インターフェイスを作成し、VLAN インターフェイスを使用してストレージ クラスター内のすべてのノードに ICMP パケットを送信してから、インターフェイスを削除します。 
+---
+= CheckPingOnVlan
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `CheckPingOnVlan`展開前のネットワーク検証を実行するときに、一時的な VLAN 上のネットワーク接続をテストする方法。 `CheckPingOnVlan`一時的な VLAN インターフェイスを作成し、VLAN インターフェイスを使用してストレージ クラスター内のすべてのノードに ICMP パケットを送信してから、インターフェイスを削除します。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+試み
+ a| 
+システムがテスト ping を繰り返す回数を指定します。
+ a| 
+integer
+ a| 
+5
+ a| 
+いいえ
+
+
+
+ a| 
+ホスト
+ a| 
+ping するデバイスのアドレスまたはホスト名をコンマで区切ったリストを指定します。
+ a| 
+string
+ a| 
+クラスター内のノード
+ a| 
+いいえ
+
+
+
+ a| 
+インタフェース
+ a| 
+ping を送信する既存の (ベース) インターフェイス。有効な値は次のとおりです。
+
+* Bond10G: Bond10G インターフェースから ping を送信します。
+* Bond1G: Bond1G インターフェースから ping を送信します。
+
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+パケットサイズ
+ a| 
+各 IP に送信される ICMP パケットで送信するバイト数を指定します。バイト数は、ネットワーク構成で指定された最大 MTU 未満である必要があります。
+ a| 
+integer
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+pingタイムアウトミリ秒
+ a| 
+個々の ping 応答を待機するミリ秒数を指定します。
+ a| 
+integer
+ a| 
+500ms
+ a| 
+いいえ
+
+
+
+ a| 
+断片化を禁止する
+ a| 
+ICMP パケットの DF (Do not Fragment) フラグを有効にします。
+ a| 
+ブーリアン
+ a| 
+false
+ a| 
+いいえ
+
+
+
+ a| 
+ソースアドレスV4
+ a| 
+ICMP ping パケットで使用する送信元 IPv4 アドレス。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+ソースアドレスV6
+ a| 
+ICMP ping パケットで使用する送信元 IPv6 アドレス。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+合計タイムアウト秒
+ a| 
+次の ping 試行を発行するかプロセスを終了する前に、ping がシステム応答を待機する時間を秒単位で指定します。
+ a| 
+integer
+ a| 
+5
+ a| 
+いいえ
+
+
+
+ a| 
+仮想ネットワークタグ
+ a| 
+ping パケットを送信するときに使用する VLAN ID。
+ a| 
+integer
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+結果
+ a| 
+ノードが通信できた各 IP のリストと ping 応答統計。
+ a| 
+JSONオブジェクト
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+    "method": "CheckPingOnVlan",
+    "params": {
+        "interface": "Bond10G",
+        "virtualNetworkTag": 4001,
+        "sourceAddressV4": "192.168.41.4",
+        "hosts": "192.168.41.2"
+},
+"id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "192.168.41.2": {
+      "individualResponseCodes": [
+        "Success",
+        "Success",
+        "Success",
+        "Success",
+        "Success"
+      ],
+      "individualResponseTimes": [
+        "00:00:00.000373",
+        "00:00:00.000098",
+        "00:00:00.000097",
+        "00:00:00.000074",
+        "00:00:00.000075"
+      ],
+      "individualStatus": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "interface": "Bond10G",
+      "responseTime": "00:00:00.000143",
+      "sourceAddressV4": "192.168.41.4",
+      "successful": true,
+      "virtualNetworkTag": 4001
+    }
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+11.1

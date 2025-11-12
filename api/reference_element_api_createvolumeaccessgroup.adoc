@@ -1,0 +1,178 @@
+---
+permalink: api/reference_element_api_createvolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,access,groups,group,create,creating,CreateVolumeAccessGroup 
+summary: CreateVolumeAccessGroup を使用して、新しいボリューム アクセス グループを作成できます。ボリューム アクセス グループを作成するときは、名前を付ける必要があります。また、オプションでイニシエーターとボリュームを入力することもできます。 
+---
+= ボリュームアクセスグループの作成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用できます `CreateVolumeAccessGroup`新しいボリューム アクセス グループを作成します。ボリューム アクセス グループを作成するときは、名前を付ける必要があります。また、オプションでイニシエーターとボリュームを入力することもできます。
+
+ボリューム アクセス グループに追加したイニシエーター IQN は、CHAP 認証なしでグループ内の任意のボリュームにアクセスできます。
+
+
+NOTE: クローンボリュームは、ソースボリュームからボリューム アクセス グループのメンバーシップを継承しません。
+
+ボリューム アクセス グループを作成するときは、次の点を考慮してください。
+
+* ボリューム アクセス グループには、最大 64 個のイニシエーター IQN を含めることができます。
+* イニシエーターは 1 つのボリューム アクセス グループにのみ属することができます。
+* ボリューム アクセス グループには最大 2000 個のボリュームを含めることができます。
+* 各ボリューム アクセス グループは、最大 4 つのボリューム アクセス グループに属することができます。
+
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+イニシエータ
+ a| 
+ボリューム アクセス グループに含めるイニシエーター ID または名前 (IQN および WWPN) のリスト。イニシエーター名のリストを渡すと、イニシエーターがまだ存在しない場合は作成されます。イニシエーター ID のリストを渡す場合、いずれかのイニシエーターがまだ存在しないと、メソッドはエラーを返します。イニシエーター名を渡すことは非推奨です。可能な場合はイニシエーター ID を使用する必要があります。
+ a| 
+整数配列または文字列配列（非推奨）
+ a| 
+ a| 
+いいえ
+
+
+
+ a| 
+名前
+ a| 
+ボリューム アクセス グループの名前。一意である必要はありませんが、一意であることが推奨されます。長さは 1 ～ 64 文字にする必要があります。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+ボリューム
+ a| 
+ボリューム アクセス グループに含めるボリューム ID のリスト。
+ a| 
+整数配列
+ a| 
+ a| 
+いいえ
+
+
+
+ a| 
+attributes
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+ a| 
+{}
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+ボリュームアクセスグループ
+ a| 
+新しく作成されたボリューム アクセス グループに関する情報を含むオブジェクト。
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[ボリュームアクセスグループ]
+
+
+
+ a| 
+ボリュームアクセスグループID
+ a| 
+新しく作成されたボリューム アクセス グループの ID。
+ a| 
+integer
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "CreateVolumeAccessGroup",
+   "params": {
+      "name": "myaccessgroup",
+      "initiators": ["iqn.1993-08.org.debian: 01: a31b1d799d5c"],
+      "volumes": [327],
+      "attributes": {}
+   }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": null,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [],
+      "initiatorIDs": [
+        95
+      ],
+      "initiators": [
+        "iqn.1993-08.org.debian: 01: a31b1d799d5c"
+      ],
+      "name": "myaccessgroup",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        327
+      ]
+    },
+    "volumeAccessGroupID": 96
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6
+
+
+
+== 詳細情報の参照
+
+* xref:reference_element_api_getasyncresult.adoc[非同期結果を取得する]
+* xref:reference_element_api_listsyncjobs.adoc[リスト同期ジョブ]
+* xref:reference_element_api_modifyvolume.adoc[ボリュームの変更]
+

@@ -1,0 +1,92 @@
+---
+permalink: api/reference_element_api_getpendingoperation.html 
+sidebar: sidebar 
+keywords: get,getting,pending,operation,getpendingoperation 
+summary: GetPendingOperation メソッドを使用すると、現在進行中のノード上の操作を検出できます。このメソッドは、操作が完了したときに報告するためにも使用できます。 
+---
+= 保留中の操作を取得する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetPendingOperation`現在進行中のノード上の操作を検出する方法。このメソッドは、操作が完了したときに報告するためにも使用できます。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+pending
+ a| 
+有効な値は次のとおりです。
+
+* true: 操作はまだ進行中です。
+* 間違い：
++
+操作は進行中ではありません。
+
+
+ a| 
+ブーリアン
+
+
+
+ a| 
+operation
+ a| 
+進行中または完了した操作の名前。
+ a| 
+string
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "GetPendingOperation",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "pendingOperation" : {
+         "pending" : "true",
+         "operation" : "TestDrivesInternal",
+      }
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

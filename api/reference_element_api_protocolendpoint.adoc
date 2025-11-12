@@ -1,0 +1,93 @@
+---
+permalink: api/reference_element_api_protocolendpoint.html 
+sidebar: sidebar 
+keywords: object,objects,protocolEndpoint 
+summary: protocolEndpoint オブジェクトには、プロトコル エンドポイントの属性が含まれます。  ListProtocolEndpoints API メソッドを使用して、クラスター内のすべてのプロトコル エンドポイントに関するこの情報を取得できます。 
+---
+= プロトコルエンドポイント
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protocolEndpoint オブジェクトには、プロトコル エンドポイントの属性が含まれます。クラスタ内のすべてのプロトコルエンドポイントのこの情報は、 `ListProtocolEndpoints` API メソッド。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+プライマリプロバイダーID
+ a| 
+プロトコル エンドポイントのプライマリ プロトコル エンドポイント プロバイダー オブジェクトの ID。
+ a| 
+integer
+
+
+
+ a| 
+プロトコルエンドポイントID
+ a| 
+プロトコル エンドポイントの一意の ID。
+ a| 
+UUID
+
+
+
+ a| 
+プロトコルエンドポイント状態
+ a| 
+プロトコル エンドポイントのステータス。有効な値は次のとおりです。
+
+* アクティブ: プロトコル エンドポイントは使用中です。
+* 開始: プロトコル エンドポイントが開始しています。
+* フェイルオーバー: プロトコル エンドポイントがフェイルオーバーしました。
+* 予約済み: プロトコルのエンドポイントは予約済みです。
+
+ a| 
+string
+
+
+
+ a| 
+プロバイダータイプ
+ a| 
+プロトコル エンドポイントのプロバイダーの種類。有効な値は次のとおりです。
+
+* プライマリ
+* セカンダリ
+
+ a| 
+string
+
+
+
+ a| 
+scsiNAAデバイスID
+ a| 
+NAA IEEE 登録拡張フォーマットにおけるプロトコル エンドポイントのグローバルに一意の SCSI デバイス識別子。
+ a| 
+string
+
+
+
+ a| 
+セカンダリプロバイダーID
+ a| 
+プロトコル エンドポイントのセカンダリ プロトコル エンドポイント プロバイダー オブジェクトの ID。
+ a| 
+integer
+
+|===
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_listprotocolendpoints.adoc[プロトコルエンドポイントのリスト]

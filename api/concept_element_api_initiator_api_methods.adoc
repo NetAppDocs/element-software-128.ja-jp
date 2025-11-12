@@ -1,0 +1,28 @@
+---
+permalink: api/concept_element_api_initiator_api_methods.html 
+sidebar: sidebar 
+keywords: initiator,method,methods,API,managing,manage 
+summary: イニシエーター メソッドを使用すると、ストレージ システムと外部ストレージ クライアント間の通信を処理する iSCSI イニシエーター オブジェクトを追加、削除、表示、および変更できます。 
+---
+= イニシエーターAPIメソッド
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+イニシエーター メソッドを使用すると、ストレージ システムと外部ストレージ クライアント間の通信を処理する iSCSI イニシエーター オブジェクトを追加、削除、表示、および変更できます。
+
+* xref:reference_element_api_createinitiators.adoc[イニシエーターの作成]
+* xref:reference_element_api_deleteinitiators.adoc[イニシエーターの削除]
+* xref:reference_element_api_listinitiators.adoc[リストイニシエーター]
+* xref:reference_element_api_modifyinitiators.adoc[イニシエーターの変更]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFireおよび Element 製品の以前のバージョンのドキュメント"^]
+

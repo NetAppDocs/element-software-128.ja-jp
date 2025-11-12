@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_add_assets.html 
+summary: REST API UI を使用して、管理ノード構成にコントローラー アセットを追加できます。 
+keywords: netapp, mnode, management node, rest api, Element 
+---
+= 管理ノードにコントローラアセットを追加する
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+REST API UI を使用して、管理ノード構成にコントローラー アセットを追加できます。
+
+最近インストールを拡張し、新しいアセットが構成に自動的に追加されなかった場合、アセットを追加する必要がある可能性があります。これらの API を使用して、インストールに最近追加されたアセットを追加します。
+
+.要件
+* クラスタ バージョンでは、 NetApp Elementソフトウェア 11.3 以降が実行されています。
+* バージョン 11.3 以降を実行している管理ノードをデプロイしました。
+* 管理ノード サービス ビューをNetAppのみの資産に制限するために、vCenter に新しいNetApp HCC ロールを作成しました。見るlink:task_mnode_create_netapp_hcc_role_vcenter.html["vCenterでNetApp HCCロールを作成する"]
+
+
+.手順
+. インストールの基本アセット ID を取得します。
++
+.. 管理ノードでインベントリ サービス REST API UI を開きます。
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. *承認*を選択し、以下を完了します。
++
+... クラスターのユーザー名とパスワードを入力します。
+... クライアントIDを入力してください `mnode-client`。
+... セッションを開始するには、[承認] を選択します。
+... ウィンドウを閉じます。
+
+
+.. REST API UI から、*GET ​/installations* を選択します。
+.. *試してみる*を選択します。
+.. *実行*を選択します。
+.. コード200のレスポンス本文から、 `id`インストール用。
++
+[listing, subs="+quotes"]
+----
+{
+  "installations": [
+    {
+      "_links": {
+        "collection": "https://10.111.211.111/inventory/1/installations",
+        "self": "https://10.111.217.111/inventory/1/installations/abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x"
+      },
+      *"id": "abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x",*
+----
++
+
+NOTE: インストールには、インストールまたはアップグレード中に作成された基本アセット構成があります。
+
+.. REST API UI から、*GET /installations/{id}* を選択します。
+.. *試してみる*を選択します。
+.. インストール アセット ID を *id* フィールドに貼り付けます。
+.. *実行*を選択します。
+.. レスポンスからクラスタコントローラIDをコピーして保存します(`"controllerId"`) を後のステップで使用します。
+
+
+. 既存のベースアセットにコントローラサブアセットを追加するには、以下を選択します。
++
+[listing]
+----
+POST /assets/{asset_id}/controllers
+----
++
+.. 管理ノードで mNode サービス REST API UI を開きます。
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. *承認*を選択し、以下を完了します。
++
+... クラスターのユーザー名とパスワードを入力します。
+... クライアントIDを入力してください `mnode-client`。
+... セッションを開始するには、[承認] を選択します。
+... ウィンドウを閉じます。
+
+
+.. *POST /assets/{asset_id}/controllers*を選択します。
+.. *試してみる*を選択します。
+.. *asset_id* フィールドに親ベースアセット ID を入力します。
+.. 必要な値をペイロードに追加します。
+.. *実行*を選択します。
+
+
+
+
+[discrete]
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server 用NetApp Elementプラグイン"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

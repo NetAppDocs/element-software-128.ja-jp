@@ -1,0 +1,22 @@
+---
+permalink: storage/task_system_manage_cluster_enable_and_disable_support_access.html 
+sidebar: sidebar 
+keywords: support access, enable, disable 
+summary: サポート アクセスを有効にすると、 NetAppサポート担当者がトラブルシューティングのために SSH 経由でストレージ ノードに一時的にアクセスできるようになります。 
+---
+= サポートアクセスを有効または無効にする
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+サポート アクセスを有効にすると、 NetAppサポート担当者がトラブルシューティングのために SSH 経由でストレージ ノードに一時的にアクセスできるようになります。
+
+サポート アクセスを変更するには、クラスター管理者権限が必要です。
+
+. *クラスター* > *設定*をクリックします。
+. 「サポート アクセスの有効化/無効化」セクションで、サポートにアクセスを許可する期間 (時間単位) を入力します。
+. *サポート アクセスを有効にする* をクリックします。
+. *オプション:* サポート アクセスを無効にするには、[*サポート アクセスを無効にする*] をクリックします。
+

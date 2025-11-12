@@ -1,0 +1,48 @@
+---
+permalink: api/reference_element_api_remoteclustersnapshotstatus.html 
+sidebar: sidebar 
+keywords: object,objects,remoteClusterSnapshotStatus 
+summary: remoteClusterSnapshotStatus オブジェクトには、リモート ストレージ クラスターに保存されているスナップショットの UUID とステータスが含まれます。この情報は、ListSnapshots または ListGroupSnapshots API メソッドを使用して取得できます。 
+---
+= リモートクラスタスナップショットステータス
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+その `remoteClusterSnapshotStatus`オブジェクトには、リモート ストレージ クラスターに保存されているスナップショットの UUID とステータスが含まれます。この情報は、 `ListSnapshots`または `ListGroupSnapshots`API メソッド。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+リモートステータス
+ a| 
+ソース クラスターから見たターゲット クラスター上のリモート スナップショットのレプリケーション ステータス。有効な値は次のとおりです。
+
+* 存在: スナップショットはリモート クラスターに存在します。
+* NotPresent: スナップショットはリモート クラスターに存在しません。
+* 同期中: これはターゲット クラスターであり、現在スナップショットを複製中です。
+* 削除済み: これはターゲット クラスターです。スナップショットは削除されましたが、ソース上にはまだ存在しています。
+
+ a| 
+string
+
+
+
+ a| 
+ボリュームペアUUID
+ a| 
+ボリューム ペアのユニバーサル識別子。
+ a| 
+UUID
+
+|===

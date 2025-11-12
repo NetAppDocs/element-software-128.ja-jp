@@ -1,0 +1,132 @@
+---
+permalink: api/reference_element_api_createqospolicy.html 
+sidebar: sidebar 
+keywords: QoS,policy,policies,create,creating 
+summary: CreateQoSPolicy メソッドを使用すると、後でボリュームの作成時または変更時に適用できる QoSPolicy オブジェクトを作成できます。  QoS ポリシーには、一意の ID、名前、および QoS 設定があります。 
+---
+= QoSポリシーの作成
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `CreateQoSPolicy`メソッドを使用して、後でボリュームの作成時または変更時に適用できる QoSPolicy オブジェクトを作成します。  QoS ポリシーには、一意の ID、名前、および QoS 設定があります。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+名前
+ a| 
+QoS ポリシーの名前 (例: gold、platinum、silver)。
+ a| 
+string
+ a| 
+なし
+ a| 
+はい
+
+
+
+ a| 
+qos
+ a| 
+このポリシーが表す QoS 設定。
+ a| 
+xref:reference_element_api_qos.adoc[QoS]
+ a| 
+なし
+ a| 
+はい
+
+|===
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+
+
+| Name | 説明 | タイプ 
+
+
+ a| 
+QoSポリシー
+ a| 
+新しく作成された QoSPolicy オブジェクト。
+ a| 
+xref:reference_element_api_qospolicy.adoc[QoSポリシー]
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "id": 68,
+  "method": "CreateQoSPolicy",
+  "params": {
+    "name": "bronze",
+    "qos": {
+      "minIOPS": 50,
+      "maxIOPS": 15000,
+      "burstIOPS": 15000
+    }
+  }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 68,
+  "result": {
+    "qosPolicy": {
+      "name": "bronze",
+      "qos": {
+        "burstIOPS": 15000,
+        "burstTime": 60,
+        "curve": {
+          "4096": 100,
+          "8192": 160,
+          "16384": 270,
+          "32768": 500,
+          "65536": 1000,
+          "131072": 1950,
+          "262144": 3900,
+          "524288": 7600,
+          "1048576": 15000
+        },
+        "maxIOPS": 15000,
+        "minIOPS": 50
+      },
+      "qosPolicyID": 2,
+      "volumeIDs": []
+    }
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+10.0

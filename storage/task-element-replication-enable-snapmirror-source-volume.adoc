@@ -1,0 +1,32 @@
+---
+permalink: storage/task-element-replication-enable-snapmirror-source-volume.html 
+sidebar: sidebar 
+keywords: ontap, cli, enable, snapmirror, element, source, volume 
+summary: レプリケーション関係を作成する前に、Elementソース ボリュームでSnapMirrorを有効にする必要があります。このタスクは、Element ソフトウェアの Web UI または API メソッドを使用してのみ実行できます。 
+---
+= Elementソース ボリュームでのSnapMirrorの有効化
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+レプリケーション関係を作成する前に、Elementソース ボリュームでSnapMirrorを有効にする必要があります。このタスクは、ElementソフトウェアのWeb UIまたはlink:../api/reference_element_api_modifyvolume.html["ボリュームの変更"]そしてlink:../api/reference_element_api_modifyvolumes.html["ボリュームの変更"]API メソッド。
+
+.開始する前に
+* ElementクラスタでSnapMirrorを有効にしておく必要があります。
+* ボリュームのブロック サイズが512バイトである必要があります。
+* ボリュームがElementリモート レプリケーションに参加していないことが必要です。
+* ボリューム アクセス タイプは「`レプリケーション ターゲット`」であってはなりません。
+
+
+.タスク概要
+以下の手順は、ボリュームがすでに存在することを前提としています。ボリュームを作成またはクローニングするときにSnapMirrorを有効にすることもできます。
+
+.手順
+. *管理* > *ボリューム*を選択します。
+. 選択してくださいimage:../media/action-icon.gif["アクションアイコン"]音量のボタン。
+. ドロップダウンメニューで*編集*を選択します。
+. *ボリュームの編集*ダイアログで、* SnapMirrorの有効化*を選択します。
+. *変更を保存*を選択します。
+

@@ -1,0 +1,113 @@
+---
+permalink: api/reference_element_api_snapmirrorpolicy.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorPolicy 
+summary: snapMirrorPolicy オブジェクトには、 ONTAPシステムに保存されているSnapMirrorポリシーに関する情報が含まれています。 
+---
+= スナップミラーポリシー
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorPolicy オブジェクトには、 ONTAPシステムに保存されているSnapMirrorポリシーに関する情報が含まれています。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+宛先ONTAPシステムの ID。
+ a| 
+integer
+
+
+
+ a| 
+ポリシー名
+ a| 
+ポリシーに割り当てられた一意の名前。
+ a| 
+string
+
+
+
+ a| 
+ポリシータイプ
+ a| 
+ポリシーの種類。有効な値は次のとおりです。
+
+* 非同期ミラー
+* ミラーボールト
+
+ a| 
+string
+
+
+
+ a| 
+コメント
+ a| 
+SnapMirrorポリシーに関連付けられた、人間が読める形式の説明。
+ a| 
+string
+
+
+
+ a| 
+転送優先度
+ a| 
+SnapMirror転送が実行される優先度。有効な値は次のとおりです。
+
+* normal: デフォルトの優先度。これらの転送は、ほとんどの低優先度の転送よりも前にスケジュールされます。
+* 低: これらの転送は優先度が最も低く、ほとんどの通常の優先度の転送の後にスケジュールされます。
+
+ a| 
+string
+
+
+
+ a| 
+ポリシールール
+ a| 
+ポリシー ルールを記述するオブジェクトのリスト。
+ a| 
+xref:reference_element_api_snapmirrorpolicyrule.adoc[スナップミラーポリシールール]配列
+
+
+
+ a| 
+合計保持数
+ a| 
+ポリシー内のすべてのルールの合計保持数。
+ a| 
+integer
+
+
+
+ a| 
+合計ルール
+ a| 
+ポリシー内のルールの合計数。
+ a| 
+integer
+
+
+
+ a| 
+vserverName
+ a| 
+SnapMirrorポリシーのSVMの名前。
+ a| 
+string
+
+|===

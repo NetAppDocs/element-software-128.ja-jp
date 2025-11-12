@@ -1,0 +1,89 @@
+---
+permalink: api/reference_element_api_getloginbanner.html 
+sidebar: sidebar 
+keywords: terms,use,banner,get,getting,getloginbanner,login 
+summary: GetLoginBanner メソッドを使用すると、ユーザーが Element Web インターフェースにログインしたときに表示される、現在アクティブな利用規約バナーを取得できます。 
+---
+= ログインバナーを取得する
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetLoginBanner`ユーザーが Element Web インターフェースにログインしたときに表示される、現在アクティブな利用規約バナーを取得する方法。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+バナー
+ a| 
+利用規約バナーの現在のテキスト。バナーが無効になっている場合でも、この値にテキストを含めることができます。
+ a| 
+string
+
+
+
+ a| 
+有効
+ a| 
+利用規約バナーのステータス。有効な値は次のとおりです。
+
+* true: Web インターフェイスのログイン時に利用規約バナーが表示されます。
+* false: Web インターフェイスのログイン時に利用規約バナーは表示されません。
+
+ a| 
+ブーリアン
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "id": 3411,
+  "method": "GetLoginBanner",
+  "params": {}
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 3411,
+  "result": {
+    "loginBanner": {
+      "banner": "Welcome to NetApp!",
+      "enabled": false
+    }
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+10.0

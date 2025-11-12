@@ -1,0 +1,87 @@
+---
+permalink: api/reference_element_api_getntpinfo.html 
+sidebar: sidebar 
+keywords: ntp,info,get,getting,getntpinfo 
+summary: 'GetNtpInfo メソッドを使用して、現在のネットワーク タイム プロトコル (NTP) 構成情報を取得できます。' 
+---
+= GetNtpInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `GetNtpInfo`現在のネットワーク タイム プロトコル (NTP) 構成情報を取得する方法。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータがありません。
+
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+サーバ
+ a| 
+NTPサーバのリスト。
+ a| 
+文字列配列
+
+
+
+ a| 
+ブロードキャストクライアント
+ a| 
+クラスター内のノードがブロードキャスト NTP メッセージをリッスンしているかどうかを示します。有効な値は次のとおりです。
+
+* true
+* false
+
+ a| 
+ブーリアン
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "GetNtpInfo",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+    "broadcastclient" : false,
+    "servers" : [ "us.pool.ntp.org" ]
+   }
+}
+----
+
+
+== バージョン以降の新機能
+
+9.6

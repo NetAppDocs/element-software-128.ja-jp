@@ -1,0 +1,79 @@
+---
+permalink: api/reference_element_api_listclusterinterfacepreferences.html 
+sidebar: sidebar 
+keywords:  
+summary: ListClusterInterfacePreference メソッドを使用すると、Element ソフトウェアを実行しているストレージ クラスターと統合されたシステムは、システムに保存されている既存のクラスター インターフェイス設定を一覧表示できます。このメソッドは内部使用用です。 
+---
+= クラスターインターフェース設定の一覧
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+その `ListClusterInterfacePreference`この方法により、Element ソフトウェアを実行するストレージ クラスターと統合されたシステムは、システムに保存されている既存のクラスター インターフェイス設定を一覧表示できるようになります。このメソッドは内部使用用です。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドの戻り値は次のとおりです。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+環境設定
+ a| 
+現在ストレージ クラスターに保存されているクラスター インターフェイス オブジェクトのリスト。各オブジェクトには設定の名前と値が含まれます。
+ a| 
+JSONオブジェクト配列
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+	"method": "ListClusterInterfacePreferences",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"preferences": [
+			{
+				"name": "prefname",
+				"value": "testvalue"
+			}
+		]
+	}
+}
+----
+
+
+== バージョン以降の新機能
+
+11.0

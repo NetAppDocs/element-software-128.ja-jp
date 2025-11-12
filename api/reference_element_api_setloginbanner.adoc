@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_setloginbanner.html 
+sidebar: sidebar 
+keywords: terms,use,banner,configure,set,setting,setloginbanner,login 
+summary: SetLoginBanner メソッドを使用して、ユーザーが Element Web インターフェースにログインしたときに表示される利用規約バナーを設定できます。 
+---
+= ログインバナーの設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `SetLoginBanner`ユーザーが Element Web インターフェースにログインしたときに表示される利用規約バナーを構成する方法。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+バナー
+ a| 
+利用規約バナーの希望テキスト。許容される最大長は 4,096 文字です。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+有効
+ a| 
+利用規約バナーのステータス。有効な値は次のとおりです。
+
+* `true`: Web インターフェイスにログインすると、利用規約のバナーが表示されます。
+* `false`: Web インターフェイスのログイン時に利用規約バナーが表示されません。
+
+ a| 
+ブーリアン
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには次の戻り値があります。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+バナー
+ a| 
+利用規約バナーの現在のテキスト。バナーが無効になっている場合でも、この値にテキストを含めることができます。
+ a| 
+string
+
+
+
+ a| 
+有効
+ a| 
+利用規約バナーのステータス。有効な値は次のとおりです。
+
+* true: Web インターフェイスのログイン時に利用規約バナーが表示されます。
+* false: Web インターフェイスのログイン時に利用規約バナーは表示されません。
+
+ a| 
+ブーリアン
+
+|===
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "id": 3920,
+  "method": "SetLoginBanner",
+  "params": {
+    "banner": "Welcome to NetApp!",
+    "enabled": true
+  }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "id": 3920,
+  "result": {
+    "loginBanner": {
+      "banner": "Welcome to NetApp!",
+      "enabled": true
+    }
+  }
+}
+----
+
+
+== バージョン以降の新機能
+
+10.0

@@ -1,0 +1,89 @@
+---
+permalink: api/reference_element_api_deleteidpconfiguration.html 
+sidebar: sidebar 
+keywords: IdP,idp,configuration,delete 
+summary: DeleteIdpConfiguration メソッドを使用して、クラスターのサードパーティ IdP の既存の構成を削除できます。最後の IdP 構成を削除すると、クラスターから SAML サービス プロバイダー証明書が削除されます。 
+---
+= IdpConfiguration の削除
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `DeleteIdpConfiguration`クラスターのサードパーティ IdP の既存の構成を削除する方法。最後の IdP 構成を削除すると、クラスターから SAML サービス プロバイダー証明書が削除されます。
+
+
+
+== パラメータ
+
+このメソッドには次の入力パラメータがあります。
+
+|===
+| Name | 説明 | タイプ | デフォルト値 | 必須 
+
+
+ a| 
+idp構成ID
+ a| 
+サードパーティの IdP 構成の UUID。
+ a| 
+UUID
+ a| 
+なし
+ a| 
+いいえ
+
+
+
+ a| 
+idp名
+ a| 
+SAML 2.0 シングル サインオンの IdP プロバイダーを識別および取得するために使用される名前。
+ a| 
+string
+ a| 
+なし
+ a| 
+いいえ
+
+|===
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+  "method": "DeleteIdpConfiguration",
+  "params": {
+    "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+    "idpName": "https://provider.name.url.com"
+  }
+}
+----
+
+
+== 応答例
+
+このメソッドは、次の例のような応答を返します。
+
+[listing]
+----
+{
+  "result":{}
+}
+----
+
+
+== バージョン以降の新機能
+
+12.0

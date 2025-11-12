@@ -1,0 +1,31 @@
+---
+permalink: setup/task_setup_cluster_with_fibre_channel_nodes.html 
+sidebar: sidebar 
+keywords: element, solidfire, fibre channel, setup, node, cluster 
+summary: ストレージ ノードを使用してクラスターをセットアップする手順を理解します。 
+---
+= ファイバーチャネルノードを使用したクラスターの設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ラック ユニットにノードをインストールしてケーブル接続し、電源をオンにした後、ファイバー チャネル ノードを使用してクラスターを設定し、Element ソフトウェアを使用して管理できます。その後、ストレージ システムに追加のコンポーネントをインストールして構成できます。
+
+.手順
+. link:../setup/concept_setup_fc_configure_a_fibre_channel_node.html["ファイバーチャネルノードを構成する"]
+. link:../setup/task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.html["ファイバーチャネルノードで新しいクラスターを作成する"]
+. link:../setup/task_setup_fc_add_fibre_channel_nodes_to_a_cluster.html["ファイバーチャネルノードをクラスターに追加する"]
+. link:../setup/concept_setup_fc_set_up_zones_for_fibre_channel_nodes.html["ファイバーチャネルノードのゾーンを設定する"]
+. link:../setup/task_setup_create_a_volume_access_group_for_fibre_channel_clients.html["ファイバーチャネルクライアントのボリュームアクセスグループを作成する"]
+. link:../setup/task_setup_determine_which_solidfire_components_to_install.html["インストールするSolidFireコンポーネントを決定する"]
+. link:../setup/task_setup_gh_redirect_set_up_a_management_node.html["管理ノードを設定する"]
+
+
+
+
+== 詳細情報の参照
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFireおよびElementソフトウェアのドキュメント"]
+

@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_attributes.html 
+sidebar: sidebar 
+keywords: QoS,object,Quality,Service 
+summary: 多くの API リクエストとレスポンスでは、単純な型だけでなくオブジェクトも使用されます。オブジェクトはキーと値のペアのコレクションであり、値は単純な型または別のオブジェクトになります。属性は、JSON オブジェクトでユーザーが設定できるカスタムの名前と値のペアです。一部のメソッドでは、オブジェクトの作成または変更時に属性を追加できます。 
+---
+= 属性
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+多くの API リクエストとレスポンスでは、単純な型だけでなくオブジェクトも使用されます。オブジェクトはキーと値のペアのコレクションであり、値は単純な型または別のオブジェクトになります。属性は、JSON オブジェクトでユーザーが設定できるカスタムの名前と値のペアです。一部のメソッドでは、オブジェクトの作成または変更時に属性を追加できます。
+
+エンコードされた属性オブジェクトには 1000 バイトの制限があります。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれています。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+attributes
+ a| 
+JSON オブジェクト形式の名前と値のペアのリスト。
+ a| 
+JSONオブジェクト
+
+|===
+
+
+== リクエスト例
+
+次の要求例では、AddClusterAdmin メソッドを使用します。
+
+[listing]
+----
+{
+   "method": "AddClusterAdmin",
+   "params": {
+      "username": "joeadmin",
+      "password": "68!5Aru268)$",
+      "access": [
+         "volume",
+         "reporting"
+      ],
+      "attributes": {
+         "name1": "value1",
+         "name2": "value2",
+         "name3": "value3"
+      }
+   }
+}
+----

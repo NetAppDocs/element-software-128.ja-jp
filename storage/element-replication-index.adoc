@@ -1,0 +1,241 @@
+---
+permalink: storage/element-replication-index.html 
+sidebar: sidebar 
+keywords: ontap, cli, replication, element, software, ontap, business continuity, snapmirror, replicate, snapshot, copies, volume 
+summary: SnapMirror を使用して Element ボリュームのスナップショット コピーをONTAP の宛先に複製することにより、Element システムでのビジネス継続性を確保できます。 
+---
+= NetApp ElementソフトウェアとONTAP間のレプリケーションの概要 (ONTAP CLI)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapMirror を使用して Element ボリュームのスナップショット コピーをONTAP の宛先に複製することにより、Element システムでのビジネス継続性を確保できます。これにより、Elementサイトで災害が発生した場合でも、ONTAPシステムからクライアントに引き続きデータを提供し、サービスの復旧後にElementシステムを再アクティブ化できます。
+
+ONTAP 9.4 以降では、 ONTAPノードで作成された LUN のスナップショット コピーを Element システムに複製できます。これは、Elementサイトの停止中にLUNを作成した場合や、LUNを使用してONTAPからElementソフトウェアにデータを移行する場合に便利です。
+
+以下の条件に該当する場合は、ElementからONTAPへのバックアップを使用する必要があります。
+
+* すべての選択肢について検討するのではなく、ベストプラクティスに従う。
+* System Managerや自動スクリプト ツールではなく、ONTAPコマンドライン インターフェイス（CLI）を使用する必要がある。
+* iSCSIを使用してクライアントにデータを提供している。
+
+
+追加のSnapMirror設定または概念情報が必要な場合は、link:https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["データ保護の概要"^] 。
+
+
+
+== ElementとONTAP間のレプリケーションについて
+
+ONTAP 9.3 以降では、 SnapMirror を使用して、Element ボリュームのスナップショット コピーをONTAP の宛先に複製できます。  Element サイトで災害が発生した場合、 ONTAPシステムからクライアントにデータを提供して、サービスが回復したときに Element ソース ボリュームを再アクティブ化できます。
+
+ONTAP 9.4 以降では、 ONTAPノードで作成された LUN のスナップショット コピーを Element システムに複製できます。これは、Elementサイトの停止中にLUNを作成した場合や、LUNを使用してONTAPからElementソフトウェアにデータを移行する場合に便利です。
+
+
+
+=== データ保護関係のタイプ
+
+SnapMirrorには2種類のデータ保護関係があります。各タイプについて、 SnapMirror は関係を初期化または更新する前に、Element ソース ボリュームのスナップショット コピーを作成します。
+
+* _災害復旧 (DR)_ データ保護関係では、宛先ボリュームにはSnapMirrorによって作成されたスナップショット コピーのみが含まれており、プライマリ サイトで大災害が発生した場合でも、そこから引き続きデータを提供できます。
+* 長期保存データ保護関係では、宛先ボリュームには、Element ソフトウェアによって作成されたポイントインタイム スナップショット コピーと、 SnapMirrorによって作成されたスナップショット コピーが含まれます。たとえば、20 年間にわたって作成された毎月のスナップショットのコピーを保持したい場合があります。
+
+
+
+
+=== デフォルト ポリシー
+
+SnapMirror を初めて起動すると、ソース ボリュームから宛先ボリュームへのベースライン転送が実行されます。  _SnapMirror ポリシー_ は、ベースラインと更新の内容を定義します。
+
+データ保護関係を作成する際にデフォルトまたはカスタムのポリシーを指定できます。_ポリシー タイプ_ によって、含めるスナップショット コピーと保持するコピーの数が決まります。
+
+次の表はデフォルトのポリシーの一覧です。使用 `MirrorLatest`従来の DR 関係を作成するためのポリシー。使用 `MirrorAndVault`または `Unified7year`DR と長期保存が同じ宛先ボリュームに構成される統合レプリケーション関係を作成するポリシー。
+
+[cols="25,25,50"]
+|===
+
+
+| ポリシー | ポリシー タイプ | 更新時の動作 
+
+
+ a| 
+MirrorLatest
+ a| 
+async-mirror
+ a| 
+SnapMirrorによって作成されたスナップショットのコピーを転送します。
+
+
+
+ a| 
+MirrorAndVault
+ a| 
+mirror-vault
+ a| 
+SnapMirrorによって作成されたスナップショット コピーと、前回の更新以降に作成されたそれほど新しくないスナップショット コピー(SnapMirrorラベルが「`daily`」または「`weekly`」の場合) を転送します。
+
+
+
+ a| 
+統一7年
+ a| 
+mirror-vault
+ a| 
+SnapMirrorによって作成されたスナップショット コピーと、前回の更新以降に作成されたそれほど新しくないスナップショット コピー(SnapMirrorラベルが「`daily`」、「`weekly`」、または「`monthly`」の場合) を転送します。
+
+|===
+[NOTE]
+====
+SnapMirrorポリシーの完全な背景情報（どのポリシーを使用するかのガイダンスを含む）については、以下を参照してください。link:https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["データ保護の概要"^] 。
+
+====
+
+
+=== SnapMirrorラベルの概要
+
+「`mirror-vault`」ポリシー タイプを持つすべてのポリシーには、どのスナップショット コピーを複製するかを指定するルールが必要です。たとえば、ルール「`daily`」は、 SnapMirrorラベル「`daily`」が割り当てられたスナップショット コピーのみを複製する必要があることを示します。  Element スナップショット コピーを構成するときに、 SnapMirrorラベルを割り当てます。
+
+
+
+=== ElementソースクラスタからONTAPデスティネーションクラスタへのレプリケーション
+
+SnapMirror を使用すると、Element ボリュームのスナップショット コピーをONTAP宛先システムに複製できます。  Element サイトで災害が発生した場合、 ONTAPシステムからクライアントにデータを提供して、サービスが回復したときに Element ソース ボリュームを再アクティブ化できます。
+
+Element ボリュームは、 ONTAP LUN とほぼ同等です。  SnapMirror は、 Element ソフトウェアとONTAP間のデータ保護関係が初期化されるときに、Element ボリュームの名前を持つ LUN を作成します。  LUN が Element からONTAPへのレプリケーションの要件を満たしている場合、 SnapMirror は既存の LUN にデータを複製します。
+
+レプリケーション ルールは次のとおりです。
+
+* ONTAPボリュームには、1 つの Element ボリュームのデータのみを含めることができます。
+* ONTAPボリュームから複数の Element ボリュームにデータを複製することはできません。
+
+
+
+
+=== ONTAPソース クラスタから Element デスティネーション クラスタへのレプリケーション
+
+ONTAP 9.4 以降では、 ONTAPシステムで作成された LUN のスナップショット コピーを Element ボリュームに複製できます。
+
+* Element ソースとONTAP宛先の間にSnapMirror関係がすでに存在する場合、宛先からデータを提供中に作成された LUN は、ソースが再アクティブ化されると自動的に複製されます。
+* それ以外の場合は、 ONTAPソース クラスタと Element デスティネーション クラスタの間にSnapMirror関係を作成して初期化する必要があります。
+
+
+レプリケーション ルールは次のとおりです。
+
+* レプリケーション関係には、タイプ「`async-mirror`」のポリシーが必要です。
++
+タイプ「`mirror-vault`」のポリシーはサポートされていません。
+
+* iSCSI LUNのみがサポートされます。
+* ONTAPボリュームからElementボリュームに複数のLUNをレプリケートすることはできません。
+* ONTAPボリュームから複数のElementボリュームにLUNをレプリケートすることはできません。
+
+
+
+
+=== 前提条件
+
+Element とONTAP間のデータ保護関係を設定する前に、次のタスクを完了しておく必要があります。
+
+* Element クラスタでは、 NetApp Elementソフトウェア バージョン 10.1 以降が実行されている必要があります。
+* ONTAPクラスタでONTAP 9.3以降が実行されている必要があります。
+* ONTAPクラスタでSnapMirrorのライセンスが有効になっている必要があります。
+* 予想されるデータ転送を処理するのに十分な大きさのボリュームを Element およびONTAPクラスタ上に構成しておく必要があります。
+* 「`mirror-vault`」ポリシー タイプを使用している場合は、複製される Element スナップショット コピーに対してSnapMirrorラベルが設定されている必要があります。
++
+[NOTE]
+====
+このタスクは、link:concept_snapmirror_labels.html["ElementソフトウェアのWeb UI"]またはlink:../api/concept_element_api_snapshots_overview.html["APIメソッド"]。
+
+====
+* ポート5010を使用できることを確認しておく必要があります。
+* デスティネーション ボリュームの移動が必要となることが予想される場合は、ソースとデスティネーションの間にフルメッシュ接続が確立されていることを確認しておく必要があります。Element ソース クラスタ上のすべてのノードは、 ONTAP宛先クラスタ上のすべてのノードと通信できる必要があります。
+
+
+
+
+=== サポートの詳細
+
+次の表は、Element からONTAPへのバックアップのサポートの詳細を示しています。
+
+[cols="25,75"]
+|===
+
+
+| リソースまたは機能 | サポートの詳細 
+
+
+ a| 
+SnapMirror
+ a| 
+* SnapMirrorのリストア機能はサポートされません。
+* その `MirrorAllSnapshots`そして `XDPDefault`ポリシーはサポートされていません。
+* 「`vault`」ポリシー タイプはサポートされていません。
+* システム定義のルール「`all_source_snapshots`」はサポートされていません。
+* 「`mirror-vault`」ポリシー タイプは、Element ソフトウェアからONTAPへのレプリケーションに対してのみサポートされます。  ONTAPから Element ソフトウェアへのレプリケーションには、「`async-mirror`」を使用します。
+* その `-schedule`そして `-prefix`オプション `snapmirror policy add-rule`サポートされていません。
+* その `-preserve`そして `-quick-resync`オプション `snapmirror resync`サポートされていません。
+* ストレージ効率は維持されません。
+* ファンアウトおよびカスケード構成のデータ保護はサポートされません。
+
+
+
+
+ a| 
+ONTAP
+ a| 
+* ONTAP Selectは、ONTAP 9.4およびElement 10.3以降でサポートされます。
+* Cloud Volumes ONTAPは、ONTAP 9.5およびElement 11.0以降でサポートされます。
+
+
+
+
+ a| 
+要素
+ a| 
+* ボリューム サイズの上限は8TiBです。
+* ボリュームのブロック サイズは512バイトにする必要があります。4Kバイトのブロック サイズはサポートされません。
+* ボリューム サイズは1MiBの倍数にする必要があります。
+* ボリューム属性は維持されません。
+* 複製されるスナップショット コピーの最大数は 30 です。
+
+
+
+
+ a| 
+ネットワーク
+ a| 
+* 転送ごとに使用できるTCP接続は1つです。
+* 要素ノードは IP アドレスとして指定する必要があります。DNSホスト名検索はサポートされません。
+* IPspaceはサポートされません。
+
+
+
+
+ a| 
+SnapLock
+ a| 
+SnapLockボリュームはサポートされません。
+
+
+
+ a| 
+FlexGroup
+ a| 
+FlexGroupボリュームはサポートされません。
+
+
+
+ a| 
+SVM DR
+ a| 
+SVM DR構成のONTAPボリュームはサポートされません。
+
+
+
+ a| 
+MetroCluster
+ a| 
+MetroCluster構成のONTAPボリュームはサポートされません。
+
+|===

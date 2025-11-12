@@ -1,0 +1,60 @@
+---
+section: mnode
+title: 管理ノードを操作する
+entries:
+- title: 管理ノードの概要
+  url: "/mnode/task_mnode_work_overview.html"
+- title: 管理ノードをインストールまたは回復する
+  entries:
+  - title: 管理ノードをインストールする
+    url: "/mnode/task_mnode_install.html"
+  - title: vCenterでNetApp HCCロールを作成する
+    url: "/mnode/task_mnode_create_netapp_hcc_role_vcenter.html"
+  - title: ストレージ ネットワーク インターフェイス コントローラ (NIC) を構成する
+    url: "/mnode/task_mnode_install_add_storage_NIC.html"
+  - title: 管理ノードを回復する
+    url: "/mnode/task_mnode_recover.html"
+- title: 管理ノードにアクセスする
+  url: "/mnode/task_mnode_access_ui.html"
+- title: 管理ノードのデフォルトのSSL証明書を変更する
+  url: "/mnode/reference_change_mnode_default_ssl_certificate.html"
+- title: 管理ノードUIを操作する
+  entries:
+  - title: 管理ノードUIの概要
+    url: "/mnode/task_mnode_work_overview_UI.html"
+  - title: アラート監視を構成する
+    url: "/mnode/task_mnode_enable_alerts.html"
+  - title: 管理ノードのネットワーク、クラスタ、システム設定を変更してテストする
+    url: "/mnode/task_mnode_settings.html"
+  - title: 管理ノードからシステムユーティリティを実行する
+    url: "/mnode/task_mnode_run_system_utilities.html"
+- title: 管理ノードREST APIを操作する
+  entries:
+  - title: 管理ノード REST API UI の概要
+    url: "/mnode/task_mnode_work_overview_API.html"
+  - title: REST APIを使用するための承認を取得する
+    url: "/mnode/task_mnode_api_get_authorizationtouse.html"
+  - title: Active IQとNetAppの監視を有効にする
+    url: "/mnode/task_mnode_enable_activeIQ.html"
+  - title: 複数の vCenter 用にNetApp Hybrid Cloud Control を構成する
+    url: "/mnode/task_mnode_multi_vcenter_config.html"
+  - title: 管理ノードにコントローラアセットを追加する
+    url: "/mnode/task_mnode_add_assets.html"
+  - title: ストレージ クラスター アセットの作成と管理
+    url: "/mnode/task_mnode_manage_storage_cluster_assets.html"
+  - title: 既存のコントローラーアセットを表示または編集する
+    url: "/mnode/task_mnode_edit_vcenter_assets.html"
+  - title: プロキシサーバーを構成する
+    url: "/mnode/task_mnode_configure_proxy_server.html"
+  - title: 管理ノードのOSとサービスのバージョンを確認する
+    url: "/mnode/task_mnode_api_find_mgmt_svcs_version.html"
+  - title: 管理サービスからログを取得する
+    url: "/mnode/task_mnode_logs.html"
+- title: サポート接続を管理する
+  entries:
+  - title: 基本的なトラブルシューティングのために SSH を使用してストレージ ノードにアクセスする
+    url: "/mnode/task_mnode_enable_node_troubleshooting_sessions.html"
+  - title: リモートNetAppサポートセッションを開始する
+    url: "/mnode/task_mnode_enable_remote_support_connections.html"
+  - title: 管理ノードでSSH機能を管理する
+    url: "/mnode/task_mnode_ssh_management.html"

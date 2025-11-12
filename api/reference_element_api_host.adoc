@@ -1,0 +1,83 @@
+---
+permalink: api/reference_element_api_host.html 
+sidebar: sidebar 
+keywords: object,objects,host 
+summary: ホスト オブジェクトには、仮想ボリューム ホストに関する情報が含まれています。  ListVirtualVolumeHosts メソッドを使用して、すべての仮想ボリューム ホストのこの情報を取得できます。 
+---
+= ホスト（仮想ボリューム）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ホスト オブジェクトには、仮想ボリューム ホストに関する情報が含まれています。使用することができます `ListVirtualVolumeHosts`すべての仮想ボリューム ホストのこの情報を取得する方法。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+バインディング
+ a| 
+仮想ボリューム ホストのバインドを記述するオブジェクトのリスト。
+ a| 
+整数配列
+
+
+
+ a| 
+clusterID
+ a| 
+このホストが関連付けられているクラスターの一意の ID。
+ a| 
+UUID
+
+
+
+ a| 
+ホストアドレス
+ a| 
+仮想ボリューム ホストの IP アドレスまたは DNS 名。
+ a| 
+string
+
+
+
+ a| 
+イニシエーター名
+ a| 
+仮想ボリューム ホストのイニシエーター IQN のリスト。
+ a| 
+文字列配列
+
+
+
+ a| 
+仮想ボリュームホストID
+ a| 
+この仮想ボリューム ホストの一意の ID。
+ a| 
+UUID
+
+
+
+ a| 
+表示されるプロトコルエンドポイントID
+ a| 
+このホスト上で表示されるプロトコル エンドポイントの ID のリスト。
+ a| 
+UUID配列
+
+|===
+
+
+== 詳細情報の参照
+
+xref:reference_element_api_listvirtualvolumehosts.adoc[仮想ボリュームホストの一覧]

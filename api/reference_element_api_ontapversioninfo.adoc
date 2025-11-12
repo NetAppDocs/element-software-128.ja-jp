@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_ontapversioninfo.html 
+sidebar: sidebar 
+keywords: object,objects,ontapVersionInfo 
+summary: ontapVersionInfo オブジェクトには、 SnapMirror関係にあるONTAPクラスタの API バージョンに関する情報が含まれています。  Element Web UI は、GetOntapVersionInfo API メソッドを使用してこの情報を取得します。 
+---
+= ontapバージョン情報
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ontapVersionInfo オブジェクトには、 SnapMirror関係にあるONTAPクラスタの API バージョンに関する情報が含まれています。  ElementウェブUIは `GetOntapVersionInfo`この情報を取得するための API メソッド。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+スナップミラーエンドポイントID
+ a| 
+宛先ONTAPシステムの ID。
+ a| 
+integer
+
+
+
+ a| 
+クライアントAPIメジャーバージョン
+ a| 
+Element API クライアントで使用されているONTAP API メジャー バージョン。
+ a| 
+string
+
+
+
+ a| 
+クライアントAPIマイナーバージョン
+ a| 
+Element API クライアントで使用されているONTAP API マイナー バージョン。
+ a| 
+string
+
+
+
+ a| 
+ontapAPIメジャーバージョン
+ a| 
+ONTAPシステムでサポートされている現在の API メジャー バージョン。
+ a| 
+string
+
+
+
+ a| 
+ontapAPIマイナーバージョン
+ a| 
+ONTAPシステムでサポートされている現在の API マイナー バージョン。
+ a| 
+string
+
+
+
+ a| 
+ontapバージョン
+ a| 
+ONTAPクラスタで実行されている現在のソフトウェア バージョン。
+ a| 
+string
+
+|===

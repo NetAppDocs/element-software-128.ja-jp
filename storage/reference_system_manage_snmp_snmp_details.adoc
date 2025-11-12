@@ -1,0 +1,39 @@
+---
+permalink: storage/reference_system_manage_snmp_snmp_details.html 
+sidebar: sidebar 
+keywords: snmp, overview, reference, mib, settings, trap 
+summary: クラスター タブの SNMP ページでは、次の情報を表示できます。 
+---
+= SNMPの詳細
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+クラスターで簡易ネットワーク管理プロトコル (SNMP) を構成できます。
+
+SNMP リクエスタを選択し、使用する SNMP のバージョンを選択し、SNMP ユーザーベース セキュリティ モデル (USM) ユーザーを識別し、 SolidFireクラスターを監視するためのトラップを設定できます。管理情報ベース ファイルを表示したりアクセスしたりすることもできます。
+
+
+NOTE: IPv4 アドレスと IPv6 アドレスの両方を使用できます。
+
+
+
+== SNMP の詳細
+
+クラスター タブの SNMP ページでは、次の情報を表示できます。
+
+* *SNMP MIB*
++
+表示またはダウンロードできる MIB ファイル。
+
+* *一般的なSNMP設定*
++
+SNMP を有効または無効にすることができます。 SNMP を有効にした後、使用するバージョンを選択できます。バージョン 2 を使用する場合はリクエスタを追加でき、バージョン 3 を使用する場合は USM ユーザーを設定できます。
+
+* *SNMPトラップ設定*
++
+捕獲したいトラップを識別できます。トラップ受信者ごとにホスト、ポート、コミュニティ文字列を設定できます。
+
+

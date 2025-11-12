@@ -1,0 +1,52 @@
+---
+permalink: api/reference_element_api_resetnetworkconfig.html 
+sidebar: sidebar 
+keywords: network,config,configuration,reset,restetting,factory,default,resetnetworkconfig 
+summary: ResetNetworkConfig メソッドを使用すると、個々のノードのネットワーク構成の問題を解決するのに役立ちます。この方法は、個々のノードのネットワーク構成を工場出荷時のデフォルト設定にリセットします。 
+---
+= ネットワーク設定をリセット
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用することができます `ResetNetworkConfig`個々のノードのネットワーク構成の問題を解決するのに役立つ方法。この方法は、個々のノードのネットワーク構成を工場出荷時のデフォルト設定にリセットします。
+
+
+
+== パラメータ
+
+このメソッドには入力パラメータはありません。
+
+
+
+== 戻り値
+
+このメソッドには戻り値はありません。
+
+
+
+== リクエスト例
+
+このメソッドのリクエストは次の例のようになります。
+
+[listing]
+----
+{
+   "method": "ResetNetworkConfig",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 応答例
+
+このメソッドは応答を返しません。
+
+
+
+== バージョン以降の新機能
+
+11.0

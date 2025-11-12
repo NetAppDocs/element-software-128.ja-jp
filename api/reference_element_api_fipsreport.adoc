@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_fipsreport.html 
+sidebar: sidebar 
+keywords: object,objects,fipsReport,FIPS,140-2 
+summary: fipsReport オブジェクトには、ストレージ クラスター内のすべてのノードに対する FIPS 140-2 サポートに関する情報が含まれています。この情報は GetFipsReport メソッドを使用して取得できます。 
+---
+= fipsレポート
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+fipsReport オブジェクトには、ストレージ クラスター内のすべてのノードに対する FIPS 140-2 サポートに関する情報が含まれています。この情報は、 `GetFipsReport`方法。
+
+
+
+== オブジェクトメンバー
+
+このオブジェクトには次のメンバーが含まれます。
+
+|===
+| Name | 説明 | タイプ 
+
+
+ a| 
+ノード
+ a| 
+ストレージ クラスター内の各ノードの FIPS 140-2 サポート ステータスに関するレポート。
+ a| 
+fipsノードレポート
+
+
+
+ a| 
+エラーノード
+ a| 
+FIPS 140-2 サポート ステータスに応答しなかった各ノードのエラー情報。
+ a| 
+fipsエラーノードレポート
+
+|===
