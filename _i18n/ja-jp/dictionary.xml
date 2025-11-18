@@ -3893,8 +3893,6 @@
   <block id="00ae1f75b0c9cec52e9827d766f2a9f0" category="paragraph"><block ref="00ae1f75b0c9cec52e9827d766f2a9f0" category="inline-link-macro-rx"></block></block>
   <block id="a0ccd69fa0bf592109e0896c3f9257e9" category="section-title">クラスター作成APIメソッド</block>
   <block id="df40a0d48604ceb446509f54dd53d965" category="paragraph">これらの API メソッドを使用してストレージ クラスターを作成できます。これらのメソッドはすべて、単一のノード上の API エンドポイントに対して使用する必要があります。</block>
-  <block id="0308f0d51b4ba54593f1e96114c69c11" category="inline-link-macro">クラスター作成APIメソッドについて学ぶ</block>
-  <block id="1bed70a38ca13f48bede345dc001e2c9" category="paragraph"><block ref="1bed70a38ca13f48bede345dc001e2c9" category="inline-link-macro-rx"></block></block>
   <block id="6a67229ead1343c9647798cef324176a" category="section-title">ドライブAPIメソッド</block>
   <block id="81edb4223e14439aae2b852f3ff5fa9b" category="paragraph">ドライブ API メソッドを使用して、ストレージ クラスターで使用可能なドライブを追加および管理できます。ストレージ ノードをストレージ クラスターに追加したり、既存のストレージ ノードに新しいドライブをインストールしたりすると、ドライブをストレージ クラスターに追加できるようになります。</block>
   <block id="d9d1e170360eff3d6edce6bc5ac15a96" category="inline-link-macro">ドライブAPIメソッドについて学ぶ</block>
@@ -12429,6 +12427,9 @@
   <block id="f01ab7a5082dba0b14f15d3b2e71f12b" category="list-text">SF9010</block>
   <block id="6c7b496a2d02d11880156e116d65fdae" category="paragraph">これらのノードのいずれかをサポートされていない Element バージョンにアップグレードしようとすると、ノードが Element 12.x でサポートされていないことを示すエラーが表示されます。</block>
   <block id="428b7755325d17c48c70b8ede83fbd03" category="summary">「クラスター」タブの「ノード」ページから、 SolidFireストレージおよびファイバー チャネル ノードを管理できます。</block>
-  <block id="0aa7fde71cfb5413015e45fa45075fd0" category="admonition">クラスタ上の保存時の暗号化および/または保存時のソフトウェア暗号化の現在の状態を確認するには、<block ref="d274ae55f8f22fd98ab9b057453f6128" category="inline-link-macro-rx"></block> 。使用することができます<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>。</block>
   <block id="4ba6dd2d59030fb9ee4b6523df69086c" category="list-text"><block ref="4ba6dd2d59030fb9ee4b6523df69086c" category="inline-link-macro-rx"></block></block>
+  <block id="57a0b277e5bc33fa133ed50fee2e39c7" category="section-title">クラスター作成APIメソッド</block>
+  <block id="ed23ae983fdf44661032ebde203dc482" category="inline-link-macro">クラスター作成APIメソッドについて学ぶ</block>
+  <block id="124da988a52d4207ceb89c16326011cd" category="paragraph"><block ref="124da988a52d4207ceb89c16326011cd" category="inline-link-macro-rx"></block></block>
+  <block id="e7d0e70ab185af3096a889f5850e7526" category="list-text">クラスタ上の保存時の暗号化、保存時のソフトウェア暗号化、またはその両方の現在のステータスを表示するには、 <block ref="d274ae55f8f22fd98ab9b057453f6128" category="inline-link-macro-rx"></block>。使用することができます<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>。</block>
 </blocks>

@@ -13,12 +13,13 @@ summary: DisableEncryptionAtRest メソッドを使用すると、EnableEncrypti
 [role="lead"]
 使用することができます `DisableEncryptionAtRest`以前にクラスタに適用された暗号化を削除する方法 `EnableEncryptionAtRest`方法。この無効化メソッドは非同期であり、暗号化が無効化される前に応答を返します。使用することができます `GetClusterInfo`プロセスをいつ完了したかを確認するためにシステムをポーリングするメソッド。
 
+[NOTE]
+====
+* この方法を使用して、保存時のソフトウェア暗号化を無効にすることはできません。保存時のソフトウェア暗号化を無効にするには、link:reference_element_api_createcluster.html["新しいクラスターを作成する"]保存時のソフトウェア暗号化は無効です。
+* クラスタ上の保存時の暗号化、保存時のソフトウェア暗号化、またはその両方の現在のステータスを表示するには、 link:../api/reference_element_api_getclusterinfo.html["クラスター情報を取得する方法"]。使用することができます `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["保存データを暗号化するためにクラスターが使用する情報を取得する方法"]。
 
-TIP: クラスタ上の保存時の暗号化および/または保存時のソフトウェア暗号化の現在の状態を確認するには、link:../api/reference_element_api_getclusterinfo.html["クラスター情報を取得する方法"] 。使用することができます `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["保存データを暗号化するためにクラスターが使用する情報を取得する方法"]。
 
-
-NOTE: この方法を使用して、保存時のソフトウェア暗号化を無効にすることはできません。保存時のソフトウェア暗号化を無効にするには、link:reference_element_api_createcluster.html["新しいクラスターを作成する"]保存時のソフトウェア暗号化は無効です。
-
+====
 
 
 == パラメータ

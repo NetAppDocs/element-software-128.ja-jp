@@ -13,12 +13,13 @@ summary: 'EnableEncryptionAtRest メソッドを使用すると、クラスタ�
 [role="lead"]
 使用することができます `EnableEncryptionAtRest`クラスタ上で保存されている Advanced Encryption Standard (AES) 256 ビット暗号化を有効にして、クラスタが各ノードのドライブに使用される暗号化キーを管理できるようにする方法。この機能は、デフォルトでは有効になっていません。
 
+[NOTE]
+====
+* クラスタ上の保存時の暗号化および/または保存時のソフトウェア暗号化の現在の状態を確認するには、link:../api/reference_element_api_getclusterinfo["クラスター情報を取得する方法"^] 。使用することができます `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["保存データを暗号化するためにクラスターが使用する情報を取得する方法"^]。
+* この方法では、保存時のソフトウェア暗号化は有効になりません。これは、link:../api/reference_element_api_createcluster.html["クラスター作成方法"^]と `enableSoftwareEncryptionAtRest`に設定 `true`。
 
-TIP: クラスタ上の保存時の暗号化および/または保存時のソフトウェア暗号化の現在の状態を確認するには、link:../api/reference_element_api_getclusterinfo["クラスター情報を取得する方法"^] 。使用することができます `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["保存データを暗号化するためにクラスターが使用する情報を取得する方法"^]。
 
-
-NOTE: この方法では、保存時のソフトウェア暗号化は有効になりません。これは、link:../api/reference_element_api_createcluster.html["クラスター作成方法"^]と `enableSoftwareEncryptionAtRest`に設定 `true`。
-
+====
 保存時の暗号化を有効にすると、クラスターはクラスター内の各ノードのドライブの暗号化キーを内部的に自動的に管理します。
 
 keyProviderID が指定されている場合は、キープロバイダーの種類に応じてパスワードが生成され、取得されます。これは通常、KMIP キー プロバイダーの場合は、キー管理相互運用性プロトコル (KMIP) キー サーバーを使用して行われます。この操作の後、指定されたプロバイダーはアクティブとみなされ、保存時の暗号化が無効になるまで削除できません。 `DisableEncryptionAtRest`方法。
